@@ -2,8 +2,9 @@ Ideas:
 - Menu top-left vs. right
 - Progress bar vs no bar
 - Übersicht aller Aufgaben+Status vs Feste Reihenfolge
+(- Introduce Errors)
 
 Deadlines:
-NEXT MONDAY     Expose
-at some point   Presentation
-15.07           Documentation Deadline
+02.05   Expose
+13.06   Presentation
+15.07   Documentation Deadline
