@@ -1,3 +1,6 @@
+Please use https://github.com/blub123muh/hci.git instead.
+
+
 Ideas:
 - Menu top-left vs. right
 - Next button position
