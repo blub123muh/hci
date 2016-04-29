@@ -1,0 +1,69 @@
+This is BibTeX, Version 0.99d (TeX Live 2015/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: acmtog-sample.aux
+The style file: ACM-Reference-Format-Journals.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: acmtog-sample-bibfile.bib
+Warning--no key, author in Editor00
+Warning--no key, author in Editor00
+Warning--no key, author in Editor00a
+Warning--no key, author in Editor00a
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--no number and no volume in CDFKMS-06
+Warning--empty chapter and pages in Editor00
+Warning--page numbers missing in Editor00a
+Warning--empty address in GPMBH-2005
+Warning--require articleno with numpages field in Kirschmer:2010:AEI:1958016.1958018
+Warning--empty address in Knuth97
+Warning--articleno field, but no numpages field, in Lee05
+Warning--page numbers missing in both pages and numpages fields in Lee05
+Warning--require pages or numpages fields with articleno field in Lee05
+Warning--unrecognized DOI value [99.9999/woot07-S422]
+Warning--articleno field, but no numpages field, in rous08
+Warning--page numbers missing in both pages and numpages fields in rous08
+Warning--require pages or numpages fields with articleno field in rous08
+Warning--page numbers missing in both pages and numpages fields in SaeediJETC10
+Warning--unrecognized DOI value [99.9999/woot07-S422]
+You've used 39 entries,
+            5290 wiz_defined-function locations,
+            1720 strings with 23615 characters,
+and the built_in function-call counts, 37056 in all, are:
+= -- 5028
+> -- 1158
+< -- 14
++ -- 336
+- -- 641
+* -- 2206
+:= -- 4109
+add.period$ -- 216
+call.type$ -- 39
+change.case$ -- 231
+chr.to.int$ -- 37
+cite$ -- 60
+duplicate$ -- 2882
+empty$ -- 2092
+format.name$ -- 474
+if$ -- 8726
+int.to.chr$ -- 3
+int.to.str$ -- 0
+missing$ -- 97
+newline$ -- 394
+num.names$ -- 310
+pop$ -- 962
+preamble$ -- 1
+purify$ -- 420
+quote$ -- 0
+skip$ -- 805
+stack$ -- 0
+substring$ -- 3470
+swap$ -- 261
+text.length$ -- 470
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 498
+warning$ -- 19
+while$ -- 319
+width$ -- 0
+write$ -- 778
+(There were 19 warnings)

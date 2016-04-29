@@ -1,0 +1,421 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.3.12)  29 APR 2016 14:20
+entering extended mode
+**acmtog-sample.tex
+
+(C:\Users\Felix\Documents\Felix\Studium\Informatik\Master\HumanComputerInteract
+ion\Abgabe\acmtog-sample.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+
+(C:\Users\Felix\Documents\Felix\Studium\Informatik\Master\HumanComputerInteract
+ion\Abgabe\acmtog.cls
+Document Class: acmtog 2013/08/10 v1.7 ACM Class
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\latexsym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(C:\Users\Felix\AppData\Roaming\MiKTeX\2.9\tex\latex\url\url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\trimheight=\dimen102
+\trimwidth=\dimen103
+\typeheight=\dimen104
+\typewidth=\dimen105
+\normaltextheight=\dimen106
+\blindfoliodrop=\dimen107
+\tempbox=\box26
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+\tempdimen=\dimen108
+\normaltextheight=\dimen109
+\c@secnumbookdepth=\count79
+\c@theorem=\count80
+\c@strategy=\count81
+\c@property=\count82
+\c@proposition=\count83
+\c@exam=\count84
+\c@part=\count85
+\c@section=\count86
+\c@subsection=\count87
+\c@subsubsection=\count88
+\c@paragraph=\count89
+\c@figure=\count90
+\c@table=\count91
+\belowcaptionskip=\skip41
+\tbbox=\box27
+\tabledim=\dimen110
+\@narrowfig=\dimen111
+\@nfigbox=\box28
+\@nfcapbox=\box29
+
+(C:\Users\Felix\Documents\Felix\Studium\Informatik\Master\HumanComputerInteract
+ion\Abgabe\acmcopyright.sty
+Package: acmcopyright 2014/06/29 v1.2 Copyright statemens for ACM classes
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2012/10/14 v2.6b package option processing (HA)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+\XKV@toks=\toks14
+\XKV@tempa@toks=\toks15
+\XKV@depth=\count92
+File: xkeyval.tex 2012/10/14 v2.6b key=value parser (HA)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\xkeyval\keyval.tex"))))
+\@abstract=\box30
+\@terms=\box31
+\@keywords=\box32
+
+(C:\Users\Felix\AppData\Roaming\MiKTeX\2.9\tex\latex\comment\comment.sty
+\CommentStream=\write3
+
+Excluding comment 'comment') Excluding comment 'CCSXML'
+\bibindent=\dimen112
+LaTeX Info: Redefining \cal on input line 1120.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\times.sty"
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\tools\bm.sty"
+Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
+\symboldoperators=\mathgroup5
+\symboldletters=\mathgroup6
+\symboldsymbols=\mathgroup7
+\symboldlasy=\mathgroup8
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 138.
+LaTeX Info: Redefining \bm on input line 204.
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files (x86)\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count93
+))
+\Gin@req@height=\dimen113
+\Gin@req@width=\dimen114
+))
+(C:\Users\Felix\Documents\Felix\Studium\Informatik\Master\HumanComputerInteract
+ion\Abgabe\acmtog-sample.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
+LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 42.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1ptm.fd"
+File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
+)
+\bibhang=\skip42
+
+(C:\Users\Felix\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count94
+\scratchdimen=\dimen115
+\scratchbox=\box33
+\nofMPsegments=\count95
+\nofMParguments=\count96
+\everyMPshowfont=\toks16
+\MPscratchCnt=\count97
+\MPscratchDim=\dimen116
+\MPnumerator=\count98
+\makeMPintoPDFobject=\count99
+\everyMPtoPDFconversion=\toks17
+) Excluding 'CCSXML' comment.
+LaTeX Font Info:    Try loading font information for OT1+phv on input line 109.
+
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1phv.fd"
+File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
+)
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 109.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 109.
+LaTeX Font Info:    Try loading font information for U+lasy on input line 109.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+Underfull \hbox (badness 10000) in paragraph at lines 111--115
+[][]\OT1/ptm/m/n/8 Manuel M. Oliveira ac-knowl-edges a CNPq-Brazil fel-low-ship
+
+ []
+
+
+Underfull \hbox (badness 4108) in paragraph at lines 111--115
+\OT1/ptm/m/n/8 Au-thors' ad-dresses: Sean Fog-a-rty, (Cur-rent ad-dress) NASA A
+mes
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 115.
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsptm.fd"
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <7> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 115.
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <8> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 141.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 141.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 141.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 141.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 141.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <8> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 141.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <6> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 141.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <5> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 141.
+
+Underfull \vbox (badness 6461) has occurred while \output is active []
+
+
+<tog-sample-mouse.pdf, id=1, 151.56625pt x 134.5025pt>
+File: tog-sample-mouse.pdf Graphic file (type pdf)
+
+<use tog-sample-mouse.pdf>
+Package pdftex.def Info: tog-sample-mouse.pdf used on input line 197.
+(pdftex.def)             Requested size: 312.9803pt x 277.74931pt.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <9> on input line 206.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <9> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 206.
+
+Underfull \hbox (badness 1097) in paragraph at lines 217--246
+\OT1/ptm/m/n/9 some the-o-ret-i-cal re-sults from the field of math-e-mat-i-cal
+ bi-ol-
+ []
+
+[1{C:/Users/Felix/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
+Non-PDF special ignored!
+
+
+]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 287.
+LaTeX Font Info:    Font shape `U/lasy/b/n' in size <7> not available
+(Font)              Font shape `U/lasy/m/n' tried instead on input line 287.
+
+Overfull \vbox (0.50241pt too high) has occurred while \output is active []
+
+
+[2 <C:/Users/Felix/Documents/Felix/Studium/Informatik/Master/HumanComputerInter
+action/Abgabe/tog-sample-mouse.pdf>]
+Overfull \vbox (0.57443pt too high) has occurred while \output is active []
+
+
+[3]
+Underfull \hbox (badness 2142) in paragraph at lines 439--445
+[]\OT1/ptm/m/n/9 Starting from Longtin and Mil-ton's and from Moon and
+ []
+
+File: tog-sample-mouse.pdf Graphic file (type pdf)
+<use tog-sample-mouse.pdf>
+Package pdftex.def Info: tog-sample-mouse.pdf used on input line 542.
+(pdftex.def)             Requested size: 199.16928pt x 176.74956pt.
+
+Overfull \vbox (0.50241pt too high) has occurred while \output is active []
+
+
+[4]
+Overfull \vbox (0.57443pt too high) has occurred while \output is active []
+
+
+[5]
+Overfull \vbox (0.50241pt too high) has occurred while \output is active []
+
+
+[6]
+Overfull \vbox (0.57443pt too high) has occurred while \output is active []
+
+
+[7]
+Underfull \vbox (badness 2213) has occurred while \output is active []
+
+
+Overfull \vbox (0.50241pt too high) has occurred while \output is active []
+
+
+[8]
+(C:\Users\Felix\Documents\Felix\Studium\Informatik\Master\HumanComputerInteract
+ion\Abgabe\acmtog-sample.bbl
+Underfull \hbox (badness 2150) in paragraph at lines 50--56
+\OT1/ptm/m/n/8 Buy, sell, or troll?  \OT1/ptm/m/it/8 Com-mun. ACM \OT1/ptm/m/n/
+8 50, 1 (Jan. 2007), 36--44.
+ []
+
+
+Underfull \hbox (badness 7468) in paragraph at lines 154--162
+[]\OT1/ptm/m/n/8 D. De-Carlo and A. San-tella. 2002.  Styl-iza-tion and ab-stra
+c-
+ []
+
+
+Underfull \hbox (badness 8151) in paragraph at lines 154--162
+\OT1/ptm/m/n/8 tion of pho-tographs. In \OT1/ptm/m/it/8 SIG-GRAPH '02: Pro-ceed
+-ings of the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 154--162
+\OT1/ptm/m/it/8 29th an-nual con-fer-ence on Com-puter graph-ics and in-ter-ac-
+
+ []
+
+
+Underfull \hbox (badness 6792) in paragraph at lines 154--162
+\OT1/ptm/m/it/8 tive tech-niques\OT1/ptm/m/n/8 . ACM Press, New York, NY, USA, 
+769--776.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--223
+[]\OT1/ptm/m/n/8 Ian Ed-i-tor (Ed.). 2008.  \OT1/ptm/m/it/8 The ti-tle of book 
+two \OT1/ptm/m/n/8 (2nd.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 217--223
+\OT1/ptm/m/n/8 ed.).  Uni-ver-sity of Chicago Press, Chicago, Chap-ter 100.
+ []
+
+
+Underfull \hbox (badness 1077) in paragraph at lines 238--244
+[]\OT1/ptm/m/n/8 Google Inc. current-year.  Google$[]$ Im-age Search.  (current
+-year).
+ []
+
+
+Underfull \hbox (badness 1552) in paragraph at lines 268--275
+[]\OT1/ptm/m/n/8 David Harel. 1979.  \OT1/ptm/m/it/8 First-Order Dy-namic Logic
+\OT1/ptm/m/n/8 . Lec-ture Notes in
+ []
+
+
+Underfull \hbox (badness 4060) in paragraph at lines 268--275
+\OT1/ptm/m/n/8 Com-puter Sci-ence, Vol. 68.  Springer-Verlag, New York, NY.
+ []
+
+
+Overfull \vbox (0.57443pt too high) has occurred while \output is active []
+
+
+[9]
+Underfull \hbox (badness 1107) in paragraph at lines 335--342
+[]\OT1/ptm/m/n/8 Newton Lee. 2005.  In-ter-view with Bill Kinder: Jan-uary 13, 
+2005.
+ []
+
+
+Underfull \hbox (badness 6300) in paragraph at lines 335--342
+\OT1/ptm/m/n/8 Video, \OT1/ptm/m/it/8 Com-put. En-ter-tain. \OT1/ptm/m/n/8 3, 1
+, Ar-ti-cle 4 (Jan.-March 2005).
+ []
+
+
+Underfull \hbox (badness 5231) in paragraph at lines 346--353
+[]\OT1/ptm/m/n/8 Dave No-vak. 2003.  Sol-der man. Video. In \OT1/ptm/m/it/8 ACM
+ SIG-GRAPH
+ []
+
+
+Underfull \hbox (badness 6641) in paragraph at lines 346--353
+\OT1/ptm/m/it/8 2003 Video Re-view on An-i-ma-tion the-ater Pro-gram: Part I -
+ []
+
+
+Underfull \hbox (badness 4353) in paragraph at lines 346--353
+\OT1/ptm/m/it/8 Vol. 145 (July 27--27, 2003)\OT1/ptm/m/n/8 . ACM Press, New Yor
+k, NY, 4.
+ []
+
+)
+Overfull \vbox (0.50241pt too high) has occurred while \output is active []
+
+
+[10
+
+]
+(C:\Users\Felix\Documents\Felix\Studium\Informatik\Master\HumanComputerInteract
+ion\Abgabe\acmtog-sample.aux) ) 
+Here is how much of TeX's memory you used:
+ 2083 strings out of 493921
+ 28271 string characters out of 3144876
+ 106707 words of memory out of 3000000
+ 5339 multiletter control sequences out of 15000+200000
+ 41927 words of font info for 98 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 34i,9n,34p,257b,316s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvi
+ps/fontname/8r.enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfon
+ts/cm/cmex10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmmi5.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
+/cmmi6.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+mi8.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi9
+.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cmextra/cmm
+ib9.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.
+pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb>
+<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/
+Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Pr
+ogram Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt8.pfb><C:/Progr
+am Files (x86)/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files
+ (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program Files (x86)/MiKT
+eX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/urw/times/utmri8a.pfb>
+Output written on acmtog-sample.pdf (10 pages, 239022 bytes).
+PDF statistics:
+ 101 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+
