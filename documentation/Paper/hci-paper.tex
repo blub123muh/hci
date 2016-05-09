@@ -232,15 +232,37 @@ this relation flips at a number of pages that is realistic for surveys. Hence, t
 \section{Related Work}
 
 \section{Study Design}
+\subsection{Conceptual Design}
 Hypothesis?
 Between-Group Design or Within-Group-Design?
-\subsection{Participants}
-\subsection{Realization of the Prototype}
+\subsubsection{Participants}
+\subsubsection{Tasks}
+In order to simulate the scenarios of jumping from one question to another, we developed a series of puzzle-like tasks. The goal is to find a
+keyword solution composed of five letters. An instruction displayed on the bottom of the screen guides the participant to the next letter. It always asks the
+participant to navigate to some question and pick a certain character on the screen as the next letter. When the participant has entered a letter, the next
+instruction is displayed. The distance to cover from one question to another is always in the same small range for each quiz. However, the distances differ for
+different quizzes. As an example, consider the example in Figure refme which has distances in range two to three. The arrows indicate the question to jump to in
+the next step and the number attached to the labels indicates which character in the question is the next letter. Hence, in this example, the solution is 'abcde'.
+\subsubsection{Measures}
+As stated above, we aim to measure the effectiveness, efficiency, and satisfaction of the two navigation methods. 
+\paragraph{Effectiveness} Effectiveness is estimated as the portion of
+correctly picked letters. 
+\paragraph{Efficiency} For the efficiency, we only measure the time required to get to the page on which the next letter can be found. We start measuring at the point
+when the previous letter has been entered.
+\paragraph{Satisfaction}
+In order to assess the user satisfaction depending on the distance, the user is asked to fill in a short questionnaire after each puzzle. 
+The questionnaire consists of the following questions:
+\begin{enumerate}
+  \item How did you enjoy the puzzle?
+  \item How tired did you get during solving the puzzle?
+  \item \ldots
+\end{enumerate}
+\subsection{Realization of the Experiment}
 We developed a simple Android application:
 \subsubsection{GUI}
+put a qt mock-up here
 \subsubsection{How we measured efficiency (and effectiveness)}
-\subsection{Questionnaire}
-
+maybe we don't need this
 \section{Experiments and Results}
 \section{Discussion}
 
