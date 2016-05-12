@@ -44,9 +44,9 @@
 % ===============================================================
 %
 % For tracking purposes - this is V2.0 - May 2012
-
 \documentclass{sig-alternate-05-2015}
 
+\usepackage{graphicx}
 
 \begin{document}
 
@@ -241,8 +241,15 @@ In order to simulate the scenarios of jumping from one question to another, we d
 keyword solution composed of five letters. An instruction displayed on the bottom of the screen guides the participant to the next letter. It always asks the
 participant to navigate to some question and pick a certain character on the screen as the next letter. When the participant has entered a letter, the next
 instruction is displayed. The distance to cover from one question to another is always in the same small range for each quiz. However, the distances differ for
-different quizzes. As an example, consider the example in Figure refme which has distances in range two to three. The arrows indicate the question to jump to in
-the next step and the number attached to the labels indicates which character in the question is the next letter. Hence, in this example, the solution is 'abcde'.
+different quizzes. As an example, consider the example in Figure \ref{fig:puzzle} which has distances in range two to three. The arrows indicate the question to jump to in
+the next step and the number attached to the labels indicates which character in the question is the next letter. Hence, in this example, the solution is 'nupvr'.
+\begin{figure}
+\caption{An example of a puzzle}
+\resizebox{\columnwidth}{!}{
+\includegraphics[clip, trim=0cm 23cm 0cm 0cm]{schnitzeljagd.pdf}
+\label{fig:puzzle}
+}
+\end{figure}
 \subsubsection{Measures}
 As stated above, we aim to measure the effectiveness, efficiency, and satisfaction of the two navigation methods. 
 \paragraph{Effectiveness} Effectiveness is estimated as the portion of
