@@ -259,12 +259,12 @@ The results of our research will give important insight into the usability of di
 \section{Study Design}
 \subsection{Conceptual Design}
 \subsubsection{Tasks}
-In order to simulate the scenarios of jumping from one question to another, we developed a series of puzzle-like tasks. The goal is to find a
-keyword solution composed of five letters. An instruction displayed on the bottom of the screen guides the participant to the next letter. It always asks the
-participant to navigate to some question and pick a certain character on the screen as the next letter. When the participant has entered a letter, the next
-instruction is displayed. The distance to cover from one question to another is always in the same small range for each puzzle. However, the distances differ for
-different puzzles. As an example, consider the example in Figure \ref{fig:puzzle} which has distances in range two to three. The arrows indicate the question to jump to in
-the next step and the number attached to the labels indicates which character in the question is the next letter. Hence, in this example, the solution is 'nupvr'.
+In order to simulate the scenarios of jumping from one question to another, we develop a series of treasure hunt like tasks. Here, the goal is to find the treasure which
+is hidden behind a door. A door is represented by a page. Starting at the first page, an instruction displayed on the bottom of the screen guides the participant to the next one 
+by exactly telling them the number of the next door. When the participant has open the respective door, the next
+instruction is displayed. The distance to cover from one door to another is always in the same small range for each task. However, the distances differ for
+different tasks. Consider the example in Figure \ref{fig:puzzle} which has distances in range two to three. The arrows indicate the door to open in
+the next step. Hence, the sequence of doors to open in order to reach the treasure is 1, 3, 6, 4, 2, 5. 
 \begin{figure}
 \caption{An example of a puzzle}
 \resizebox{\columnwidth}{!}{
@@ -275,21 +275,20 @@ the next step and the number attached to the labels indicates which character in
 \subsubsection{Measures}
 As stated above, we aim to measure the effectiveness, efficiency, and satisfaction of the two navigation methods. 
 \paragraph{Effectiveness} Effectiveness is estimated as the portion of
-correctly picked letters. 
-\paragraph{Efficiency} For the efficiency, we only measure the time required to get to the page on which the next letter can be found. We start measuring at the point
-when the previous letter has been entered.
+correctly completed tasks (e.g. how many times the treasure was found). 
+\paragraph{Efficiency} For the efficiency, we only measure the time required to get to the door which has to be opened next. We start measuring at the point
+when the previous door was opened, that is, when the next instruction is displayed.
 \paragraph{Satisfaction}
-In order to assess the user satisfaction depending on the distance, the user is asked to fill in a short questionnaire after each puzzle. 
+In order to assess the user satisfaction depending on the distance, the user is asked to fill in a short questionnaire after each task. 
 The questionnaire consists of the following questions:
 \begin{enumerate}
-  \item How did you enjoy the puzzle?
-  \item How tired did you get during solving the puzzle?
+  \item How did you enjoy the task (game)?
+  \item How tired did you get during solving the task?
   \item \ldots
 \end{enumerate}
 \subsubsection{Participants}
-For our study, we decided for a between-group design for three reasons. First, fatigue may be an issue because, although the tasks are rather simple, they require the participant
-to keep the focus in order to complete them successfully. Second, when solving the tasks with the second type, the test persons might rate their satisfaction more drastically, as they
-are biased from having solved the puzzles with the respective other navigation method. Ultimately, in order to avoid an extreme learning effect, the puzzles for swipe gesture navigation and menu navigation
+For our study, we decided for a between-group design for two reasons. First, when solving the tasks with the second type, the test persons might rate their satisfaction more drastically, as they
+are biased from having solved the tasks with the respective other navigation method. Secondly, in order to avoid an extreme learning effect, the tasks for swipe gesture navigation and menu navigation
 would have to be distinct if a within-group design were used. This should be avoided to ensure comparability.
 \subsection{Realization of the Experiment}
 We developed a simple Android application:
@@ -306,12 +305,6 @@ Conclusions
 
 %ACKNOWLEDGMENTS are optional
 \section{Acknowledgments}
-This section is optional; it is a location for you
-to acknowledge grants, funding, editing assistance and
-what have you.  In the present case, for example, the
-authors would like to thank Gerald Murray of ACM for
-his help in codifying this \textit{Author's Guide}
-and the \textbf{.cls} and \textbf{.tex} files that it describes.
 
 %
 % The following two commands are all you need in the
