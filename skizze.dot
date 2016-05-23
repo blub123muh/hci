@@ -1,0 +1,4 @@
+digraph g {
+    node[shape=rect]
+    KeyStash -> Door1 -> Door2 -> Door3 -> Door4 -> Door5 -> Door6 -> Door7 -> Door8 -> Door9 -> TreasureRoom;
+}
