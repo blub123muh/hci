@@ -237,9 +237,37 @@ We formulate the following hypotheses:
   \item Null hypothesis $H_0^{(s)}$ for user satisfaction: There is no difference in user satisfaction between swipe gestures and hamburger menu when navigating over a distance of $d$ pages.
   \item Alternative hypothesis $H_1^{(s)}$ for user satisfaction: There is a difference in user satisfaction between swipe gestures and hamburger menu when navigating over a distance of $d$ pages.
 \end{enumerate}
+
+\paragraph{Hypotheses}
+%\todo{MERGE WITH ABOVE}
+Consider the normally distributed random variables $X_d$ with $\bar x$ and $\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger Menu navigation.
+We hypothize that 
+\begin{align*}
+  H_{0, \text{burger}}: \bar x_0 = \bar x_1 = \cdots = \bar x_d
+\end{align*}
+% is anova capable of doing reverse test with \not= as H_0?
+In case we do not find significant differences,
+we can use the overall mean $\bar x$
+for comparision with the Swipe navigation.
+We consider normally distributed random variables $Y_d$ with $\bar y_d$ and $\sigma_{y,d}^2$
+as the time required for traveling $d$ pages using Swipe navigation.
+After asserting that analogous hypothesis fails,
+\begin{align*}
+  H_{0, \text{swipe}}: \bar y_0 = \bar y_1= \cdots = \bar y_d
+\end{align*}
+we continue with comparing the means $\bar y_d$ of Swipe navigation to the mean $\bar x$ of Hamburger Menu navigation.
+In order to find the distance $d$, for which the required time with Swipe navigation exceeds
+the required time with Hamburger Menu navigation,
+we formulate the following hypotheses:
+\begin{align*}
+  H_{0,d} : \bar y_d = \bar x \;\forall d
+\end{align*}
+\paragraph{end, reread}
+
+
 In fact, we check these hypotheses for different values of $d$, hence, we examine two independent variables: navigation method and distance. We talk to experts from the educational science domain to identify values for $d$ that are realistic for e-learning apps.
 We are confident to be able to prove the superiority of swipe gestures for small $d$ and the superiority of hamburger menu for large $d$ statistically for both quantities. 
-To be more precise, we expect the relation between $d$ and the time required to navigate between pages of distance $d$ as indicated in Figure \ref{fig:expectation}.
+To be more precise, we expect the relation between $d$ and the time required to navigate between pages of distance $d$ as indicated in Figure~\ref{fig:expectation}.
 \begin{figure}
 \caption{Expected time (y-axis) required to cover $d$ pages (x-axis) when using a menu (green line) and when using swipe gestures (blue line)}
 \resizebox{\columnwidth}{!}{
