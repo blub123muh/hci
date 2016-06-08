@@ -1,4 +1,6 @@
 digraph g {
-    node[shape=rect]
-    KeyStash -> Door1 -> Door2 -> Door3 -> Door4 -> Door5 -> Door6 -> Door7 -> Door8 -> Door9 -> TreasureRoom;
+    node[shape=rect];
+    rankdir=TB;
+    {rank=same; Room1 -> Room2 -> Room3 -> Room4 -> Room5 -> Room6 [style=invis];}
+    { Room1 -> Room3 -> Room6 -> Room4 -> Room2 -> Room5 [style=filled];}
 }
