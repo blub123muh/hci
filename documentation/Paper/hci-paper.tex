@@ -47,6 +47,7 @@
 \documentclass{sig-alternate-05-2015}
 
 \usepackage{graphicx}
+\newcommand{\todo}{\textbf{TODO:} \textbf}
 
 \begin{document}
 
@@ -58,28 +59,20 @@
 %\setcopyright{usgovmixed}
 %\setcopyright{cagov}
 %\setcopyright{cagovmixed}
-
-
 % DOI
 %\doi{10.475/123_4}
-
 % ISBN
 %\isbn{123-4567-24-567/08/06}
-
 %Conference
 %\conferenceinfo{PLDI '13}{June 16--19, 2013, Seattle, WA, USA}
-
 %s\acmPrice{\$15.00}
-
 %
 % --- Author Metadata here ---
 %\conferenceinfo{WOODSTOCK}{'97 El Paso, Texas USA}
 %\CopyrightYear{2007} % Allows default copyright year (20XX) to be over-ridden - IF NEED BE.
 %\crdata{0-12345-67-8/90/01}  % Allows default copyright data (0-89791-88-6/97/05) to be over-ridden - IF NEED BE.
 % --- End of Author Metadata ---
-
 \title{Analysis of the efficiency and user satisfaction of a menu and swipe gestures in the context of a survey app}
-
 %
 % You need the command \numberofauthors to handle the 'placement
 % and alignment' of the authors beneath the title.
@@ -104,38 +97,37 @@
 % These 'additional authors' will be output/set for you
 % without further effort on your part as the last section in
 % the body of your article BEFORE References or any Appendices.
-
 \numberofauthors{4} %  in this sample file, there are a *total*
 % of EIGHT authors. SIX appear on the 'first-page' (for formatting
 % reasons) and the remaining two appear in the \additionalauthors section.
-%
 \author{
-% You can go ahead and credit any number of authors here,
-% e.g. one 'row of three' or two rows (consisting of one row of three
-% and a second row of one, two or three).
-%
-% The command \alignauthor (no curly braces needed) should
-% precede each author name, affiliation/snail-mail address and
-% e-mail address. Additionally, tag each line of
-% affiliation/address with \affaddr, and tag the
-% e-mail address with \email.
-%
-% 1st. author
-\alignauthor
-Lukas Galke\\
-       \email{mail@uni-kiel.de}
-% 2nd. author
-\alignauthor Steffen Goos\\
-      \email{mail@uni-kiel.de}
-% 3rd. author
-\alignauthor
-Felix Paur\\
-       \email{mail@uni-kiel.de}
-\and  % use '\and' if you need 'another row' of author names
-% 4th. author
-\alignauthor
-Florian Mai\\
-       \email{mail@uni-kiel.de}
+  % You can go ahead and credit any number of authors here,
+  % e.g. one 'row of three' or two rows (consisting of one row of three
+  % and a second row of one, two or three).
+  %
+  % The command \alignauthor (no curly braces needed) should
+  % precede each author name, affiliation/snail-mail address and
+  % e-mail address. Additionally, tag each line of
+  % affiliation/address with \affaddr, and tag the
+  % e-mail address with \email.
+  %
+  % 1st. author
+  \alignauthor
+  Lukas Galke\\
+  \affaddr{Kiel University, Germany}\\
+  \email{lga@informatik.uni-kiel.de}
+  % 2nd. author
+  \alignauthor Steffen Goos\\
+  \email{mail@uni-kiel.de}
+  \and  % use '\and' if you need 'another row' of author names
+  % 3rd. author
+  \alignauthor
+  Felix Paur\\
+  \email{mail@uni-kiel.de}
+  % 4th. author
+  \alignauthor
+  Florian Mai\\
+  \email{mail@uni-kiel.de}
 }
 % There's nothing stopping you putting the seventh, eighth, etc.
 % author on the opening page (as the 'third row') but we ask,
@@ -148,129 +140,186 @@ Florian Mai\\
 % Just remember to make sure that the TOTAL number of authors
 % is the number that will appear on the first page PLUS the
 % number that will appear in the \additionalauthors section.
-
 \maketitle
+% Fakesection ACM Header
 \begin{abstract}
-For several years, the swipe gesture has been a very-well established way to navigate among adjacent pages on websites as well as in native
-apps on a mobile device. The users appreciate its ease and its comfort of use. However, it can only be applied in scenarios where
-the content is provided in a sequential way, e.g. in a picture gallery, in an e-book reader, or when filling in a form. In this paper, we
-examine the swipe gesture's suitability for navigating through a set of questions in an e-learning app. Although typically the user progresses
-through the questions sequentially, it is a common case that they want to revise their answers later due to a change of mind or a missunderstanding
-of the question, for example. We conjecture that navigating back using swipe gestures is unsatisfactory and time-costly as the distance in pages
-increases. In order to research this question, we conduct a study in which we compare the use of swipe gestures to the use of the also
-well-established hamburger menu. We design tasks that capture the use cases described above. We alter the distance in pages
-that has to be covered in order to complete the task. For each task, we measure the efficiency. Furthermore, we assess the user satisfaction through a questionnaire. We expect
-both measures to be independent of the distance when the menu is used. When the swipe gesture is used, however, we expect both measures to decrease
-as the distance increases. We suspect that the swipe gestures do better than the menu when the distance is small, but we also think that this
-this relation flips at a number of pages that is realistic for e-learning apps. Hence, the results of our study are of practical importance.
+  For several years, the swipe gesture has been a very-well established way to navigate among adjacent pages on websites as well as in native
+  apps on a mobile device. The users appreciate its ease and its comfort of use. However, it can only be applied in scenarios where
+  the content is provided in a sequential way, e.g.\ in a picture gallery, in an e-book reader, or when filling in a form. In this paper, we
+  examine the swipe gesture's suitability for navigating through a set of questions in an e-learning app. Although typically the user progresses
+  through the questions sequentially, it is a common case that they want to revise their answers later due to a change of mind or a missunderstanding
+  of the question, for example. We conjecture that navigating back using swipe gestures is unsatisfactory and time-costly as the distance in pages
+  increases. In order to research this question, we conduct a study in which we compare the use of swipe gestures to the use of the also
+  well-established hamburger menu. We design tasks that capture the use cases described above. We alter the distance in pages
+  that has to be covered in order to complete the task. For each task, we measure the efficiency. Furthermore, we assess the user satisfaction through a questionnaire. We expect
+  both measures to be independent of the distance when the menu is used. When the swipe gesture is used, however, we expect both measures to decrease
+  as the distance increases. We suspect that the swipe gestures do better than the menu when the distance is small, but we also think that this
+  this relation flips at a number of pages that is realistic for e-learning apps. Hence, the results of our study are of practical importance.
 \end{abstract}
-
-
 %
 % The code below should be generated by the tool at
 % http://dl.acm.org/ccs.cfm
 % Please copy and paste the code instead of the example below.
 %
 \begin{CCSXML}
-<ccs2012>
- <concept>
+  <ccs2012>
+  <concept>
   <concept_id>10010520.10010553.10010562</concept_id>
   <concept_desc>Computer systems organization~Embedded systems</concept_desc>
   <concept_significance>500</concept_significance>
- </concept>
- <concept>
+  </concept>
+  <concept>
   <concept_id>10010520.10010575.10010755</concept_id>
   <concept_desc>Computer systems organization~Redundancy</concept_desc>
   <concept_significance>300</concept_significance>
- </concept>
- <concept>
+  </concept>
+  <concept>
   <concept_id>10010520.10010553.10010554</concept_id>
   <concept_desc>Computer systems organization~Robotics</concept_desc>
   <concept_significance>100</concept_significance>
- </concept>
- <concept>
+  </concept>
+  <concept>
   <concept_id>10003033.10003083.10003095</concept_id>
   <concept_desc>Networks~Network reliability</concept_desc>
   <concept_significance>100</concept_significance>
- </concept>
-</ccs2012>
+  </concept>
+  </ccs2012>
 \end{CCSXML}
-
 \ccsdesc[500]{Computer systems organization~Embedded systems}
 \ccsdesc[300]{Computer systems organization~Redundancy}
 \ccsdesc{Computer systems organization~Robotics}
 \ccsdesc[100]{Networks~Network reliability}
-
-
 %
 % End generated code
 %
-
 %
 %  Use this command to print the description
 %
 \printccsdesc
-
 % We no longer use \terms command
 %\terms{Theory}
-
-\keywords{ACM proceedings; \LaTeX; text tagging}
-
+\keywords{ACM proceedings; \LaTeX\@ text tagging}
 \section{Introduction}
-Due to the availability of mobile internet connection and the establishment of smartphones for the masses, e-learning apps have become more and more relevant in recent years.
-In theory, the promise is that students can study anywhere at any time. However, as for any kind of application, a practical barrier is the usability of such educational application.
+Due to the availability of mobile internet connection and the establishment of
+smartphones for the masses, e-learning apps have become more and more relevant
+in recent years.  In theory, the promise is that students can study anywhere
+at any time. However, as for any kind of application, a practical barrier is
+the usability of such educational application.
 
-For several years, the swipe gesture has been a very well-established way to navigate among adjacent pages on websites as well as in native
-apps on a mobile device. The users appreciate its ease and its comfort of use. However, it can only be applied in scenarios where
-the content is provided in a sequential way, e.g. in a picture gallery, in an e-book reader, or when filling in a form. In this paper, we
-examine the swipe gesture's suitability for navigating through a set of questions in an e-learning app. Although typically the user progresses
-through the questions sequentially, it is a common case that they want to revise their answers later due to a change of mind or a missunderstanding
-of the question, for example. We conjecture that navigating back using swipe gestures is unsatisfactory and time-costly as the distance in pages
-increases. In order to research this question, we conduct a study in which we compare the use of swipe gestures to the use of the also
-well-established hamburger menu. We suspect that the swipe gestures do better in terms of efficiency and
-user satisfaction than the hamburger menu when the distance is small. When the distance is large, however,
-we believe that this relation flips. More formally, let $d$ be the distance in pages to be covered when navigating in a sequence of pages.
-We formulate the following hypotheses:
+For several years, the swipe gesture has been a very well-established way to
+navigate among adjacent pages on websites as well as in native apps on a
+mobile device. The users appreciate its ease and its comfort of use. However,
+it can only be applied in scenarios where the content is provided in a
+sequential way, e.g.\ in a picture gallery, in an e-book reader, or when
+filling in a form. In this paper, we examine the swipe gesture's suitability
+for navigating through a set of questions in an e-learning app. Although
+typically the user progresses through the questions sequentially, it is a
+common case that they want to revise their answers later due to a change of
+mind or a missunderstanding of the question, for example. We conjecture that
+navigating back using swipe gestures is unsatisfactory and time-costly as the
+distance in pages increases. In order to research this question, we conduct a
+study in which we compare the use of swipe gestures to the use of the also
+well-established hamburger menu. We suspect that the swipe gestures do better
+in terms of efficiency and user satisfaction than the hamburger menu when the
+distance is small. When the distance is large, however, we believe that this
+relation flips. More formally, let $d$ be the distance in pages to be covered
+when navigating in a sequence of pages.  We formulate the following
+hypotheses:
 \begin{enumerate}
-  \item Null hypothesis $H_0^{(e)}$ for efficiency: There is no difference between swipe gestures and hamburger menu in the time required to navigate over a distance of $d$ pages.
-  \item Alternative hypothesis $H_1^{(e)}$ for efficiency: There is a difference between swipe gestures and hamburger menu in the time required to navigate over a distance of $d$ pages.
-  \item Null hypothesis $H_0^{(s)}$ for user satisfaction: There is no difference in user satisfaction between swipe gestures and hamburger menu when navigating over a distance of $d$ pages.
-  \item Alternative hypothesis $H_1^{(s)}$ for user satisfaction: There is a difference in user satisfaction between swipe gestures and hamburger menu when navigating over a distance of $d$ pages.
+  \item Null hypothesis $H_0^{(e)}$ for efficiency:
+    There is no difference between swipe gestures and hamburger menu in the
+    time required to navigate over a distance of $d$ pages.
+  \item Alternative hypothesis $H_1^{(e)}$ for efficiency: There is a
+    difference between swipe gestures and hamburger menu in the time required
+    to navigate over a distance of $d$ pages.
+  \item Null hypothesis $H_0^{(s)}$ for user satisfaction: There is no
+    difference in user satisfaction between swipe gestures and hamburger menu
+    when navigating over a distance of $d$ pages.
+  \item Alternative hypothesis $H_1^{(s)}$ for user satisfaction: There is a
+    difference in user satisfaction between swipe gestures and hamburger menu
+    when navigating over a distance of $d$ pages.
 \end{enumerate}
-In fact, we check these hypotheses for different values of $d$, hence, we examine two independent variables: navigation method and distance. We talk to experts from the educational science domain to identify values for $d$ that are realistic for e-learning apps.
-We are confident to be able to prove the superiority of swipe gestures for small $d$ and the superiority of hamburger menu for large $d$ statistically for both quantities. 
-To be more precise, we expect the relation between $d$ and the time required to navigate between pages of distance $d$ as indicated in Figure \ref{fig:expectation}.
-\begin{figure}
-\caption{Expected time (y-axis) required to cover $d$ pages (x-axis) when using a menu (green line) and when using swipe gestures (blue line)}
-\resizebox{\columnwidth}{!}{
-\includegraphics{expectation.png}
-\label{fig:expectation}
-}
-\end{figure}
-Clearly, for swipe gesture navigation, it is reasonable to assume that the time required increases proportionally with the distance as the number of swipes increases proportionally as well.
-It is also reasonable to assume constant time consumption for menu navigation as the page selection process should be independent of $d$. However, this might not hold true when $d$ is so large that
-the user is required to scroll within the menu in order to select the desired page. In Figure \ref{fig:expectation}, we presume the intercept point between the lines to exist. The location, however,
-is part of our research.
-The user satisfaction is likely to be a monotonically decreasing function in $d$. However, the shape of the function is unknown and will be subject to our research as well.
 
-The results of our research will give important insight into the usability of different navigation methods, potentially leading to guidelines for the design of future e-learning apps.
+\paragraph{Hypotheses}
+\todo{begin: MERGE WITH ABOVE}
+Consider the normally distributed random variables $X_d$ with $\bar x$ and
+$\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
+Menu navigation.
+We hypothize that
+\begin{align*}
+  H_{0, \text{burger}}: \bar x_0 = \bar x_1 = \cdots = \bar x_d
+\end{align*}
+% is anova capable of doing reverse test with \not= as H_0?
+In case we do not find significant differences, we can use the overall mean
+$\bar x$ for comparision with the Swipe navigation.  We consider normally
+distributed random variables $Y_d$ with $\bar y_d$ and $\sigma_{y,d}^2$ as the
+time required for traveling $d$ pages using Swipe navigation.  After asserting
+that analogous hypothesis fails,
+\begin{align*}
+  H_{0, \text{swipe}}: \bar y_0 = \bar y_1= \cdots = \bar y_d
+\end{align*}
+we continue with comparing the means $\bar y_d$ of Swipe navigation to the
+mean $\bar x$ of Hamburger Menu navigation.  In order to find the distance
+$d$, for which the required time with Swipe navigation exceeds the required
+time with Hamburger Menu navigation, we formulate the following hypotheses:
+\begin{align*}
+  H_{0,d} : \bar y_d = \bar x \;\forall d
+\end{align*}
+\todo{end, reread.\ this might be moved to a later section, since it is
+quite technical already}
+
+
+In fact, we check these hypotheses for different values of $d$, hence, we
+examine two independent variables: navigation method and distance. We talk to
+experts from the educational science domain to identify values for $d$ that
+are realistic for e-learning apps.  We are confident to be able to prove the
+superiority of swipe gestures for small $d$ and the superiority of hamburger
+menu for large $d$ statistically for both quantities.  To be more precise, we
+expect the relation between $d$ and the time required to navigate between
+pages of distance $d$ as indicated in Figure~\ref{fig:expectation}.
+\begin{figure}
+  \caption{Expected time (y-axis) required to cover $d$ pages (x-axis) when using a menu (green line) and when using swipe gestures (blue line)}
+  \resizebox{\columnwidth}{!}{
+    \includegraphics{expectation.png}\label{fig:expectation}
+  }
+\end{figure}
+Clearly, for swipe gesture navigation, it is reasonable to assume that the
+time required increases proportionally with the distance as the number of
+swipes increases proportionally as well.  It is also reasonable to assume
+constant time consumption for menu navigation as the page selection process
+should be independent of $d$. However, this might not hold true when $d$ is so
+large that the user is required to scroll within the menu in order to select
+the desired page. In Figure~\ref{fig:expectation}, we presume the intercept
+point between the lines to exist. The location, however, is part of our
+research.  The user satisfaction is likely to be a monotonically decreasing
+function in $d$. However, the shape of the function is unknown and will be
+subject to our research as well.
+
+The results of our research will give important insight into the usability of
+different navigation methods, potentially leading to guidelines for the design
+of future e-learning apps.
 \section{Related Work}
 
 \section{Study Design}
 \subsection{Conceptual Design}
 \subsubsection{Tasks}
-In order to simulate the scenarios of jumping from one question to another, we develop a series of treasure hunt like tasks. Here, the goal is to find the treasure which
-is hidden behind a door. A door is represented by a page. Starting at the first page, an instruction displayed on the bottom of the screen guides the participant to the next one
-by exactly telling them the number of the next door. When the participant has opened the respective door, the next
-instruction is displayed. The distance to cover from one door to another is always in the same small range for each task. However, the distances differ for
-different tasks. Consider the example in Figure \ref{fig:puzzle} which has distances in range two to three. The arrows indicate the door to open in
-the next step. Hence, the sequence of doors to open in order to reach the treasure is 1, 3, 6, 4, 2, 5.
+In order to simulate the scenarios of jumping from one question to another, we
+develop a series of treasure hunt like tasks. Here, the goal is to find the
+treasure which is hidden behind a door. A door is represented by a page.
+Starting at the first page, an instruction displayed on the bottom of the
+screen guides the participant to the next one by exactly telling them the
+number of the next door. When the participant has open the respective door,
+the next instruction is displayed. The distance to cover from one door to
+another is always in the same small range for each task. However, the
+distances differ for different tasks. Consider the example in
+Figure~\ref{fig:puzzle} which has distances in range two to three. The arrows
+indicate the door to open in the next step. Hence, the sequence of doors to
+open in order to reach the treasure is 1, 3, 6, 4, 2, 5.
 \begin{figure}
-\caption{An example of a puzzle}
-\resizebox{\columnwidth}{!}{
-\includegraphics[clip, trim=0cm 23cm 0cm 0cm]{schnitzeljagd.pdf}
-\label{fig:puzzle}
-}
+  \caption{An example of a puzzle}
+  \resizebox{\columnwidth}{!}{
+    \includegraphics[clip, trim=0cm 23cm 0cm 0cm]{schnitzeljagd.pdf}\label{fig:puzzle}
+  }
 \end{figure}
 The tasks cannot be failed to be completed. That is, there is no way to open the doors in the wrong order or to require too much time. This implies that we also do not measure effectiveness.
 
@@ -293,23 +342,24 @@ After completing the entire task set, the participant is asked to fill in the fo
 \end{enumerate}
 
 \subsubsection{Randomized Split-Plot Design}
-For our study, we decided for a between-group design for two reasons.
-First, when solving the tasks with the second type, the test persons might rate their satisfaction more drastically, as they
-are biased from having solved the tasks with the respective other navigation method.
-Secondly, in order to avoid an extreme learning effect, the tasks for swipe gesture navigation and menu navigation
-would have to be distinct if a within-group design were used. This should be avoided to ensure comparability.
-The participants are assigned to each task randomly (at uniform) by
-employing the random number generator of the respective android device.
+For our study, we decided for a between-group design for two reasons.  First,
+when solving the tasks with the second type, the test persons might rate their
+satisfaction more drastically, as they are biased from having solved the tasks
+with the respective other navigation method.  Secondly, in order to avoid an
+extreme learning effect, the tasks for swipe gesture navigation and menu
+navigation would have to be distinct if a within-group design were used. This
+should be avoided to ensure comparability.  The participants are assigned to
+each task randomly (at uniform) by employing the random number generator of
+the respective android device.
 
 \subsubsection{Participants}
-As we thrive for an experiment duration of less than 15 minutes,
-the participants can be acquisited in the field.
-For the location we chose the dining hall of a local university,
-since we can expect students to have basic knowledge about handling mobile devices.
-After verifying this assumption, they can directly perform the task in-place.
-Students are the target audience of the e-learning application,
-for which this study is conducted.
-We can thus assume that our sample is representative.
+As we thrive for an experiment duration of less than 15 minutes, the
+participants can be acquisited in the field.  For the location we chose the
+dining hall of a local university, since we can expect students to have basic
+knowledge about handling mobile devices.  After verifying this assumption,
+they can directly perform the task in-place.  Students are the target audience
+of the e-learning application, for which this study is conducted.  We can thus
+assume that our sample is representative.
 \subsection{Realization of the Experiment}
 We developed a simple Android application:
 \subsubsection{GUI}
@@ -317,6 +367,7 @@ put a qt mock-up here
 \subsubsection{How we measured efficiency}
 maybe we don't need this\ldots?
 \section{Experiments and Results}
+
 \section{Discussion}
 
 \section{Conclusions}
@@ -344,4 +395,5 @@ Conclusions
 \appendix
 %Appendix A
 \section{Some Appendices}
+tables and stuff
 \end{document}
