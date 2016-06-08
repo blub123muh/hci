@@ -1,0 +1,132 @@
+\documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\AtBeginSection[]
+{
+        \begin{frame}
+                \frametitle{Table of Contents}
+                \tableofcontents[currentsection]
+        \end{frame}
+}
+\begin{document}
+% 20-30
+
+
+\section{Expose}
+\begin{frame}
+        \frametitle{Expose}
+
+\end{frame}
+
+\begin{frame}
+        \frametitle{Hypotheses}
+        \begin{itemize}
+                \item Usage of Hamburger Menu navigation requires constant time to travel a path.
+                \item Usage of Swipe navigation
+                        results in growing time depending on the distance.
+                \item There is some point of intersection,
+                        where the required navigation time of Swipe exceeds the required navigation time of Hamburger Menu.
+        \end{itemize}
+
+\end{frame}
+
+
+\section{Design}
+\subsection{Within-, Between-group or Split-plot}
+\begin{frame}
+        \frametitle{Within-, Between-group or Split-plot}
+        \begin{itemize}
+                \item Between group treatment among navigation methods
+                \item Within group design over the length of the navigation paths
+        \end{itemize}
+        $\rightarrow$ Split-plot design.
+\end{frame}
+
+\subsection{Independent / Dependent Variables}
+\begin{frame}
+        \frametitle{Independent / Dependent Variables}
+        \begin{block}{Independent Variables}
+                \begin{itemize}
+                        \item Navigation Method
+                        \item Navigation Distance
+                \end{itemize}
+        \end{block}
+        \begin{block}{Dependent Variables}
+                \begin{itemize}
+                        \item Time 
+                        \item User satisfaction (Questionnaires)
+                \end{itemize}
+        \end{block}
+\end{frame}
+
+\begin{frame}
+        \frametitle{Participant Acquisition and where to investigate}
+        \begin{block}{Field study}
+                \begin{description}
+                        \item[Why?] Participants should not get bored.
+                                Experiment is not too long.
+                        \item[Where?] Mensa: because student's are used to smartphones.
+                        \item[When?] Not during meal times to avoid distraction.
+                \end{description}
+        \end{block}
+\end{frame}
+
+\begin{frame}
+        \frametitle{Questionnaires}
+        \begin{block}{After each distance block}
+                \begin{itemize}
+                        \item `` Ich konnte die Aufgaben gut lösen. ''
+                        \item `` Die Erreichung des Ziels war mir zu umständlich.''
+                \end{itemize}
+        \end{block}
+        \begin{block}{At the very end}
+                \begin{itemize}
+                        \item ``Die Umgebung hat mich beim Bearbeiten der Aufgaben gestört''
+                        \item ``Die Dauer des Experiments war mir zu hoch?''
+                        \item ``Die Bedienung des mobilen Geräts war intuitiv''
+                        \item ``Die Art der Navigation hat mir zugesagt''
+                \end{itemize}
+        \end{block}
+\end{frame}
+
+\section{Analysis Methods}
+\begin{frame}
+        \frametitle{Hamburger Menu Navigation over distances $d$}
+        Consider the normally distributed random variables $X_d$ with $\bar x$ and
+        $\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
+        Menu navigation.
+        We hypothize that
+        \begin{align*}
+                H_{0, \text{burger}}: \bar x_0 = \bar x_1 = \cdots = \bar x_d
+        \end{align*}
+        Since we can assume equal variances,
+        we evaluate the hypothesis using Repeated Measures {ANOVA}.
+        In case we do not find significant differences, we can use the overall mean
+        $\bar x$ for comparision with the Swipe navigation. 
+\end{frame}
+
+\begin{frame}
+        \frametitle{Swipe Menu Navigation over distances $d$}
+        Consider normally
+        distributed random variables $Y_d$ with means $\bar y_d$ and variances $\sigma_{y,d}^2$ as the
+        time required for traveling $d$ pages using Swipe navigation. 
+        \begin{align*}
+                H_{0, \text{swipe}}: \bar y_0 = \bar y_1= \cdots = \bar y_d
+        \end{align*}
+        Since we can not assume homogeneity of variance in this case,
+        we evaluate the hypothesis using the Friedmann test. 
+\end{frame}
+
+\begin{frame}
+        \frametitle{Swipe Navigation vs Hamburger Navigation}
+        In case we can reject $H_{0, \text{swipe}}$ and can not reject $H_{0, \text{burger}}$,
+        we continue with comparing per-distance means $\bar y_d$ of Swipe navigation
+        with overall mean $\bar x$ of Hamburger Menu navigation.
+        \begin{align*}
+                H_{0,d} : \bar y_d = \bar x \;\forall d
+        \end{align*}
+        We evaluate these hypotheses using the Welch's $t$-test,
+        because we can not assume equal variances.
+        In the end we (hopefully) find the distance $d$,
+        for which the the time required with Swipe navigation exceeds the time required with Hamburger Menu navigation.
+\end{frame}
+\end{document}

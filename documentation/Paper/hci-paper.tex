@@ -241,19 +241,23 @@ hypotheses:
 
 \paragraph{Hypotheses}
 \todo{begin: MERGE WITH ABOVE}
-Consider the normally distributed random variables $X_d$ with $\bar x$ and
-$\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
+Consider the normally distributed random variables $X_d$ with means $\bar x$ and
+variances $\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
 Menu navigation.
 We hypothize that
 \begin{align*}
   H_{0, \text{burger}}: \bar x_0 = \bar x_1 = \cdots = \bar x_d
 \end{align*}
 % is anova capable of doing reverse test with \not= as H_0?
+Since we can assume equal variances,
+we evaluate the hypothesis using {ANOVA}.
 In case we do not find significant differences, we can use the overall mean
-$\bar x$ for comparision with the Swipe navigation.  We consider normally
-distributed random variables $Y_d$ with $\bar y_d$ and $\sigma_{y,d}^2$ as the
-time required for traveling $d$ pages using Swipe navigation.  After asserting
-that analogous hypothesis fails,
+$\bar x$ for comparision with the Swipe navigation. 
+We consider normally
+distributed random variables $Y_d$ with means $\bar y_d$ and variances $\sigma_{y,d}^2$ as the
+time required for traveling $d$ pages using Swipe navigation. 
+After asserting
+that analogous hypothesis for Swipe navigation fails,
 \begin{align*}
   H_{0, \text{swipe}}: \bar y_0 = \bar y_1= \cdots = \bar y_d
 \end{align*}

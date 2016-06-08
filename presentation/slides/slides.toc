@@ -1,0 +1,6 @@
+\beamer@endinputifotherversion {3.33pt}
+\beamer@sectionintoc {1}{Expose}{1}{0}{1}
+\beamer@sectionintoc {2}{Design}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Within-, Between-group or Split-plot}{5}{0}{2}
+\beamer@subsectionintoc {2}{2}{Independent / Dependent Variables}{6}{0}{2}
+\beamer@sectionintoc {3}{Analysis Methods}{9}{0}{3}
