@@ -18,6 +18,85 @@
 \section{Expose}
 \begin{frame}
         \frametitle{Expose}
+		\begin{itemize}
+		  \item Examination of a sequence of questions in an e-learning app often does not happen sequentially
+		  \item Swipe gestures are efficient when going through data sequentially, but how about other scenarios?
+		  \item Comparison of Hamburger menu navigation with swipe gestures for large jumps within sequence
+		\end{itemize}
+\end{frame}
+
+\begin{frame}
+        \frametitle{Tasks}
+		\begin{itemize}
+		  \item Starting at page one, in each task, participant has to visit five pages in a predefined order (kind of a treasure hunt)
+		  \item The distances between two pages are once $d - 1$, three times $d$, and once $d + 1$: average distance is $d$
+		  \item After completion of a task, questionnaire has to be filled in (built into the application)
+		\end{itemize}
+\end{frame}
+
+\begin{frame}
+        \frametitle{Tasks - Example}
+        
+        
+   		\begin{figure}
+		\includegraphics[width=\textwidth]{distance_5.png}
+		\caption{A task where $d = 5$}
+		\end{figure}
+		
+		Sequence:
+		
+		Room1 $\rightarrow$ Room6 $\rightarrow$ Room2 $\rightarrow$ Room7 $\rightarrow$ Room13 $\rightarrow$ Room8
+
+		
+\end{frame}
+
+\begin{frame}
+        \frametitle{Tasks}
+        
+        In total there are five tasks with different distances: 5, 10, 15, 20, 25
+        TODO: anpassen
+        \begin{itemize}
+          \item Room1 $\rightarrow$ Room6 $\rightarrow$ Room2 $\rightarrow$ Room7 $\rightarrow$ Room13 $\rightarrow$ Room8
+          \item Room1 $\rightarrow$ Room6 $\rightarrow$ Room2 $\rightarrow$ Room7 $\rightarrow$ Room13 $\rightarrow$ Room8
+          \item Room1 $\rightarrow$ Room6 $\rightarrow$ Room2 $\rightarrow$ Room7 $\rightarrow$ Room13 $\rightarrow$ Room8
+          \item Room1 $\rightarrow$ Room6 $\rightarrow$ Room2 $\rightarrow$ Room7 $\rightarrow$ Room13 $\rightarrow$ Room8
+          \item Room1 $\rightarrow$ Room6 $\rightarrow$ Room2 $\rightarrow$ Room7 $\rightarrow$ Room13 $\rightarrow$ Room8
+        \end{itemize}
+
+		
+\end{frame}
+
+\begin{frame}
+        \frametitle{Tasks - Realization}
+		
+		
+		\begin{figure}
+		\includegraphics[scale=0.2]{door1_swipe.png}
+		\hspace{1cm}
+		\includegraphics[scale=0.2]{door3_swipe.png}
+		\caption{Navigation with swipe gestures}
+		\end{figure}
+		
+		\begin{figure}
+		\includegraphics[scale=0.2]{door1_hamburger.png}
+		\hspace{1cm}
+		\includegraphics[scale=0.2]{door1_hamburger_open.png}
+		\caption{Navigation with Hamburger menu}
+		\end{figure}
+
+\end{frame}
+
+\begin{frame}
+        \frametitle{Tasks - Realization cont'd}
+		
+		\begin{figure}
+		\includegraphics[scale=0.2]{door_opened.png}
+		\hspace{1cm}
+		\includegraphics[scale=0.2]{door_opened_failed.png}
+		\hspace{1cm}
+		\includegraphics[scale=0.2]{treasure_found.png}
+		\caption{Opening the right door, a wrong door, and the last door}
+		\end{figure}
 
 \end{frame}
 
