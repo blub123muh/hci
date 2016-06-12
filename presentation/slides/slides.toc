@@ -1,6 +1,8 @@
 \beamer@endinputifotherversion {3.33pt}
-\beamer@sectionintoc {1}{Expose}{1}{0}{1}
-\beamer@sectionintoc {2}{Design}{4}{0}{2}
-\beamer@subsectionintoc {2}{1}{Within-, Between-group or Split-plot}{5}{0}{2}
-\beamer@subsectionintoc {2}{2}{Independent / Dependent Variables}{6}{0}{2}
-\beamer@sectionintoc {3}{Analysis Methods}{9}{0}{3}
+\beamer@sectionintoc {1}{Expose}{2}{0}{1}
+\beamer@sectionintoc {2}{Design}{5}{0}{2}
+\beamer@subsectionintoc {2}{1}{Within-, Between-group or Split-plot}{6}{0}{2}
+\beamer@subsectionintoc {2}{2}{Independent and Dependent Variables}{7}{0}{2}
+\beamer@subsectionintoc {2}{3}{Participants and Location}{8}{0}{2}
+\beamer@subsectionintoc {2}{4}{Questionnaires}{9}{0}{2}
+\beamer@sectionintoc {3}{Analysis Methods}{10}{0}{3}
