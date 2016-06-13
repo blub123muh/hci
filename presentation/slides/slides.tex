@@ -1,5 +1,7 @@
 \documentclass{beamer}
 \usepackage[utf8]{inputenc}
+% \usetheme{Copenhagen}
+\newcommand{\todo}{\textbf{TODO:} \textbf}
 \AtBeginSection[]
 {
         \begin{frame}
@@ -36,8 +38,8 @@
 
 \begin{frame}
         \frametitle{Tasks - Example}
-        
-        
+
+
    		\begin{figure}
 		\includegraphics[width=\textwidth]{distance_5.png}
 		\caption{A task where $d = 5$}
@@ -136,7 +138,7 @@
         \end{block}
         \begin{block}{Dependent Variables}
                 \begin{itemize}
-                        \item Time 
+                        \item Time
                         \item User satisfaction (Questionnaires)
                 \end{itemize}
         \end{block}
@@ -176,43 +178,78 @@
 
 \section{Analysis Methods}
 \begin{frame}
-        \frametitle{Hamburger Menu Navigation over distances $d$}
-        Consider the normally distributed random variables $X_d$ with $\bar x$ and
-        $\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
-        Menu navigation.
-        We hypothize that
-        \begin{align*}
-                H_{0, \text{burger}}: \bar x_0 = \bar x_1 = \cdots = \bar x_d
-        \end{align*}
-        Since we can assume equal variances,
-        we evaluate the hypothesis using Repeated Measures {ANOVA}.
-        In case we do not find significant differences, we can use the overall mean
-        $\bar x$ for comparision with the Swipe navigation. 
+  \frametitle{Main Idea}
+  \begin{itemize}
+    \item \textbf{Given}:
+      Required time, for each navigation method (swipe, burger) and for each
+      distance $d \in D$.
+    \item \textbf{Wanted}: Point of intersection, distance  $d^*$, at which Swipe
+      navigation becomes less efficient than Hamburger Menu navigation.
+    \item \textbf{The Plan}:
+      \begin{enumerate}
+        \item Compare the different distances \emph{within} one navigation
+          method to each other.
+        \item Draw a comparison \emph{between} the two
+          navigation methods.
+      \end{enumerate}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-        \frametitle{Swipe Menu Navigation over distances $d$}
-        Consider normally
-        distributed random variables $Y_d$ with means $\bar y_d$ and variances $\sigma_{y,d}^2$ as the
-        time required for traveling $d$ pages using Swipe navigation. 
-        \begin{align*}
-                H_{0, \text{swipe}}: \bar y_0 = \bar y_1= \cdots = \bar y_d
-        \end{align*}
-        Since we can not assume homogeneity of variance in this case,
-        we evaluate the hypothesis using the Friedmann test. 
+  \frametitle{Hamburger Menu Navigation over distances $D$}
+  \begin{itemize}
+    \item Consider normally distributed random variables $X_d$ with means $\bar x_d$
+      and variance $\sigma_{x}^2$ being the time required for traveling
+      $d$ pages using Hamburger Menu navigation.
+    \item We hypothesize that
+      \begin{align*}
+        H_0^\text{burger}: \bar x_{d_1} = \bar x_{d_2} = \cdots = \bar x_{d_{|D|}}
+      \end{align*}
+    \item Since we can assume equal variances, we evaluate the hypothesis using
+      Repeated Measures {ANOVA}.
+    \item In case we do not find significant differences, we can use the overall mean
+      $\bar x$ for comparison with the Swipe navigation.
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
-        \frametitle{Swipe Navigation vs Hamburger Navigation}
-        In case we can reject $H_{0, \text{swipe}}$ and can not reject $H_{0, \text{burger}}$,
-        we continue with comparing per-distance means $\bar y_d$ of Swipe navigation
-        with overall mean $\bar x$ of Hamburger Menu navigation.
-        \begin{align*}
-                H_{0,d} : \bar y_d = \bar x \;\forall d
-        \end{align*}
-        We evaluate these hypotheses using the Welch's $t$-test,
-        because we can not assume equal variances.
-        In the end we (hopefully) find the distance $d$,
-        for which the the time required with Swipe navigation exceeds the time required with Hamburger Menu navigation.
+  \frametitle{Swipe Menu Navigation over distances $D$}
+  \begin{itemize}
+    \item  Consider normally
+      distributed random variables $Y_d$ with means $\bar y_d$ and variances
+      $\sigma_{y,d}^2$ being the time required for traveling $d$ pages using
+      Swipe navigation.
+    \item Then we assert that the following hypothesis can be rejected:
+      \begin{align*}
+        H_0^\text{swipe}: \bar y_{d_1} = \bar y_{d_2} = \cdots = \bar y_{d_{|D|}}
+      \end{align*}
+      Since we can not assume homogeneity of variance in this case,
+      we evaluate the hypothesis using the Friedmann test.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Swipe Navigation vs Hamburger Menu Navigation}
+  \begin{itemize}
+    \item In case we can reject $H_0^\text{swipe}$ and can not reject $H_0^\text{burger}$:
+    \item Compare per-distance means $\bar y_d$ of Swipe navigation
+      with overall mean $\bar x$ of Hamburger Menu navigation:
+      \begin{align*}
+        H_0^{(d)} : \bar y_d = \bar x \;\forall d \in D
+      \end{align*}
+    \item We evaluate these hypotheses using the Welch's $t$-test, because we
+      can not assume equal variances.
+    \item In the end, we (hopefully) find the distance $d^*$, for which the
+      required time with Swipe navigation exceeds the required time with
+      Hamburger Menu navigation.
+  \end{itemize}
+\end{frame}
+
+\section{Discussion}
+\begin{frame}
+  \frametitle{Discussion}
+  \begin{itemize}
+    \item Where would you expect the point of intersection $d^*$ to be?
+  \end{itemize}
 \end{frame}
 \end{document}
