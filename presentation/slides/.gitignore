@@ -7,3 +7,5 @@
 *.out
 *.snm
 *.gz
+slides.pdf
+slides.toc

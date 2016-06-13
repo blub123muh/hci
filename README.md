@@ -11,6 +11,10 @@ Please use https://github.com/blub123muh/hci.git instead.
 * Dokumentatieren
 
 ## Notes
+### Effectiveness
+* We should measure effectiveness!
+* Count wrong interactions
+
 ### Questionnaires
 * Zufriedenheit nach jedem Block
 * Störfaktoren
@@ -24,11 +28,11 @@ Please use https://github.com/blub123muh/hci.git instead.
 * Hypotheses
 
 ### Experiment Design
-    * Tasks
-    * Within / Splitplot - Design
-    * Independent / Dependent Variables
-    * Acquisition, where to investigate?
-    * Questionnaires
+* Tasks
+* Within / Splitplot - Design
+* Independent / Dependent Variables
+* Acquisition, where to investigate?
+* Questionnaires
 
 ## Deadlines:
 * 02.05   ./expose
