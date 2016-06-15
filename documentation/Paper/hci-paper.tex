@@ -214,7 +214,26 @@ filling in a form. In this paper, we examine the swipe gesture's suitability
 for navigating through a set of questions in an e-learning app. Although
 typically the user progresses through the questions sequentially, it is a
 common case that they want to revise their answers later due to a change of
-mind or a missunderstanding of the question, for example. We conjecture that
+mind or a missunderstanding of the question, for example. A case that applies very
+well to this scenario is the theory test that has to be passed in order to obtain
+a driving license in Germany. It consists of a relatively large number of questions.
+It is common practise to prepare for this examination by taking several examplary tests. 
+For example, consider Figure \ref{fig:fahren_lernen} which displays a screenshot of the
+Android application 'Fahren Lernen Max'. It displays the typical environment that
+is also used for the actual exam. The questions are ordered sequentially, but the examinees
+may answer them in any order. During examinations, it is common that some questions are
+skipped and returned to at some later point.
+\emph{Fahren Lernen Max}
+\begin{figure}
+  \caption{A screenshot of the Android application 'Fahren Lernen Max'}
+  \resizebox{\columnwidth}{!}{
+    \includegraphics{drivinglicense.png}\label{fig:fahren_lernen}
+  }
+\end{figure}
+In the example of this application, navigation between questions can be done via menu (at the
+bottom of the screen, any direction) or via button ('Weiter', any direction). Our goal is to
+find a generalizable statement about what navigation methods makes sense in these scenarios.
+We conjecture that
 navigating back using swipe gestures is unsatisfactory and time-costly as the
 distance in pages increases. In order to research this question, we conduct a
 study in which we compare the use of swipe gestures to the use of the also
