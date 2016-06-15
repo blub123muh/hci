@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="HCI" company="" webLink="http://" view-date="2016-06-18" view-index="0" gantt-divider-location="226" resource-divider-location="300" version="2.7.2" locale="de_DE">
+<?xml version="1.0" encoding="UTF-8"?><project name="HCI" company="" webLink="http://" view-date="2016-06-12" view-index="1" gantt-divider-location="282" resource-divider-location="300" version="2.7.2" locale="de">
     <description/>
-    <view zooming-state="default:0" id="gantt-chart">
-        <field id="tpd3" name="Vorgang" width="54" order="0"/>
-        <field id="tpd4" name="Anfang" width="22" order="1"/>
-        <field id="tpd5" name="Ende" width="22" order="2"/>
+    <view zooming-state="default:3" id="gantt-chart">
+        <field id="tpd3" name="Vorgang" width="50" order="0"/>
+        <field id="tpd4" name="Anfang" width="24" order="1"/>
+        <field id="tpd5" name="Ende" width="24" order="2"/>
         <option id="color.recent"><![CDATA[#ffff66 #ff0000 #ff9933 #66cc00]]></option>
     </view>
     <view id="resource-table">
-        <field id="0" name="Ressource" width="52" order="0"/>
-        <field id="1" name="Rolle" width="47" order="1"/>
+        <field id="0" name="Ressource" width="50" order="0"/>
+        <field id="1" name="Rolle" width="49" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -46,6 +46,13 @@
         </task>
         <task id="8" name="Auswertung" color="#66cc00" meeting="false" start="2016-07-09" duration="6" complete="0" expand="true"/>
         <task id="0" name="Abgabe" color="#ff0000" meeting="true" start="2016-07-15" duration="0" complete="0" expand="true"/>
+        <task id="10" name="Fragebogen" color="#8cb6ce" meeting="false" start="2016-06-15" duration="1" complete="0" expand="true"/>
+        <task id="11" name="Kontaktdaten" color="#8cb6ce" meeting="false" start="2016-06-15" duration="1" complete="0" expand="true"/>
+        <task id="12" name="Datenformat" color="#8cb6ce" meeting="false" start="2016-06-15" duration="1" complete="0" expand="true"/>
+        <task id="13" name="R-Skripte" meeting="false" start="2016-06-15" duration="1" complete="0" expand="true"/>
+        <task id="15" name="Anwendungsfälle einfügen" meeting="false" start="2016-06-15" duration="1" complete="0" expand="true"/>
+        <task id="21" name="Statistik" meeting="false" start="2016-06-15" duration="1" complete="0" expand="true"/>
+        <task id="16" name="Aparatus" meeting="false" start="2016-06-15" duration="1" complete="0" expand="true"/>
     </tasks>
     <resources>
         <resource id="1" name="Felix" function="1" contacts="" phone=""/>
@@ -54,17 +61,24 @@
         <resource id="2" name="Steffen" function="1" contacts="" phone=""/>
     </resources>
     <allocations>
-        <allocation task-id="3" resource-id="1" function="1" responsible="true" load="100.0"/>
-        <allocation task-id="3" resource-id="0" function="Default:1" responsible="false" load="100.0"/>
+        <allocation task-id="3" resource-id="1" function="1" responsible="true" load="90.0"/>
+        <allocation task-id="9" resource-id="1" function="1" responsible="false" load="10.0"/>
+        <allocation task-id="3" resource-id="0" function="Default:1" responsible="false" load="50.0"/>
+        <allocation task-id="9" resource-id="0" function="Default:1" responsible="false" load="10.0"/>
+        <allocation task-id="12" resource-id="3" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="9" resource-id="3" function="1" responsible="false" load="10.0"/>
+        <allocation task-id="10" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="11" resource-id="2" function="1" responsible="true" load="100.0"/>
+        <allocation task-id="9" resource-id="2" function="1" responsible="false" load="10.0"/>
     </allocations>
     <vacations/>
     <taskdisplaycolumns>
         <displaycolumn property-id="tpd1" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd0" order="-1" width="75" visible="false"/>
-        <displaycolumn property-id="tpd3" order="0" width="122" visible="true"/>
-        <displaycolumn property-id="tpd4" order="1" width="50" visible="true"/>
+        <displaycolumn property-id="tpd3" order="0" width="141" visible="true"/>
+        <displaycolumn property-id="tpd4" order="1" width="69" visible="true"/>
         <displaycolumn property-id="tpd6" order="-1" width="75" visible="false"/>
-        <displaycolumn property-id="tpd5" order="2" width="50" visible="true"/>
+        <displaycolumn property-id="tpd5" order="2" width="68" visible="true"/>
         <displaycolumn property-id="tpd7" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd11" order="-1" width="75" visible="false"/>
         <displaycolumn property-id="tpd10" order="-1" width="75" visible="false"/>
