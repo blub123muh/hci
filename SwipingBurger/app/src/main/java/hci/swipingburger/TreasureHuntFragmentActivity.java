@@ -10,7 +10,9 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.LinkedList;
@@ -46,7 +48,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     public void created(int pos, View view) {
         if((currentDoor == 0 && pos == STARTING_POSITION) || (currentDoor > 0 && pos == tasks.get(currentTask)[currentDoor - 1])) {
             TextView instruction = (TextView) view.findViewById(R.id.instruction);
-            instruction.setText("Opening door " + tasks.get(currentTask)[currentDoor]);
+            instruction.setText("Open door " + tasks.get(currentTask)[currentDoor]);
         }
     }
 
@@ -93,19 +95,51 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     @Override
     public void open(int position) {
         if (tasks.get(currentTask)[currentDoor] == position) {
-            //TODO: mach was
+
             Log.i("Treasure Hunt", "Door " + position + " was opened.");
+
             PagerAdapter adapter = mPager.getAdapter();
             Fragment fragment = (Fragment) adapter.instantiateItem(mPager, mPager.getCurrentItem());
 
             View activeView = fragment.getView();
             ImageButton button = (ImageButton) activeView.findViewById(R.id.doorButton);
-            button.setImageResource(R.drawable.door_opened);
 
-            currentDoor = currentDoor + 1;
+            int resourceId;
+            // if it was the last door to open, treasure was found
+            if (currentDoor == tasks.get(currentTask).length - 1) {
+                // last step, display treasure and button for next task
+                resourceId = R.drawable.door_opened_failed;
 
-            TextView instruction = (TextView) activeView.findViewById(R.id.instruction);
-            instruction.setText("Open door " + tasks.get(currentTask)[currentDoor]);
+                Button nextTaskButton = new Button(this);
+                nextTaskButton.setText("Next Task");
+                nextTaskButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        // if there are no more tasks, go to the questionnaire
+                        if (currentTask == tasks.size() - 1) {
+                            // TODO: go to questionnaire
+                        } else {
+                            currentDoor = 0;
+                            currentTask++;
+                            mPager.setCurrentItem(STARTING_POSITION);
+                        }
+                    }
+                });
+
+
+                LinearLayout layout = (LinearLayout) activeView.findViewById(R.id.fragment_layout);
+                layout.addView(nextTaskButton, 1);
+            } else {
+                currentDoor = currentDoor + 1;
+                resourceId = R.drawable.door_opened;
+                TextView instruction = (TextView) activeView.findViewById(R.id.instruction);
+                instruction.setText("Open door " + tasks.get(currentTask)[currentDoor]);
+            }
+
+            button.setImageResource(resourceId);
+
+
 
         } else {
             //TODO: dont do anything
