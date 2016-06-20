@@ -73,7 +73,7 @@ public class TreasureHuntRoomFragment extends Fragment {
             }
         });
 
-        mListener.created(position);
+        mListener.created(position, view);
         return view;
     }
 
@@ -112,7 +112,7 @@ public class TreasureHuntRoomFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         void open(int pos);
-        void created(int pos);
+        void created(int pos, View view);
     }
 
 }

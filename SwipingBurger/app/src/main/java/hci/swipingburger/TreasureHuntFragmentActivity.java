@@ -23,6 +23,11 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     private static final int NUM_PAGES = 20;
 
     /**
+     * The page that a task is started at.
+     */
+    private static final int STARTING_POSITION = 0;
+
+    /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
      */
@@ -38,13 +43,10 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
      */
     private PagerAdapter mPagerAdapter;
 
-    public void created(int pos) {
-        if(pos == tasks.get(currentTask)[Math.max(0,currentDoor - 1)]) {
-            PagerAdapter adapter = mPager.getAdapter();
-            Fragment fragment = (Fragment) adapter.instantiateItem(mPager, mPager.getCurrentItem());
-            View activeView = fragment.getView();
-            TextView instruction = (TextView) activeView.findViewById(R.id.instruction);
-            instruction.setText("Open door " + tasks.get(currentTask)[currentDoor]);
+    public void created(int pos, View view) {
+        if((currentDoor == 0 && pos == STARTING_POSITION) || (currentDoor > 0 && pos == tasks.get(currentTask)[currentDoor - 1])) {
+            TextView instruction = (TextView) view.findViewById(R.id.instruction);
+            instruction.setText("Opening door " + tasks.get(currentTask)[currentDoor]);
         }
     }
 
