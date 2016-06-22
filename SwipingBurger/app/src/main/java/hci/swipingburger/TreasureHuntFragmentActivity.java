@@ -47,7 +47,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     private PagerAdapter mPagerAdapter;
 
     public void created(int pos, View view) {
-        if((currentDoor == 0 && pos == STARTING_POSITION) || (currentDoor > 0 && pos == tasks.get(currentTask)[currentDoor - 1])) {
+        if ((currentDoor == 0 && pos == STARTING_POSITION) || (currentDoor > 0 && pos == tasks.get(currentTask)[currentDoor - 1])) {
             TextView instruction = (TextView) view.findViewById(R.id.instruction);
             instruction.setText("Open door " + tasks.get(currentTask)[currentDoor]);
         }
@@ -94,6 +94,30 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            Log.i("TreasureHuntActivity", "Questionnaire for task has finished.");
+            // if there are no more tasks, go to the questionnaire
+            if (currentTask == tasks.size() - 1) {
+                // TODO: go to questionnaire
+                Intent intent = new Intent(TreasureHuntFragmentActivity.this, QuestionnaireActivity.class);
+                intent.putExtra("requestCode", 2);
+                startActivityForResult(intent, 2);
+            } else {
+                currentDoor = 0;
+                currentTask++;
+                mPager.setCurrentItem(STARTING_POSITION);
+            }
+        }
+
+        if (requestCode == 2) {
+
+            Log.i("TreasureHuntActivity", "Questionnaire for whole experiment has finished. Shutting down this activity");
+            finish();
+        }
+    }
+
+    @Override
     public void open(int position) {
         if (tasks.get(currentTask)[currentDoor] == position) {
 
@@ -112,21 +136,14 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                 resourceId = R.drawable.door_opened_failed;
 
                 Button nextTaskButton = new Button(this);
-                nextTaskButton.setText("Next Task");
+                nextTaskButton.setText("Bewerten");
                 nextTaskButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        // if there are no more tasks, go to the questionnaire
-                        if (currentTask == tasks.size() - 1) {
-                            // TODO: go to questionnaire
-                            Intent intent = new Intent(TreasureHuntFragmentActivity.this, QuestionnaireActivity.class);
-                            startActivity(intent);
-                        } else {
-                            currentDoor = 0;
-                            currentTask++;
-                            mPager.setCurrentItem(STARTING_POSITION);
-                        }
+                        // go to questionnaire for task
+                        Intent intent = new Intent(TreasureHuntFragmentActivity.this, QuestionnaireActivity.class);
+                        intent.putExtra("requestCode", 1);
+                        startActivityForResult(intent, 1);
                     }
                 });
 
@@ -141,7 +158,6 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
             }
 
             button.setImageResource(resourceId);
-
 
 
         } else {
