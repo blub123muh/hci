@@ -3,6 +3,7 @@ package hci.swipingburger;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -16,6 +17,12 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.opencsv.CSVWriter;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -113,6 +120,46 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         if (requestCode == 2) {
 
             Log.i("TreasureHuntActivity", "Questionnaire for whole experiment has finished. Shutting down this activity");
+            /* Checks if external storage is available for read and write */
+            if(this.isExternalStorageWritable()){
+
+                String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+                String fileName = "hciResults.csv";
+                String filePath = baseDir + File.separator + fileName;
+                File file = new File(filePath );
+                CSVWriter writer;
+
+                // File exist
+                if(file.exists() && !file.isDirectory()){
+                    try {
+                        FileWriter mFileWriter = new FileWriter(filePath, true);
+                        writer = new CSVWriter(mFileWriter);
+                    }
+                    catch(Exception e){}
+                }
+                else {
+                    try {
+                        writer = new CSVWriter(new FileWriter(filePath));
+                        String[] text = {"Ship Name","Scientist Name", "...",new SimpleDateFormat("1234-11-20 04:22:12").format("ab")};
+
+                        writer.writeNext(text);
+
+                        writer.close();
+                    }
+                    catch (Exception e){
+
+                    }
+                }
+
+
+
+
+
+
+            }
+            else{
+                /*Hier muss noch ne Fehlerbehandlung hin, damit wir wissen, falls nicht gespeichert werden kann.*/
+            }
             finish();
         }
     }
@@ -185,4 +232,15 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
             return NUM_PAGES;
         }
     }
+
+    /*Method which checks weather the external storage can be accessed.*/
+    private boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

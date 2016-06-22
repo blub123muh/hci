@@ -61,6 +61,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO: read and write answers
                 Log.i("QuestionnaireActivity", "Ending questionnaire activity.");
+
                 finish();
             }
         });
