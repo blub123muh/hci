@@ -15,10 +15,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name="hci.swipingburger.TreasureHuntFragmentActivity">
-        </activity>
+        <activity android:name=".TreasureHuntFragmentActivity"></activity>
+        <activity android:name=".QuestionnaireActivity"></activity>
     </application>
 
 </manifest>
