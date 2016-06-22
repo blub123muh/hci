@@ -3,6 +3,7 @@ package hci.swipingburger;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -13,6 +14,9 @@ import java.security.SecureRandom;
 import java.math.BigInteger;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final String HAMBURGER = "HAMBURGER";
+    public static final String SWIPE = "SWIPE";
 
     public final class SessionIdentifierGenerator {
         private SecureRandom random = new SecureRandom();
@@ -49,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TreasureHuntFragmentActivity.class);
                 intent.putExtra("participantId", idTextView.getText());
+                intent.putExtra("navigation", determineNavigationMethod());
                 startActivityForResult(intent, 0);
             }
         });
@@ -59,10 +64,15 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == 0) {
             Button goButton = (Button) findViewById(R.id.goButton);
             goButton.setEnabled(false);
+            Log.i("","");
 
             final TextView idTextView = (TextView) findViewById(R.id.idTextView);
             idTextView.setText("");
         }
+    }
+
+    private String determineNavigationMethod() {
+        return SWIPE;
     }
 }
 

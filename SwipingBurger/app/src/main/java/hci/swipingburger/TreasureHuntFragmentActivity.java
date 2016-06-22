@@ -26,6 +26,7 @@ import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.Scanner;
@@ -45,7 +46,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
      */
-    private ViewPager mPager;
+    private DisablebleViewPager mPager;
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
@@ -87,6 +88,9 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treasure_hunt);
 
+        Intent intent = getIntent();
+        String navigation = intent.getStringExtra("navigation");
+
         // Instantiate Hamburger Menu
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
@@ -101,11 +105,21 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
+        if(navigation.equals(MainActivity.SWIPE)) {
+            Log.i("MainActivity", "Using swipe gesture. Disable hamburger menu.");
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        }
 
         // Instantiate a ViewPager and a PagerAdapter.
-        mPager = (ViewPager) findViewById(R.id.pager);
+        mPager = (DisablebleViewPager) findViewById(R.id.pager);
         mPagerAdapter = new TreasureHuntRoomFragmentAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+
+        if (navigation.equals(MainActivity.HAMBURGER)) {
+
+            Log.i("MainActivity", "Using swipe gesture. Disable swipe.");
+            mPager.setPagingEnabled(false);
+        }
 
         tasks = new LinkedList<int[]>();
         Scanner scanner = new Scanner(this.getResources().openRawResource(R.raw.tasks));
