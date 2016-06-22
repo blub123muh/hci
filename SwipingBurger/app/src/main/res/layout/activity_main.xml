@@ -11,17 +11,31 @@
     tools:context="hci.swipingburger.MainActivity">
 
     <TextView
-        android:text="Hello World!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView" />
+        android:id="@+id/idTextView"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/newParticipant"
+        android:layout_alignStart="@+id/newParticipant"
+        android:layout_marginTop="182dp"
+        android:layout_alignRight="@+id/newParticipant"
+        android:layout_alignEnd="@+id/newParticipant" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="New Participant"
         android:id="@+id/newParticipant"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="152dp" />
+        android:layout_marginTop="42dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start experiment"
+        android:id="@+id/goButton"
+        android:layout_marginTop="91dp"
+        android:layout_below="@+id/idTextView"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
