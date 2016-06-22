@@ -3,19 +3,30 @@ package hci.swipingburger;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
+import com.opencsv.CSVWriter;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -36,6 +47,9 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
      */
     private ViewPager mPager;
 
+    private DrawerLayout mDrawerLayout;
+    private ListView mDrawerList;
+
     private int currentTask;
     private int currentDoor;
 
@@ -47,16 +61,46 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     private PagerAdapter mPagerAdapter;
 
     public void created(int pos, View view) {
-        if((currentDoor == 0 && pos == STARTING_POSITION) || (currentDoor > 0 && pos == tasks.get(currentTask)[currentDoor - 1])) {
+        if ((currentDoor == 0 && pos == STARTING_POSITION) || (currentDoor > 0 && pos == tasks.get(currentTask)[currentDoor - 1])) {
             TextView instruction = (TextView) view.findViewById(R.id.instruction);
             instruction.setText("Open door " + tasks.get(currentTask)[currentDoor]);
         }
     }
 
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
+
+    /** Swaps fragments in the main content view */
+    private void selectItem(int position) {
+        mPager.setCurrentItem(position);
+        mDrawerList.setItemChecked(position, true);
+        mDrawerLayout.closeDrawer(mDrawerList);
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_screen_slide);
+        setContentView(R.layout.activity_treasure_hunt);
+
+        // Instantiate Hamburger Menu
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+
+        // Set the adapter for the list view
+        String[] rooms = new String[NUM_PAGES];
+        for (int i = 1; i <= NUM_PAGES; i++) {
+            rooms[i - 1] = "Room " + i;
+        }
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, rooms));
+        // Set the list's click listener
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -83,13 +127,70 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
 
     @Override
     public void onBackPressed() {
-        if (mPager.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
-            super.onBackPressed();
-        } else {
-            // Otherwise, select the previous step.
-            mPager.setCurrentItem(mPager.getCurrentItem() - 1);
+        // force that back button is not available
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            Log.i("TreasureHuntActivity", "Questionnaire for task has finished.");
+            // if there are no more tasks, go to the questionnaire
+            if (currentTask == tasks.size() - 1) {
+                // TODO: go to questionnaire
+                Intent intent = new Intent(TreasureHuntFragmentActivity.this, QuestionnaireActivity.class);
+                intent.putExtra("requestCode", 2);
+                startActivityForResult(intent, 2);
+            } else {
+                currentDoor = 0;
+                currentTask++;
+                mPager.setCurrentItem(STARTING_POSITION);
+            }
+        }
+
+        if (requestCode == 2) {
+
+            Log.i("TreasureHuntActivity", "Questionnaire for whole experiment has finished. Shutting down this activity");
+            /* Checks if external storage is available for read and write */
+            if(this.isExternalStorageWritable()){
+
+                String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+                String fileName = "hciResults.csv";
+                String filePath = baseDir + File.separator + fileName;
+                File file = new File(filePath );
+                CSVWriter writer;
+
+                // File exist
+                if(file.exists() && !file.isDirectory()){
+                    try {
+                        FileWriter mFileWriter = new FileWriter(filePath, true);
+                        writer = new CSVWriter(mFileWriter);
+                    }
+                    catch(Exception e){}
+                }
+                else {
+                    try {
+                        writer = new CSVWriter(new FileWriter(filePath));
+                        String[] text = {"Ship Name","Scientist Name", "...",new SimpleDateFormat("1234-11-20 04:22:12").format("ab")};
+
+                        writer.writeNext(text);
+
+                        writer.close();
+                    }
+                    catch (Exception e){
+
+                    }
+                }
+
+
+
+
+
+
+            }
+            else{
+                /*Hier muss noch ne Fehlerbehandlung hin, damit wir wissen, falls nicht gespeichert werden kann.*/
+            }
+            finish();
         }
     }
 
@@ -112,21 +213,14 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                 resourceId = R.drawable.door_opened_failed;
 
                 Button nextTaskButton = new Button(this);
-                nextTaskButton.setText("Next Task");
+                nextTaskButton.setText("Bewerten");
                 nextTaskButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        // if there are no more tasks, go to the questionnaire
-                        if (currentTask == tasks.size() - 1) {
-                            // TODO: go to questionnaire
-                            Intent intent = new Intent(TreasureHuntFragmentActivity.this, QuestionnaireActivity.class);
-                            startActivity(intent);
-                        } else {
-                            currentDoor = 0;
-                            currentTask++;
-                            mPager.setCurrentItem(STARTING_POSITION);
-                        }
+                        // go to questionnaire for task
+                        Intent intent = new Intent(TreasureHuntFragmentActivity.this, QuestionnaireActivity.class);
+                        intent.putExtra("requestCode", 1);
+                        startActivityForResult(intent, 1);
                     }
                 });
 
@@ -141,7 +235,6 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
             }
 
             button.setImageResource(resourceId);
-
 
 
         } else {
@@ -169,4 +262,15 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
             return NUM_PAGES;
         }
     }
+
+    /*Method which checks weather the external storage can be accessed.*/
+    private boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

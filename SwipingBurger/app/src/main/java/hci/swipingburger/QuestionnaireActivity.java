@@ -3,6 +3,7 @@ package hci.swipingburger;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -20,8 +21,15 @@ public class QuestionnaireActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaire);
 
+        int questionFileId = 0;
+        if(getIntent().getIntExtra("requestCode",0) == 2) {
+            questionFileId = R.raw.questionnaire_final;
+        } else {
+            questionFileId = R.raw.questionnaire_task;
+        }
+
         LinkedList<String[]> questions = new LinkedList<String[]>();
-        Scanner scanner = new Scanner(this.getResources().openRawResource(R.raw.questionnaire));
+        Scanner scanner = new Scanner(this.getResources().openRawResource(questionFileId));
         while (scanner.hasNextLine()) {
             String singleQuestionCsv = scanner.nextLine();
             String[] steps = singleQuestionCsv.split(",");
@@ -40,6 +48,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
             questionTextView.setText(question[0]);
             RatingBar ratingBar = new RatingBar(this);
             ratingBar.setMax(LIKERT_SCALE_MAX);
+            ratingBar.setStepSize(1);
 
             questionnaireLayout.addView(questionTextView);
             questionnaireLayout.addView(ratingBar);
@@ -51,10 +60,16 @@ public class QuestionnaireActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO: read and write answers
-                Intent intent = new Intent(QuestionnaireActivity.this, MainActivity.class);
-                startActivity(intent);
+                Log.i("QuestionnaireActivity", "Ending questionnaire activity.");
+
+                finish();
             }
         });
         questionnaireLayout.addView(submitButton);
+    }
+
+    @Override
+    public void onBackPressed() {
+        // force that back cannot be pressed
     }
 }
