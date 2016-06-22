@@ -67,4 +67,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
         });
         questionnaireLayout.addView(submitButton);
     }
+
+    @Override
+    public void onBackPressed() {
+        // force that back cannot be pressed
+    }
 }
