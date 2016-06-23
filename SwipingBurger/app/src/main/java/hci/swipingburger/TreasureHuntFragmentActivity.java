@@ -1,9 +1,13 @@
 package hci.swipingburger;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -26,6 +30,7 @@ import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.LinkedList;
@@ -54,6 +59,11 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     private int currentTask;
     private int currentDoor;
 
+    private String participantId;
+    private String navigation;
+    private long[][] jumpTimeMs;
+    private int[][] jumpInteractions;
+
     private LinkedList<int[]> tasks;
 
     /**
@@ -75,7 +85,9 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         }
     }
 
-    /** Swaps fragments in the main content view */
+    /**
+     * Swaps fragments in the main content view
+     */
     private void selectItem(int position) {
         mPager.setCurrentItem(position);
         mDrawerList.setItemChecked(position, true);
@@ -88,8 +100,11 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treasure_hunt);
 
+        verifyStoragePermissions(this);
+
         Intent intent = getIntent();
-        String navigation = intent.getStringExtra("navigation");
+        navigation = intent.getStringExtra("navigation");
+        participantId = intent.getStringExtra("participantId");
 
         // Instantiate Hamburger Menu
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -105,7 +120,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
-        if(navigation.equals(MainActivity.SWIPE)) {
+        if (navigation.equals(MainActivity.SWIPE)) {
             Log.i("MainActivity", "Using swipe gesture. Disable hamburger menu.");
             mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         }
@@ -122,6 +137,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         }
 
         tasks = new LinkedList<int[]>();
+        int longestTask = 0;
         Scanner scanner = new Scanner(this.getResources().openRawResource(R.raw.tasks));
         while (scanner.hasNextLine()) {
             String singleTaskCsv = scanner.nextLine();
@@ -132,11 +148,19 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                 singleTask[i] = Integer.parseInt(steps[i]);
             }
             tasks.add(singleTask);
+
+            if (steps.length > longestTask) {
+                longestTask = steps.length;
+            }
         }
         scanner.close();
 
         currentTask = 0;
         currentDoor = 0;
+
+        jumpTimeMs = new long[tasks.size()][longestTask];
+        jumpInteractions = new int[tasks.size()][longestTask];
+
     }
 
     @Override
@@ -165,44 +189,42 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
 
             Log.i("TreasureHuntActivity", "Questionnaire for whole experiment has finished. Shutting down this activity");
             /* Checks if external storage is available for read and write */
-            if(this.isExternalStorageWritable()){
+            if (this.isExternalStorageWritable()) {
 
+                Log.i("TreasureHuntActivity", "External Storage is writeable. Trying to write data.");
                 String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
                 String fileName = "hciResults.csv";
                 String filePath = baseDir + File.separator + fileName;
-                File file = new File(filePath );
-                CSVWriter writer;
+                File file = new File(filePath);
+                CSVWriter writer = null;
 
                 // File exist
-                if(file.exists() && !file.isDirectory()){
-                    try {
+                try {
+                    if (file.exists() && !file.isDirectory()) {
+
                         FileWriter mFileWriter = new FileWriter(filePath, true);
                         writer = new CSVWriter(mFileWriter);
-                    }
-                    catch(Exception e){}
-                }
-                else {
-                    try {
+
+
+                    } else {
+
                         writer = new CSVWriter(new FileWriter(filePath));
-                        String[] text = {"Ship Name","Scientist Name", "...",new SimpleDateFormat("1234-11-20 04:22:12").format("ab")};
-
-                        writer.writeNext(text);
-
-                        writer.close();
-                    }
-                    catch (Exception e){
 
                     }
+
+
+                String[] text = {"Ship Name", "Scientist Name"};
+                writer.writeNext(text);
+
+                writer.close();
+                } catch (IOException e) {
+                    Log.e("TreasureHuntActivity", "Couldn't write to file.", e);
                 }
+                Log.i("TreasureHuntActivity", "Successfully wrote data.");
 
-
-
-
-
-
-            }
-            else{
+            } else {
                 /*Hier muss noch ne Fehlerbehandlung hin, damit wir wissen, falls nicht gespeichert werden kann.*/
+                Log.e("TreasureHuntActivity", "Can not save the results, because there is no external storage available.");
             }
             finish();
         }
@@ -284,6 +306,59 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
             return true;
         }
         return false;
+    }
+
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+    /**
+     * Checks if the app has permission to write to device storage
+     *
+     * If the app does not has permission then the user will be prompted to grant permissions
+     *
+     * @param activity
+     */
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // We don't have permission so prompt the user
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case REQUEST_EXTERNAL_STORAGE: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    // permission was granted, yay! Do the
+                    // contacts-related task you need to do.
+
+                } else {
+
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
     }
 
 
