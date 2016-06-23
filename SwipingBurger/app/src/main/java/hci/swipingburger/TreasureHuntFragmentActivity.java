@@ -132,6 +132,25 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         mPagerAdapter = new TreasureHuntRoomFragmentAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
+        // listen for when a page is selected, which is an interaction in our sense
+        mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // we dont care
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                // we count this as an interaction
+                currentInteractions++;
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+                // we dont care
+            }
+        });
+
         if (navigation.equals(MainActivity.HAMBURGER)) {
 
             Log.i("MainActivity", "Using swipe gesture. Disable swipe.");

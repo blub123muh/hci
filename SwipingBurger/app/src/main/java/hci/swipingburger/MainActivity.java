@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String determineNavigationMethod() {
-        return SWIPE;
+        return HAMBURGER;
     }
 }
 
