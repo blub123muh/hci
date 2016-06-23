@@ -16,19 +16,26 @@ import java.util.Scanner;
 public class QuestionnaireActivity extends AppCompatActivity {
 
     public static final int LIKERT_SCALE_MAX = 7;
+
+    private LinkedList<RatingBar> mRatingBars;
+    private int resultCode;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questionnaire);
 
+        mRatingBars = new LinkedList<RatingBar>();
+        resultCode = getIntent().getIntExtra("requestCode",0);
+
         int questionFileId = 0;
-        if(getIntent().getIntExtra("requestCode",0) == 2) {
+        if(resultCode == 2) {
             questionFileId = R.raw.questionnaire_final;
         } else {
             questionFileId = R.raw.questionnaire_task;
         }
 
-        LinkedList<String[]> questions = new LinkedList<String[]>();
+        final LinkedList<String[]> questions = new LinkedList<String[]>();
         Scanner scanner = new Scanner(this.getResources().openRawResource(questionFileId));
         while (scanner.hasNextLine()) {
             String singleQuestionCsv = scanner.nextLine();
@@ -48,7 +55,9 @@ public class QuestionnaireActivity extends AppCompatActivity {
             questionTextView.setText(question[0]);
             RatingBar ratingBar = new RatingBar(this);
             ratingBar.setMax(LIKERT_SCALE_MAX);
+            ratingBar.setNumStars(LIKERT_SCALE_MAX);
             ratingBar.setStepSize(1);
+            mRatingBars.add(ratingBar);
 
             questionnaireLayout.addView(questionTextView);
             questionnaireLayout.addView(ratingBar);
@@ -62,6 +71,17 @@ public class QuestionnaireActivity extends AppCompatActivity {
                 // TODO: read and write answers
                 Log.i("QuestionnaireActivity", "Ending questionnaire activity.");
 
+                Intent resultData = getIntent();
+                int[] results = new int[questions.size()];
+
+                for(int i = 0; i < results.length; i++) {
+                    float rating = mRatingBars.get(i).getRating();
+                    Log.v("QuestionnaireActivity", "Got rating " + rating + " for question " + i);
+                    results[i] = (int) (rating);
+                }
+
+                resultData.putExtra("results", results);
+                setResult(resultCode, resultData);
                 finish();
             }
         });

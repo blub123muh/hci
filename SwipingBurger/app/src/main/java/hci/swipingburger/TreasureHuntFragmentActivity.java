@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -28,11 +27,8 @@ import android.widget.TextView;
 import com.opencsv.CSVWriter;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -65,6 +61,8 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     private String navigation;
     private long[][] jumpTimeMs;
     private int[][] jumpInteractions;
+    private LinkedList<LinkedList<Integer>> taskQuestionnaireResults;
+    private LinkedList<Integer> finalQuestionaireResults;
 
     private LinkedList<int[]> tasks;
 
@@ -182,6 +180,9 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         jumpTimeMs = new long[tasks.size()][longestTask];
         jumpInteractions = new int[tasks.size()][longestTask];
 
+        finalQuestionaireResults = new LinkedList<Integer>();
+        taskQuestionnaireResults = new LinkedList<LinkedList<Integer>>();
+
         lastTimeStamp = System.currentTimeMillis();
 
     }
@@ -191,10 +192,25 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         // force that back button is not available
     }
 
+    private LinkedList<Integer> putResultsInList(Intent data) {
+        LinkedList<Integer> list = new LinkedList<Integer>();
+        int[] results = data.getIntArrayExtra("results");
+        Log.i("TreasureHuntActivity","Read " + results.length + " data from questionnaire.");
+        for (int i = 0; i < results.length; i++) {
+            list.add(results[i]);
+        }
+        return list;
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
             Log.i("TreasureHuntActivity", "Questionnaire for task has finished.");
+            Log.i("TreasureHuntActivity", "Reading questionnaire results of task.");
+
+            LinkedList<Integer> resultsForTaskQuestionnaire = putResultsInList(data);
+            taskQuestionnaireResults.add(resultsForTaskQuestionnaire);
+
             // if there are no more tasks, go to the questionnaire
             if (currentTask == tasks.size() - 1) {
                 // TODO: go to questionnaire
@@ -212,46 +228,20 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
 
         if (requestCode == 2) {
 
-            Log.i("TreasureHuntActivity", "Questionnaire for whole experiment has finished. Shutting down this activity");
+            Log.i("TreasureHuntActivity", "Questionnaire for whole experiment has finished.");
+            Log.i("TreasureHuntActivity", "Reading results from final questionnaire.");
+            finalQuestionaireResults = putResultsInList(data);
+
             /* Checks if external storage is available for read and write */
             if (this.isExternalStorageWritable()) {
 
                 Log.i("TreasureHuntActivity", "External Storage is writeable. Trying to write data.");
-                String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
-                String fileName = "hciResults.csv";
-                String filePath = baseDir + File.separator + fileName;
-                File file = new File(filePath);
-                CSVWriter writer = null;
-
-                // File exist
-                try {
-                    if (file.exists() && !file.isDirectory()) {
-
-                        FileWriter mFileWriter = new FileWriter(filePath, true);
-                        writer = new CSVWriter(mFileWriter);
-
-
-                    } else {
-                        Log.i("TreasureHuntActivity", "File for data storage doesn't exist yet. Creating...");
-                        writer = new CSVWriter(new FileWriter(filePath));
-                        // write column names
-                        String[] columnNames = {"navigation", "pid", "tid", "jid", "distance", "n_interactions", "time_ms"};
-                        writer.writeNext(columnNames, false);
-                    }
-
-                    // write data
-                    for (int tid = 0; tid < jumpTimeMs.length; tid++) {
-                        for (int jid = 0; jid < jumpTimeMs[0].length; jid++) {
-                            int distance = jid == 0 ? tasks.get(tid)[jid] - STARTING_POSITION : tasks.get(tid)[jid] - tasks.get(tid)[jid - 1];
-                            String[] jumpData = {navigation, participantId + "", tid + "", jid + "", distance + "", jumpInteractions[tid][jid] + "", jumpTimeMs[tid][jid] + ""};
-                            writer.writeNext(jumpData, false);
-                        }
-                    }
-
-                    writer.close();
-                } catch (IOException e) {
-                    Log.e("TreasureHuntActivity", "Couldn't write to file.", e);
-                }
+                Log.i("TreasureHuntActivity", "Trying to write experiment data.");
+                writeExperimentData();
+                Log.i("TreasureHuntActivity", "Trying to write task specific questionnaire data.");
+                writeTaskQuestionnaireData();
+                Log.i("TreasureHuntActivity", "Trying to final questionnaire data.");
+                writeFinalQuestionnaireData();
                 Log.i("TreasureHuntActivity", "Successfully wrote data.");
 
             } else {
@@ -259,6 +249,121 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                 Log.e("TreasureHuntActivity", "Can not save the results, because there is no external storage available.");
             }
             finish();
+        }
+    }
+
+    private void writeFinalQuestionnaireData() {
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String fileName = "final_questionnaire_results.csv";
+        String filePath = baseDir + File.separator + fileName;
+        File file = new File(filePath);
+        CSVWriter writer = null;
+
+        // File exist
+        try {
+            if (file.exists() && !file.isDirectory()) {
+
+                FileWriter mFileWriter = new FileWriter(filePath, true);
+                writer = new CSVWriter(mFileWriter);
+
+
+            } else {
+                Log.i("TreasureHuntActivity", "File for final questionnaire result storage doesn't exist yet. Creating...");
+                writer = new CSVWriter(new FileWriter(filePath));
+                // write column names
+                String[] columnNames = {"navigation", "pid", "qid", "result"};
+                writer.writeNext(columnNames, false);
+            }
+
+            // write data
+            for (int qid = 0; qid < finalQuestionaireResults.size(); qid++) {
+
+                String[] questionData = {navigation, participantId + "", qid + "", finalQuestionaireResults.get(qid) + ""};
+                writer.writeNext(questionData, false);
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            Log.e("TreasureHuntActivity", "Couldn't write to file.", e);
+        }
+    }
+
+
+    private void writeTaskQuestionnaireData() {
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String fileName = "task_questionnaire_results.csv";
+        String filePath = baseDir + File.separator + fileName;
+        File file = new File(filePath);
+        CSVWriter writer = null;
+
+        // File exist
+        try {
+            if (file.exists() && !file.isDirectory()) {
+
+                FileWriter mFileWriter = new FileWriter(filePath, true);
+                writer = new CSVWriter(mFileWriter);
+
+
+            } else {
+                Log.i("TreasureHuntActivity", "File for task specific questionnaire result storage doesn't exist yet. Creating...");
+                writer = new CSVWriter(new FileWriter(filePath));
+                // write column names
+                String[] columnNames = {"navigation", "pid", "tid", "qid", "result"};
+                writer.writeNext(columnNames, false);
+            }
+
+            // write data
+            for (int tid = 0; tid < taskQuestionnaireResults.size(); tid++) {
+                LinkedList<Integer> questionnaireResultsForTask = taskQuestionnaireResults.get(tid);
+                for (int qid = 0; qid < questionnaireResultsForTask.size(); qid++) {
+
+                    String[] questionData = {navigation, participantId + "", tid + "", qid + "", questionnaireResultsForTask.get(qid) + ""};
+                    Log.v("TreasureHuntActivity", "Writing questiondata: " + questionData);
+                    writer.writeNext(questionData, false);
+                }
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            Log.e("TreasureHuntActivity", "Couldn't write to file.", e);
+        }
+    }
+
+    private void writeExperimentData() {
+        String baseDir = android.os.Environment.getExternalStorageDirectory().getAbsolutePath();
+        String fileName = "experiment_results.csv";
+        String filePath = baseDir + File.separator + fileName;
+        File file = new File(filePath);
+        CSVWriter writer = null;
+
+        // File exist
+        try {
+            if (file.exists() && !file.isDirectory()) {
+
+                FileWriter mFileWriter = new FileWriter(filePath, true);
+                writer = new CSVWriter(mFileWriter);
+
+
+            } else {
+                Log.i("TreasureHuntActivity", "File for data storage doesn't exist yet. Creating...");
+                writer = new CSVWriter(new FileWriter(filePath));
+                // write column names
+                String[] columnNames = {"navigation", "pid", "tid", "jid", "distance", "n_interactions", "time_ms"};
+                writer.writeNext(columnNames, false);
+            }
+
+            // write data
+            for (int tid = 0; tid < jumpTimeMs.length; tid++) {
+                for (int jid = 0; jid < jumpTimeMs[0].length; jid++) {
+                    int distance = jid == 0 ? tasks.get(tid)[jid] - STARTING_POSITION : tasks.get(tid)[jid] - tasks.get(tid)[jid - 1];
+                    String[] jumpData = {navigation, participantId + "", tid + "", jid + "", distance + "", jumpInteractions[tid][jid] + "", jumpTimeMs[tid][jid] + ""};
+                    writer.writeNext(jumpData, false);
+                }
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            Log.e("TreasureHuntActivity", "Couldn't write to file.", e);
         }
     }
 
