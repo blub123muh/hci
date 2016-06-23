@@ -242,7 +242,8 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                     // write data
                     for (int tid = 0; tid < jumpTimeMs.length; tid++) {
                         for (int jid = 0; jid < jumpTimeMs[0].length; jid++) {
-                            String[] jumpData = {navigation, participantId + "", tid + "", jid + "", "-1", jumpInteractions[tid][jid] + "", jumpTimeMs[tid][jid] + ""};
+                            int distance = jid == 0 ? tasks.get(tid)[jid] - STARTING_POSITION : tasks.get(tid)[jid] - tasks.get(tid)[jid - 1];
+                            String[] jumpData = {navigation, participantId + "", tid + "", jid + "", distance + "", jumpInteractions[tid][jid] + "", jumpTimeMs[tid][jid] + ""};
                             writer.writeNext(jumpData, false);
                         }
                     }
