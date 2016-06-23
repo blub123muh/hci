@@ -15,8 +15,8 @@ import java.math.BigInteger;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String HAMBURGER = "HAMBURGER";
-    public static final String SWIPE = "SWIPE";
+    public static final String HAMBURGER = "burger";
+    public static final String SWIPE = "swipe";
 
     public final class SessionIdentifierGenerator {
         private SecureRandom random = new SecureRandom();

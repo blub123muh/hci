@@ -58,6 +58,8 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
 
     private int currentTask;
     private int currentDoor;
+    private long lastTimeStamp;
+    private int currentInteractions;
 
     private String participantId;
     private String navigation;
@@ -161,6 +163,8 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         jumpTimeMs = new long[tasks.size()][longestTask];
         jumpInteractions = new int[tasks.size()][longestTask];
 
+        lastTimeStamp = System.currentTimeMillis();
+
     }
 
     @Override
@@ -182,6 +186,8 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                 currentDoor = 0;
                 currentTask++;
                 mPager.setCurrentItem(STARTING_POSITION);
+                lastTimeStamp = System.currentTimeMillis();
+                currentInteractions = 0;
             }
         }
 
@@ -207,16 +213,22 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
 
 
                     } else {
-
+                        Log.i("TreasureHuntActivity", "File for data storage doesn't exist yet. Creating...");
                         writer = new CSVWriter(new FileWriter(filePath));
-
+                        // write column names
+                        String[] columnNames = {"navigation", "pid", "tid", "jid", "distance", "n_interactions", "time_ms"};
+                        writer.writeNext(columnNames, false);
                     }
 
+                    // write data
+                    for (int tid = 0; tid < jumpTimeMs.length; tid++) {
+                        for (int jid = 0; jid < jumpTimeMs[0].length; jid++) {
+                            String[] jumpData = {navigation, participantId + "", tid + "", jid + "", "-1", jumpInteractions[tid][jid] + "", jumpTimeMs[tid][jid] + ""};
+                            writer.writeNext(jumpData, false);
+                        }
+                    }
 
-                String[] text = {"Ship Name", "Scientist Name"};
-                writer.writeNext(text);
-
-                writer.close();
+                    writer.close();
                 } catch (IOException e) {
                     Log.e("TreasureHuntActivity", "Couldn't write to file.", e);
                 }
@@ -233,8 +245,12 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     @Override
     public void open(int position) {
         if (tasks.get(currentTask)[currentDoor] == position) {
-
             Log.i("Treasure Hunt", "Door " + position + " was opened.");
+            long timeRequired = System.currentTimeMillis() - lastTimeStamp;
+            int interactionsRequired = currentInteractions;
+            Log.i("Treasure Hunt", "Participant " + participantId + " needed " + timeRequired + "ms and " + interactionsRequired + " interactions for task " + currentTask + " and jump " + currentDoor);
+            jumpTimeMs[currentTask][currentDoor] = timeRequired;
+            jumpInteractions[currentTask][currentDoor] = interactionsRequired;
 
             PagerAdapter adapter = mPager.getAdapter();
             Fragment fragment = (Fragment) adapter.instantiateItem(mPager, mPager.getCurrentItem());
@@ -264,10 +280,12 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                 LinearLayout layout = (LinearLayout) activeView.findViewById(R.id.fragment_layout);
                 layout.addView(nextTaskButton, 1);
             } else {
-                currentDoor = currentDoor + 1;
+                currentDoor++;
                 resourceId = R.drawable.door_opened;
                 TextView instruction = (TextView) activeView.findViewById(R.id.instruction);
                 instruction.setText("Open door " + tasks.get(currentTask)[currentDoor]);
+                lastTimeStamp = System.currentTimeMillis();
+                currentInteractions = 0;
             }
 
             button.setImageResource(resourceId);
@@ -317,7 +335,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
 
     /**
      * Checks if the app has permission to write to device storage
-     *
+     * <p/>
      * If the app does not has permission then the user will be prompted to grant permissions
      *
      * @param activity
