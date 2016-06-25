@@ -24,7 +24,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Participant"
+        android:text="@string/new_participant"
         android:id="@+id/newParticipant"
         android:layout_marginTop="42dp"
         android:layout_alignParentTop="true"
@@ -33,7 +33,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start experiment"
+        android:text="@string/start_experiment"
         android:id="@+id/goButton"
         android:layout_marginTop="91dp"
         android:layout_below="@+id/idTextView"
