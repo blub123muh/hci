@@ -37,12 +37,12 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 20;
+    private static final int NUM_PAGES = 50;
 
     /**
      * The page that a task is started at.
      */
-    private static final int STARTING_POSITION = 0;
+    private static final int STARTING_POSITION = 25;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -130,6 +130,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         mPager = (DisablebleViewPager) findViewById(R.id.pager);
         mPagerAdapter = new TreasureHuntRoomFragmentAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setCurrentItem(STARTING_POSITION);
 
         // listen for when a page is selected, which is an interaction in our sense
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
