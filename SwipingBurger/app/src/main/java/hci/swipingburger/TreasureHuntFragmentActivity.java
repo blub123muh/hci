@@ -75,7 +75,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     public void created(int pos, View view) {
         if ((currentDoor == 0 && pos == STARTING_POSITION) || (currentDoor > 0 && pos == tasks.get(currentTask)[currentDoor - 1])) {
             TextView instruction = (TextView) view.findViewById(R.id.instruction);
-            instruction.setText(getResources().getString(R.string.instruction ) + " " + tasks.get(currentTask)[currentDoor]);
+            instruction.setText(getResources().getString(R.string.instruction ) + " " + (tasks.get(currentTask)[currentDoor] + 1));
         }
     }
 
@@ -432,7 +432,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                 currentDoor++;
                 resourceId = R.drawable.door_open;
                 TextView instruction = (TextView) activeView.findViewById(R.id.instruction);
-                instruction.setText(getResources().getString(R.string.instruction) + " " + tasks.get(currentTask)[currentDoor]);
+                instruction.setText(getResources().getString(R.string.instruction) + " " + (tasks.get(currentTask)[currentDoor] + 1));
                 lastTimeStamp = System.currentTimeMillis();
                 currentInteractions = 0;
             }

@@ -64,7 +64,7 @@ public class TreasureHuntRoomFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_treasure_hunt_room, container, false);
         TextView doorNumber = (TextView) view.findViewById(R.id.doorNumber);
-        doorNumber.setText("" + position);
+        doorNumber.setText("" + (position + 1));
         ImageButton doorButton = (ImageButton) view.findViewById(R.id.doorButton);
         doorButton.setOnClickListener(new View.OnClickListener() {
             @Override
