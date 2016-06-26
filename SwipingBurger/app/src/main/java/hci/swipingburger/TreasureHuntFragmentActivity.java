@@ -114,7 +114,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         // Set the adapter for the list view
         String[] rooms = new String[NUM_PAGES];
         for (int i = 1; i <= NUM_PAGES; i++) {
-            rooms[i - 1] = "Room " + i;
+            rooms[i - 1] = getResources().getString(R.string.room) + " " + i;
         }
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, rooms));
@@ -404,7 +404,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
             // if it was the last door to open, treasure was found
             if (currentDoor == tasks.get(currentTask).length - 1) {
                 // last step, display treasure and button for next task
-                resourceId = R.drawable.door_opened_failed;
+                resourceId = R.drawable.door_treasure;
 
                 // disable the navigation so the participant is forced to press the 'next' button
                 enableNavigation(false);
@@ -430,7 +430,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                 layout.addView(nextTaskButton, 1);
             } else {
                 currentDoor++;
-                resourceId = R.drawable.door_opened;
+                resourceId = R.drawable.door_open;
                 TextView instruction = (TextView) activeView.findViewById(R.id.instruction);
                 instruction.setText(getResources().getString(R.string.instruction) + " " + tasks.get(currentTask)[currentDoor]);
                 lastTimeStamp = System.currentTimeMillis();
