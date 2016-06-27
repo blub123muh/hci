@@ -103,13 +103,17 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
+        if(navigation.equals(MainActivity.HAMBURGER)) {
+            mDrawerToggle.syncState();
+        }
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
+        if(navigation.equals(MainActivity.HAMBURGER)) {
+            mDrawerToggle.onConfigurationChanged(newConfig);
+        }
     }
 
     @Override
@@ -121,29 +125,31 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
-        setSupportActionBar(myToolbar);
-
-        mDrawerToggle = new ActionBarDrawerToggle(
-                this,                  /* host Activity */
-                mDrawerLayout,         /* DrawerLayout object */
-                myToolbar,  /* nav drawer icon to replace 'Up' caret */
-                R.string.open_drawer,  /* "open drawer" description */
-                R.string.close_drawer /* "close drawer" description */
-        );
-
-        // Set the drawer toggle as the DrawerListener
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerLayout.addDrawerListener(mDrawerToggle);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
         verifyStoragePermissions(this);
 
         Intent intent = getIntent();
         navigation = intent.getStringExtra("navigation");
         participantId = intent.getStringExtra("participantId");
+
+        if(navigation.equals(MainActivity.HAMBURGER)) {
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
+
+            mDrawerToggle = new ActionBarDrawerToggle(
+                    this,                  /* host Activity */
+                    mDrawerLayout,         /* DrawerLayout object */
+                    myToolbar,  /* nav drawer icon to replace 'Up' caret */
+                    R.string.open_drawer,  /* "open drawer" description */
+                    R.string.close_drawer /* "close drawer" description */
+            );
+
+            // Set the drawer toggle as the DrawerListener
+            mDrawerToggle.setDrawerIndicatorEnabled(true);
+            mDrawerLayout.addDrawerListener(mDrawerToggle);
+
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
 
 
         // Set the adapter for the list view
