@@ -10,4 +10,6 @@
     <string name="questionnaire_instruction">Bitte bewerten Sie, wie stark Sie den folgenden Aussagen zustimmen (0 Sterne: Starke Ablehnung, 7 Sterne: Starke Zustimmung):</string>
     <string name="write_down_id">Bitte notieren Sie sich Ihre ID, bevor Sie das Experiment starten:</string>
     <string name="room">Tür</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
 </resources>
