@@ -68,7 +68,11 @@ public class QuestionnaireActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: read and write answers
+                if(!allRatingsPerformed()) {
+                    // don't do anything
+                    return;
+                }
+
                 Log.i("QuestionnaireActivity", "Ending questionnaire activity.");
 
                 Intent resultData = getIntent();
@@ -86,6 +90,15 @@ public class QuestionnaireActivity extends AppCompatActivity {
             }
         });
         questionnaireLayout.addView(submitButton);
+    }
+
+    public boolean allRatingsPerformed() {
+        for (RatingBar ratingBar: mRatingBars) {
+            if(ratingBar.getRating() == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
