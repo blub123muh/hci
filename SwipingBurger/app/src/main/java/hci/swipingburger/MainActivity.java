@@ -12,6 +12,7 @@ import org.w3c.dom.Text;
 
 import java.security.SecureRandom;
 import java.math.BigInteger;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,7 +73,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String determineNavigationMethod() {
-        return HAMBURGER;
+        Random random = new Random();
+        if (random.nextFloat() > 0.5) {
+            return HAMBURGER;
+        } else {
+            return SWIPE;
+        }
     }
 }
 

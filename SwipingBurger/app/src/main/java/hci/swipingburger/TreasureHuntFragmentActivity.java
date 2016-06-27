@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.opencsv.CSVWriter;
@@ -36,12 +37,12 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
-    private static final int NUM_PAGES = 20;
+    private static final int NUM_PAGES = 50;
 
     /**
      * The page that a task is started at.
      */
-    private static final int STARTING_POSITION = 0;
+    private static final int STARTING_POSITION = 25;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
@@ -74,7 +75,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
     public void created(int pos, View view) {
         if ((currentDoor == 0 && pos == STARTING_POSITION) || (currentDoor > 0 && pos == tasks.get(currentTask)[currentDoor - 1])) {
             TextView instruction = (TextView) view.findViewById(R.id.instruction);
-            instruction.setText("Open door " + tasks.get(currentTask)[currentDoor]);
+            instruction.setText(getResources().getString(R.string.instruction ) + " " + (tasks.get(currentTask)[currentDoor] + 1));
         }
     }
 
@@ -113,7 +114,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         // Set the adapter for the list view
         String[] rooms = new String[NUM_PAGES];
         for (int i = 1; i <= NUM_PAGES; i++) {
-            rooms[i - 1] = "Room " + i;
+            rooms[i - 1] = getResources().getString(R.string.room) + " " + i;
         }
         mDrawerList.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, rooms));
@@ -122,13 +123,14 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
 
         if (navigation.equals(MainActivity.SWIPE)) {
             Log.i("MainActivity", "Using swipe gesture. Disable hamburger menu.");
-            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            enableHamburger(false);
         }
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (DisablebleViewPager) findViewById(R.id.pager);
         mPagerAdapter = new TreasureHuntRoomFragmentAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
+        mPager.setCurrentItem(STARTING_POSITION);
 
         // listen for when a page is selected, which is an interaction in our sense
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -152,7 +154,8 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         if (navigation.equals(MainActivity.HAMBURGER)) {
 
             Log.i("MainActivity", "Using swipe gesture. Disable swipe.");
-            mPager.setPagingEnabled(false);
+            enableSwipe(false);
+
         }
 
         tasks = new LinkedList<int[]>();
@@ -200,6 +203,20 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
             list.add(results[i]);
         }
         return list;
+    }
+
+    private void enableSwipe(boolean enable) {
+        Log.i("TreausureHuntActivity", "Changing the swipe navigation to: " + enable);
+        mPager.setPagingEnabled(enable);
+    }
+
+    private void enableHamburger(boolean enable) {
+        Log.i("TreausureHuntActivity", "Changing the hamburger menu to: " + enable);
+        if (enable == false) {
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        } else {
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        }
     }
 
     @Override
@@ -387,13 +404,19 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
             // if it was the last door to open, treasure was found
             if (currentDoor == tasks.get(currentTask).length - 1) {
                 // last step, display treasure and button for next task
-                resourceId = R.drawable.door_opened_failed;
+                resourceId = R.drawable.door_treasure;
+
+                // disable the navigation so the participant is forced to press the 'next' button
+                enableNavigation(false);
 
                 Button nextTaskButton = new Button(this);
-                nextTaskButton.setText("Bewerten");
+                nextTaskButton.setText(getResources().getString(R.string.next));
                 nextTaskButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        // turn navigation back on again before starting the questionnaire
+                        enableNavigation(true);
+
                         // go to questionnaire for task
                         Intent intent = new Intent(TreasureHuntFragmentActivity.this, QuestionnaireActivity.class);
                         intent.putExtra("requestCode", 1);
@@ -402,13 +425,14 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
                 });
 
 
-                LinearLayout layout = (LinearLayout) activeView.findViewById(R.id.fragment_layout);
+
+                RelativeLayout layout = (RelativeLayout) activeView.findViewById(R.id.fragment_layout);
                 layout.addView(nextTaskButton, 1);
             } else {
                 currentDoor++;
-                resourceId = R.drawable.door_opened;
+                resourceId = R.drawable.door_open;
                 TextView instruction = (TextView) activeView.findViewById(R.id.instruction);
-                instruction.setText("Open door " + tasks.get(currentTask)[currentDoor]);
+                instruction.setText(getResources().getString(R.string.instruction) + " " + (tasks.get(currentTask)[currentDoor] + 1));
                 lastTimeStamp = System.currentTimeMillis();
                 currentInteractions = 0;
             }
@@ -449,6 +473,14 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
             return true;
         }
         return false;
+    }
+
+    private void enableNavigation(boolean enabled) {
+        if (navigation.equals(MainActivity.HAMBURGER)) {
+            enableHamburger(enabled);
+        } else {
+            enableSwipe(enabled);
+        }
     }
 
     // Storage Permissions

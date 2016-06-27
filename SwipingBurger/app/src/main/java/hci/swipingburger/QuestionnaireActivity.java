@@ -64,7 +64,7 @@ public class QuestionnaireActivity extends AppCompatActivity {
         }
 
         Button submitButton = new Button(this);
-        submitButton.setText("Submit");
+        submitButton.setText(R.string.next);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

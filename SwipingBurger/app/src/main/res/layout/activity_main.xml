@@ -14,17 +14,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/idTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/newParticipant"
-        android:layout_alignStart="@+id/newParticipant"
-        android:layout_marginTop="182dp"
-        android:layout_alignRight="@+id/newParticipant"
-        android:layout_alignEnd="@+id/newParticipant" />
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Participant"
+        android:text="@string/new_participant"
         android:id="@+id/newParticipant"
         android:layout_marginTop="42dp"
         android:layout_alignParentTop="true"
@@ -33,9 +30,20 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start experiment"
+        android:text="@string/start_experiment"
         android:id="@+id/goButton"
         android:layout_marginTop="91dp"
         android:layout_below="@+id/idTextView"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/writeDownIdTextView"
+        android:text="@string/write_down_id"
+        android:layout_below="@+id/newParticipant"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="43dp" />
 </RelativeLayout>
