@@ -1,6 +1,7 @@
 package hci.swipingburger;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String HAMBURGER = "burger";
     public static final String SWIPE = "swipe";
+
+    public static final float ID_TEXT_SIZE = 20f;
 
     public final class SessionIdentifierGenerator {
         private SecureRandom random = new SecureRandom();
@@ -44,10 +47,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String participantId = generator.nextSessionId();
                 idTextView.setText(participantId);
+                idTextView.setTypeface(null, Typeface.BOLD);
+                idTextView.setTextSize(ID_TEXT_SIZE);
                 goButton.setEnabled(true);
             }
         });
-
 
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override
