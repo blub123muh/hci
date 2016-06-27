@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // go button should be disabled at the start, so it cannot be clicked without a participant id generated
+        goButton.setEnabled(false);
+
+        // start the experiment on click
         goButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
