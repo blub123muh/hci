@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -14,6 +15,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -33,7 +37,7 @@ import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
 
-public class TreasureHuntFragmentActivity extends FragmentActivity implements TreasureHuntRoomFragment.OnFragmentInteractionListener {
+public class TreasureHuntFragmentActivity extends AppCompatActivity implements TreasureHuntRoomFragment.OnFragmentInteractionListener {
     /**
      * The number of pages (wizard steps) to show in this demo.
      */
@@ -52,6 +56,7 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
 
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     private int currentTask;
     private int currentDoor;
@@ -95,11 +100,30 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         mDrawerLayout.closeDrawer(mDrawerList);
     }
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        if(navigation.equals(MainActivity.HAMBURGER)) {
+            mDrawerToggle.syncState();
+        }
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if(navigation.equals(MainActivity.HAMBURGER)) {
+            mDrawerToggle.onConfigurationChanged(newConfig);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_treasure_hunt);
+
+        // Instantiate Hamburger Menu
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerList = (ListView) findViewById(R.id.left_drawer);
 
         verifyStoragePermissions(this);
 
@@ -107,9 +131,26 @@ public class TreasureHuntFragmentActivity extends FragmentActivity implements Tr
         navigation = intent.getStringExtra("navigation");
         participantId = intent.getStringExtra("participantId");
 
-        // Instantiate Hamburger Menu
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        if(navigation.equals(MainActivity.HAMBURGER)) {
+            Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+            setSupportActionBar(myToolbar);
+
+            mDrawerToggle = new ActionBarDrawerToggle(
+                    this,                  /* host Activity */
+                    mDrawerLayout,         /* DrawerLayout object */
+                    myToolbar,  /* nav drawer icon to replace 'Up' caret */
+                    R.string.open_drawer,  /* "open drawer" description */
+                    R.string.close_drawer /* "close drawer" description */
+            );
+
+            // Set the drawer toggle as the DrawerListener
+            mDrawerToggle.setDrawerIndicatorEnabled(true);
+            mDrawerLayout.addDrawerListener(mDrawerToggle);
+
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setHomeButtonEnabled(true);
+        }
+
 
         // Set the adapter for the list view
         String[] rooms = new String[NUM_PAGES];
