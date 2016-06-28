@@ -20,38 +20,42 @@ def analyze_efficiency(df, verbose=0):
     nav_methods = df.groupby('navigation')
     burger_df, swipe_df = nav_methods.get_group('burger'), nav_methods.get_group('swipe')
     print("%d BURGERS vs %d SWIPERS" % (len(burger_df.groupby('pid')), len(swipe_df.groupby("pid"))))
-    # print("=" * 78)
-    print("[BURGER]" + "=" * 70)
+    print("=" * 78)
+    print("[BURGER over all Tasks]")
     burger = burger_df["time_ms"]
     normality_test = dagostino_or_shapiro(burger)
     burger_isnorm = is_significant(normality_test[1])
-    print("Normality>", normality_test, burger_isnorm)
+    print("Normality:", normality_test, burger_isnorm)
 
     burger_tasks = [group["time_ms"] for _, group in burger_df.groupby("tid")]
     # alternatives: repeated measures anova, friedmann test
+    print("Repeated Measures:")
     print(stats.kruskal(*burger_tasks))
     print(stats.friedmanchisquare(*burger_tasks))
     # FIXME do these tests work as expected? (they report low p values but the data is all the same)
 
+    burger_mean = burger.mean()
 
     if verbose:
-        print("[BURGER] Description",burger.describe(), sep="\n")
+        print("Description:",burger.describe(), sep="\n")
 
     for tid, swipe_task_df in swipe_df.groupby("tid"):
         print("=" * 78)
-        swipe_task = swipe_task_df["time_ms"]
         d = swipe_task_df["distance"].abs().mean()
+        print("[SWIPE Task%d distance=%1.f]" % (tid, d))
+        swipe_task = swipe_task_df["time_ms"]
         if verbose:
-            print("[SWIPE: Task %d(d=%.1f)] Description" % (tid, d), swipe_task.describe(), sep="\n")
+            print("Description:", swipe_task.describe(), sep="\n")
         # Dagostino Pearson if possible, else shapiro
         normality_test = dagostino_or_shapiro(swipe_task)
         swipe_task_isnorm = is_significant(normality_test[1])
-        print("[SWIPE: Task %d(d=%.1f)] Normality" % (tid, d), normality_test, swipe_task_isnorm, sep="\n")
+        print("Normality:", normality_test, swipe_task_isnorm)
 
         result = stats.ttest_ind(swipe_task, burger, equal_var=False)\
             if (burger_isnorm and swipe_task_isnorm) else\
             stats.mannwhitneyu(swipe_task, burger)
-        print("[SWIPE: Task %d(d=%.1f)]" % (tid, d), result, is_significant(result[1]))
+        print("H0: %.2f == %.2f" % (swipe_task.mean(), burger_mean), result,
+              "Reject? %s" % is_significant(result[1]), sep="\n")
 
 
 def main():
