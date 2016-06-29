@@ -151,7 +151,15 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
                     myToolbar,  /* nav drawer icon to replace 'Up' caret */
                     R.string.open_drawer,  /* "open drawer" description */
                     R.string.close_drawer /* "close drawer" description */
-            );
+            ) {
+                @Override
+                public void onDrawerOpened(View drawerView) {
+                    super.onDrawerOpened(drawerView);
+                    // we want center the menu at this position
+                    Log.i("TreasureHuntActivity", "Centering the menu at position " + mPager.getCurrentItem() + ".");
+                    mDrawerList.smoothScrollToPositionFromTop(mPager.getCurrentItem(), (mDrawerList.getHeight() / 2), 0);
+                }
+            };
 
             // Set the drawer toggle as the DrawerListener
             mDrawerToggle.setDrawerIndicatorEnabled(true);
@@ -181,7 +189,6 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
         mPager = (DisablebleViewPager) findViewById(R.id.pager);
         mPagerAdapter = new TreasureHuntRoomFragmentAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-        mPager.setCurrentItem(STARTING_POSITION);
 
         // listen for when a page is selected, which is an interaction in our sense
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -197,9 +204,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
 
                 // we want center the menu at this position
                 Log.i("TreasureHuntActivity", "Centering the menu at position " + position + ".");
-                Log.v("TreasureHuntActivity", "Y-Position before centering: " + mDrawerList.getScrollY());
                 mDrawerList.smoothScrollToPositionFromTop(position, (mDrawerList.getHeight() / 2), 0);
-                Log.v("TreasureHuntActivity", "Y-Position after centering: " + mDrawerList.getScrollY());
             }
 
             @Override
@@ -207,6 +212,8 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
                 // we dont care
             }
         });
+
+        mPager.setCurrentItem(STARTING_POSITION);
 
         if (navigation.equals(MainActivity.HAMBURGER)) {
 
@@ -217,7 +224,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
 
         tasks = new LinkedList<int[]>();
         int longestTask = 0;
-        Scanner scanner = new Scanner(this.getResources().openRawResource(R.raw.tasks));
+        Scanner scanner = new Scanner(this.getResources().openRawResource(R.raw.tasks_debug));
         while (scanner.hasNextLine()) {
             String singleTaskCsv = scanner.nextLine();
             String[] steps = singleTaskCsv.split(",");
