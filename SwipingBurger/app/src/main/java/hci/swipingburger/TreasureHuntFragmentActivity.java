@@ -85,9 +85,12 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
     private PagerAdapter mPagerAdapter;
 
     public void created(int pos, View view) {
+
+        setTrainingTextViewVisibility(view);
+
         if ((currentDoor == 0 && pos == STARTING_POSITION) || (currentDoor > 0 && pos == tasks.get(currentTask)[currentDoor - 1])) {
             TextView instruction = (TextView) view.findViewById(R.id.instruction);
-            instruction.setText(getResources().getString(R.string.instruction ) + " " + (tasks.get(currentTask)[currentDoor] + 1));
+            instruction.setText(getResources().getString(R.string.instruction) + " " + (tasks.get(currentTask)[currentDoor] + 1));
         }
     }
 
@@ -110,7 +113,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        if(navigation.equals(MainActivity.HAMBURGER)) {
+        if (navigation.equals(MainActivity.HAMBURGER)) {
             mDrawerToggle.syncState();
         }
     }
@@ -118,7 +121,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if(navigation.equals(MainActivity.HAMBURGER)) {
+        if (navigation.equals(MainActivity.HAMBURGER)) {
             mDrawerToggle.onConfigurationChanged(newConfig);
         }
     }
@@ -138,7 +141,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
         navigation = intent.getStringExtra("navigation");
         participantId = intent.getStringExtra("participantId");
 
-        if(navigation.equals(MainActivity.HAMBURGER)) {
+        if (navigation.equals(MainActivity.HAMBURGER)) {
             Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
             setSupportActionBar(myToolbar);
 
@@ -241,9 +244,20 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
 
     }
 
+    private void setTrainingTextViewVisibility(View view) {
+        TextView trainingTextView = (TextView) view.findViewById(R.id.trainingTextView);
+        if (trainingsTasks.contains(currentTask)) {
+
+
+            trainingTextView.setVisibility(View.VISIBLE);
+        } else {
+            trainingTextView.setVisibility(View.INVISIBLE);
+        }
+    }
+
     private ArrayList<Integer> makeSequence(int begin, int end) {
-        ArrayList<Integer> ret = new ArrayList(end-begin+1);
-        for (int i=begin; i<=end; i++) {
+        ArrayList<Integer> ret = new ArrayList(end - begin + 1);
+        for (int i = begin; i <= end; i++) {
             ret.add(i);
         }
         return ret;
@@ -265,8 +279,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
             nextTask = new Random().nextInt(size);
 
             int i = 0;
-            for(Integer obj : uncompletedTasks)
-            {
+            for (Integer obj : uncompletedTasks) {
                 if (i == nextTask) {
                     nextTask = obj;
                     break;
@@ -287,7 +300,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
     private LinkedList<Integer> putResultsInList(Intent data) {
         LinkedList<Integer> list = new LinkedList<Integer>();
         int[] results = data.getIntArrayExtra("results");
-        Log.i("TreasureHuntActivity","Read " + results.length + " data from questionnaire.");
+        Log.i("TreasureHuntActivity", "Read " + results.length + " data from questionnaire.");
         for (int i = 0; i < results.length; i++) {
             list.add(results[i]);
         }
@@ -514,7 +527,6 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
                 });
 
 
-
                 RelativeLayout layout = (RelativeLayout) activeView.findViewById(R.id.fragment_layout);
                 layout.addView(nextTaskButton, 1);
             } else {
@@ -581,7 +593,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
 
     /**
      * Checks if the app has permission to write to device storage
-     * <p/>
+     * <p>
      * If the app does not has permission then the user will be prompted to grant permissions
      *
      * @param activity

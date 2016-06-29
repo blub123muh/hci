@@ -32,4 +32,15 @@
         android:layout_centerHorizontal="true"
         android:text=""
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Training"
+        android:id="@+id/trainingTextView"
+        android:layout_below="@+id/doorNumber"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="61dp" />
 </RelativeLayout>
