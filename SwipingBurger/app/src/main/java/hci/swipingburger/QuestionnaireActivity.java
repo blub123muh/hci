@@ -53,8 +53,15 @@ public class QuestionnaireActivity extends AppCompatActivity {
         for (String[] question: questions) {
             TextView questionTextView = new TextView(this);
             questionTextView.setText(question[0]);
-            RatingBar ratingBar = (RatingBar) RatingBar.inflate(this, R.layout.ratingbar_layout, null);
-            ratingBar.setMax(LIKERT_SCALE_MAX);
+            final RatingBar ratingBar=new RatingBar(this);
+            ratingBar.setStepSize(1f);
+            ratingBar.setNumStars(7);
+            ratingBar.setMax(7);
+            ratingBar.setFocusable(false);
+            ratingBar.setIsIndicator(false);
+            ratingBar.setLayoutParams( new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
+            //RatingBar ratingBar = (RatingBar) RatingBar.inflate(this, R.layout.ratingbar_layout, null);
+            //ratingBar.setMax(LIKERT_SCALE_MAX);
             mRatingBars.add(ratingBar);
             Log.i("QuestionnaireActicity", "Number of stars " + ratingBar.getNumStars());
             questionnaireLayout.addView(questionTextView);

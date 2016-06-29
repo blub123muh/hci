@@ -39,6 +39,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 public class TreasureHuntFragmentActivity extends AppCompatActivity implements TreasureHuntRoomFragment.OnFragmentInteractionListener {
     /**
@@ -511,7 +512,9 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
             // if it was the last door to open, treasure was found
             if (currentDoor == tasks.get(currentTask).length - 1) {
                 // last step, display treasure and button for next task
-                resourceId = R.drawable.door_treasure;
+
+                button.setBackgroundResource(R.drawable.door_treasure);
+                //resourceId = R.drawable.door_treasure;
 
                 // disable the navigation so the participant is forced to press the 'next' button
                 enableNavigation(false);
@@ -536,14 +539,15 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
                 layout.addView(nextTaskButton, 1);
             } else {
                 currentDoor++;
-                resourceId = R.drawable.door_open;
+                button.setBackgroundResource(R.drawable.door_open);
+                //resourceId = R.drawable.door_open;
                 TextView instruction = (TextView) activeView.findViewById(R.id.instruction);
                 instruction.setText(getResources().getString(R.string.instruction) + " " + (tasks.get(currentTask)[currentDoor] + 1));
                 lastTimeStamp = System.currentTimeMillis();
                 currentInteractions = 0;
             }
 
-            button.setImageResource(resourceId);
+            //button.setImageResource(resourceId);
 
 
         } else {
