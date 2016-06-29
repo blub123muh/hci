@@ -34,7 +34,10 @@ import com.opencsv.CSVWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class TreasureHuntFragmentActivity extends AppCompatActivity implements TreasureHuntRoomFragment.OnFragmentInteractionListener {
@@ -48,6 +51,8 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
      */
     private static final int STARTING_POSITION = 25;
 
+    private static final int NUM_TRAININGS_TASKS = 1;
+
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
      * and next wizard steps.
@@ -58,6 +63,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
 
+    private HashSet<Integer> uncompletedTasks;
     private int currentTask;
     private int currentDoor;
     private long lastTimeStamp;
@@ -71,6 +77,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
     private LinkedList<Integer> finalQuestionaireResults;
 
     private LinkedList<int[]> tasks;
+    private ArrayList<Integer> trainingsTasks;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
@@ -218,7 +225,10 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
         }
         scanner.close();
 
-        currentTask = 0;
+        uncompletedTasks = new HashSet<Integer>(makeSequence(0, tasks.size() - 1));
+        trainingsTasks = makeSequence(0, NUM_TRAININGS_TASKS - 1);
+
+        currentTask = getNextTask();
         currentDoor = 0;
 
         jumpTimeMs = new long[tasks.size()][longestTask];
@@ -229,6 +239,44 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
 
         lastTimeStamp = System.currentTimeMillis();
 
+    }
+
+    private ArrayList<Integer> makeSequence(int begin, int end) {
+        ArrayList<Integer> ret = new ArrayList(end-begin+1);
+        for (int i=begin; i<=end; i++) {
+            ret.add(i);
+        }
+        return ret;
+    }
+
+    private int getNextTask() {
+        int nextTask = -1;
+
+        // check if there is a training task has to be completed first
+        for (int i = 0; i < NUM_TRAININGS_TASKS; i++) {
+            if (uncompletedTasks.contains(i)) {
+                nextTask = i;
+                break;
+            }
+        }
+
+        if (nextTask == -1) {
+            int size = uncompletedTasks.size();
+            nextTask = new Random().nextInt(size);
+
+            int i = 0;
+            for(Integer obj : uncompletedTasks)
+            {
+                if (i == nextTask) {
+                    nextTask = obj;
+                    break;
+                }
+                i = i + 1;
+            }
+        }
+
+        uncompletedTasks.remove(nextTask);
+        return nextTask;
     }
 
     @Override
@@ -270,14 +318,14 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
             taskQuestionnaireResults.add(resultsForTaskQuestionnaire);
 
             // if there are no more tasks, go to the questionnaire
-            if (currentTask == tasks.size() - 1) {
+            if (uncompletedTasks.isEmpty()) {
                 // TODO: go to questionnaire
                 Intent intent = new Intent(TreasureHuntFragmentActivity.this, QuestionnaireActivity.class);
                 intent.putExtra("requestCode", 2);
                 startActivityForResult(intent, 2);
             } else {
                 currentDoor = 0;
-                currentTask++;
+                currentTask = getNextTask();
                 mPager.setCurrentItem(STARTING_POSITION);
                 lastTimeStamp = System.currentTimeMillis();
                 currentInteractions = 0;
