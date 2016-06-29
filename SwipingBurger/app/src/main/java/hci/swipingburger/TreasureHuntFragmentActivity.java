@@ -224,7 +224,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
 
         tasks = new LinkedList<int[]>();
         int longestTask = 0;
-        Scanner scanner = new Scanner(this.getResources().openRawResource(R.raw.tasks_debug));
+        Scanner scanner = new Scanner(this.getResources().openRawResource(R.raw.tasks));
         while (scanner.hasNextLine()) {
             String singleTaskCsv = scanner.nextLine();
             String[] steps = singleTaskCsv.split(",");
@@ -389,6 +389,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
         String fileName = "final_questionnaire_results.csv";
         String filePath = baseDir + File.separator + fileName;
         File file = new File(filePath);
+        Log.i("TreasureHuntActivity", "Writing data to file " + filePath);
         CSVWriter writer = null;
 
         // File exist
@@ -428,6 +429,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
         File file = new File(filePath);
         CSVWriter writer = null;
 
+        Log.i("TreasureHuntActivity", "Writing data to file " + filePath);
         // File exist
         try {
             if (file.exists() && !file.isDirectory()) {
@@ -467,6 +469,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
         String filePath = baseDir + File.separator + fileName;
         File file = new File(filePath);
         CSVWriter writer = null;
+        Log.i("TreasureHuntActivity", "Writing data to file " + filePath);
 
         // File exist
         try {
