@@ -18,11 +18,12 @@
 
     <ImageButton
         android:id="@+id/doorButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/door_closed"
+        android:layout_width="324dp"
+        android:layout_height="360dp"
+        android:background="@drawable/door_closed"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        />
 
     <TextView
         android:id="@+id/instruction"
