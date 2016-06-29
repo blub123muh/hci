@@ -134,7 +134,6 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
         // Instantiate Hamburger Menu
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
-
         verifyStoragePermissions(this);
 
         Intent intent = getIntent();
@@ -194,6 +193,12 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
             public void onPageSelected(int position) {
                 // we count this as an interaction
                 currentInteractions++;
+
+                // we want center the menu at this position
+                Log.i("TreasureHuntActivity", "Centering the menu at position " + position + ".");
+                Log.v("TreasureHuntActivity", "Y-Position before centering: " + mDrawerList.getScrollY());
+                mDrawerList.smoothScrollToPositionFromTop(position, (mDrawerList.getHeight() / 2), 0);
+                Log.v("TreasureHuntActivity", "Y-Position after centering: " + mDrawerList.getScrollY());
             }
 
             @Override
