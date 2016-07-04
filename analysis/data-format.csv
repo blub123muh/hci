@@ -1,4 +1,4 @@
-navigation,Pid,Tid,Jid,distance,n_interactions,time_ms
+navigation,pid,tid,jid,distance,n_interactions,time_ms
 burger,1,4,1,3,2,4500.1
 burger,1,4,2,4,2,4000.2
 burger,1,4,3,3,2,3900.3
