@@ -221,7 +221,7 @@ def cross_compare(*samples):
     """
     for i, (x_desc, x) in enumerate(samples):
         for y_desc, y in samples[i+1:]:
-            yield (x_desc,y_desc), t_or_u(x, y)
+            yield (x_desc,y_desc), t_or_u(x, y, normtest=NORMALITY_TEST)
 
 
 def one_vs_rest(one, *rest):
@@ -232,7 +232,7 @@ def one_vs_rest(one, *rest):
     """
     x_desc, x = one
     for y_desc, y in rest:
-        yield ((x_desc, y_desc), t_or_u(x, y))
+        yield ((x_desc, y_desc), t_or_u(x, y, normtest=NORMALITY_TEST))
 
 
 def analyze_efficiency(df, split_by='tid', verbose=0):
