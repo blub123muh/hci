@@ -4,20 +4,18 @@ Analysis
 Preprocessing
 -------------
 
-Namespace(demographics=None, distance=False, file=\[&lt;\_io.TextIOWrapper
-name='experiment\_results.csv' mode='r' encoding='UTF-8'&gt;\],
-final\_q=\[&lt;\_io.TextIOWrapper name='final\_questionnaire\_results.csv'
-mode='r' encoding='UTF-8'&gt;\], norm\_test='None',
-task\_q=\[&lt;\_io.TextIOWrapper name='task\_questionnaire\_results.csv'
-mode='r' encoding='UTF-8'&gt;\])
+Namespace(demographics=\[&lt;\_io.TextIOWrapper
+name='demographic\_data\_fixed.csv' mode='r' encoding='UTF-8'&gt;\],
+distance=False, file=\[&lt;\_io.TextIOWrapper name='experiment\_results.csv'
+mode='r' encoding='UTF-8'&gt;\], final\_q=\[&lt;\_io.TextIOWrapper
+name='final\_questionnaire\_results.csv' mode='r' encoding='UTF-8'&gt;\],
+norm\_test='None', task\_q=\[&lt;\_io.TextIOWrapper
+name='task\_questionnaire\_results.csv' mode='r' encoding='UTF-8'&gt;\])
 
 -   experiment\_results.csv
 -   task\_questionnaire\_results.csv
 -   final\_questionnaire\_results.csv
-
-N = 50\
-Nswipe = 28\
-Nburger = 22
+-   demographic\_data\_fixed.csv
 
 Dropping Task ID 0 (Training)
 
@@ -31,6 +29,74 @@ Adding success column based on\
 in order to measure effectiveness.
 
 No normality test, *Forcing t-test*!
+
+Demographics
+------------
+
+### age
+
+count | 50.0 |\
+mean | 24.1 |\
+std | 2.90144228737 |\
+min | 20.0 |\
+25% | 22.0 |\
+50% | 24.0 |\
+75% | 25.0 |\
+max | 35.0 |
+
+### sex
+
+('f', 29)\
+('m', 21)
+
+### job
+
+('Agrarwissenschaften', 5)\
+('Agribusiness', 1)\
+('Betriebswirtschaftslehre', 1)\
+('Biochemie', 1)\
+('Biologie', 1)\
+('Ernährungs- und Verbraucherökonomie', 2)\
+('Finanzmathematik', 2)\
+('Informatik / Nachhilfelehrer', 1)\
+('Mathemathik / Chemie', 1)\
+('Mathemathik / Deutsch / Psychologie', 1)\
+('Mathemathik / Geologie', 1)\
+('Mathemathik / Geschichte', 1)\
+('Mathemathik / Philosophie', 1)\
+('Mathemathik / Physik', 1)\
+('Mathemathik / Sport', 1)\
+('Mathematik', 4)\
+('Mathematik / Informatik', 1)\
+('Mathematik / Spanisch', 1)\
+('Medizin', 1)\
+('Musikwissenschaft / Philosophie', 1)\
+('Physik', 1)\
+('Politikwissenschaft / Ur- und Frühgeschichte', 1)\
+('Psychologie', 4)\
+('Rechtswissenschaften', 1)\
+('Soziologie / Pädagogik', 1)\
+('Volkswirtschaftslehre', 3)\
+('Wirtschaftsinformatik', 6)\
+('Wirtschaftsingenieur', 2)\
+('Wirtschaftswissenschaften Profil: Handelslehrer', 1)
+
+### smartphone
+
+('None', 1)\
+('android', 37)\
+('nodroid', 12)
+
+### comments
+
+('Ich zweifle die Aussagekraft der Studie an, da die Navigation nur aus
+„Wischen nach links“ und „Wischen nach rechts“ besteht.', 1)\
+('Menü-Steuerung: nur 5/7 Steine da: Menü zum Ausklappen. besser: dauerhaft
+ausgeklappt - &gt;1 Klick statt 2', 1)\
+('Samsung', 1)\
+('man könnte die Bedienung noch vereinfachen, indem man durch wischen von Tür
+zu Tür kann', 1)\
+('schön kurz :)', 1)
 
 Efficiency by Tasks
 -------------------
