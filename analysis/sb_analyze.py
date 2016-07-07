@@ -10,17 +10,8 @@ import pandas as pd
 import sys
 from scipy import stats
 #  }}} Imports #
-
-NORMALITY_TEST = stats.shapiro
-
 #  Helpers {{{ #
-
-def print_section(header, fillchar="=", textwidth=80, **kwargs):
-    """ This is super fancy. """
-    filled = header + (textwidth - len(header)) * fillchar
-    print(filled, **kwargs)
-
-
+#  markdown printing {{{ # 
 def print_md_table(df, append=False):
     if not append:
         print()
@@ -63,8 +54,9 @@ def print_md_list(*args,
             if not compact:
                 print()
             print(indent * " " + bullet, arg)
+#  }}} markdown printing # 
 
-
+#  dataframes {{{ # 
 def opt_interactions(row):
     """ Computes the optimal number of interactions """
     return 1 if row['navigation'] == 'burger' else abs(row['distance'])
@@ -78,19 +70,20 @@ def fail_interactions(row):
 def success(row):
     return not fail_interactions(row)
 
+#  }}} dataframes # 
 
+#  statistics {{{ # 
 def is_significant(pvalue, alpha=0.05):
     """ Return: Boolean significance value """
     return pvalue < alpha
 
 
-def dagostino_or_shapiro(data):
+def pearson_or_shapiro(data):
     """ Use D'agostino/Pearson if possible (n >= 20), else Shapiro"""
-    # return stats.normaltest(data) if len(data) >= 20 else stats.shapiro(data)
-    return stats.shapiro(data)
+    return stats.normaltest(data) if len(data) >= 20 else stats.shapiro(data)
 
 
-def t_or_u(x, y, normtest=stats.shapiro, verbose=0):
+def t_or_u(x, y, norm_test=stats.shapiro, verbose=0):
     """ If both samples are normal distributed (tested via dagostino or
     shapiro), consult t-test, else consult u-test.
 
@@ -101,16 +94,17 @@ def t_or_u(x, y, normtest=stats.shapiro, verbose=0):
     :returns: result of either the t-test or the u-test
 
     """
-    x_ntresult, y_ntresult = normtest(x), normtest(y)
-    if verbose:
-        print_md_paragraph(x_ntresult, y_ntresult, lineblock=True)
-    # ha... 2nd statement was never evaluated until grouping by jobs
-    # some misspelling of is_significant
-    t_ok = not is_significant(x_ntresult[1]) and not is_significant(y_ntresult[1])
+    if norm_test is not None:
+        x_ntresult, y_ntresult = norm_test(x), norm_test(y)
+        t_ok = not is_significant(x_ntresult[1]) and not is_significant(y_ntresult[1])
+    else:
+        t_ok = True
 
-    testresult = stats.ttest_ind(x, y, equal_var=False) if t_ok else stats.mannwhitneyu(x, y)
+    testresult = stats.ttest_ind(x, y, equal_var=False)\
+        if t_ok else stats.mannwhitneyu(x, y)
     return testresult
 
+#  }}} statistics # 
 
 
 
@@ -215,16 +209,17 @@ def print_descriptions(*samples):
 
 #  }}} Descriptive Statistics #
 #  Efficiency {{{ #
-def cross_compare(*samples):
+def cross_compare(*samples, norm_test=stats.shapiro):
     """cross_compare
     :param *samples:
     """
     for i, (x_desc, x) in enumerate(samples):
         for y_desc, y in samples[i+1:]:
-            yield (x_desc,y_desc), t_or_u(x, y, normtest=NORMALITY_TEST)
+            yield (x_desc,y_desc), t_or_u(x, y, norm_test=norm_test)
 
 
-def one_vs_rest(one, *rest):
+
+def one_vs_rest(one, *rest, norm_test=stats.shapiro):
     """one_vs_rest
 
     :param one:
@@ -232,7 +227,7 @@ def one_vs_rest(one, *rest):
     """
     x_desc, x = one
     for y_desc, y in rest:
-        yield ((x_desc, y_desc), t_or_u(x, y, normtest=NORMALITY_TEST))
+        yield ((x_desc, y_desc), t_or_u(x, y, norm_test=norm_test))
 
 
 def analyze_efficiency(df, split_by='tid', verbose=0):
@@ -299,7 +294,7 @@ def analyze_effectiveness(df, verbose=0):
         "Reject? %s" % is_significant(result[1]), lineblock=True)
 #  }}} Effectiveness #
 
-def print_full_description(groups, h=0):
+def print_full_description(groups, norm_test=stats.shapiro, h=0):
     """TODO: Docstring for print_descriptions.
 
     :series: TODO
@@ -309,12 +304,14 @@ def print_full_description(groups, h=0):
     for desc, sample in groups:
         print_md_header(h, desc)
         print_md_table(sample.describe())
-        print_md_paragraph(NORMALITY_TEST.__name__,
-                        NORMALITY_TEST(sample),
-                        lineblock=True)
+        if norm_test:
+            print_md_paragraph(norm_test.__name__,
+                            norm_test(sample),
+                            lineblock=True)
     pass
 
-def print_full_analysis(df, field, h=1, by="tid", gd=True, sd=True, ffa=True, ovr=True, ovo=True):
+def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
+                        gd=True, sd=True, ffa=True, ovr=True, ovo=True):
     """Performs a full analysis of the data
 
     :df: THE data frame
@@ -336,15 +333,15 @@ def print_full_analysis(df, field, h=1, by="tid", gd=True, sd=True, ffa=True, ov
     # Global Descriptions
     if gd:
         print_md_header(h+1, "Global Descriptions [{}]".format(field))
-        print_full_description(nav_methods[field],h=h+2)
+        print_full_description(nav_methods[field],h=h+2, norm_test=nt)
     if sd:
         print_md_header(h+1, "Descriptions per {} [{}]".format(by, field))
-        print_full_description(groups, h=h+2)
+        print_full_description(groups, h=h+2, norm_test=nt)
 
     # free for all
     if ffa:
         print_md_header(h, "Cross-compare Tests per {} [{}]".format(by, field))
-        for desc, result in cross_compare(*groups):
+        for desc, result in cross_compare(*groups, norm_test=nt):
             print_md_header(h+1, "{} vs {}".format(*desc))
             print_md_paragraph(result)
 
@@ -353,7 +350,8 @@ def print_full_analysis(df, field, h=1, by="tid", gd=True, sd=True, ffa=True, ov
         print_md_header(h, "Global Burger vs Swipe per {} Tests [{}]".format(by, field))
         burger = "burger", nav_methods.get_group("burger")[field]
         swipe_tasks = nav_methods.get_group("swipe").groupby(by)[field]
-        for desc, result in one_vs_rest(burger, *swipe_tasks):
+        for desc, result in one_vs_rest(burger, *swipe_tasks,
+                                        norm_test=nt):
             print_md_header(h+1, "{} vs swipe {}".format(*desc))
             print_md_paragraph(result)
 
@@ -361,15 +359,21 @@ def print_full_analysis(df, field, h=1, by="tid", gd=True, sd=True, ffa=True, ov
     if ovo:
         print_md_header(h,
                         "Global Burger vs Global Swipe Test [{}]".format(field))
-        for desc, result in cross_compare(*nav_methods[field]):
+        for desc, result in cross_compare(*nav_methods[field],
+                                          norm_test=nt):
             print_md_header(h+1, "{} vs {}".format(*desc))
             print_md_paragraph(result)
 
 #  Main {{{ #
 def main():
     """main"""
+    norm_tests = { "shapiro" : stats.shapiro,
+                  "pearson" : stats.normaltest,
+                  "sop" : pearson_or_shapiro,
+                  "None" : None }
     parser = argparse.ArgumentParser()
-    parser.add_argument("file", nargs='+', type=argparse.FileType('r'))
+    parser.add_argument("file", nargs='+', type=argparse.FileType('r'),
+                        help="Specify experiment results file")
     parser.add_argument("-d","--distance", action='store_true', dest='distance',
                         default=False,
                         help="Also analyze by distance instead of task id")
@@ -382,7 +386,9 @@ def main():
     parser.add_argument("-Q", nargs='+', dest="final_q",
                         type=argparse.FileType('r'), help="Specify files for\
                         final questionnaire analysis.")
-    parser.add_argument("-v", "--verbose", action="count", default=0)
+    parser.add_argument("-n", type=str, dest="norm_test", default="shapiro",
+                        choices=norm_tests.keys(),
+                        help="Specify normality test, 'None' forces t-test")
     args = parser.parse_args()
 
     print_md_header(1, "Analysis")
@@ -433,32 +439,41 @@ def main():
                         lineblock=True)
     df['success'] = df.apply(success, axis=1)
 
+
+    norm_test = norm_tests[args.norm_test]
+    if norm_test is not None:
+        print_md_paragraph("Using normality test: {}".format(norm_test.__name__))
+    else:
+        print_md_paragraph("No normality test, *Forcing t-test*!")
+
     if args.demographics:
         print_md_header(2, "Demographics")
         pass
 
     # REVISED BEGIN
     print_md_header(2, "Efficiency by Tasks")
-    print_full_analysis(df, "time_ms", h=3)
+    print_full_analysis(df, "time_ms", h=3, by="tid", nt=norm_test)
 
     if args.distance:
         print_md_header(2, "Efficiency by Distances")
-        print_full_analysis(df, "time_ms", h=3, by="distance", ovo=False)
+        print_full_analysis(df, "time_ms", h=3, by="distance", ovo=False,
+                            nt=norm_test)
 
     print_md_header(2, "Effectiveness by Tasks")
-    print_full_analysis(df, "success", h=3)
+    print_full_analysis(df, "success", h=3, by="tid", nt=norm_test)
 
     if args.task_q:
         print_md_header(2, "Task Questionnaires")
         for desc, q in df_q.groupby("qid"):
             print_md_header(3, "Task Question {}".format(desc))
-            print_full_analysis(q, "result", h=4, by="tid")
+            print_full_analysis(q, "result", h=4, by="tid", nt=norm_test)
 
     if args.final_q:
         print_md_header(2, "Final Questionnaires")
-        for desc, q in df_Q.groupby("qid"):
+        for desc, fq in df_Q.groupby("qid"):
             print_md_header(3, "Final Question {}".format(desc))
-            print_full_analysis(q, "result", h=4, by=None, sd=False, ffa=False, ovr=False)
+            print_full_analysis(fq, "result", h=4, by=None, sd=False, ffa=False,
+                                ovr=False, nt=norm_test)
 
     # REVISED END
     exit(0)
