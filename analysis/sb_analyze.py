@@ -159,7 +159,7 @@ def print_full_description(groups, norm_test=stats.shapiro, h=0):
             print_md_paragraph(norm_test.__name__,
                             norm_test(sample),
                             lineblock=True)
-    pass
+
 
 def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
                         gd=True, sd=True, ffa=True, ovr=True, ovo=True):
@@ -179,26 +179,33 @@ def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
     if ffa or sd:
         groups = df.groupby(["navigation", by])[field]
 
-    print_md_header(h, "Descriptions [{}]".format(field))
+    print_md_header(h, "Descriptions ({})".format(field))
 
     # Global Descriptions
     if gd:
-        print_md_header(h+1, "Global Descriptions [{}]".format(field))
+        print_md_header(h+1, "Global Descriptions ({})".format(field))
         print_full_description(nav_methods[field],h=h+2, norm_test=nt)
     if sd:
-        print_md_header(h+1, "Descriptions per {} [{}]".format(by, field))
+        print_md_header(h+1, "Repeated measures ({})".format(field))
+        for desc, group in nav_methods:
+            subgroups = [values for _, values in group.groupby(by)[field]]
+            print_md_header(h+2, desc)
+            print_md_paragraph(stats.friedmanchisquare.__name__,
+                               stats.friedmanchisquare(*subgroups),
+                               lineblock=True)
+        print_md_header(h+1, "Descriptions per {} ({})".format(by, field))
         print_full_description(groups, h=h+2, norm_test=nt)
 
     # free for all
     if ffa:
-        print_md_header(h, "Cross-compare Tests per {} [{}]".format(by, field))
+        print_md_header(h, "Cross-compare Tests per {} ({})".format(by, field))
         for desc, result in cross_compare(*groups, norm_test=nt):
             print_md_header(h+1, "{} vs {}".format(*desc))
             print_md_paragraph(result)
 
     # one vs rest
     if ovr:
-        print_md_header(h, "Global Burger vs Swipe per {} Tests [{}]".format(by, field))
+        print_md_header(h, "Global Burger vs Swipe per {} Tests ({})".format(by, field))
         burger = "burger", nav_methods.get_group("burger")[field]
         swipe_tasks = nav_methods.get_group("swipe").groupby(by)[field]
         for desc, result in one_vs_rest(burger, *swipe_tasks,
@@ -209,7 +216,7 @@ def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
     # one vs one
     if ovo:
         print_md_header(h,
-                        "Global Burger vs Global Swipe Test [{}]".format(field))
+                        "Global Burger vs Global Swipe Test ({})".format(field))
         for desc, result in cross_compare(*nav_methods[field],
                                           norm_test=nt):
             print_md_header(h+1, "{} vs {}".format(*desc))
@@ -244,7 +251,7 @@ def main():
 
     print_md_header(1, "Analysis")
     print_md_header(2, "Preprocessing")
-    print_md_paragraph(args)
+    # print_md_paragraph(args, sys.stderr)
     print_md_list(*[f.name for f in args.file])
     df = pd.concat(pd.read_csv(f) for f in args.file)
     if args.task_q:
@@ -256,18 +263,6 @@ def main():
     if args.demographics:
         print_md_list(*[f.name for f in args.demographics], append=True)
         df_D = pd.concat(pd.read_csv(f) for f in args.demographics)
-
-    # move this somewhere else
-    # replace this with demographics
-    # WHY DOES THIS RESULT IN REPORTED WARNINGS IN THE FOLLOWING CODE?
-    # there sholdnt be ay side effect TODO FIXME
-    # nav_methods = df.groupby('navigation')
-    # N_burger = len(nav_methods.get_group("burger").groupby('pid'))
-    # N_swipe = len(nav_methods.get_group("swipe").groupby('pid'))
-    # print_md_paragraph("N = {}".format(N_burger+N_swipe),
-    #                    "Nswipe = {}".format(N_swipe),
-    #                    "Nburger = {}".format(N_burger),
-    #                    lineblock=True)
 
 
     # TID 0 is training.
@@ -285,7 +280,7 @@ def main():
            len(pd.unique([len(group) for _, group in df.groupby(field)])) == 1
            for field in ["pid"]}
 
-    print_md_paragraph("Dataset Validation:", chk, lineblock=True)
+    print_md_paragraph("Dataset Validation:", chk.items(), lineblock=True)
 
     print_md_paragraph("Adding success column based on",
                         "`opt_interactions == interactions`",
@@ -293,6 +288,8 @@ def main():
                         lineblock=True)
     df['success'] = df.apply(success, axis=1)
 
+    print_md_paragraph("Aggregating Task Groups", lineblock=True)
+    df_by_tid = df.groupby(["navigation","pid","tid"]).mean().reset_index()
 
     norm_test = norm_tests[args.norm_test]
     if norm_test is not None:
@@ -310,15 +307,15 @@ def main():
                                 df_D.groupby(attribute)], lineblock=True)
 
     print_md_header(2, "Efficiency by Tasks")
-    print_full_analysis(df, "time_ms", h=3, by="tid", nt=norm_test)
+    print_full_analysis(df_by_tid, "time_ms", h=3, by="tid", nt=norm_test)
+
+    print_md_header(2, "Effectiveness by Tasks")
+    print_full_analysis(df_by_tid, "success", h=3, by="tid", nt=norm_test)
 
     if args.distance:
         print_md_header(2, "Efficiency by Distances")
         print_full_analysis(df, "time_ms", h=3, by="distance", ovo=False,
                             nt=norm_test)
-
-    print_md_header(2, "Effectiveness by Tasks")
-    print_full_analysis(df, "success", h=3, by="tid", nt=norm_test)
 
     if args.task_q:
         print_md_header(2, "Task Questionnaires")

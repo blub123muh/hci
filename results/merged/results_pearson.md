@@ -4,14 +4,6 @@ Analysis
 Preprocessing
 -------------
 
-Namespace(demographics=\[&lt;\_io.TextIOWrapper
-name='demographic\_data\_fixed.csv' mode='r' encoding='UTF-8'&gt;\],
-distance=False, file=\[&lt;\_io.TextIOWrapper name='experiment\_results.csv'
-mode='r' encoding='UTF-8'&gt;\], final\_q=\[&lt;\_io.TextIOWrapper
-name='final\_questionnaire\_results.csv' mode='r' encoding='UTF-8'&gt;\],
-norm\_test='pearson', task\_q=\[&lt;\_io.TextIOWrapper
-name='task\_questionnaire\_results.csv' mode='r' encoding='UTF-8'&gt;\])
-
 -   experiment\_results.csv
 -   task\_questionnaire\_results.csv
 -   final\_questionnaire\_results.csv
@@ -22,11 +14,13 @@ Dropping Task ID 0 (Training)
 Asserting Absolute Distance Values!
 
 Dataset Validation:\
-{'pid': True}
+dict\_items(\[('pid', True)\])
 
 Adding success column based on\
 `opt_interactions == interactions`\
 in order to measure effectiveness.
+
+Aggregating Task Groups
 
 Using normality test: normaltest
 
@@ -101,737 +95,811 @@ zu Tür kann', 1)\
 Efficiency by Tasks
 -------------------
 
-### Descriptions \[time\_ms\]
+### Descriptions (time\_ms)
 
-#### Global Descriptions \[time\_ms\]
+#### Global Descriptions (time\_ms)
 
 ##### burger
 
-count | 550.0 |\
+count | 110.0 |\
 mean | 4638.11818182 |\
-std | 2276.28326918 |\
-min | 2379.0 |\
-25% | 3429.75 |\
-50% | 4086.5 |\
-75% | 5083.5 |\
-max | 35643.0 |
+std | 1251.30839042 |\
+min | 2974.8 |\
+25% | 3871.7 |\
+50% | 4375.3 |\
+75% | 5029.45 |\
+max | 11598.2 |
 
 normaltest\
-NormaltestResult(statistic=695.92062379202275, pvalue=7.6340785142658078e-152)
+NormaltestResult(statistic=76.823862390019315, pvalue=2.079266912942909e-17)
 
 ##### swipe
 
-count | 700.0 |\
+count | 140.0 |\
 mean | 5105.28428571 |\
-std | 2660.31481955 |\
-min | 1453.0 |\
-25% | 3496.25 |\
-50% | 4796.0 |\
-75% | 6205.0 |\
-max | 36116.0 |
+std | 1878.17462417 |\
+min | 1941.8 |\
+25% | 3672.2 |\
+50% | 4950.3 |\
+75% | 6415.4 |\
+max | 10211.0 |
 
 normaltest\
-NormaltestResult(statistic=635.35329966445772, pvalue=1.0833878190856989e-138)
+NormaltestResult(statistic=4.1262168679871163, pvalue=0.1270584027578627)
 
-#### Descriptions per tid \[time\_ms\]
+#### Repeated measures (time\_ms)
+
+##### burger
+
+friedmanchisquare\
+FriedmanchisquareResult(statistic=32.618181818181824,
+pvalue=1.4299671878258814e-06)
+
+##### swipe
+
+friedmanchisquare\
+FriedmanchisquareResult(statistic=99.0, pvalue=1.6058853045998598e-20)
+
+#### Descriptions per tid (time\_ms)
 
 ##### ('burger', 1)
 
-count | 110.0 |\
+count | 22.0 |\
 mean | 3882.02727273 |\
-std | 1273.13599999 |\
-min | 2379.0 |\
-25% | 3038.0 |\
-50% | 3454.5 |\
-75% | 4136.5 |\
-max | 9626.0 |
+std | 527.012396332 |\
+min | 2974.8 |\
+25% | 3558.45 |\
+50% | 3802.0 |\
+75% | 4053.1 |\
+max | 5278.2 |
 
 normaltest\
-NormaltestResult(statistic=50.574051812516345, pvalue=1.0422794740977289e-11)
+NormaltestResult(statistic=5.4950917433178086, pvalue=0.064084941050891631)
 
 ##### ('burger', 2)
 
-count | 110.0 |\
+count | 22.0 |\
 mean | 4855.64545455 |\
-std | 3550.99032468 |\
-min | 2587.0 |\
-25% | 3419.0 |\
-50% | 4059.0 |\
-75% | 5109.25 |\
-max | 35643.0 |
+std | 1865.02294323 |\
+min | 3348.4 |\
+25% | 3808.65 |\
+50% | 4359.2 |\
+75% | 4578.85 |\
+max | 11598.2 |
 
 normaltest\
-NormaltestResult(statistic=182.2710744255096, pvalue=2.6323224227546439e-40)
+NormaltestResult(statistic=28.296271253133376, pvalue=7.1703898419210531e-07)
 
 ##### ('burger', 3)
 
-count | 110.0 |\
+count | 22.0 |\
 mean | 4923.24545455 |\
-std | 2443.8345722 |\
-min | 2825.0 |\
-25% | 3495.0 |\
-50% | 4068.0 |\
-75% | 5331.5 |\
-max | 16458.0 |
+std | 1382.21854785 |\
+min | 3571.0 |\
+25% | 4064.05 |\
+50% | 4597.1 |\
+75% | 5142.0 |\
+max | 8840.8 |
 
 normaltest\
-NormaltestResult(statistic=82.748673131955684, pvalue=1.0748650382831504e-18)
+NormaltestResult(statistic=16.239339715682625, pvalue=0.00029762690341199154)
 
 ##### ('burger', 4)
 
-count | 110.0 |\
+count | 22.0 |\
 mean | 4455.94545455 |\
-std | 1740.15099965 |\
-min | 2598.0 |\
-25% | 3363.5 |\
-50% | 3995.0 |\
-75% | 4903.25 |\
-max | 12386.0 |
+std | 905.444160792 |\
+min | 3286.4 |\
+25% | 3905.6 |\
+50% | 4331.4 |\
+75% | 4714.1 |\
+max | 7063.4 |
 
 normaltest\
-NormaltestResult(statistic=73.275470004374384, pvalue=1.2258401991129035e-16)
+NormaltestResult(statistic=9.3359233468656129, pvalue=0.0093913927560497004)
 
 ##### ('burger', 5)
 
-count | 110.0 |\
+count | 22.0 |\
 mean | 5073.72727273 |\
-std | 1391.01089839 |\
-min | 3211.0 |\
-25% | 4127.0 |\
-50% | 4825.0 |\
-75% | 5579.25 |\
-max | 10924.0 |
+std | 820.671220162 |\
+min | 3920.4 |\
+25% | 4413.7 |\
+50% | 5098.7 |\
+75% | 5444.1 |\
+max | 6927.6 |
 
 normaltest\
-NormaltestResult(statistic=45.511742067693746, pvalue=1.3099381155952411e-10)
+NormaltestResult(statistic=1.0240505652669714, pvalue=0.59928063626132155)
 
 ##### ('swipe', 1)
 
-count | 140.0 |\
+count | 28.0 |\
 mean | 2770.21428571 |\
-std | 1949.56224485 |\
-min | 1453.0 |\
-25% | 1933.0 |\
-50% | 2410.5 |\
-75% | 3031.5 |\
-max | 21906.0 |
+std | 883.229726299 |\
+min | 1941.8 |\
+25% | 2296.25 |\
+50% | 2554.1 |\
+75% | 2865.6 |\
+max | 6413.4 |
 
 normaltest\
-NormaltestResult(statistic=233.02889653769526, pvalue=2.5027533700333242e-51)
+NormaltestResult(statistic=40.210028501523979, pvalue=1.8556807060464479e-09)
 
 ##### ('swipe', 2)
 
-count | 140.0 |\
+count | 28.0 |\
 mean | 4204.86428571 |\
-std | 2912.4724452 |\
-min | 2521.0 |\
-25% | 3322.25 |\
-50% | 3758.5 |\
-75% | 4416.25 |\
-max | 36116.0 |
+std | 1330.36827878 |\
+min | 3202.4 |\
+25% | 3635.95 |\
+50% | 3765.6 |\
+75% | 4341.1 |\
+max | 10211.0 |
 
 normaltest\
-NormaltestResult(statistic=273.97444652098108, pvalue=3.2151767059582613e-60)
+NormaltestResult(statistic=50.183283335215393, pvalue=1.2671805020588637e-11)
 
 ##### ('swipe', 3)
 
-count | 140.0 |\
+count | 28.0 |\
 mean | 5175.67857143 |\
-std | 1434.32085184 |\
-min | 3146.0 |\
-25% | 4098.75 |\
-50% | 4834.0 |\
-75% | 5789.25 |\
-max | 11129.0 |
+std | 889.237003511 |\
+min | 3899.8 |\
+25% | 4701.9 |\
+50% | 4908.9 |\
+75% | 5396.35 |\
+max | 7508.4 |
 
 normaltest\
-NormaltestResult(statistic=54.208885869234592, pvalue=1.6931288052248813e-12)
+NormaltestResult(statistic=9.4275154863943342, pvalue=0.0089710034377580416)
 
 ##### ('swipe', 4)
 
-count | 140.0 |\
+count | 28.0 |\
 mean | 6123.01428571 |\
-std | 1877.88245579 |\
-min | 3622.0 |\
-25% | 5070.0 |\
-50% | 5691.5 |\
-75% | 6742.0 |\
-max | 20070.0 |
+std | 1000.60964517 |\
+min | 4474.6 |\
+25% | 5388.2 |\
+50% | 6092.4 |\
+75% | 6559.75 |\
+max | 9004.2 |
 
 normaltest\
-NormaltestResult(statistic=137.8311534028133, pvalue=1.17583212497471e-30)
+NormaltestResult(statistic=6.0922522821566361, pvalue=0.047542741994770842)
 
 ##### ('swipe', 5)
 
-count | 140.0 |\
+count | 28.0 |\
 mean | 7252.65 |\
-std | 2392.08935471 |\
-min | 4282.0 |\
-25% | 5917.75 |\
-50% | 6747.5 |\
-75% | 7843.5 |\
-max | 24822.0 |
+std | 1209.06568841 |\
+min | 5476.8 |\
+25% | 6350.65 |\
+50% | 7014.5 |\
+75% | 7972.85 |\
+max | 9742.0 |
 
 normaltest\
-NormaltestResult(statistic=142.01649538662491, pvalue=1.4504736953102628e-31)
+NormaltestResult(statistic=1.8115899346271727, pvalue=0.40422041532329878)
 
-### Cross-compare Tests per tid \[time\_ms\]
+### Cross-compare Tests per tid (time\_ms)
 
 #### ('burger', 1) vs ('burger', 2)
 
-MannwhitneyuResult(statistic=4084.0, pvalue=1.5658541604548195e-05)
+MannwhitneyuResult(statistic=151.0, pvalue=0.016817419210219058)
 
 #### ('burger', 1) vs ('burger', 3)
 
-MannwhitneyuResult(statistic=3859.0, pvalue=1.7395206547774697e-06)
+MannwhitneyuResult(statistic=95.0, pvalue=0.00029221438038809819)
 
 #### ('burger', 1) vs ('burger', 4)
 
-MannwhitneyuResult(statistic=4510.0, pvalue=0.00055464375072409916)
+MannwhitneyuResult(statistic=139.0, pvalue=0.0080653641686478112)
 
 #### ('burger', 1) vs ('burger', 5)
 
-MannwhitneyuResult(statistic=2461.0, pvalue=1.4603875579048891e-14)
+Ttest\_indResult(statistic=-5.7310272087258207, pvalue=1.619575495038546e-06)
 
 #### ('burger', 1) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=2545.5, pvalue=5.3739527354119754e-20)
+MannwhitneyuResult(statistic=49.0, pvalue=2.1843898538621358e-07)
 
 #### ('burger', 1) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=6426.0, pvalue=0.012421146700796878)
+MannwhitneyuResult(statistic=282.0, pvalue=0.30911023670878912)
 
 #### ('burger', 1) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=3044.5, pvalue=1.1832340237823803e-16)
+MannwhitneyuResult(statistic=43.0, pvalue=1.1741801859588888e-07)
 
 #### ('burger', 1) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=1688.0, pvalue=1.6234943894088597e-26)
+MannwhitneyuResult(statistic=6.0, pvalue=1.9015268435477013e-09)
 
 #### ('burger', 1) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=879.5, pvalue=1.4551418512540368e-33)
+Ttest\_indResult(statistic=-13.237665385930107, pvalue=5.9225323858749191e-16)
 
 #### ('burger', 2) vs ('burger', 3)
 
-MannwhitneyuResult(statistic=5763.5, pvalue=0.27230524102743087)
+MannwhitneyuResult(statistic=195.0, pvalue=0.1375314960388796)
 
 #### ('burger', 2) vs ('burger', 4)
 
-MannwhitneyuResult(statistic=5675.5, pvalue=0.2141010726328908)
+MannwhitneyuResult(statistic=240.0, pvalue=0.48595656697665318)
 
 #### ('burger', 2) vs ('burger', 5)
 
-MannwhitneyuResult(statistic=4089.5, pvalue=1.6477907306930181e-05)
+MannwhitneyuResult(statistic=160.0, pvalue=0.02787280707345783)
 
 #### ('burger', 2) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=1517.0, pvalue=6.2046882486582092e-28)
+MannwhitneyuResult(statistic=35.0, pvalue=5.0265581070320699e-08)
 
 #### ('burger', 2) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=6141.5, pvalue=0.0030244034839489709)
+MannwhitneyuResult(statistic=221.0, pvalue=0.045460175439921736)
 
 #### ('burger', 2) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=4963.5, pvalue=7.1526787854356572e-07)
+MannwhitneyuResult(statistic=173.0, pvalue=0.0042858685698253926)
 
 #### ('burger', 2) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=2883.5, pvalue=1.0733745632893838e-17)
+MannwhitneyuResult(statistic=114.0, pvalue=7.7855780297600262e-05)
 
 #### ('burger', 2) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=1655.5, pvalue=8.7897345573373952e-27)
+MannwhitneyuResult(statistic=70.0, pvalue=1.7276174406690636e-06)
 
 #### ('burger', 3) vs ('burger', 4)
 
-MannwhitneyuResult(statistic=5391.5, pvalue=0.081675269997733058)
+MannwhitneyuResult(statistic=190.0, pvalue=0.11336211114805772)
 
 #### ('burger', 3) vs ('burger', 5)
 
-MannwhitneyuResult(statistic=4492.5, pvalue=0.00048634928385682863)
+MannwhitneyuResult(statistic=180.0, pvalue=0.074430474150163767)
 
 #### ('burger', 3) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=1439.0, pvalue=1.3586702461712472e-28)
+MannwhitneyuResult(statistic=30.0, pvalue=2.9224626895523775e-08)
 
 #### ('burger', 3) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=5879.5, pvalue=0.00067121480094522003)
+MannwhitneyuResult(statistic=152.0, pvalue=0.0011864143494592009)
 
 #### ('burger', 3) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=5504.0, pvalue=5.4782820605463963e-05)
+MannwhitneyuResult(statistic=203.0, pvalue=0.020558109931233946)
 
 #### ('burger', 3) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=3501.0, pvalue=6.9355700044163638e-14)
+MannwhitneyuResult(statistic=105.0, pvalue=3.7841304344645438e-05)
 
 #### ('burger', 3) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=2181.5, pvalue=1.209482241056887e-22)
+MannwhitneyuResult(statistic=62.0, pvalue=8.0100475146483783e-07)
 
 #### ('burger', 4) vs ('burger', 5)
 
-MannwhitneyuResult(statistic=3771.5, pvalue=6.9773905569607094e-07)
+MannwhitneyuResult(statistic=136.0, pvalue=0.0066364447880311464)
 
 #### ('burger', 4) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=1729.5, pvalue=3.5365303681484993e-26)
+MannwhitneyuResult(statistic=37.0, pvalue=6.2280507570442701e-08)
 
 #### ('burger', 4) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=6683.5, pvalue=0.036715528361448695)
+MannwhitneyuResult(statistic=212.5, pvalue=0.031674649462165971)
 
 #### ('burger', 4) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=4638.0, pvalue=3.4412289343765112e-08)
+MannwhitneyuResult(statistic=151.0, pvalue=0.0011116905748856589)
 
 #### ('burger', 4) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=2628.5, pvalue=2.0386245118994627e-19)
+MannwhitneyuResult(statistic=58.0, pvalue=5.4061503445428946e-07)
 
 #### ('burger', 4) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=1526.0, pvalue=7.3859731612301278e-28)
+MannwhitneyuResult(statistic=21.0, pvalue=1.0756098347672391e-08)
 
 #### ('burger', 5) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=840.0, pvalue=6.2536829317850368e-34)
+MannwhitneyuResult(statistic=29.0, pvalue=2.6191554910060229e-08)
 
 #### ('burger', 5) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=3444.0, pvalue=3.2402389481877241e-14)
+MannwhitneyuResult(statistic=93.0, pvalue=1.381283064893737e-05)
 
 #### ('burger', 5) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=7337.5, pvalue=0.26179339474167185)
+MannwhitneyuResult(statistic=306.0, pvalue=0.48830623668427992)
 
 #### ('burger', 5) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=4246.0, pvalue=5.8282442410782173e-10)
+MannwhitneyuResult(statistic=124.0, pvalue=0.00016767696076002179)
 
 #### ('burger', 5) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=2222.5, pvalue=2.4529114846074024e-22)
+Ttest\_indResult(statistic=-7.5712623152822953, pvalue=1.1021397421496496e-09)
 
 #### ('swipe', 1) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=2472.5, pvalue=1.4576933191791186e-27)
+MannwhitneyuResult(statistic=54.0, pvalue=1.5960698242093411e-08)
 
 #### ('swipe', 1) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=1021.0, pvalue=1.0616997031420499e-38)
+MannwhitneyuResult(statistic=31.0, pvalue=1.7371643979876513e-09)
 
 #### ('swipe', 1) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=570.0, pvalue=1.4519936452032371e-42)
+MannwhitneyuResult(statistic=18.0, pvalue=4.66457628014128e-10)
 
 #### ('swipe', 1) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=418.0, pvalue=6.5546742737482944e-44)
+MannwhitneyuResult(statistic=8.0, pvalue=1.6461154966355821e-10)
 
 #### ('swipe', 2) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=4176.5, pvalue=5.2058578706528549e-17)
+MannwhitneyuResult(statistic=105.0, pvalue=1.3341483772913665e-06)
 
 #### ('swipe', 2) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=1732.5, pvalue=5.4063782042061323e-33)
+MannwhitneyuResult(statistic=45.0, pvalue=6.8123663028551721e-09)
 
 #### ('swipe', 2) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=832.0, pvalue=2.6916244230076441e-40)
+MannwhitneyuResult(statistic=34.0, pvalue=2.3382222267736259e-09)
 
 #### ('swipe', 3) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=6099.0, pvalue=2.3509168964023139e-08)
+MannwhitneyuResult(statistic=163.0, pvalue=9.0415384769806993e-05)
 
 #### ('swipe', 3) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=3160.5, pvalue=5.6464403753533496e-23)
+MannwhitneyuResult(statistic=54.0, pvalue=1.5960698242093411e-08)
 
 #### ('swipe', 4) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=5782.5, pvalue=1.5200785567733307e-09)
+MannwhitneyuResult(statistic=177.0, pvalue=0.00021989622033020476)
 
-### Global Burger vs Swipe per tid Tests \[time\_ms\]
+### Global Burger vs Swipe per tid Tests (time\_ms)
 
 #### burger vs swipe 1
 
-MannwhitneyuResult(statistic=8071.0, pvalue=1.2418694358581137e-47)
+MannwhitneyuResult(statistic=180.0, pvalue=3.0639459096717655e-13)
 
 #### burger vs swipe 2
 
-MannwhitneyuResult(statistic=31122.5, pvalue=0.00022970344985717234)
+MannwhitneyuResult(statistic=1012.5, pvalue=0.0026345778537083492)
 
 #### burger vs swipe 3
 
-MannwhitneyuResult(statistic=25487.5, pvalue=3.2160499055159418e-10)
+MannwhitneyuResult(statistic=876.0, pvalue=0.00022173012779323569)
 
 #### burger vs swipe 4
 
-MannwhitneyuResult(statistic=14947.0, pvalue=2.4092928040063919e-29)
+MannwhitneyuResult(statistic=407.0, pvalue=1.0124366289475617e-09)
 
 #### burger vs swipe 5
 
-MannwhitneyuResult(statistic=8465.0, pvalue=1.846617100608964e-46)
+MannwhitneyuResult(statistic=186.0, pvalue=3.8655469327992148e-13)
 
-### Global Burger vs Global Swipe Test \[time\_ms\]
+### Global Burger vs Global Swipe Test (time\_ms)
 
 #### burger vs swipe
 
-MannwhitneyuResult(statistic=163706.0, pvalue=2.7478174405275066e-06)
+MannwhitneyuResult(statistic=6436.5, pvalue=0.013029103088263865)
 
 Effectiveness by Tasks
 ----------------------
 
-### Descriptions \[success\]
+### Descriptions (success)
 
-#### Global Descriptions \[success\]
+#### Global Descriptions (success)
 
 ##### burger
 
-count | 550 |\
-unique | 2 |\
-top | True |\
-freq | 538 |
+count | 110.0 |\
+mean | 0.978181818182 |\
+std | 0.0626360071457 |\
+min | 0.8 |\
+25% | 1.0 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=692.40990353665734, pvalue=4.4167197111877772e-151)
+NormaltestResult(statistic=68.459419887611048, pvalue=1.3621528840605701e-15)
 
 ##### swipe
 
-count | 700 |\
-unique | 2 |\
-top | True |\
-freq | 654 |
+count | 140.0 |\
+mean | 0.934285714286 |\
+std | 0.105783427849 |\
+min | 0.6 |\
+25% | 0.8 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=514.62900970729629, pvalue=1.7771759539453255e-112)
+NormaltestResult(statistic=30.683850175565183, pvalue=2.173134430069827e-07)
 
-#### Descriptions per tid \[success\]
+#### Repeated measures (success)
+
+##### burger
+
+friedmanchisquare\
+FriedmanchisquareResult(statistic=5.1111111111109082, pvalue=0.276085623834601)
+
+##### swipe
+
+friedmanchisquare\
+FriedmanchisquareResult(statistic=8.7192429022081477,
+pvalue=0.068513251264267688)
+
+#### Descriptions per tid (success)
 
 ##### ('burger', 1)
 
-count | 110 |\
-unique | 2 |\
-top | True |\
-freq | 109 |
+count | 22.0 |\
+mean | 0.990909090909 |\
+std | 0.0426401432711 |\
+min | 0.8 |\
+25% | 1.0 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=237.62633424276868, pvalue=2.5124483458445884e-52)
+NormaltestResult(statistic=55.867295667147665, pvalue=7.3887485384486275e-13)
 
 ##### ('burger', 2)
 
-count | 110 |\
-unique | 2 |\
-top | True |\
-freq | 106 |
+count | 22.0 |\
+mean | 0.963636363636 |\
+std | 0.0789542033952 |\
+min | 0.8 |\
+25% | 1.0 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=143.47934980760007, pvalue=6.9799941035437554e-32)
+NormaltestResult(statistic=11.761207015205065, pvalue=0.0027930991097338811)
 
 ##### ('burger', 3)
 
-count | 110 |\
-unique | 2 |\
-top | True |\
-freq | 106 |
+count | 22.0 |\
+mean | 0.963636363636 |\
+std | 0.0789542033952 |\
+min | 0.8 |\
+25% | 1.0 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=143.47934980760007, pvalue=6.9799941035437554e-32)
+NormaltestResult(statistic=11.761207015205118, pvalue=0.002793099109733807)
 
 ##### ('burger', 4)
 
-count | 110 |\
-unique | 2 |\
-top | True |\
-freq | 108 |
+count | 22.0 |\
+mean | 0.981818181818 |\
+std | 0.0588489886336 |\
+min | 0.8 |\
+25% | 1.0 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=190.15500685675292, pvalue=5.1093412263043164e-42)
+NormaltestResult(statistic=32.977747192506733, pvalue=6.9019718607633975e-08)
 
 ##### ('burger', 5)
 
-count | 110 |\
-unique | 2 |\
-top | True |\
-freq | 109 |
+count | 22.0 |\
+mean | 0.990909090909 |\
+std | 0.0426401432711 |\
+min | 0.8 |\
+25% | 1.0 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=237.62633424276868, pvalue=2.5124483458445884e-52)
+NormaltestResult(statistic=55.867295667147665, pvalue=7.3887485384486275e-13)
 
 ##### ('swipe', 1)
 
-count | 140 |\
-unique | 2 |\
-top | True |\
-freq | 137 |
+count | 28.0 |\
+mean | 0.978571428571 |\
+std | 0.0629940788349 |\
+min | 0.8 |\
+25% | 1.0 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=214.30244402343482, pvalue=2.9161882188752781e-47)
+NormaltestResult(statistic=30.230322102932696, pvalue=2.7262706131404123e-07)
 
 ##### ('swipe', 2)
 
-count | 140 |\
-unique | 2 |\
-top | True |\
-freq | 131 |
+count | 28.0 |\
+mean | 0.935714285714 |\
+std | 0.0951189731211 |\
+min | 0.8 |\
+25% | 0.8 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=126.1985404755568, pvalue=3.9476180277006855e-28)
+NormaltestResult(statistic=13.850854641882318, pvalue=0.0009824831927910632)
 
 ##### ('swipe', 3)
 
-count | 140 |\
-unique | 2 |\
-top | True |\
-freq | 125 |
+count | 28.0 |\
+mean | 0.892857142857 |\
+std | 0.138586973437 |\
+min | 0.6 |\
+25% | 0.8 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=84.232538392747188, pvalue=5.1184290741309119e-19)
+NormaltestResult(statistic=4.3703066280619502, pvalue=0.11246049056138591)
 
 ##### ('swipe', 4)
 
-count | 140 |\
-unique | 2 |\
-top | True |\
-freq | 132 |
+count | 28.0 |\
+mean | 0.942857142857 |\
+std | 0.0920087412456 |\
+min | 0.8 |\
+25% | 0.8 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=135.72565148808746, pvalue=3.3693742538649402e-30)
+NormaltestResult(statistic=8.1469969468004297, pvalue=0.017017748104058518)
 
 ##### ('swipe', 5)
 
-count | 140 |\
-unique | 2 |\
-top | True |\
-freq | 129 |
+count | 28.0 |\
+mean | 0.921428571429 |\
+std | 0.113389341903 |\
+min | 0.6 |\
+25% | 0.8 |\
+50% | 1.0 |\
+75% | 1.0 |\
+max | 1.0 |
 
 normaltest\
-NormaltestResult(statistic=109.84833227332439, pvalue=1.4019667822221946e-24)
+NormaltestResult(statistic=6.1681726236411034, pvalue=0.045771835985766236)
 
-### Cross-compare Tests per tid \[success\]
+### Cross-compare Tests per tid (success)
 
 #### ('burger', 1) vs ('burger', 2)
 
-MannwhitneyuResult(statistic=5885.0, pvalue=0.088514338258674385)
+MannwhitneyuResult(statistic=209.0, pvalue=0.082657036656833605)
 
 #### ('burger', 1) vs ('burger', 3)
 
-MannwhitneyuResult(statistic=5885.0, pvalue=0.088514338258674385)
+MannwhitneyuResult(statistic=209.0, pvalue=0.082657036656833605)
 
 #### ('burger', 1) vs ('burger', 4)
 
-MannwhitneyuResult(statistic=5995.0, pvalue=0.28273628216749636)
+MannwhitneyuResult(statistic=231.0, pvalue=0.28624482430604659)
 
 #### ('burger', 1) vs ('burger', 5)
 
-MannwhitneyuResult(statistic=6050.0, pvalue=0.49742964452980454)
+MannwhitneyuResult(statistic=242.0, pvalue=0.48702804541380829)
 
 #### ('burger', 1) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=7605.0, pvalue=0.22179890014407494)
+MannwhitneyuResult(statistic=289.0, pvalue=0.22085511431458626)
 
 #### ('burger', 1) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=7275.0, pvalue=0.013774704590641996)
+MannwhitneyuResult(statistic=223.0, pvalue=0.0085809342731982628)
 
 #### ('burger', 1) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=6945.0, pvalue=0.0008566712200464943)
+MannwhitneyuResult(statistic=188.5, pvalue=0.0011982167922993706)
 
 #### ('burger', 1) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=7330.0, pvalue=0.021811891296381614)
+MannwhitneyuResult(statistic=234.0, pvalue=0.015452252565939647)
 
 #### ('burger', 1) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=7165.0, pvalue=0.0054868348410904788)
+MannwhitneyuResult(statistic=211.5, pvalue=0.0045566881958452573)
 
 #### ('burger', 2) vs ('burger', 3)
 
-MannwhitneyuResult(statistic=6050.0, pvalue=0.49869675597742219)
+MannwhitneyuResult(statistic=242.0, pvalue=0.49299346911620229)
 
 #### ('burger', 2) vs ('burger', 4)
 
-MannwhitneyuResult(statistic=5940.0, pvalue=0.20547426603584779)
+MannwhitneyuResult(statistic=220.0, pvalue=0.1979923748749125)
 
 #### ('burger', 2) vs ('burger', 5)
 
-MannwhitneyuResult(statistic=5885.0, pvalue=0.088514338258674385)
+MannwhitneyuResult(statistic=209.0, pvalue=0.082657036656833605)
 
 #### ('burger', 2) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=7585.0, pvalue=0.24008500168511188)
+MannwhitneyuResult(statistic=285.0, pvalue=0.23222527082050248)
 
 #### ('burger', 2) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=7485.0, pvalue=0.162860956968579)
+MannwhitneyuResult(statistic=265.0, pvalue=0.13717816505985114)
 
 #### ('burger', 2) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=7155.0, pvalue=0.018300662296952975)
+MannwhitneyuResult(statistic=226.0, pvalue=0.025658789178159933)
 
 #### ('burger', 2) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=7540.0, pvalue=0.22392151178117164)
+MannwhitneyuResult(statistic=276.0, pvalue=0.20268150101021792)
 
 #### ('burger', 2) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=7375.0, pvalue=0.082269468781977884)
+MannwhitneyuResult(statistic=252.0, pvalue=0.082343202897603662)
 
 #### ('burger', 3) vs ('burger', 4)
 
-MannwhitneyuResult(statistic=5940.0, pvalue=0.20547426603584779)
+MannwhitneyuResult(statistic=220.0, pvalue=0.1979923748749125)
 
 #### ('burger', 3) vs ('burger', 5)
 
-MannwhitneyuResult(statistic=5885.0, pvalue=0.088514338258674385)
+MannwhitneyuResult(statistic=209.0, pvalue=0.082657036656833605)
 
 #### ('burger', 3) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=7585.0, pvalue=0.24008500168511188)
+MannwhitneyuResult(statistic=285.0, pvalue=0.23222527082050248)
 
 #### ('burger', 3) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=7485.0, pvalue=0.162860956968579)
+MannwhitneyuResult(statistic=265.0, pvalue=0.13717816505985114)
 
 #### ('burger', 3) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=7155.0, pvalue=0.018300662296952975)
+MannwhitneyuResult(statistic=226.0, pvalue=0.025658789178159933)
 
 #### ('burger', 3) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=7540.0, pvalue=0.22392151178117164)
+MannwhitneyuResult(statistic=276.0, pvalue=0.20268150101021792)
 
 #### ('burger', 3) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=7375.0, pvalue=0.082269468781977884)
+MannwhitneyuResult(statistic=252.0, pvalue=0.082343202897603662)
 
 #### ('burger', 4) vs ('burger', 5)
 
-MannwhitneyuResult(statistic=5995.0, pvalue=0.28273628216749636)
+MannwhitneyuResult(statistic=231.0, pvalue=0.28624482430604659)
 
 #### ('burger', 4) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=7675.0, pvalue=0.429353867493113)
+MannwhitneyuResult(statistic=303.0, pvalue=0.43281068947535356)
 
 #### ('burger', 4) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=7345.0, pvalue=0.039349175524312156)
+MannwhitneyuResult(statistic=237.0, pvalue=0.027429809187369383)
 
 #### ('burger', 4) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=7015.0, pvalue=0.0028380826908177329)
+MannwhitneyuResult(statistic=201.0, pvalue=0.0040041913682163349)
 
 #### ('burger', 4) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=7400.0, pvalue=0.060002832384090876)
+MannwhitneyuResult(statistic=248.0, pvalue=0.046661220530755103)
 
 #### ('burger', 4) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=7235.0, pvalue=0.016660914589131787)
+MannwhitneyuResult(statistic=225.0, pvalue=0.014890923602395365)
 
 #### ('burger', 5) vs ('swipe', 1)
 
-MannwhitneyuResult(statistic=7605.0, pvalue=0.22179890014407494)
+MannwhitneyuResult(statistic=289.0, pvalue=0.22085511431458626)
 
 #### ('burger', 5) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=7275.0, pvalue=0.013774704590641996)
+MannwhitneyuResult(statistic=223.0, pvalue=0.0085809342731982628)
 
 #### ('burger', 5) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=6945.0, pvalue=0.0008566712200464943)
+MannwhitneyuResult(statistic=188.5, pvalue=0.0011982167922993706)
 
 #### ('burger', 5) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=7330.0, pvalue=0.021811891296381614)
+MannwhitneyuResult(statistic=234.0, pvalue=0.015452252565939647)
 
 #### ('burger', 5) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=7165.0, pvalue=0.0054868348410904788)
+MannwhitneyuResult(statistic=211.5, pvalue=0.0045566881958452573)
 
 #### ('swipe', 1) vs ('swipe', 2)
 
-MannwhitneyuResult(statistic=9380.0, pvalue=0.038770512393067807)
+MannwhitneyuResult(statistic=308.0, pvalue=0.027116872472542033)
 
 #### ('swipe', 1) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=8960.0, pvalue=0.0017670242686956415)
+MannwhitneyuResult(statistic=261.5, pvalue=0.0029312417003149235)
 
 #### ('swipe', 1) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=9450.0, pvalue=0.062622010514240933)
+MannwhitneyuResult(statistic=322.0, pvalue=0.048986402150609308)
 
 #### ('swipe', 1) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=9240.0, pvalue=0.014343610809765796)
+MannwhitneyuResult(statistic=292.5, pvalue=0.013462573580567237)
 
 #### ('swipe', 2) vs ('swipe', 3)
 
-MannwhitneyuResult(statistic=9380.0, pvalue=0.10079098881755333)
+MannwhitneyuResult(statistic=336.5, pvalue=0.14453634210230498)
 
 #### ('swipe', 2) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=9730.0, pvalue=0.40205950418022463)
+MannwhitneyuResult(statistic=378.0, pvalue=0.39060796901685718)
 
 #### ('swipe', 2) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=9660.0, pvalue=0.32217998161712597)
+MannwhitneyuResult(statistic=373.5, pvalue=0.36014486364075388)
 
 #### ('swipe', 3) vs ('swipe', 4)
 
-MannwhitneyuResult(statistic=9310.0, pvalue=0.064351095787255674)
+MannwhitneyuResult(statistic=324.0, pvalue=0.094081951374916539)
 
 #### ('swipe', 3) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=9520.0, pvalue=0.20590971152770549)
+MannwhitneyuResult(statistic=355.0, pvalue=0.24385317707370369)
 
 #### ('swipe', 4) vs ('swipe', 5)
 
-MannwhitneyuResult(statistic=9590.0, pvalue=0.23888618804868444)
+MannwhitneyuResult(statistic=360.0, pvalue=0.26255479890207617)
 
-### Global Burger vs Swipe per tid Tests \[success\]
+### Global Burger vs Swipe per tid Tests (success)
 
 #### burger vs swipe 1
 
-MannwhitneyuResult(statistic=38485.0, pvalue=0.48912520694291894)
+MannwhitneyuResult(statistic=1537.0, pvalue=0.49020683242704011)
 
 #### burger vs swipe 2
 
-MannwhitneyuResult(statistic=36865.0, pvalue=0.0045417664593209763)
+MannwhitneyuResult(statistic=1213.0, pvalue=0.0027313254754476467)
 
 #### burger vs swipe 3
 
-MannwhitneyuResult(statistic=35215.0, pvalue=1.7057508017866935e-06)
+MannwhitneyuResult(statistic=1030.0, pvalue=2.0615949541882224e-05)
 
 #### burger vs swipe 4
 
-MannwhitneyuResult(statistic=37140.0, pvalue=0.013145629148188419)
+MannwhitneyuResult(statistic=1268.0, pvalue=0.0092023144768541426)
 
 #### burger vs swipe 5
 
-MannwhitneyuResult(statistic=36315.0, pvalue=0.00042387011906782973)
+MannwhitneyuResult(statistic=1152.0, pvalue=0.00061159598135044442)
 
-### Global Burger vs Global Swipe Test \[success\]
+### Global Burger vs Global Swipe Test (success)
 
 #### burger vs swipe
 
-MannwhitneyuResult(statistic=184050.0, pvalue=0.00012578178491001905)
+MannwhitneyuResult(statistic=6206.0, pvalue=0.00011462735661581992)
 
 Task Questionnaires
 -------------------
 
 ### Task Question 0
 
-#### Descriptions \[result\]
+#### Descriptions (result)
 
-##### Global Descriptions \[result\]
+##### Global Descriptions (result)
 
 ###### burger
 
@@ -861,7 +929,21 @@ max | 7.0 |
 normaltest\
 NormaltestResult(statistic=101.53235210749389, pvalue=8.9645784582099588e-23)
 
-##### Descriptions per tid \[result\]
+##### Repeated measures (result)
+
+###### burger
+
+friedmanchisquare\
+FriedmanchisquareResult(statistic=3.3103448275862144,
+pvalue=0.50729488262873967)
+
+###### swipe
+
+friedmanchisquare\
+FriedmanchisquareResult(statistic=5.0958904109588801,
+pvalue=0.27759929640181424)
+
+##### Descriptions per tid (result)
 
 ###### ('burger', 1)
 
@@ -1003,7 +1085,7 @@ max | 7.0 |
 normaltest\
 NormaltestResult(statistic=24.938342419703677, pvalue=3.843330652607647e-06)
 
-#### Cross-compare Tests per tid \[result\]
+#### Cross-compare Tests per tid (result)
 
 ##### ('burger', 1) vs ('burger', 2)
 
@@ -1185,7 +1267,7 @@ MannwhitneyuResult(statistic=376.5, pvalue=0.3501076533991746)
 
 MannwhitneyuResult(statistic=376.5, pvalue=0.3501076533991746)
 
-#### Global Burger vs Swipe per tid Tests \[result\]
+#### Global Burger vs Swipe per tid Tests (result)
 
 ##### burger vs swipe 1
 
@@ -1207,7 +1289,7 @@ MannwhitneyuResult(statistic=1419.0, pvalue=0.087083010808927386)
 
 MannwhitneyuResult(statistic=1362.0, pvalue=0.027199345369874211)
 
-#### Global Burger vs Global Swipe Test \[result\]
+#### Global Burger vs Global Swipe Test (result)
 
 ##### burger vs swipe
 
@@ -1215,9 +1297,9 @@ MannwhitneyuResult(statistic=7203.0, pvalue=0.046318608676750285)
 
 ### Task Question 1
 
-#### Descriptions \[result\]
+#### Descriptions (result)
 
-##### Global Descriptions \[result\]
+##### Global Descriptions (result)
 
 ###### burger
 
@@ -1247,7 +1329,21 @@ max | 7.0 |
 normaltest\
 NormaltestResult(statistic=18.788553344848623, pvalue=8.3198879945244137e-05)
 
-##### Descriptions per tid \[result\]
+##### Repeated measures (result)
+
+###### burger
+
+friedmanchisquare\
+FriedmanchisquareResult(statistic=2.7575757575757125,
+pvalue=0.59917784877228941)
+
+###### swipe
+
+friedmanchisquare\
+FriedmanchisquareResult(statistic=5.4968553459119409,
+pvalue=0.24000603548291879)
+
+##### Descriptions per tid (result)
 
 ###### ('burger', 1)
 
@@ -1389,7 +1485,7 @@ max | 7.0 |
 normaltest\
 NormaltestResult(statistic=2.7864677335567007, pvalue=0.24827112927752484)
 
-#### Cross-compare Tests per tid \[result\]
+#### Cross-compare Tests per tid (result)
 
 ##### ('burger', 1) vs ('burger', 2)
 
@@ -1571,7 +1667,7 @@ Ttest\_indResult(statistic=-0.68754973774649286, pvalue=0.49468042451910721)
 
 Ttest\_indResult(statistic=-0.66793226421816831, pvalue=0.50706047845662638)
 
-#### Global Burger vs Swipe per tid Tests \[result\]
+#### Global Burger vs Swipe per tid Tests (result)
 
 ##### burger vs swipe 1
 
@@ -1593,7 +1689,7 @@ MannwhitneyuResult(statistic=984.0, pvalue=0.00018652482417813029)
 
 MannwhitneyuResult(statistic=942.5, pvalue=6.5526352124271008e-05)
 
-#### Global Burger vs Global Swipe Test \[result\]
+#### Global Burger vs Global Swipe Test (result)
 
 ##### burger vs swipe
 
@@ -1604,9 +1700,9 @@ Final Questionnaires
 
 ### Final Question 0
 
-#### Descriptions \[result\]
+#### Descriptions (result)
 
-##### Global Descriptions \[result\]
+##### Global Descriptions (result)
 
 ###### burger
 
@@ -1636,7 +1732,7 @@ max | 7.0 |
 normaltest\
 NormaltestResult(statistic=43.488260518740518, pvalue=3.6028336850503621e-10)
 
-#### Global Burger vs Global Swipe Test \[result\]
+#### Global Burger vs Global Swipe Test (result)
 
 ##### burger vs swipe
 
@@ -1644,9 +1740,9 @@ MannwhitneyuResult(statistic=302.5, pvalue=0.44941800310214225)
 
 ### Final Question 1
 
-#### Descriptions \[result\]
+#### Descriptions (result)
 
-##### Global Descriptions \[result\]
+##### Global Descriptions (result)
 
 ###### burger
 
@@ -1676,7 +1772,7 @@ max | 6.0 |
 normaltest\
 NormaltestResult(statistic=28.457743224410187, pvalue=6.6142342997665578e-07)
 
-#### Global Burger vs Global Swipe Test \[result\]
+#### Global Burger vs Global Swipe Test (result)
 
 ##### burger vs swipe
 
@@ -1684,9 +1780,9 @@ MannwhitneyuResult(statistic=281.0, pvalue=0.27788843237866634)
 
 ### Final Question 2
 
-#### Descriptions \[result\]
+#### Descriptions (result)
 
-##### Global Descriptions \[result\]
+##### Global Descriptions (result)
 
 ###### burger
 
@@ -1716,7 +1812,7 @@ max | 7.0 |
 normaltest\
 NormaltestResult(statistic=30.833945386464563, pvalue=2.0160153368124402e-07)
 
-#### Global Burger vs Global Swipe Test \[result\]
+#### Global Burger vs Global Swipe Test (result)
 
 ##### burger vs swipe
 
@@ -1724,9 +1820,9 @@ MannwhitneyuResult(statistic=255.5, pvalue=0.10358134878107761)
 
 ### Final Question 3
 
-#### Descriptions \[result\]
+#### Descriptions (result)
 
-##### Global Descriptions \[result\]
+##### Global Descriptions (result)
 
 ###### burger
 
@@ -1756,7 +1852,7 @@ max | 7.0 |
 normaltest\
 NormaltestResult(statistic=0.29622233841262957, pvalue=0.86233524448851595)
 
-#### Global Burger vs Global Swipe Test \[result\]
+#### Global Burger vs Global Swipe Test (result)
 
 ##### burger vs swipe
 
