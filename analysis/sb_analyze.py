@@ -1,18 +1,60 @@
 #!/usr/bin/env python3
 # -*- coding:utf8 -*-
-""" Executable """
+"""
+Description: Script for analyzing SwipingBurger results
+"""
+#  Imports {{{ #
 from __future__ import print_function
 import argparse
 import pandas as pd
+import sys
 from scipy import stats
+#  }}} Imports #
+#  Markdown Printing {{{ # 
+def print_md_table(df, append=False):
+    if not append:
+        print()
+    for key in df.keys():
+        print("|", " | ".join([key, str(df[key])]), '|')
 
-# {{{1 Helper Functions
-def print_section(header, fillchar="=", textwidth=80, **kwargs):
-    """ This is super fancy. """
-    filled = header + (textwidth - len(header)) * fillchar
-    print(filled, **kwargs)
+
+def print_md_header(level, *args):
+    print()
+    print("#" * level, *args)
 
 
+def print_md_paragraph(*args, lineblock=False, append=False):
+    if not append:
+        print()
+    if lineblock:
+        for arg in args:
+                print("|", arg)
+    else:
+        print(*args)
+
+
+def print_md_list(*args,
+                  bullet="*",
+                  indentlevel=0,
+                  shiftwidth=4,
+                  append=False,
+                  enum=False,
+                  compact=True):
+    indent = indentlevel * shiftwidth
+    if not append:
+        print()
+    if enum:
+        for idx, arg in enumerate(args):
+            if not compact:
+                print()
+            print(indent * " " + "{}.".format(idx+1), arg)
+    else:
+        for arg in args:
+            if not compact:
+                print()
+            print(indent * " " + bullet, arg)
+#  }}} markdown printing # 
+#  Dataframes {{{ # 
 def opt_interactions(row):
     """ Computes the optimal number of interactions """
     return 1 if row['navigation'] == 'burger' else abs(row['distance'])
@@ -22,35 +64,43 @@ def fail_interactions(row):
     """ Computes the number of fail interactions """
     return opt_interactions(row) - row['n_interactions']
 
+
 def success(row):
     return not fail_interactions(row)
 
-
+#  }}} dataframes # 
+#  Statistics {{{ # 
 def is_significant(pvalue, alpha=0.05):
     """ Return: Boolean significance value """
     return pvalue < alpha
 
-def dagostino_or_shapiro(data):
+
+def pearson_or_shapiro(data):
     """ Use D'agostino/Pearson if possible (n >= 20), else Shapiro"""
     return stats.normaltest(data) if len(data) >= 20 else stats.shapiro(data)
 
-def t_or_u(sample1,sample2):
+
+def t_or_u(x, y, norm_test=stats.shapiro, verbose=0):
     """ If both samples are normal distributed (tested via dagostino or
     shapiro), consult t-test, else consult u-test.
 
-    :sample1: array-like of sample 1 to comprae
+    :sample1: array-like of sample 1 to compare
     :sample2: array-like of sample 2 to compare
-    :returns: TODO
+    :normtest: Defaults to stats.shapiro, normtest(sample)[1] should return
+    pvalue
+    :returns: result of either the t-test or the u-test
 
-    UNUSED
     """
-    both_norm = is_significant(dagostino_or_shapiro(sample1)[1]) and\
-        is_significant(dagostino_or_shapiro(sample2)[1])
+    if norm_test is not None:
+        x_ntresult, y_ntresult = norm_test(x), norm_test(y)
+        t_ok = not is_significant(x_ntresult[1]) and not is_significant(y_ntresult[1])
+    else:
+        t_ok = True
 
-    testresult = stats.ttest_ind(sample1, sample2, equal_var=False)\
-            if both_norm else\
-            stats.mannwhitneyu(sample1, sample2)
+    testresult = stats.ttest_ind(x, y, equal_var=False)\
+        if t_ok else stats.mannwhitneyu(x, y)
     return testresult
+
 
 def split_groups(df, key, values=None, select=None):
     """Splits df on key and returns i < len(values) dataframes with
@@ -71,149 +121,158 @@ def split_groups(df, key, values=None, select=None):
         groups = [group[select] for group in groups]
 
     return groups
-#  1}}} #
-#  Task Questionnaire {{{1 #
-def analyze_task_questionnaire(df, verbose=0):
-    """Analyzes the task questionnaires and prints the results
 
-    :df: The dataframe to operate on
-    :returns: None
+def cross_compare(*samples, norm_test=stats.shapiro):
+    """cross_compare
+    :param *samples:
+    """
+    for i, (x_desc, x) in enumerate(samples):
+        for y_desc, y in samples[i+1:]:
+            yield (x_desc,y_desc), t_or_u(x, y, norm_test=norm_test)
+
+
+
+def one_vs_rest(one, *rest, norm_test=stats.shapiro):
+    """one_vs_rest
+
+    :param one:
+    :param *rest:
+    """
+    x_desc, x = one
+    for y_desc, y in rest:
+        yield ((x_desc, y_desc), t_or_u(x, y, norm_test=norm_test))
+
+
+#  }}} statistics # 
+#  Full Analysis {{{ # 
+def print_full_description(groups, norm_test=stats.shapiro, h=0):
+    """TODO: Docstring for print_descriptions.
+
+    :series: TODO
+    :returns: TODO
 
     """
-    for qid, question_df in df.groupby("qid"):
-        print_section("Question {}".format(qid))
-        burger_df, swipe_df = split_groups(df, 'navigation', ['burger',
-                                                                'swipe'])
-        # Repeated measures
-        # burger_tasks = [group["result"] for _, group in burger_df.groupby('tid')]
-        # swipe_tasks = [group["result"] for _, group in swipe_df.groupby('tid')]
-        burger_tasks = split_groups(burger_df, 'tid', select='result')
-        swipe_tasks = split_groups(swipe_df, 'tid', select='result')
+    for desc, sample in groups:
+        print_md_header(h, desc)
+        print_md_table(sample.describe())
+        if norm_test:
+            print_md_paragraph(norm_test.__name__,
+                            norm_test(sample),
+                            lineblock=True)
 
-        print("Repeated Measures burger:", stats.kruskal(*burger_tasks))
-        print("Repeated Measures swipe:", stats.kruskal(*swipe_tasks))
 
-        for (burger_tid, burger_task_df), (swipe_tid, swipe_task_df) in zip(burger_df.groupby("tid"),\
-                swipe_df.groupby("tid")):
-            burger_task, swipe_task = burger_task_df["result"],\
-                swipe_task_df["result"]
-            print_section("BURGER Task {} vs SWIPE Task {}".format(burger_tid,
-                                                                swipe_tid),
-                          fillchar="-")
-            if verbose:
-                print("Burger Description:", burger_task.describe(), sep="\n")
-                print("Swipe Description:", swipe_task.describe(), sep="\n")
+def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
+                        gd=True, sd=True, ffa=True, ovr=True, ovo=True):
+    """Performs a full analysis of the data
 
-            result = t_or_u(swipe_task, burger_task)
-            print("H0: %.2f[S] == %.2f[B]" % (swipe_task.median(),
-                                              burger_task.median()), result,
-                "Reject? %s" % is_significant(result[1]), sep="\n")
-#  Task Quesionnaire}}} #
-#  Final Questionnaire {{{ #
-def analyze_final_questionnaire(df, verbose=0):
-    for qid, question_df in df.groupby("qid"):
-        print_section("Question {}".format(qid))
-        burger, swipe = split_groups(question_df,
-                                       'navigation',
-                                       ['burger', 'swipe'],
-                                       'result')
+    :df: THE data frame
+    :field: field of interest such as 'time_ms' or 'success'
+    :by: perform grouping on this attribute (the higher level split on
+    "navigation" is always performed)
+    :h: header level to start with
+    :returns: nothing.
 
-        if verbose:
-            print_section("[Burger Description]", fillchar="-")
-            print(burger.describe())
+    """
+    if by is None:
+        sd = ffa = ovr = False
+    nav_methods = df.groupby("navigation")
+    if ffa or sd:
+        groups = df.groupby(["navigation", by])[field]
 
-        if verbose:
-            print_section("[Swipe Description]",fillchar="-")
-            print(swipe.describe())
+    print_md_header(h, "Descriptions ({})".format(field))
 
-        # burger_isnorm = is_significant(dagostino_or_shapiro(burger)[1])
-        # swipe_isnorm = is_significant(dagostino_or_shapiro(swipe)[1])
+    # Global Descriptions
+    if gd:
+        print_md_header(h+1, "Global Descriptions ({})".format(field))
+        print_full_description(nav_methods[field],h=h+2, norm_test=nt)
+    if sd:
+        print_md_header(h+1, "Repeated measures ({})".format(field))
+        for desc, group in nav_methods:
+            subgroups = [values for _, values in group.groupby(by)[field]]
+            print_md_header(h+2, desc)
+            print_md_paragraph(stats.friedmanchisquare.__name__,
+                               stats.friedmanchisquare(*subgroups),
+                               lineblock=True)
+        print_md_header(h+1, "Descriptions per {} ({})".format(by, field))
+        print_full_description(groups, h=h+2, norm_test=nt)
 
-        print_section("[Swipe vs Burger]", fillchar="-")
-        # result = stats.mannwhitneyu(swipe, burger)
-        result = t_or_u(swipe,burger)
-        print("H0: %.2f[S] == %.2f[B]" % (swipe.mean(),
-                                            burger.mean()), result,
-            "Reject? %s" % is_significant(result[1]), sep="\n")
+    # free for all
+    if ffa:
+        print_md_header(h, "Cross-compare Tests per {} ({})".format(by, field))
+        for desc, result in cross_compare(*groups, norm_test=nt):
+            print_md_header(h+1, "{} vs {}".format(*desc))
+            print_md_paragraph(result)
 
-#  }}} Final Questionnaire #
-#  Efficiency {{{ #
-def analyze_efficiency(df, verbose=0):
-    burger_df, swipe_df = split_groups(df, 'navigation', ['burger', 'swipe'])
+    # one vs rest
+    if ovr:
+        print_md_header(h, "Global Burger vs Swipe per {} Tests ({})".format(by, field))
+        burger = "burger", nav_methods.get_group("burger")[field]
+        swipe_tasks = nav_methods.get_group("swipe").groupby(by)[field]
+        for desc, result in one_vs_rest(burger, *swipe_tasks,
+                                        norm_test=nt):
+            print_md_header(h+1, "{} vs swipe {}".format(*desc))
+            print_md_paragraph(result)
 
-    print("%d BURGERS vs %d SWIPERS" % (len(burger_df.groupby('pid')),
-                                        len(swipe_df.groupby('pid'))))
-    print_section("[BURGER over all Tasks]")
-
-    burger_tasks = split_groups(burger_df, 'tid', select='time_ms')
-    # alternatives: repeated measures anova, friedmann test
-    print("Repeated Measures:")
-    print(stats.kruskal(*burger_tasks))
-    print(stats.friedmanchisquare(*burger_tasks))
-
-    burger = burger_df["time_ms"]
-    normality_test = dagostino_or_shapiro(burger)
-    burger_isnorm = is_significant(normality_test[1])
-    print("Normality:", normality_test, burger_isnorm)
-    burger_mean = burger.mean()
-
-    if verbose:
-        print("Description:", burger.describe(), sep="\n")
-
-    for tid, swipe_task_df in swipe_df.groupby("tid"):
-        print_section("[Swipe Task {}]".format(tid), fillchar="=")
-        if 'distance' in swipe_task_df:
-            d = swipe_task_df["distance"].abs().mean()
-            print("mean distance=%1.f]" % d)
-        swipe_task = swipe_task_df["time_ms"]
-        if verbose:
-            print("Description:", swipe_task.describe(), sep="\n")
-            normality_test = dagostino_or_shapiro(swipe_task)
-            swipe_task_isnorm = is_significant(normality_test[1])
-            print("Normality:", normality_test, swipe_task_isnorm)
-
-        result = t_or_u(swipe_task, burger)
-        print("H0: %.2f[S] == %.2f[B]" % (swipe_task.mean(), burger_mean), result,
-              "Reject? %s" % is_significant(result[1]), sep="\n")
-#  }}} Efficiency #
-#  Effectiveness {{{ #
-def analyze_effectiveness(df, verbose=0):
-    df['success'] = df.apply(success, axis=1)
-    burger, swipe = split_groups(df,
-                                   'navigation',
-                                   ['burger', 'swipe'],
-                                   'success')
-    if verbose:
-        print("Burger Description", burger.describe(), end="\n")
-        print("Swipe Description", swipe.describe(), end="\n")
-
-    result = t_or_u(swipe,burger)
-    print_section("Effectiveness")
-    print("H0: %.4f[S] == %.4f[B]" % (swipe.mean(),
-                                        burger.mean()), result,
-        "Reject? %s" % is_significant(result[1]), sep="\n")
-#  }}} Effectiveness #
-#  By Distance {{{ # 
-def analyze_by_distance(df, verbose=0):
-    # TODO
-    pass
-#  }}} By Distance # 
-# {{{1 main
+    # one vs one
+    if ovo:
+        print_md_header(h,
+                        "Global Burger vs Global Swipe Test ({})".format(field))
+        for desc, result in cross_compare(*nav_methods[field],
+                                          norm_test=nt):
+            print_md_header(h+1, "{} vs {}".format(*desc))
+            print_md_paragraph(result)
+#  }}} Main Printers # 
+#  Main {{{ #
 def main():
-    """ Main Function """
+    """main"""
+    norm_tests = { "shapiro" : stats.shapiro,
+                  "pearson" : stats.normaltest,
+                  "sop" : pearson_or_shapiro,
+                  "None" : None }
     parser = argparse.ArgumentParser()
-    parser.add_argument("file",
-                        nargs='+',
-                        type=argparse.FileType('r'))
-    parser.add_argument("-v", "--verbose", action="count", default=0)
+    parser.add_argument("file", nargs='+', type=argparse.FileType('r'),
+                        help="Specify experiment results file")
+    parser.add_argument("-d","--distance", action='store_true', dest='distance',
+                        default=False,
+                        help="Also analyze by distance instead of task id")
+    parser.add_argument("-D", type=argparse.FileType('r'), dest='demographics',
+                        default=None, nargs='+',
+                        help="Also analyze demographics")
+    parser.add_argument("-q", nargs='+', dest="task_q",
+                        type=argparse.FileType('r'), help="Specify files for\
+                        task questionnaire analysis.")
+    parser.add_argument("-Q", nargs='+', dest="final_q",
+                        type=argparse.FileType('r'), help="Specify files for\
+                        final questionnaire analysis.")
+    parser.add_argument("-n", type=str, dest="norm_test", default="shapiro",
+                        choices=norm_tests.keys(),
+                        help="Specify normality test, 'None' forces t-test")
     args = parser.parse_args()
-    print("Loading files", *(f.name for f in args.file))
+
+    print_md_header(1, "Analysis")
+    print_md_header(2, "Preprocessing")
+    # print_md_paragraph(args, sys.stderr)
+    print_md_list(*[f.name for f in args.file])
     df = pd.concat(pd.read_csv(f) for f in args.file)
-    print(df.shape)
+    if args.task_q:
+        print_md_list(*[f.name for f in args.task_q], append=True)
+        df_q = pd.concat(pd.read_csv(f) for f in args.task_q)
+    if args.final_q:
+        print_md_list(*[f.name for f in args.final_q], append=True)
+        df_Q = pd.concat(pd.read_csv(f) for f in args.final_q)
+    if args.demographics:
+        print_md_list(*[f.name for f in args.demographics], append=True)
+        df_D = pd.concat(pd.read_csv(f) for f in args.demographics)
+
 
     # TID 0 is training.
-    if "tid" in df:
-        df = df[df["tid"] != 0]
+    print_md_paragraph("Dropping Task ID 0 (Training)")
+    df = df[df["tid"] != 0]
+    if args.task_q:
+        df_q = df_q[df_q["tid"] != 0]
+
+    print_md_paragraph("Asserting Absolute Distance Values!")
+    df["distance"] = df["distance"].abs()
 
     # assert that we have the same number of samples for each pid, tid per
     # navigation method, ...
@@ -221,22 +280,60 @@ def main():
            len(pd.unique([len(group) for _, group in df.groupby(field)])) == 1
            for field in ["pid"]}
 
-    print("Dataset Validation:", chk)
+    print_md_paragraph("Dataset Validation:", chk.items(), lineblock=True)
 
-    if "time_ms" in df:
-        analyze_efficiency(df, verbose=args.verbose)
-        analyze_effectiveness(df, verbose=args.verbose)
-    if "result" in df:
-        if"tid" in df:
-            analyze_task_questionnaire(df, verbose=args.verbose)
-        else:
-            analyze_final_questionnaire(df, verbose=args.verbose)
+    print_md_paragraph("Adding success column based on",
+                        "`opt_interactions == interactions`",
+                       "in order to measure effectiveness.",
+                        lineblock=True)
+    df['success'] = df.apply(success, axis=1)
+
+    print_md_paragraph("Aggregating Task Groups", lineblock=True)
+    df_by_tid = df.groupby(["navigation","pid","tid"]).mean().reset_index()
+
+    norm_test = norm_tests[args.norm_test]
+    if norm_test is not None:
+        print_md_paragraph("Using normality test: {}".format(norm_test.__name__))
+    else:
+        print_md_paragraph("No normality test, *Forcing t-test*!")
+
+    if args.demographics:
+        print_md_header(2, "Demographics")
+        print_md_header(3, "age")
+        print_md_table(df_D["age"].describe())
+        for attribute in ["sex","job", "smartphone", "comments"]:
+            print_md_header(3, attribute)
+            print_md_paragraph(*[(desc, len(subdf)) for desc, subdf in
+                                df_D.groupby(attribute)], lineblock=True)
+
+    print_md_header(2, "Efficiency by Tasks")
+    print_full_analysis(df_by_tid, "time_ms", h=3, by="tid", nt=norm_test)
+
+    print_md_header(2, "Effectiveness by Tasks")
+    print_full_analysis(df_by_tid, "success", h=3, by="tid", nt=norm_test)
+
+    if args.distance:
+        print_md_header(2, "Efficiency by Distances")
+        print_full_analysis(df, "time_ms", h=3, by="distance", ovo=False,
+                            nt=norm_test)
+
+    if args.task_q:
+        print_md_header(2, "Task Questionnaires")
+        for desc, q in df_q.groupby("qid"):
+            print_md_header(3, "Task Question {}".format(desc))
+            print_full_analysis(q, "result", h=4, by="tid", nt=norm_test)
+
+    if args.final_q:
+        print_md_header(2, "Final Questionnaires")
+        for desc, fq in df_Q.groupby("qid"):
+            print_md_header(3, "Final Question {}".format(desc))
+            print_full_analysis(fq, "result", h=4, by=None, sd=False, ffa=False,
+                                ovr=False, nt=norm_test)
 
     exit(0)
 
 
 if __name__ == '__main__':
     main()
-# }}}1
-
+#  }}} Main #
 # vim: set fdm=marker:
