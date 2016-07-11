@@ -47,6 +47,7 @@
 \documentclass{sig-alternate-05-2015}
 
 \usepackage{graphicx}
+\usepackage{booktabs}
 \newcommand{\todo}{\textbf{TODO:} \textbf}
 
 \begin{document}
@@ -334,12 +335,7 @@ of future e-learning apps.
 In order to simulate the scenarios of jumping from one question to another, we develop a series of treasure hunt like tasks. Here, the goal is to find the treasure which is hidden behind a door. A door is represented by a page. The application was developed for Android devices.
 
 First of all an initial page containing the identification number of the participant is shown so the task can be linked to the demographic questionnaire at the very end. Starting at the first page, an instruction displayed on the bottom of the screen guides the participant to the next one by exactly telling them the number of the next door. Now the participant has the possibility to navigate to the next door by swiping left or right, or using the hamburger menu (Figure \ref{fig:sequence}) on the upper left corner. The navigation method depends on the group in which they are located. When the participant has open the respective door, the next instruction is displayed. The distance $d$ to cover from one door to another is always about the same ($d \pm 1$\textit{, see Section \ref{sec:task}}) within the same task. However, the distances differ for different tasks. Consider the example in Figure \ref{fig:jump} which has distance of two. The arrows indicate the door to open in the next step and the arrow captions show the jump distance. Hence, the sequence of doors to open in order to reach the treasure is 2, 4, 1, 3, 5, 6.
-\begin{figure}
-	\centering
-	\includegraphics[width=0.45\textwidth]{pics/jump.pdf}
-	\caption{Example of a distance-two-jump}
-	\label{fig:jump}
-\end{figure}
+\todo{Picture?}
 The tasks cannot be failed to be completed because there is no way to open the doors in the wrong order. The participant has to complete a training set and five task sets. Every set consists of five jumping instructions. After each set the participant has to answer two questions (see Section \ref{sec:measurements}) and at the very end there will be a questionnaire of four questions.
 \begin{figure}
 	\centering
@@ -438,14 +434,41 @@ Question (1) and (2) serve the purposes to check whether the quality the experim
 due to participants' fatigue, respectively. \todo{What is question (3) good for?} Question (4) directly assesses the overall satisfaction with the navigation method.
 \todo{Why is final question (4) different to task question (2)?}
 \section{Evaluation Results}
+Our main focus in this research is on comparing the two navigation methods when the distance is equal. For additional results please see the Appendix. 
+The results are shown in Figure \ref{fig:burger-vs-swipe}. As the effectiveness is dichotomous data, we apply
+a Chi-Square test \todo{verify} in order to check for significance. The degrees of freedom were \todo{todo (it's always the same, right?)} in all cases.
+We report the following data in this order:
+relative frequency of optimally solved tasks with burger menu, relative frequency of optimally solved tasks with swipe gestures, observed chi-square value, 
+significance level p, and effect size \todo{what metric?}. In order to test for significant differences in the efficiency, we first apply \todo{test for
+normality} to test for normality and apply a t-test (marked with *) if we \todo{can or cannot reject something, depending on what test is used.} for both groups.
+In the case of a t-test, we report the following data in this order: t value, significance level p and effect size \todo{Again, which measure if there are multiple
+options}. The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same?}.
+In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with ~), in which case z value, significance level p, and effect size are provided.
+\begin{table}[!h]
+\centering
+\caption{Comparing burger and swipe for same d}
+\label{fig:burger-vs-swipe}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{@{}c|c|c|c@{}}
+\toprule
+d & effectiveness & efficiency & satisfaction   \\
+\midrule 2 & f1 / f2 / X2 / p / d & * t, p, d &         \\
+\midrule 5 & & ~ z, p, d &         \\
+\midrule 8 & & &         \\
+\midrule 11 & & &         \\
+\midrule 14 & & &         \\
+\end{tabular}}
+\end{table}
+
 \subsection{Effectiveness}
-
+Overall, 97.8\% of the tasks were solved optimally with burger menu and 93.4\% were solved optimally with swipe gestures.
 \subsection{Efficiency}
-
+mean and stuff
 \subsection{Satisfaction}
-
+mode, median, and stuff
 \section{Discussion}
 \subsection{Effectiveness}
+Maybe effectiveness doesn't have a large meaning the way we defined it? 
 \subsection{Efficiency}
 \subsection{Satisfaction}
 Task question 1 should maybe have been more specific? Final questions (3) and (4) too similar, hard to distinguish (that was a participant's comment)?
