@@ -1,17 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding:utf8 -*-
-"""
-Description: Script for analyzing SwipingBurger results
-"""
-#  Imports {{{ #
+'''
+File    : sb_analyze.py
+Author  : Lukas Galke
+Contact : vim@lpag.de
+Date    : 2016 Jul 11
+
+Description : Script for analyzing SwipingBurger results
+'''
 from __future__ import print_function
 import argparse
 import pandas as pd
-import sys
 from scipy import stats
-#  }}} Imports #
-#  Markdown Printing {{{ # 
+
+
 def print_md_table(df, append=False):
+    """print_md_table
+
+    :param df:
+    :param append:
+    """
     if not append:
         print()
     for key in df.keys():
@@ -19,27 +27,50 @@ def print_md_table(df, append=False):
 
 
 def print_md_header(level, *args):
+    """print_md_header
+
+    :param level:
+    :param *args:
+    """
     print()
     print("#" * level, *args)
 
 
-def print_md_paragraph(*args, lineblock=False, append=False):
+def print_md_paragraph(*args, **kwargs):
+    """print_md_paragraph
+
+    :param *args:
+    :param lineblock:
+    :param append:
+    """
+    lineblock = kwargs.pop('lineblock', False)
+    append = kwargs.pop('append', False)
     if not append:
         print()
     if lineblock:
         for arg in args:
-                print("|", arg)
+            print("|", arg)
     else:
         print(*args)
 
 
-def print_md_list(*args,
-                  bullet="*",
-                  indentlevel=0,
-                  shiftwidth=4,
-                  append=False,
-                  enum=False,
-                  compact=True):
+def print_md_list(*args, **kwargs):
+    bullet = kwargs.pop('bullet', "*")
+    indentlevel = kwargs.pop('indentlevel', 0)
+    shiftwidth = kwargs.pop('shiftwidth', 4)
+    append = kwargs.pop('append', False)
+    enum = kwargs.pop('enum', False)
+    compact = kwargs.pop('compact', True)
+    """print_md_list
+
+    :param *args:
+    :param bullet:
+    :param indentlevel:
+    :param shiftwidth:
+    :param append:
+    :param enum:
+    :param compact:
+    """
     indent = indentlevel * shiftwidth
     if not append:
         print()
@@ -53,30 +84,55 @@ def print_md_list(*args,
             if not compact:
                 print()
             print(indent * " " + bullet, arg)
-#  }}} markdown printing # 
-#  Dataframes {{{ # 
+
+
 def opt_interactions(row):
-    """ Computes the optimal number of interactions """
+    """opt_interactions
+    Computes the optimal number of interactions
+    :param row:
+    """
     return 1 if row['navigation'] == 'burger' else abs(row['distance'])
 
 
 def fail_interactions(row):
-    """ Computes the number of fail interactions """
+    """fail_interactions
+    Computes the number of fail interactions
+    :param row:
+    """
     return opt_interactions(row) - row['n_interactions']
 
 
-def success(row):
+def effectiveness(row):
+    """success
+
+    :param row:
+    """
     return not fail_interactions(row)
 
-#  }}} dataframes # 
-#  Statistics {{{ # 
+
+def efficiency(row):
+    """efficiency
+
+    :param row:
+    """
+    return row['effectiveness'] / row['time_ms']
+
+
 def is_significant(pvalue, alpha=0.05):
-    """ Return: Boolean significance value """
+    """is_significant
+
+    :param pvalue:
+    :param alpha:
+    """
     return pvalue < alpha
 
 
 def pearson_or_shapiro(data):
-    """ Use D'agostino/Pearson if possible (n >= 20), else Shapiro"""
+    """pearson_or_shapiro
+
+    Use D'agostino/Pearson if possible (n >= 20), else Shapiro
+    :param data:
+    """
     return stats.normaltest(data) if len(data) >= 20 else stats.shapiro(data)
 
 
@@ -93,7 +149,9 @@ def t_or_u(x, y, norm_test=stats.shapiro, verbose=0):
     """
     if norm_test is not None:
         x_ntresult, y_ntresult = norm_test(x), norm_test(y)
-        t_ok = not is_significant(x_ntresult[1]) and not is_significant(y_ntresult[1])
+        t_ok = not is_significant(
+            x_ntresult[1], 0.05) and not is_significant(
+            y_ntresult[1], 0.05)
     else:
         t_ok = True
 
@@ -122,29 +180,29 @@ def split_groups(df, key, values=None, select=None):
 
     return groups
 
-def cross_compare(*samples, norm_test=stats.shapiro):
+
+def cross_compare(*samples, **kwargs):
     """cross_compare
     :param *samples:
     """
+    norm_test = kwargs.pop('norm_test', stats.shapiro)
     for i, (x_desc, x) in enumerate(samples):
         for y_desc, y in samples[i+1:]:
-            yield (x_desc,y_desc), t_or_u(x, y, norm_test=norm_test)
+            yield (x_desc, y_desc), t_or_u(x, y, norm_test=norm_test)
 
 
-
-def one_vs_rest(one, *rest, norm_test=stats.shapiro):
+def one_vs_rest(one, *rest, **kwargs):
     """one_vs_rest
 
     :param one:
     :param *rest:
     """
+    norm_test = kwargs.pop('norm_test', stats.shapiro)
     x_desc, x = one
     for y_desc, y in rest:
         yield ((x_desc, y_desc), t_or_u(x, y, norm_test=norm_test))
 
 
-#  }}} statistics # 
-#  Full Analysis {{{ # 
 def print_full_description(groups, norm_test=stats.shapiro, h=0):
     """TODO: Docstring for print_descriptions.
 
@@ -157,8 +215,8 @@ def print_full_description(groups, norm_test=stats.shapiro, h=0):
         print_md_table(sample.describe())
         if norm_test:
             print_md_paragraph(norm_test.__name__,
-                            norm_test(sample),
-                            lineblock=True)
+                               norm_test(sample),
+                               lineblock=True)
 
 
 def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
@@ -184,14 +242,15 @@ def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
     # Global Descriptions
     if gd:
         print_md_header(h+1, "Global Descriptions ({})".format(field))
-        print_full_description(nav_methods[field],h=h+2, norm_test=nt)
+        print_full_description(nav_methods[field], h=h+2, norm_test=nt)
     if sd:
         print_md_header(h+1, "Repeated measures ({})".format(field))
         for desc, group in nav_methods:
             subgroups = [values for _, values in group.groupby(by)[field]]
             print_md_header(h+2, desc)
-            print_md_paragraph(stats.friedmanchisquare.__name__,
+            print_md_paragraph(stats.kruskal(*subgroups),
                                stats.friedmanchisquare(*subgroups),
+                               # stats.f_oneway(*subgroups),
                                lineblock=True)
         print_md_header(h+1, "Descriptions per {} ({})".format(by, field))
         print_full_description(groups, h=h+2, norm_test=nt)
@@ -205,7 +264,9 @@ def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
 
     # one vs rest
     if ovr:
-        print_md_header(h, "Global Burger vs Swipe per {} Tests ({})".format(by, field))
+        print_md_header(
+            h, "Global Burger vs Swipe per {} Tests ({})".format(
+                by, field))
         burger = "burger", nav_methods.get_group("burger")[field]
         swipe_tasks = nav_methods.get_group("swipe").groupby(by)[field]
         for desc, result in one_vs_rest(burger, *swipe_tasks,
@@ -216,25 +277,30 @@ def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
     # one vs one
     if ovo:
         print_md_header(h,
-                        "Global Burger vs Global Swipe Test ({})".format(field))
+                        "Global Burger vs Global Swipe Test ({})"
+                        .format(field))
         for desc, result in cross_compare(*nav_methods[field],
                                           norm_test=nt):
             print_md_header(h+1, "{} vs {}".format(*desc))
             print_md_paragraph(result)
-#  }}} Main Printers # 
-#  Main {{{ #
+
+
 def main():
     """main"""
-    norm_tests = { "shapiro" : stats.shapiro,
-                  "pearson" : stats.normaltest,
-                  "sop" : pearson_or_shapiro,
-                  "None" : None }
+    norm_tests = {"shapiro": stats.shapiro,
+                  "pearson": stats.normaltest,
+                  "sop": pearson_or_shapiro,
+                  "None": None}
     parser = argparse.ArgumentParser()
     parser.add_argument("file", nargs='+', type=argparse.FileType('r'),
                         help="Specify experiment results file")
-    parser.add_argument("-d","--distance", action='store_true', dest='distance',
-                        default=False,
-                        help="Also analyze by distance instead of task id")
+    parser.add_argument(
+        "-d",
+        "--distance",
+        action='store_true',
+        dest='distance',
+        default=False,
+        help="Also analyze by distance instead of task id")
     parser.add_argument("-D", type=argparse.FileType('r'), dest='demographics',
                         default=None, nargs='+',
                         help="Also analyze demographics")
@@ -264,7 +330,6 @@ def main():
         print_md_list(*[f.name for f in args.demographics], append=True)
         df_D = pd.concat(pd.read_csv(f) for f in args.demographics)
 
-
     # TID 0 is training.
     print_md_paragraph("Dropping Task ID 0 (Training)")
     df = df[df["tid"] != 0]
@@ -283,17 +348,27 @@ def main():
     print_md_paragraph("Dataset Validation:", chk.items(), lineblock=True)
 
     print_md_paragraph("Adding success column based on",
-                        "`opt_interactions == interactions`",
+                       "`opt_interactions == interactions`",
                        "in order to measure effectiveness.",
-                        lineblock=True)
-    df['success'] = df.apply(success, axis=1)
+                       lineblock=True)
+
+    df["effectiveness"] = df.apply(effectiveness, axis=1)
 
     print_md_paragraph("Aggregating Task Groups", lineblock=True)
-    df_by_tid = df.groupby(["navigation","pid","tid"]).mean().reset_index()
+    df_by_tid = df.groupby(["navigation", "pid", "tid"]).mean().reset_index()
+    df_by_tid = df_by_tid.drop("jid", axis=1)
+    df_by_tid = df_by_tid.drop("pid", axis=1)
+
+    print_md_paragraph("Computing efficiency over task mean_success/time_ms",
+                       lineblock=True)
+    df_by_tid['efficiency'] = df.apply(efficiency, axis=1)
+    print(df_by_tid.keys())
 
     norm_test = norm_tests[args.norm_test]
     if norm_test is not None:
-        print_md_paragraph("Using normality test: {}".format(norm_test.__name__))
+        print_md_paragraph(
+            "Using normality test: {}".format(
+                norm_test.__name__))
     else:
         print_md_paragraph("No normality test, *Forcing t-test*!")
 
@@ -301,20 +376,24 @@ def main():
         print_md_header(2, "Demographics")
         print_md_header(3, "age")
         print_md_table(df_D["age"].describe())
-        for attribute in ["sex","job", "smartphone", "comments"]:
+        for attribute in ["sex", "job", "smartphone", "comments"]:
             print_md_header(3, attribute)
             print_md_paragraph(*[(desc, len(subdf)) for desc, subdf in
-                                df_D.groupby(attribute)], lineblock=True)
+                                 df_D.groupby(attribute)], lineblock=True)
 
     print_md_header(2, "Efficiency by Tasks")
-    print_full_analysis(df_by_tid, "time_ms", h=3, by="tid", nt=norm_test)
+    print_full_analysis(df_by_tid, "efficiency", h=3, by="tid", nt=norm_test)
 
     print_md_header(2, "Effectiveness by Tasks")
-    print_full_analysis(df_by_tid, "success", h=3, by="tid", nt=norm_test)
+    print_full_analysis(df_by_tid,
+                        "effectiveness",
+                        h=3,
+                        by="tid",
+                        nt=norm_test)
 
     if args.distance:
         print_md_header(2, "Efficiency by Distances")
-        print_full_analysis(df, "time_ms", h=3, by="distance", ovo=False,
+        print_full_analysis(df, "efficiency", h=3, by="distance", ovo=False,
                             nt=norm_test)
 
     if args.task_q:
@@ -327,13 +406,10 @@ def main():
         print_md_header(2, "Final Questionnaires")
         for desc, fq in df_Q.groupby("qid"):
             print_md_header(3, "Final Question {}".format(desc))
-            print_full_analysis(fq, "result", h=4, by=None, sd=False, ffa=False,
+            print_full_analysis(fq, "result", h=4, by=None, sd=False,
+                                ffa=False,
                                 ovr=False, nt=norm_test)
 
     exit(0)
-
-
 if __name__ == '__main__':
     main()
-#  }}} Main #
-# vim: set fdm=marker:

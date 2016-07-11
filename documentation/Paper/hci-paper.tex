@@ -335,7 +335,12 @@ of future e-learning apps.
 In order to simulate the scenarios of jumping from one question to another, we develop a series of treasure hunt like tasks. Here, the goal is to find the treasure which is hidden behind a door. A door is represented by a page. The application was developed for Android devices.
 
 First of all an initial page containing the identification number of the participant is shown so the task can be linked to the demographic questionnaire at the very end. Starting at the first page, an instruction displayed on the bottom of the screen guides the participant to the next one by exactly telling them the number of the next door. Now the participant has the possibility to navigate to the next door by swiping left or right, or using the hamburger menu (Figure \ref{fig:sequence}) on the upper left corner. The navigation method depends on the group in which they are located. When the participant has open the respective door, the next instruction is displayed. The distance $d$ to cover from one door to another is always about the same ($d \pm 1$\textit{, see Section \ref{sec:task}}) within the same task. However, the distances differ for different tasks. Consider the example in Figure \ref{fig:jump} which has distance of two. The arrows indicate the door to open in the next step and the arrow captions show the jump distance. Hence, the sequence of doors to open in order to reach the treasure is 2, 4, 1, 3, 5, 6.
-\todo{Picture?}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.45\textwidth]{pics/jump}
+	\label{fig:jump}
+	\caption{Example of a distance-two-jump}
+\end{figure}
 The tasks cannot be failed to be completed because there is no way to open the doors in the wrong order. The participant has to complete a training set and five task sets. Every set consists of five jumping instructions. After each set the participant has to answer two questions (see Section \ref{sec:measurements}) and at the very end there will be a questionnaire of four questions.
 \begin{figure}
 	\centering
