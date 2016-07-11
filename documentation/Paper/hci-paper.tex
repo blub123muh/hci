@@ -408,11 +408,12 @@ For the concrete tasks, please see the appendix.
 As stated above, we aim to measure the common three dependent variables efficiency, satisfaction, and effectiveness of each of the two navigation methods.
 \paragraph{Effectiveness}
 During the experiment, the application tracks how often the page is changed by the user, that is by either swiping or selecting a different page in the menu. 
-Let $n_{interactions}$ be that number.
-Given some task that requires $s$ jumps and has an average distance $d$, the optimal number $n_{opt}$ of interactions
-page changes required equals $s$ for the burger menu navigation and $s * d$ for the swipe gesture navigation. As a measure of 
-effectiveness, we measure how often unnecessary page changes were made, that is, we consider a task to be successfully completed 
-when $n_{opt} = n_{interactions}$. The effectiveness results as the ratio of successfully completed tasks and total number of tasks.
+Given some task that requires 5 jumps, where the distances to cover in the jumps are given as $d_i, 1 \leq i \leq 5$, let $n_{interactions_i}$ be the number
+of page changes by the user for jump $i$.
+The optimal number $n_{opt_i}$ of
+page changes required equals $1$ for the burger menu navigation and $d_1$ for the swipe gesture navigation. As a measure of 
+effectiveness, we measure in how many of the jumps unnecessary page changes were made, that is, the effectiveness for a task
+equals $\frac{|\{i \in \{1,\ldots,5\} | n_{interactions_i} = n_{opt_i} \}|}{5}$.
 \paragraph{Efficiency} For the efficiency, we measure the time required to open the door which has to be opened next. We start measuring at the point
 when the instruction which door to open next is first displayed.
 \paragraph{Satisfaction}
@@ -434,16 +435,14 @@ Question (1) and (2) serve the purposes to check whether the quality the experim
 due to participants' fatigue, respectively. \todo{What is question (3) good for?} Question (4) directly assesses the overall satisfaction with the navigation method.
 \todo{Why is final question (4) different to task question (2)?}
 \section{Evaluation Results}
-Our main focus in this research is on comparing the two navigation methods when the distance is equal. For additional results please see the Appendix. 
-The results are shown in Figure \ref{fig:burger-vs-swipe}. As the effectiveness is dichotomous data, we apply
-a Chi-Square test \todo{verify} in order to check for significance. The degrees of freedom were \todo{todo (it's always the same, right?)} in all cases.
-We report the following data in this order:
-relative frequency of optimally solved tasks with burger menu, relative frequency of optimally solved tasks with swipe gestures, observed chi-square value, 
-significance level p, and effect size \todo{what metric?}. In order to test for significant differences in the efficiency, we first apply \todo{test for
+Our main focus in this research is on comparing the two navigation methods when the distance is equal.
+The results are shown in Table \ref{fig:burger-vs-swipe}. For additional results please see the Appendix. 
+In order to test for significant differences in any of the independent variables, we first apply \todo{test for
 normality} to test for normality and apply a t-test (marked with *) if we \todo{can or cannot reject something, depending on what test is used.} for both groups.
 In the case of a t-test, we report the following data in this order: t value, significance level p and effect size \todo{Again, which measure if there are multiple
 options}. The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same?}.
 In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with ~), in which case z value, significance level p, and effect size are provided.
+
 \begin{table}[!h]
 \centering
 \caption{Comparing burger and swipe for same d}
@@ -452,8 +451,8 @@ In the case where the test for normality fails, we apply a Mann-Whitney-U test (
 \begin{tabular}{@{}c|c|c|c@{}}
 \toprule
 d & effectiveness & efficiency & satisfaction   \\
-\midrule 2 & f1 / f2 / X2 / p / d & * t, p, d &         \\
-\midrule 5 & & ~ z, p, d &         \\
+\midrule 2 & ~ z, p, d & * t, p, d &         \\
+\midrule 5 & * t, p, d & ~ z, p, d &         \\
 \midrule 8 & & &         \\
 \midrule 11 & & &         \\
 \midrule 14 & & &         \\
@@ -461,14 +460,22 @@ d & effectiveness & efficiency & satisfaction   \\
 \end{table}
 
 \subsection{Effectiveness}
-Overall, 97.8\% of the tasks were solved optimally with burger menu and 93.4\% were solved optimally with swipe gestures.
+Overall, \todo{how much?} \% of the tasks were solved optimally with burger menu and \todo{how much?} \% were solved optimally with swipe gestures. For burger menu navigation, 
+Table \ref{fig:burger-vs-swipe} shows that the error rates were slightly lower for task 1 and task 5 than for the others. However, the differences
+are not significant (see Appendix). For the swipe navigation, the error rate of task 1 is significantly lower than the error rates of all the other
+tasks (Table \todo{make table where swipe stuff is compared}). These are the only significances when comparing swipe among different distances. When
+comparing both navigation methods applied to the same distances, significantly less errors are produced with burger menu on task 3, 4, and 5, but not on tasks 1 and 2.
 \subsection{Efficiency}
 mean and stuff
 \subsection{Satisfaction}
 mode, median, and stuff
 \section{Discussion}
 \subsection{Effectiveness}
-Maybe effectiveness doesn't have a large meaning the way we defined it? 
+Maybe effectiveness doesn't have a large meaning the way we defined it? Making an error may be less of an issue because it takes away less time.
+
+Explain relatively large success rates for task 1 and 5 (burger).
+Results may indicate that swipe is preferable for small distances, because error rate is rather low and making an error may potentially be not as bad
+with swipe. Recall no significant differences between burger and swipe. 
 \subsection{Efficiency}
 \subsection{Satisfaction}
 Task question 1 should maybe have been more specific? Final questions (3) and (4) too similar, hard to distinguish (that was a participant's comment)?
