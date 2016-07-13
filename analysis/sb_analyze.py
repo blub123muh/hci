@@ -11,7 +11,10 @@ Description : Script for analyzing SwipingBurger results
 from __future__ import print_function
 import argparse
 import pandas as pd
+import sys
 from scipy import stats
+import matplotlib.pyplot as plt
+
 
 
 def print_md_table(df, append=False):
@@ -107,7 +110,7 @@ def effectiveness(row):
 
     :param row:
     """
-    return not fail_interactions(row)
+    return 0 if fail_interactions(row) else 1
 
 
 def efficiency(row):
@@ -136,7 +139,7 @@ def pearson_or_shapiro(data):
     return stats.normaltest(data) if len(data) >= 20 else stats.shapiro(data)
 
 
-def t_or_u(x, y, norm_test=stats.shapiro, verbose=0):
+def t_or_u(x, y, norm_test=stats.shapiro, verbose=0, dependent=False):
     """ If both samples are normal distributed (tested via dagostino or
     shapiro), consult t-test, else consult u-test.
 
@@ -155,9 +158,34 @@ def t_or_u(x, y, norm_test=stats.shapiro, verbose=0):
     else:
         t_ok = True
 
-    testresult = stats.ttest_ind(x, y, equal_var=False)\
-        if t_ok else stats.mannwhitneyu(x, y)
-    return testresult
+    n1, n2 = len(x), len(y)
+    N = n1 + n2
+
+    result = {"N": N, "n1": n1, "n2": n2}
+    if t_ok:
+        # levene = stats.levene(x, y, center='mean')
+        # eqvar = not is_significant(levene[1])
+        testresult = stats.ttest_rel(x, y) if dependent else\
+            stats.ttest_ind(x, y, equal_var=False)
+        effect_size = testresult[0] * (1/len(x)+1/len(y))**0.5
+        # result['levene'] = levene
+        # result['equal_var'] = eqvar
+    else:
+        # no normal distributions
+        if dependent:
+            # dependent samples
+            print(x.shape, y.shape, file=sys.stderr)
+            testresult = stats.wilcoxon(x, y, zero_method='pratt')
+            effect_size = 2 * testresult[0] / (N*N+1)
+        else:
+            # independent samples
+            testresult = stats.mannwhitneyu(x, y)
+            effect_size = 1 - 2 * testresult[0] / (n1 * n2)
+
+    result['test_result'] = testresult
+    result['effect_size'] = effect_size
+    # return testresult, {"effect_size:": effect_size, "levene:": levene}
+    return result
 
 
 def split_groups(df, key, values=None, select=None):
@@ -188,7 +216,10 @@ def cross_compare(*samples, **kwargs):
     norm_test = kwargs.pop('norm_test', stats.shapiro)
     for i, (x_desc, x) in enumerate(samples):
         for y_desc, y in samples[i+1:]:
-            yield (x_desc, y_desc), t_or_u(x, y, norm_test=norm_test)
+            dep = len(x_desc) >= 2 and len(y_desc) >= 2 and\
+                x_desc[0] == y_desc[0]
+            yield (x_desc, y_desc), t_or_u(x, y, norm_test=norm_test,
+                                           dependent=dep)
 
 
 def one_vs_rest(one, *rest, **kwargs):
@@ -233,6 +264,7 @@ def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
     """
     if by is None:
         sd = ffa = ovr = False
+
     nav_methods = df.groupby("navigation")
     if ffa or sd:
         groups = df.groupby(["navigation", by])[field]
@@ -243,6 +275,8 @@ def print_full_analysis(df, field, h=1, by="tid", nt=stats.shapiro,
     if gd:
         print_md_header(h+1, "Global Descriptions ({})".format(field))
         print_full_description(nav_methods[field], h=h+2, norm_test=nt)
+
+    # Sample Descriptions
     if sd:
         print_md_header(h+1, "Repeated measures ({})".format(field))
         for desc, group in nav_methods:
@@ -301,23 +335,33 @@ def main():
         dest='distance',
         default=False,
         help="Also analyze by distance instead of task id")
-    parser.add_argument("-D", type=argparse.FileType('r'), dest='demographics',
+    parser.add_argument("-D", "--demographics", type=argparse.FileType('r'),
+                        dest='demographics',
                         default=None, nargs='+',
                         help="Also analyze demographics")
-    parser.add_argument("-q", nargs='+', dest="task_q",
+    parser.add_argument("-q", "--task-questionnaires", nargs='+',
+                        dest="task_q",
                         type=argparse.FileType('r'), help="Specify files for\
                         task questionnaire analysis.")
-    parser.add_argument("-Q", nargs='+', dest="final_q",
+    parser.add_argument("-Q", "--final-questionnaires", nargs='+',
+                        dest="final_q",
                         type=argparse.FileType('r'), help="Specify files for\
                         final questionnaire analysis.")
-    parser.add_argument("-n", type=str, dest="norm_test", default="shapiro",
+    parser.add_argument("-n", "--norm-test", type=str, dest="norm_test",
+                        default="shapiro",
                         choices=norm_tests.keys(),
                         help="Specify normality test, 'None' forces t-test")
+    parser.add_argument("-e", "--effectiveness", action='store_true',
+                        default=False,
+                        dest="effectiveness",
+                        help="Also compare effectiveness")
+    parser.add_argument("-p", "--plot", action='store_true', default=False,
+                        dest="plot",
+                        help="Also compare effectiveness")
     args = parser.parse_args()
 
     print_md_header(1, "Analysis")
     print_md_header(2, "Preprocessing")
-    # print_md_paragraph(args, sys.stderr)
     print_md_list(*[f.name for f in args.file])
     df = pd.concat(pd.read_csv(f) for f in args.file)
     if args.task_q:
@@ -361,8 +405,8 @@ def main():
 
     print_md_paragraph("Computing efficiency over task mean_success/time_ms",
                        lineblock=True)
-    df_by_tid['efficiency'] = df.apply(efficiency, axis=1)
-    print(df_by_tid.keys())
+
+    df_by_tid['efficiency'] = df_by_tid.apply(efficiency, axis=1)
 
     norm_test = norm_tests[args.norm_test]
     if norm_test is not None:
@@ -384,12 +428,14 @@ def main():
     print_md_header(2, "Efficiency by Tasks")
     print_full_analysis(df_by_tid, "efficiency", h=3, by="tid", nt=norm_test)
 
-    print_md_header(2, "Effectiveness by Tasks")
-    print_full_analysis(df_by_tid,
-                        "effectiveness",
-                        h=3,
-                        by="tid",
-                        nt=norm_test)
+    if args.effectiveness:
+        print_md_header(2, "Effectiveness by Tasks")
+        print_full_analysis(df_by_tid,
+                            "effectiveness",
+                            h=3,
+                            by=None,
+                            ffa=False,
+                            nt=norm_test)
 
     if args.distance:
         print_md_header(2, "Efficiency by Distances")
@@ -400,7 +446,7 @@ def main():
         print_md_header(2, "Task Questionnaires")
         for desc, q in df_q.groupby("qid"):
             print_md_header(3, "Task Question {}".format(desc))
-            print_full_analysis(q, "result", h=4, by="tid", nt=norm_test)
+            print_full_analysis(q, "result", h=4, by=None, nt=norm_test)
 
     if args.final_q:
         print_md_header(2, "Final Questionnaires")
@@ -410,6 +456,15 @@ def main():
                                 ffa=False,
                                 ovr=False, nt=norm_test)
 
+    if args.plot:
+        plotgroups = df_by_tid.groupby(['navigation', 'tid'])['efficiency']
+        for i, (desc, data) in enumerate(plotgroups):
+            data.plot.box(positions=[i*2])
+        # print(len(plotgroups), file=sys.stderr)
+        # plotgroups.plot.box(positions=[0])
+        plt.show()
+
     exit(0)
+
 if __name__ == '__main__':
     main()
