@@ -38,3 +38,7 @@ Please use https://github.com/blub123muh/hci.git instead.
 * 02.05   ./expose
 * 13.06   ./presentation
 * 15.07   ./documentation
+
+## Links
+
+[results/merged/results_shapiro.md](results_shapiro)
