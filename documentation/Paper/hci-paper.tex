@@ -48,6 +48,7 @@
 
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage[utf8]{inputenc}
 \newcommand{\todo}{\textbf{TODO:} \textbf}
 
 \begin{document}
@@ -279,21 +280,17 @@ different layout items, and the navigation are explained. Before finishing the q
 task, the participant is informed that the experiment will start and is asked to focus on the tasks. When they have
 finished, the last step for them is to provide demographical data age, gender, profession (including field of study),
 and whether they own a smartphone with an Android operating system, a different operating system, or no smartphone.
+
 \subsection{Participants}
 Since our target scenario is an application used during examinations,
-a typical user of such an application is a university student. Hence, 
-the participants were acquisited in a field study conducted in an academic context,
-namely the dining hall of Christian-Albrechts-University in Kiel. The participants are
-representative for all students as the statistics show: In total, there are 
-$N = 50$ participants. TODO \% of the participants are
-students, where TODO \%, TODO \%, TODO \% have their main subject in TODO, TODO, and TODO,
-respectively. TODO \% are male and \% are female. The average age is TODO (SD: TODO), 
-with values between TODO and TODO. 
+a typical user of such an application is a university student. Hence, the participants were acquisited in a field study conducted in an academic context, namely the dining hall of Christian-Albrechts-University in Kiel. The participants are representative for all students as the statistics show: In total, there are $N = 50$ participants. All of them are students and the most common courses are: economic computer science (12 \%), agricultural sciences (10 \%), mathematics (8 \%), psychology (8 \%) and economics (6 \%). For the entire distribution consider table \ref{tab:course}. The participants split up into 42 \% male and 58 \% female. The average age is 24.1 (SD: 2.9), 
+with values between 20 and 35. 
 All but one of the participants own a
-smartphone, \% of which run Android. This indicates that we may assume good knowledge
+smartphone, 75.51 \% of which run Android. This indicates that we may assume good knowledge
 of how to handle the device used in our experiment.
 The participants signed an informed consent form before the start of the experiment. After
 finishing the experiment, they were rewarded with sweets or fruits.
+
 \subsection{Tasks}
 \label{sec:task}
 During task creation, we faced several design issues: In order to avoid learning effects and for the results to generalize better, 
@@ -512,8 +509,9 @@ Conclusions
 %
 %APPENDICES are optional
 %\balancecolumns
+\newpage
+\onecolumn
 \appendix
-%Appendix A
 \todo{begin: MERGE WITH ABOVE}
 Consider the normally distributed random variables $X_d$ with means $\bar x$ and
 variances $\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
@@ -545,8 +543,50 @@ time with Hamburger Menu navigation, we formulate the following hypotheses:
 \todo{end, reread.\ this might be moved to a later section, since it is
 	quite technical already}
 
-
 \todo{We use a t-test for DEPENDENT samples}
 \section{Some Appendices}
 tables and stuff
+
+\begin{table}[!h]
+	\centering
+	\caption{Course distribution}
+	\label{tab:course}
+	\begin{tabular}{@{}p{14cm}|c}
+		\toprule
+		\textbf{Course} & \textbf{Count} \\
+		\midrule Wirtschaftsinformatik & 6 \\
+		\midrule Agrarwissenschaften & 5 \\
+		\midrule Mathematik & 4 \\
+		\midrule Psychologie & 4 \\
+		\midrule Volkswirtschaftslehre & 3 \\
+		\midrule Ernährungs- und Verbraucherökonomie & 2 \\
+		\midrule Finanzmathematik & 2 \\
+		\midrule Wirtschaftsingenieur & 2 \\
+		\midrule Agribusiness & 1 \\
+		\midrule Betriebswirtschaftslehre & 1 \\
+		\midrule Biochemie & 1 \\
+		\midrule Biologie & 1 \\
+		\midrule Informatik & 1 \\
+		
+		\midrule Mathematik / Chemie & 1 \\
+		\midrule Mathematik / Deutsch / Psychologie & 1 \\
+		\midrule Mathematik / Geologie & 1 \\
+		\midrule Mathematik / Geschichte & 1 \\
+		\midrule Mathematik / Informatik & 1 \\
+		\midrule Mathematik / Philosophie & 1 \\
+		\midrule Mathematik / Physik & 1 \\
+		\midrule Mathematik / Spanisch & 1 \\
+		\midrule Mathematik / Sport & 1 \\
+		
+		\midrule Medizin & 1 \\
+		\midrule Musikwissenschaft / Philosophie & 1 \\
+		\midrule Physik & 1 \\
+		\midrule Politikwissenschaft / Ur- und Frühgeschichte & 1 \\
+		\midrule Rechtswissenschaften & 1 \\
+		\midrule Soziologie / Pädagogik & 1 \\
+		\midrule Wirtschaftswissenschaften Profil: Handelslehrer & 1 \\
+		\midrule N/A (1-Fa-Ma) & 1 \\
+	\end{tabular}
+\end{table}
+
 \end{document}
