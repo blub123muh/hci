@@ -457,11 +457,14 @@ def main():
                                 ovr=False, nt=norm_test)
 
     if args.plot:
-        plotgroups = df_by_tid.groupby(['navigation', 'tid'])['efficiency']
-        for i, (desc, data) in enumerate(plotgroups):
-            data.plot.box(positions=[i*2])
-        # print(len(plotgroups), file=sys.stderr)
-        # plotgroups.plot.box(positions=[0])
+        df_plot = df_by_tid.groupby(['navigation',
+                                     'tid'])['efficiency']
+        values = {str(desc): value for desc, value in df_plot}
+
+        df_plot = pd.DataFrame(values)
+
+        print(df_plot, file=sys.stderr)
+        df_plot.plot.box()
         plt.show()
 
     exit(0)
