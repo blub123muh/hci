@@ -443,13 +443,17 @@ Question (1) and (2) serve the purposes to check whether the quality the experim
 due to participants' fatigue, respectively. \todo{What is question (3) good for?} Question (4) directly assesses the overall satisfaction with the navigation method.
 \todo{Why is final question (4) different to task question (2)?}
 \section{Evaluation Results}
+For all our analyses, we used the scipy.stats package for Python.
+
+Before we report the results for the data that are directly linked to our hypotheses formulated in Chapter 1, we look into
+the results of the questionnaires that are designed to check the validity of our study's design. Task question (1) 
 \todo{Put evaluation of task question (1) and final questions 1 - 3 here}.
 
 Our main focus in this research is on comparing the two navigation methods when the distance is equal.
 The results for all independent variables as introduced in Chapter \ref{chap:measurements} are shown in Table \ref{fig:burger-vs-swipe}. Recall that the
 satisfaction is quantified through task question (2). For additional results please see the Appendix. 
 In order to test for significant differences in any of the independent variables, we first apply \todo{test for
-normality} to test for normality and apply a t-test (marked with *) if we \todo{can or cannot reject something, depending on what test is used.} for both groups.
+normality} to test for normality and apply Welch's t-test (marked with *) if we \todo{can or cannot reject something, depending on what test is used.} for both groups.
 In the case of a t-test, we report the following data in this order: t value, significance level p and effect size \todo{Again, which measure if there are multiple
 options}. The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same?}.
 In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with ~), in which case z value, significance level p, and effect size are provided.
@@ -471,19 +475,55 @@ d & effectiveness & efficiency & satisfaction   \\
 
 \subsection{Effectiveness}
 Overall, \todo{how much?} \% of the tasks were solved optimally with burger menu and \todo{how much?} \% were solved optimally with swipe gestures. For burger menu navigation, 
-Table \ref{fig:burger-vs-swipe} shows that the error rates were slightly lower for task 1 and task 5 than for the others. However, the differences
+Table \ref{fig:descriptive-effectiveness} shows that the error rates were slightly lower for task 1 and task 5 than for the others. However, the differences
 are not significant (see Appendix). For the swipe navigation, the error rate of task 1 is significantly lower than the error rates of all the other
 tasks (Table \todo{make table where swipe stuff is compared}). These are the only significances when comparing swipe among different distances. When
 comparing both navigation methods applied to the same distances, significantly less errors are produced with burger menu on task 3, 4, and 5, but not on tasks 1 and 2.
+\begin{table}[!h]
+\centering
+\caption{Mean (standard deviation) of effectiveness}
+\label{fig:descriptive-effectiveness}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|}
+\toprule
+navigation & 2 & 5 & 8 & 11 & 14  \\
+\midrule burger & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ \\
+\midrule swipe & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$  \\
+\end{tabular}}
+\end{table}
 \subsection{Efficiency}
 Averaged over all tasks, the efficiency of burger (\todo{value, SD}) is slightly higher than the efficiency of swipe navigation (\todo{value, SD}). When looking at the
-development of the means depending on the tasks is shown in Table \todo{make table}. \todo{Any tendency? Significances?}. When comparing the navigation methods with each other,
+development of the means depending on the tasks is shown in Table \ref{fig:descriptive-efficiency}. \todo{Any tendency? Significances?}. When comparing the navigation methods with each other,
 we can observe that \todo{what} is significantly better than \todo{what} in tasks \todo{which ones}, whereas the relation is flipped in tasks \todo{which ones}. For tasks \todo{which ones},
 no significances can be found.
+\begin{table}[!h]
+\centering
+\caption{Mean (standard deviation) of efficiency}
+\label{fig:descriptive-efficiency}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|}
+\toprule
+navigation & 2 & 5 & 8 & 11 & 14  \\
+\midrule burger & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ \\
+\midrule swipe & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$  \\
+\end{tabular}}
+\end{table}
 \subsection{Satisfaction}
 The average rating of task question 2, our main measurement for the user's satisfaction with the navigation method, is \todo{avg rating} for the burger menu group and \todo{avg rating}
 for the swipe gesture group. This \todo{matches or doesn't match} the results from final question (4), where the burger menu and swipe gestures yield a rating of \todo{value} and \todo{value} 
-on average, respectively. See Table \todo{make table} for the statistics of individual tasks. It can be seen that \todo{what can be seen}.
+on average, respectively. See Table \ref{fig:descriptive-satisfaction} for the statistics of individual tasks. It can be seen that \todo{what can be seen}.
+\begin{table}[!h]
+\centering
+\caption{Mean (standard deviation) of satisfaction}
+\label{fig:descriptive-satisfaction}
+\resizebox{\columnwidth}{!}{
+\begin{tabular}{|c|c|c|c|c|c|}
+\toprule
+navigation & 2 & 5 & 8 & 11 & 14  \\
+\midrule burger & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ \\
+\midrule swipe & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$  \\
+\end{tabular}}
+\end{table}
 \section{Discussion}
 \subsection{Effectiveness}
 Maybe effectiveness doesn't have a large meaning the way we defined it? Making an error may be less of an issue because it takes away less time.
@@ -519,6 +559,7 @@ Conclusions
 %\balancecolumns
 \appendix
 %Appendix A
+\todo{We use a t-test for DEPENDENT samples}
 \section{Some Appendices}
 tables and stuff
 \end{document}
