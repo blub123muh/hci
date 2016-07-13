@@ -232,9 +232,35 @@ is also used for the actual exam. Questions are ordered sequentially, but the ex
 may answer them in any order. During examinations, it is common that some questions are
 skipped and returned to at some later point.
 
-In the example of this application, navigation between questions can be done via menu at the bottom of the screen in any direction or via button 'Weiter' only forward. Our goal is to find a generalizable statement about what navigation methods makes sense in these scenarios. We conjecture that navigating backward using swipe gestures is unsatisfactory and time-costly as the distance in pages increases. In order to research this question, we conduct a study in which we compare the use of swipe gestures to the use of the also well-established hamburger menu. This kind of navigation is mostly represent by three horizontally lines on the left or right upper corner of the screen. By touching the hamburger button a menu appears at the side of the screen. We suspect that the swipe gestures do better in terms of efficiency and user satisfaction than the hamburger menu on small distances. However, if the distance is large we believe that this relation flips.
-
-
+In the example of this application, navigation between questions can be done via menu at the bottom of the screen in any direction or via button 'Weiter' only forward. 
+Our goal is to find a generalizable statement about what navigation methods makes sense in these scenarios. 
+We conjecture that navigating backward using swipe gestures is unsatisfactory and time-costly as the distance in pages increases. 
+In order to research this question, we conduct a study in which we compare the use of swipe gestures to the use of the also well-established hamburger menu. 
+\todo{kind of need to emphasize that this is some kind of context free study, hence our study design} 
+This kind of navigation is mostly represent by three horizontally lines on the left or right upper corner of the screen. 
+By touching the hamburger button a menu appears at the side of the screen.
+We analyze the common three dependent variables efficiency, satisfaction, and effectiveness, while varying the distance $d$.
+It seems reasonable to conjecture
+that for very small distances swipe gestures are superior to the hamburger
+menu. Because the number of swipes increases proportionally with the distance, the time required can be expected to increase 
+proportionally as well. However, when the distance increases, the hamburger menu
+may have an advantage because one can directly select the desired page. Corresponding to this conjecture we examine the distances $d = 2, 5, 8, 11, 14$ and
+expect the relation between distance and the independent variables as indicated in Figure~\ref{fig:expectation}.
+\begin{figure}
+	\caption{Expected behavior of dependent variable (y-axis) depending on the distance (x-axis) when using a menu (green line) and when using swipe gestures (blue line)}
+	\resizebox{\columnwidth}{!}{
+		\includegraphics{expectation.png}\label{fig:expectation}
+	}
+\end{figure}
+The figure presumes an intercept point between the lines to exist. Corresponding to our conjecture that the swipe gestures are superior for very small distances and the hamburger menu's superiority
+becomes apparent for large distances, we $d = 5, 10, 15, 20, 25$ as concrete
+values for $d$. Our experiment results partly confirm this hypothesis. In detail, our main results are the following:
+\begin{itemize}
+  \item \todo{main results!}
+\end{itemize}
+The results of our research give important insight into the usability of
+different navigation methods, potentially leading to guidelines for the design
+of future e-learning apps.
 \section{Apparatus}
 In order to simulate the scenarios of jumping from one question to another, we develop a series of treasure hunt like tasks. Here, the goal is to find the treasure which is hidden behind a door. A door is represented by a page. The application was developed for Android devices. We have used two Samsung Galaxy Note 10.1 with Android 4.4.2 for our data collection.
 
@@ -309,7 +335,7 @@ For the concrete tasks, please see the appendix.
 \todo{All tasks should always have the same number of doors (although the jump distances remain different)}
 \subsection{Measurements}\label{chap:measurements}
 \label{sec:measurements}
-As stated above, we aim to measure the common three dependent variables efficiency, satisfaction, and effectiveness of each of the two navigation methods.
+We aim to measure the common three dependent variables efficiency, satisfaction, and effectiveness of each of the two navigation methods.
 \paragraph{Effectiveness}
 During the experiment, the application tracks how often the page is changed by the user, that is by either swiping or selecting a different page in the menu. 
 Given some task that requires 5 jumps, where the distances to cover in the jumps are given as $d_i, 1 \leq i \leq 5$, let $n_{interactions_i}$ be the number
@@ -360,39 +386,8 @@ of effectiveness, user satisfaction and efficiency presented in Section \ref{cha
 	when navigating over a distance of $d$ pages.
 \end{enumerate}
 
-In fact, we check these hypotheses for different values of $d$, hence, we
-examine two independent variables: navigation method and distance. We talked to
-experts from the educational science domain to identify values for $d$ that
-are realistic for e-learning apps. The talk revealed that a typical block
-contains no more than $25$ questions. We are confident to be able to show statistical
-superiority of swipe gestures for small $d$ and the superiority of hamburger
-menu for large $d$ statistically for both quantities.  To be more precise, we
-expect the relation between $d$ and the time required to navigate between
-pages of distance $d$ as indicated in Figure~\ref{fig:expectation}.
-\begin{figure}
-	\caption{Expected time (y-axis) required to cover $d$ pages (x-axis) when using a menu (green line) and when using swipe gestures (blue line)}
-	\resizebox{\columnwidth}{!}{
-		\includegraphics{expectation.png}\label{fig:expectation}
-	}
-\end{figure}
-Clearly, for swipe gesture navigation, it is reasonable to assume that the
-time required increases proportionally with the distance as the number of
-swipes increases proportionally as well.  It is also reasonable to assume
-constant time consumption for menu navigation as the page selection process
-should be independent of $d$. However, this might not hold true when $d$ is so
-large that the user is required to scroll within the menu in order to select
-the desired page. In Figure~\ref{fig:expectation}, we presume the intercept
-point between the lines to exist. The location, however, is part of our
-research.  The user satisfaction is likely to be a monotonically decreasing
-function in $d$. However, the shape of the function is unknown and will be
-subject to our research as well.
-Since we assume a linear function, we choose $d = 5, 10, 15, 20, 25$ as concrete
-values for $d$.
-
-The results of our research will give important insight into the usability of
-different navigation methods, potentially leading to guidelines for the design
-of future e-learning apps.
-
+In fact, we test these hypotheses for different values of $d = 2, 5, 8, 11, 14$, hence, we
+examine two independent variables: navigation method and distance.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 For all our analyses, we used the scipy.stats package for Python.
