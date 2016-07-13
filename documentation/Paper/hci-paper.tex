@@ -345,57 +345,23 @@ Question (1) and (2) serve the purposes to check whether the quality the experim
 due to participants' fatigue, respectively. \todo{What is question (3) good for?} Question (4) directly assesses the overall satisfaction with the navigation method.
 \todo{Why is final question (4) different to task question (2)?}
 \section{Evaluation Results}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In this section, we formalize our hypotheses, name the tests used and what statistics are reported, and present as a last step both descriptive statistics
+and test statistics for each distance and navigation method. 
 
-
-More formally: Let $d$ be the distance in pages to be covered when navigating in a sequence of pages. We formulate the following hypotheses:
+\paragraph{Hypotheses}
+Let $d$ be the distance in pages to be covered when navigating in a sequence of pages. We formulate the following $H_0$ hypotheses, using the notions
+of effectiveness, user satisfaction and efficiency presented in Section \ref{chap:measurements}:
 \begin{enumerate}
-	\item Null hypothesis $H_0^{(e)}$ for efficiency:
+	\item Null hypothesis $H_0^{(efficiency)}$ for efficiency:
 	There is no difference between swipe gestures and hamburger menu in the
 	time required to navigate over a distance of $d$ pages.
-	\item Alternative hypothesis $H_1^{(e)}$ for efficiency: There is a
-	difference between swipe gestures and hamburger menu in the time required
-	to navigate over a distance of $d$ pages.
-	\item Null hypothesis $H_0^{(s)}$ for user satisfaction: There is no
-	difference in user satisfaction between swipe gestures and hamburger menu
+	\item Null hypothesis $H_0^{(effectiveness)}$ for effectiveness: There is no
+	difference in effectiveness between swipe gestures and hamburger menu
 	when navigating over a distance of $d$ pages.
-	\item Alternative hypothesis $H_1^{(s)}$ for user satisfaction: There is a
+	\item Null hypothesis $H_0^{(satisfaction)}$ for user satisfaction: There is no
 	difference in user satisfaction between swipe gestures and hamburger menu
 	when navigating over a distance of $d$ pages.
 \end{enumerate}
-
-\paragraph{Hypotheses}
-\todo{begin: MERGE WITH ABOVE}
-Consider the normally distributed random variables $X_d$ with means $\bar x$ and
-variances $\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
-Menu navigation.
-We hypothize that
-\begin{align*}
-	H_{0, \text{burger}}: \bar x_0 = \bar x_1 = \cdots = \bar x_d
-\end{align*}
-% is anova capable of doing reverse test with \not= as H_0?
-Since we can assume equal variances,
-we evaluate the hypothesis using {ANOVA}.
-In case we do not find significant differences, we can use the overall mean
-$\bar x$ for comparision with the Swipe navigation. 
-We consider normally
-distributed random variables $Y_d$ with means $\bar y_d$ and variances $\sigma_{y,d}^2$ as the
-time required for traveling $d$ pages using Swipe navigation. 
-After asserting
-that analogous hypothesis for Swipe navigation fails,
-\begin{align*}
-	H_{0, \text{swipe}}: \bar y_0 = \bar y_1= \cdots = \bar y_d
-\end{align*}
-we continue with comparing the means $\bar y_d$ of Swipe navigation to the
-mean $\bar x$ of Hamburger Menu navigation.  In order to find the distance
-$d$, for which the required time with Swipe navigation exceeds the required
-time with Hamburger Menu navigation, we formulate the following hypotheses:
-\begin{align*}
-	H_{0,d} : \bar y_d = \bar x \;\forall d
-\end{align*}
-\todo{end, reread.\ this might be moved to a later section, since it is
-	quite technical already}
-
 
 In fact, we check these hypotheses for different values of $d$, hence, we
 examine two independent variables: navigation method and distance. We talked to
@@ -548,6 +514,38 @@ Conclusions
 %\balancecolumns
 \appendix
 %Appendix A
+\todo{begin: MERGE WITH ABOVE}
+Consider the normally distributed random variables $X_d$ with means $\bar x$ and
+variances $\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
+Menu navigation.
+We hypothize that
+\begin{align*}
+	H_{0, \text{burger}}: \bar x_0 = \bar x_1 = \cdots = \bar x_d
+\end{align*}
+% is anova capable of doing reverse test with \not= as H_0?
+Since we can assume equal variances,
+we evaluate the hypothesis using {ANOVA}.
+In case we do not find significant differences, we can use the overall mean
+$\bar x$ for comparision with the Swipe navigation. 
+We consider normally
+distributed random variables $Y_d$ with means $\bar y_d$ and variances $\sigma_{y,d}^2$ as the
+time required for traveling $d$ pages using Swipe navigation. 
+After asserting
+that analogous hypothesis for Swipe navigation fails,
+\begin{align*}
+	H_{0, \text{swipe}}: \bar y_0 = \bar y_1= \cdots = \bar y_d
+\end{align*}
+we continue with comparing the means $\bar y_d$ of Swipe navigation to the
+mean $\bar x$ of Hamburger Menu navigation.  In order to find the distance
+$d$, for which the required time with Swipe navigation exceeds the required
+time with Hamburger Menu navigation, we formulate the following hypotheses:
+\begin{align*}
+	H_{0,d} : \bar y_d = \bar x \;\forall d
+\end{align*}
+\todo{end, reread.\ this might be moved to a later section, since it is
+	quite technical already}
+
+
 \todo{We use a t-test for DEPENDENT samples}
 \section{Some Appendices}
 tables and stuff
