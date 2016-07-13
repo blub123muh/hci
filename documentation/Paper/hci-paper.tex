@@ -198,140 +198,43 @@
 \printccsdesc
 % We no longer use \terms command
 %\terms{Theory}
-\keywords{ACM proceedings; \LaTeX\@ text tagging}
+\keywords{mobile application, swipe, hamburger menu, learning application}
+
+
 \section{Introduction}
 Due to the availability of mobile internet connection and the establishment of
-smartphones for the masses, e-learning apps have become more and more relevant
-in recent years.  In theory, the promise is that students can study anywhere
-at any time. However, as for any kind of application, a practical barrier is
-the usability of such educational application.
-
+smartphones for the masses, e-learning applications have become more and more relevant in recent years.  In theory, the promise is that students can study anywhere at any time. However, as for any kind of application, a practical barrier is the usability of such educational application.
+\begin{figure}[h]
+	\includegraphics[width=\columnwidth]{drivinglicense.png}
+	\caption{Mobile application 'Fahren Lernen Max'}
+	\label{fig:fahren_lernen}
+\end{figure}
 For several years, the swipe gesture has been a very well-established way to
-navigate among adjacent pages on websites as well as in native apps on a
-mobile device. The users appreciate its ease and its comfort of use. However,
+navigate among adjacent pages on websites as well as in native applications on a mobile device (Apps). The users appreciate its ease and comfort of use. However,
 it can only be applied in scenarios where the content is provided in a
 sequential way, e.g.\ in a picture gallery, in an e-book reader, or when
 filling in a form. In this paper, we examine the swipe gesture's suitability
-for navigating through a set of questions in an e-learning app. Although
-typically the user progresses through the questions sequentially, it is a
-common case that they want to revise their answers later due to a change of
-mind or a missunderstanding of the question, for example. A case that applies very
-well to this scenario is the theory test that has to be passed in order to obtain
-a driving license in Germany. It consists of a relatively large number of questions.
-It is common practise to prepare for this examination by taking several examplary tests. 
-For example, consider Figure \ref{fig:fahren_lernen} which displays a screenshot of the
-Android application 'Fahren Lernen Max'. It displays the typical environment that
-is also used for the actual exam. The questions are ordered sequentially, but the examinees
-may answer them in any order. During examinations, it is common that some questions are
-skipped and returned to at some later point.
-\emph{Fahren Lernen Max}
-\begin{figure}
-  \caption{A screenshot of the Android application 'Fahren Lernen Max'}
-  \resizebox{\columnwidth}{!}{
-    \includegraphics{drivinglicense.png}\label{fig:fahren_lernen}
-  }
-\end{figure}
-In the example of this application, navigation between questions can be done via menu (at the
-bottom of the screen, any direction) or via button ('Weiter', any direction). Our goal is to
-find a generalizable statement about what navigation methods makes sense in these scenarios.
-We conjecture that
-navigating back using swipe gestures is unsatisfactory and time-costly as the
-distance in pages increases. In order to research this question, we conduct a
-study in which we compare the use of swipe gestures to the use of the also
-well-established hamburger menu. We suspect that the swipe gestures do better
-in terms of efficiency and user satisfaction than the hamburger menu when the
-distance is small. When the distance is large, however, we believe that this
-relation flips. More formally, let $d$ be the distance in pages to be covered
-when navigating in a sequence of pages.  We formulate the following
-hypotheses:
-\begin{enumerate}
-  \item Null hypothesis $H_0^{(e)}$ for efficiency:
-    There is no difference between swipe gestures and hamburger menu in the
-    time required to navigate over a distance of $d$ pages.
-  \item Alternative hypothesis $H_1^{(e)}$ for efficiency: There is a
-    difference between swipe gestures and hamburger menu in the time required
-    to navigate over a distance of $d$ pages.
-  \item Null hypothesis $H_0^{(s)}$ for user satisfaction: There is no
-    difference in user satisfaction between swipe gestures and hamburger menu
-    when navigating over a distance of $d$ pages.
-  \item Alternative hypothesis $H_1^{(s)}$ for user satisfaction: There is a
-    difference in user satisfaction between swipe gestures and hamburger menu
-    when navigating over a distance of $d$ pages.
-\end{enumerate}
-
-\paragraph{Hypotheses}
-\todo{begin: MERGE WITH ABOVE}
-Consider the normally distributed random variables $X_d$ with means $\bar x$ and
-variances $\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
-Menu navigation.
-We hypothize that
-\begin{align*}
-  H_{0, \text{burger}}: \bar x_0 = \bar x_1 = \cdots = \bar x_d
-\end{align*}
-% is anova capable of doing reverse test with \not= as H_0?
-Since we can assume equal variances,
-we evaluate the hypothesis using {ANOVA}.
-In case we do not find significant differences, we can use the overall mean
-$\bar x$ for comparision with the Swipe navigation. 
-We consider normally
-distributed random variables $Y_d$ with means $\bar y_d$ and variances $\sigma_{y,d}^2$ as the
-time required for traveling $d$ pages using Swipe navigation. 
-After asserting
-that analogous hypothesis for Swipe navigation fails,
-\begin{align*}
-  H_{0, \text{swipe}}: \bar y_0 = \bar y_1= \cdots = \bar y_d
-\end{align*}
-we continue with comparing the means $\bar y_d$ of Swipe navigation to the
-mean $\bar x$ of Hamburger Menu navigation.  In order to find the distance
-$d$, for which the required time with Swipe navigation exceeds the required
-time with Hamburger Menu navigation, we formulate the following hypotheses:
-\begin{align*}
-  H_{0,d} : \bar y_d = \bar x \;\forall d
-\end{align*}
-\todo{end, reread.\ this might be moved to a later section, since it is
-quite technical already}
-
-
-In fact, we check these hypotheses for different values of $d$, hence, we
-examine two independent variables: navigation method and distance. We talked to
-experts from the educational science domain to identify values for $d$ that
-are realistic for e-learning apps. The talk revealed that a typical block
-contains no more than $25$ questions. We are confident to be able to show statistical
-superiority of swipe gestures for small $d$ and the superiority of hamburger
-menu for large $d$ statistically for both quantities.  To be more precise, we
-expect the relation between $d$ and the time required to navigate between
-pages of distance $d$ as indicated in Figure~\ref{fig:expectation}.
-\begin{figure}
-  \caption{Expected time (y-axis) required to cover $d$ pages (x-axis) when using a menu (green line) and when using swipe gestures (blue line)}
-  \resizebox{\columnwidth}{!}{
-    \includegraphics{expectation.png}\label{fig:expectation}
-  }
-\end{figure}
-Clearly, for swipe gesture navigation, it is reasonable to assume that the
-time required increases proportionally with the distance as the number of
-swipes increases proportionally as well.  It is also reasonable to assume
-constant time consumption for menu navigation as the page selection process
-should be independent of $d$. However, this might not hold true when $d$ is so
-large that the user is required to scroll within the menu in order to select
-the desired page. In Figure~\ref{fig:expectation}, we presume the intercept
-point between the lines to exist. The location, however, is part of our
-research.  The user satisfaction is likely to be a monotonically decreasing
-function in $d$. However, the shape of the function is unknown and will be
-subject to our research as well.
-Since we assume a linear function, we choose $d = 5, 10, 15, 20, 25$ as concrete
-values for $d$.
-
-The results of our research will give important insight into the usability of
-different navigation methods, potentially leading to guidelines for the design
-of future e-learning apps.
-
-\section{Apparatus}
-\begin{figure*}
+for navigating through a set of questions in an e-learning apps.
+\begin{figure*}[!h]
 	\centering
 	\includegraphics[width=\linewidth]{pics/screenshots/sequence}
 	\caption{Hamburger navigation sequence}
 	\label{fig:sequence}
 \end{figure*}
+Although typically the user progresses through the questions sequentially, it is a
+common case that they want to revise their answers later due to a change of
+mind or a misunderstanding of the question, for example. A case that applies very
+well to this scenario is the theory test that has to be passed in order to obtain
+a driving license in Germany. It consists of a relatively large number of questions and it's common practice to prepare for this examination by taking several exemplary tests. For example, consider Figure \ref{fig:fahren_lernen} which displays a screenshot of the
+mobile application 'Fahren Lernen Max'. It displays the typical environment that
+is also used for the actual exam. Questions are ordered sequentially, but the examinees
+may answer them in any order. During examinations, it is common that some questions are
+skipped and returned to at some later point.
+
+In the example of this application, navigation between questions can be done via menu at the bottom of the screen in any direction or via button 'Weiter' only forward. Our goal is to find a generalizable statement about what navigation methods makes sense in these scenarios. We conjecture that navigating backward using swipe gestures is unsatisfactory and time-costly as the distance in pages increases. In order to research this question, we conduct a study in which we compare the use of swipe gestures to the use of the also well-established hamburger menu. This kind of navigation is mostly represent by three horizontally lines on the left or right upper corner of the screen. By touching the hamburger button a menu appears at the side of the screen. We suspect that the swipe gestures do better in terms of efficiency and user satisfaction than the hamburger menu on small distances. However, if the distance is large we believe that this relation flips.
+
+
+\section{Apparatus}
 In order to simulate the scenarios of jumping from one question to another, we develop a series of treasure hunt like tasks. Here, the goal is to find the treasure which is hidden behind a door. A door is represented by a page. The application was developed for Android devices. We have used two Samsung Galaxy Note 10.1 with Android 4.4.2 for our data collection.
 
 First of all an initial page containing the identification number of the participant is shown so the task can be linked to the demographic questionnaire at the very end. Starting at the first page, an instruction displayed on the bottom of the screen guides the participant to the next one by exactly telling them the number of the next door. Now the participant has the possibility to navigate to the next door by swiping left or right, or using the hamburger menu (Figure \ref{fig:sequence}) on the upper left corner. The navigation method depends on the group in which they are located. When the participant has open the respective door, the next instruction is displayed. The distance $d$ to cover from one door to another is always about the same ($d \pm 1$\textit{, see Section \ref{sec:task}}) within the same task. However, the distances differ for different tasks. Consider the example in Figure \ref{fig:jump} which has distance of two. The arrows indicate the door to open in the next step and the arrow captions show the jump distance. Hence, the sequence of doors to open in order to reach the treasure is 2, 4, 1, 3, 5, 6.
@@ -341,14 +244,13 @@ First of all an initial page containing the identification number of the partici
 	\label{fig:jump}
 	\caption{Example of a distance-two-jump}
 \end{figure}
-The tasks cannot be failed to be completed because there is no way to open the doors in the wrong order. The participant has to complete a training set and five task sets. Every set consists of five jumping instructions. After each set the participant has to answer two questions (see Section \ref{sec:measurements}) and at the very end there will be a questionnaire of four questions.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.475\textwidth]{pics/screenshots/global3-cut}
 	\label{fig:between_questionnaire}
 	\caption{Between questionnaire}
 \end{figure}
-
+The tasks cannot be failed to be completed because there is no way to open the doors in the wrong order. The participant has to complete a training set and five task sets. Every set consists of five jumping instructions. After each set the participant has to answer two questions (see Section \ref{sec:measurements}) and at the very end there will be a questionnaire of four questions.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.475\textwidth]{pics/screenshots/global5-cut}
@@ -439,6 +341,95 @@ Question (1) and (2) serve the purposes to check whether the quality the experim
 due to participants' fatigue, respectively. \todo{What is question (3) good for?} Question (4) directly assesses the overall satisfaction with the navigation method.
 \todo{Why is final question (4) different to task question (2)?}
 \section{Evaluation Results}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+More formally: Let $d$ be the distance in pages to be covered when navigating in a sequence of pages. We formulate the following hypotheses:
+\begin{enumerate}
+	\item Null hypothesis $H_0^{(e)}$ for efficiency:
+	There is no difference between swipe gestures and hamburger menu in the
+	time required to navigate over a distance of $d$ pages.
+	\item Alternative hypothesis $H_1^{(e)}$ for efficiency: There is a
+	difference between swipe gestures and hamburger menu in the time required
+	to navigate over a distance of $d$ pages.
+	\item Null hypothesis $H_0^{(s)}$ for user satisfaction: There is no
+	difference in user satisfaction between swipe gestures and hamburger menu
+	when navigating over a distance of $d$ pages.
+	\item Alternative hypothesis $H_1^{(s)}$ for user satisfaction: There is a
+	difference in user satisfaction between swipe gestures and hamburger menu
+	when navigating over a distance of $d$ pages.
+\end{enumerate}
+
+\paragraph{Hypotheses}
+\todo{begin: MERGE WITH ABOVE}
+Consider the normally distributed random variables $X_d$ with means $\bar x$ and
+variances $\sigma_x^2$ being the time required for traveling $d$ pages using Hamburger
+Menu navigation.
+We hypothize that
+\begin{align*}
+	H_{0, \text{burger}}: \bar x_0 = \bar x_1 = \cdots = \bar x_d
+\end{align*}
+% is anova capable of doing reverse test with \not= as H_0?
+Since we can assume equal variances,
+we evaluate the hypothesis using {ANOVA}.
+In case we do not find significant differences, we can use the overall mean
+$\bar x$ for comparision with the Swipe navigation. 
+We consider normally
+distributed random variables $Y_d$ with means $\bar y_d$ and variances $\sigma_{y,d}^2$ as the
+time required for traveling $d$ pages using Swipe navigation. 
+After asserting
+that analogous hypothesis for Swipe navigation fails,
+\begin{align*}
+	H_{0, \text{swipe}}: \bar y_0 = \bar y_1= \cdots = \bar y_d
+\end{align*}
+we continue with comparing the means $\bar y_d$ of Swipe navigation to the
+mean $\bar x$ of Hamburger Menu navigation.  In order to find the distance
+$d$, for which the required time with Swipe navigation exceeds the required
+time with Hamburger Menu navigation, we formulate the following hypotheses:
+\begin{align*}
+	H_{0,d} : \bar y_d = \bar x \;\forall d
+\end{align*}
+\todo{end, reread.\ this might be moved to a later section, since it is
+	quite technical already}
+
+
+In fact, we check these hypotheses for different values of $d$, hence, we
+examine two independent variables: navigation method and distance. We talked to
+experts from the educational science domain to identify values for $d$ that
+are realistic for e-learning apps. The talk revealed that a typical block
+contains no more than $25$ questions. We are confident to be able to show statistical
+superiority of swipe gestures for small $d$ and the superiority of hamburger
+menu for large $d$ statistically for both quantities.  To be more precise, we
+expect the relation between $d$ and the time required to navigate between
+pages of distance $d$ as indicated in Figure~\ref{fig:expectation}.
+\begin{figure}
+	\caption{Expected time (y-axis) required to cover $d$ pages (x-axis) when using a menu (green line) and when using swipe gestures (blue line)}
+	\resizebox{\columnwidth}{!}{
+		\includegraphics{expectation.png}\label{fig:expectation}
+	}
+\end{figure}
+Clearly, for swipe gesture navigation, it is reasonable to assume that the
+time required increases proportionally with the distance as the number of
+swipes increases proportionally as well.  It is also reasonable to assume
+constant time consumption for menu navigation as the page selection process
+should be independent of $d$. However, this might not hold true when $d$ is so
+large that the user is required to scroll within the menu in order to select
+the desired page. In Figure~\ref{fig:expectation}, we presume the intercept
+point between the lines to exist. The location, however, is part of our
+research.  The user satisfaction is likely to be a monotonically decreasing
+function in $d$. However, the shape of the function is unknown and will be
+subject to our research as well.
+Since we assume a linear function, we choose $d = 5, 10, 15, 20, 25$ as concrete
+values for $d$.
+
+The results of our research will give important insight into the usability of
+different navigation methods, potentially leading to guidelines for the design
+of future e-learning apps.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 Our main focus in this research is on comparing the two navigation methods when the distance is equal. For additional results please see the Appendix. 
 The results are shown in Figure \ref{fig:burger-vs-swipe}. As the effectiveness is dichotomous data, we apply
 a Chi-Square test \todo{verify} in order to check for significance. The degrees of freedom were \todo{todo (it's always the same, right?)} in all cases.
