@@ -368,10 +368,10 @@ Question (1) and (2) serve the purposes to check whether the quality the experim
 due to participants' fatigue, respectively. \todo{What is question (3) good for?} Question (4) directly assesses the overall satisfaction with the navigation method.
 \todo{Why is final question (4) different to task question (2)?}
 \section{Evaluation Results}
-In this section, we formalize our hypotheses, name the tests used and what statistics are reported, and present as a last step both descriptive statistics
-and test statistics for each distance and navigation method. 
+In this section, we formalize our hypotheses, explain our procedure and notations for testing the hypotheses, conduct a retrospective power analysis and finally, present both descriptive statistics
+and test statistics for each distance, navigation method, and dependent variable. In the end, we present further statistics related to our experiment.
 
-\paragraph{Hypotheses}
+\subsection{Hypotheses}
 Let $d$ be the distance in pages to be covered when navigating in a sequence of pages. We formulate the following $H_0$ hypotheses, using the notions
 of effectiveness, user satisfaction and efficiency presented in Section \ref{chap:measurements}:
 \begin{enumerate}
@@ -390,11 +390,8 @@ In fact, we test these hypotheses for different values of $d = 2, 5, 8, 11, 14$,
 examine two independent variables: navigation method and distance.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-For all our analyses, we used the scipy.stats package for Python.
-
-Before we report the results for the data that are directly linked to our hypotheses formulated in Chapter 1, we look into
-the results of the questionnaires that are designed to check the validity of our study's design. Task question (1) 
-\todo{Put evaluation of task question (1) and final questions 1 - 3 here}.
+\subsection{Testing procedure}
+For all our computational analyses, we used the scipy.stats package for Python.
 
 Our main focus in this research is on comparing the two navigation methods when the distance is equal.
 The results for all independent variables as introduced in Chapter \ref{chap:measurements} are shown in Table \ref{fig:burger-vs-swipe}. Recall that the
@@ -419,8 +416,16 @@ d & effectiveness & efficiency & satisfaction   \\
 \midrule 14 & & &         \\
 \end{tabular}}
 \end{table}
-
-\subsection{Effectiveness}
+\subsection{Power Analysis}
+As already suggested in the introduction, preliminary to conducting the study, we had expected to find strong differences between swipe navigations and menu navigation, that is,
+we expected to find significances with an effect size of $d \geq .8$.
+Furthermore, we assumed normally distributed data with about equal variances, so using Student's t-tests would be adequate. Hence, in order to achieve statistical power of .8 in a 
+two-sided two sample Student's t-test, the number 
+of participants should be 25 per group. For this reason we aimed for 50 participants in total. In \todo{number x out of number y cases}, we found the data to be normally distributed and
+very often we find large effect sizes (\todo{how often?}). However, because we didn't find the variances to always be equal and because it is discouraged in the literature to
+choose between Student's and Welch's t-test per case\todo{ref}, we decided to constantly use Welch's t-test.
+\subsection{Results for dependent variables}
+\subsubsection{Effectiveness}
 Overall, \todo{how much?} \% of the tasks were solved optimally with burger menu and \todo{how much?} \% were solved optimally with swipe gestures. For burger menu navigation, 
 Table \ref{fig:descriptive-effectiveness} shows that the error rates were slightly lower for task 1 and task 5 than for the others. However, the differences
 are not significant (see Appendix). For the swipe navigation, the error rate of task 1 is significantly lower than the error rates of all the other
@@ -438,7 +443,7 @@ navigation & 2 & 5 & 8 & 11 & 14  \\
 \midrule swipe & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$  \\
 \end{tabular}}
 \end{table}
-\subsection{Efficiency}
+\subsubsection{Efficiency}
 Averaged over all tasks, the efficiency of burger (\todo{value, SD}) is slightly higher than the efficiency of swipe navigation (\todo{value, SD}). When looking at the
 development of the means depending on the tasks is shown in Table \ref{fig:descriptive-efficiency}. \todo{Any tendency? Significances?}. When comparing the navigation methods with each other,
 we can observe that \todo{what} is significantly better than \todo{what} in tasks \todo{which ones}, whereas the relation is flipped in tasks \todo{which ones}. For tasks \todo{which ones},
@@ -455,7 +460,7 @@ navigation & 2 & 5 & 8 & 11 & 14  \\
 \midrule swipe & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$  \\
 \end{tabular}}
 \end{table}
-\subsection{Satisfaction}
+\subsubsection{Satisfaction}
 The average rating of task question 2, our main measurement for the user's satisfaction with the navigation method, is \todo{avg rating} for the burger menu group and \todo{avg rating}
 for the swipe gesture group. This \todo{matches or doesn't match} the results from final question (4), where the burger menu and swipe gestures yield a rating of \todo{value} and \todo{value} 
 on average, respectively. See Table \ref{fig:descriptive-satisfaction} for the statistics of individual tasks. It can be seen that \todo{what can be seen}.
@@ -471,7 +476,16 @@ navigation & 2 & 5 & 8 & 11 & 14  \\
 \midrule swipe & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$  \\
 \end{tabular}}
 \end{table}
+
+\subsection{Other results}
+We look into
+the results of the questionnaires that are designed to check the validity of our study's design. Task question (1) was rated with
+6.91 on average (SD: 0.4) on average in the burger group and 6.84 (SD: 0.46) on average in the swipe group. The lowest rankings were
+4 and 5, respectively.
+Final question (1) indicates that \todo{Put evaluation of task question (1) and final questions 1 - 3 here}.
 \section{Discussion}
+\subsection{Study design}
+High confidences for each task, which suggests that no participant felt overstrained by the tasks. 
 \subsection{Effectiveness}
 Maybe effectiveness doesn't have a large meaning the way we defined it? Making an error may be less of an issue because it takes away less time.
 
