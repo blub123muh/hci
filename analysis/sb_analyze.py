@@ -11,10 +11,10 @@ Description : Script for analyzing SwipingBurger results
 from __future__ import print_function
 import argparse
 import pandas as pd
+import numpy as np
 import sys
 from scipy import stats
 import matplotlib.pyplot as plt
-
 
 
 def print_md_table(df, append=False):
@@ -174,9 +174,14 @@ def t_or_u(x, y, norm_test=stats.shapiro, verbose=0, dependent=False):
         # no normal distributions
         if dependent:
             # dependent samples
-            print(x.shape, y.shape, file=sys.stderr)
-            testresult = stats.wilcoxon(x, y, zero_method='pratt')
-            effect_size = 2 * testresult[0] / (N*N+1)
+            # testresult = stats.wilcoxon(x.reshape((x.shape[0],1)),
+                                        # y.reshape((y.shape[0],1)))
+            try:
+                testresult = stats.wilcoxon(x, y)
+                effect_size = 2 * testresult[0] / (N*N+1)
+            except ValueError:
+                testresult = "=== All pairs were equal ==="
+                effect_size = "=== All pairs were equal ==="
         else:
             # independent samples
             testresult = stats.mannwhitneyu(x, y)
@@ -446,7 +451,7 @@ def main():
         print_md_header(2, "Task Questionnaires")
         for desc, q in df_q.groupby("qid"):
             print_md_header(3, "Task Question {}".format(desc))
-            print_full_analysis(q, "result", h=4, by=None, nt=norm_test)
+            print_full_analysis(q, "result", h=4, by="tid", nt=norm_test)
 
     if args.final_q:
         print_md_header(2, "Final Questionnaires")
@@ -455,6 +460,7 @@ def main():
             print_full_analysis(fq, "result", h=4, by=None, sd=False,
                                 ffa=False,
                                 ovr=False, nt=norm_test)
+            # TODO: Len of subgroups with star=[1,2,3,4,5,6,7]
 
     if args.plot:
         df_plot = df_by_tid.groupby(['navigation',
