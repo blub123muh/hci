@@ -391,8 +391,6 @@ examine two independent variables: navigation method and distance.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Testing procedure}
-For all our computational analyses, we used the scipy.stats package for Python.
-
 Our main focus in this research is on comparing the two navigation methods when the distance is equal.
 The results for all independent variables as introduced in Chapter \ref{chap:measurements} are shown in Table \ref{fig:burger-vs-swipe}. Recall that the
 satisfaction is quantified through task question (2). For additional results please see the Appendix. 
@@ -401,6 +399,9 @@ normality} to test for normality and apply Welch's t-test (marked with *) if we 
 In the case of a t-test, we report the following data in this order: t value, significance level p and effect size \todo{Again, which measure if there are multiple
 options}. The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same?}.
 In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with ~), in which case z value, significance level p, and effect size are provided.
+
+For all our computational analyses, we used the scipy.stats package for Python.
+\todo{When you have for example p = 0.199\ldots999, how do you report it? p < 0.2? p $\approx$ 0.2?}
 \begin{table}[!h]
 \centering
 \caption{Comparing burger and swipe for same d}
@@ -409,11 +410,11 @@ In the case where the test for normality fails, we apply a Mann-Whitney-U test (
 \begin{tabular}{@{}c|c|c|c@{}}
 \toprule
 d & effectiveness & efficiency & satisfaction   \\
-\midrule 2 & ~ z, p, d & * t, p, d &         \\
-\midrule 5 & * t, p, d & ~ z, p, d &         \\
-\midrule 8 & & &         \\
-\midrule 11 & & &         \\
-\midrule 14 & & &         \\
+\midrule 2 &  & t = -6.70, p < .001, d = -1.91 & z = 247.5, p = .08, d = 0.20  \\
+\midrule 5 &  & z = 263, p = .192, d = 0.15    & z = 225.5, p < .03, d = 0.37  \\
+\midrule 8 &  & t = 2.47, p < .02, d =  0.70   & z = 230, p < .05, d = 0.30    \\
+\midrule 11 & & t = 6.22, p < .001, d = 1.77   & z = 192.5, p < .01, d = 0.38  \\
+\midrule 14 & & t = 7.97, p < .001, d = 2.27   & z = 190.5, p < .01, d = 0.38  \\
 \end{tabular}}
 \end{table}
 \subsection{Power Analysis}
