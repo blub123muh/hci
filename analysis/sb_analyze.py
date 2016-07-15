@@ -11,7 +11,6 @@ Description : Script for analyzing SwipingBurger results
 from __future__ import print_function
 import argparse
 import pandas as pd
-import numpy as np
 import sys
 from scipy import stats
 import matplotlib.pyplot as plt
@@ -174,8 +173,6 @@ def t_or_u(x, y, norm_test=stats.shapiro, verbose=0, dependent=False):
         # no normal distributions
         if dependent:
             # dependent samples
-            # testresult = stats.wilcoxon(x.reshape((x.shape[0],1)),
-                                        # y.reshape((y.shape[0],1)))
             try:
                 testresult = stats.wilcoxon(x, y)
                 effect_size = 2 * testresult[0] / (N*N+1)
@@ -189,7 +186,6 @@ def t_or_u(x, y, norm_test=stats.shapiro, verbose=0, dependent=False):
 
     result['test_result'] = testresult
     result['effect_size'] = effect_size
-    # return testresult, {"effect_size:": effect_size, "levene:": levene}
     return result
 
 
@@ -438,8 +434,7 @@ def main():
         print_full_analysis(df_by_tid,
                             "effectiveness",
                             h=3,
-                            by=None,
-                            ffa=False,
+                            by="tid",
                             nt=norm_test)
 
     if args.distance:
@@ -457,10 +452,14 @@ def main():
         print_md_header(2, "Final Questionnaires")
         for desc, fq in df_Q.groupby("qid"):
             print_md_header(3, "Final Question {}".format(desc))
+            print_md_header(4, "Just counts grouped by Results")
+            print_md_paragraph(*["Navigation {} answered {} stars:\
+                                 {}".format(*desc, len(subdf)) for desc, subdf
+                                 in fq.groupby(["navigation", "result"])],
+                               lineblock=True)
             print_full_analysis(fq, "result", h=4, by=None, sd=False,
                                 ffa=False,
                                 ovr=False, nt=norm_test)
-            # TODO: Len of subgroups with star=[1,2,3,4,5,6,7]
 
     if args.plot:
         df_plot = df_by_tid.groupby(['navigation',
