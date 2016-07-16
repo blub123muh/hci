@@ -453,10 +453,14 @@ def main():
         for desc, fq in df_Q.groupby("qid"):
             print_md_header(3, "Final Question {}".format(desc))
             print_md_header(4, "Just counts grouped by Results")
+
             print_md_paragraph(*["Navigation {} answered {} stars:\
                                  {}".format(*desc, len(subdf)) for desc, subdf
                                  in fq.groupby(["navigation", "result"])],
                                lineblock=True)
+            print_md_header(4, "{} Description".format(desc))
+            print_md_table(fq['result'].describe())
+
             print_full_analysis(fq, "result", h=4, by=None, sd=False,
                                 ffa=False,
                                 ovr=False, nt=norm_test)
