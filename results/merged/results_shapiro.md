@@ -281,211 +281,211 @@ Using normality test: shapiro
 
 #### ('burger', 1) vs ('burger', 2)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.94675972197265923, 'test_result': Ttest_relResult(statistic=3.1400467644045076, pvalue=0.0049443978028402202), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.94675972197265923, 'n1': 22, 'test_result': Ttest_relResult(statistic=3.1400467644045076, pvalue=0.0049443978028402202)}
 
 #### ('burger', 1) vs ('burger', 3)
 
-{'n2': 22, 'n1': 22, 'effect_size': 1.2011056601611565, 'test_result': Ttest_relResult(statistic=3.9836168083266799, pvalue=0.00067564806607191632), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 1.2011056601611565, 'n1': 22, 'test_result': Ttest_relResult(statistic=3.9836168083266799, pvalue=0.00067564806607191632)}
 
 #### ('burger', 1) vs ('burger', 4)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.84922261727279102, 'test_result': Ttest_relResult(statistic=2.8165527849774343, pvalue=0.010338413955597585), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.84922261727279102, 'n1': 22, 'test_result': Ttest_relResult(statistic=2.8165527849774343, pvalue=0.010338413955597585)}
 
 #### ('burger', 1) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 2.6611888863322934, 'test_result': Ttest_relResult(statistic=8.8261650322279621, pvalue=1.6451903254595449e-08), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 2.6611888863322934, 'n1': 22, 'test_result': Ttest_relResult(statistic=8.8261650322279621, pvalue=1.6451903254595449e-08)}
 
 #### ('burger', 1) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': -1.9097298327149146, 'test_result': Ttest_indResult(statistic=-6.7031245086454758, pvalue=5.6381782972874844e-08), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': -1.9097298327149146, 'n1': 22, 'test_result': Ttest_indResult(statistic=-6.7031245086454758, pvalue=5.6381782972874844e-08)}
 
 #### ('burger', 1) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.24350649350649356, 'test_result': MannwhitneyuResult(statistic=233.0, pvalue=0.072691640416537293), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.24350649350649356, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=233.0, pvalue=0.072691640416537293)}
 
 #### ('burger', 1) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 2.2829620500029861, 'test_result': Ttest_indResult(statistic=8.0131642746175658, pvalue=3.0036765567743514e-10), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 2.2829620500029861, 'n1': 22, 'test_result': Ttest_indResult(statistic=8.0131642746175658, pvalue=3.0036765567743514e-10)}
 
 #### ('burger', 1) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 2.9366881218094312, 'test_result': Ttest_indResult(statistic=10.307733474302086, pvalue=3.9626211595998718e-13), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 2.9366881218094312, 'n1': 22, 'test_result': Ttest_indResult(statistic=10.307733474302086, pvalue=3.9626211595998718e-13)}
 
 #### ('burger', 1) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 3.9971846751859443, 'test_result': Ttest_indResult(statistic=14.030061269834484, pvalue=1.6751765716561832e-16), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 3.9971846751859443, 'n1': 22, 'test_result': Ttest_indResult(statistic=14.030061269834484, pvalue=1.6751765716561832e-16)}
 
 #### ('burger', 2) vs ('burger', 3)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.35440147919303427, 'test_result': Ttest_relResult(statistic=1.1754167316302409, pvalue=0.25298310480066266), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.35440147919303427, 'n1': 22, 'test_result': Ttest_relResult(statistic=1.1754167316302409, pvalue=0.25298310480066266)}
 
 #### ('burger', 2) vs ('burger', 4)
 
-{'n2': 22, 'n1': 22, 'effect_size': -0.27581681953294063, 'test_result': Ttest_relResult(statistic=-0.91478090125993228, pvalue=0.37069158497461718), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': -0.27581681953294063, 'n1': 22, 'test_result': Ttest_relResult(statistic=-0.91478090125993228, pvalue=0.37069158497461718)}
 
 #### ('burger', 2) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.51539165603199966, 'test_result': Ttest_relResult(statistic=1.7093607431380531, pvalue=0.10212210775377208), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.51539165603199966, 'n1': 22, 'test_result': Ttest_relResult(statistic=1.7093607431380531, pvalue=0.10212210775377208)}
 
 #### ('burger', 2) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': -2.1964344153980893, 'test_result': Ttest_indResult(statistic=-7.7094535097442671, pvalue=6.1460659425242285e-10), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': -2.1964344153980893, 'n1': 22, 'test_result': Ttest_indResult(statistic=-7.7094535097442671, pvalue=6.1460659425242285e-10)}
 
 #### ('burger', 2) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.14610389610389607, 'test_result': MannwhitneyuResult(statistic=263.0, pvalue=0.19222905550361363), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.14610389610389607, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=263.0, pvalue=0.19222905550361363)}
 
 #### ('burger', 2) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.81212695298602966, 'test_result': Ttest_indResult(statistic=2.8505540361974746, pvalue=0.007533072831137938), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.81212695298602966, 'n1': 22, 'test_result': Ttest_indResult(statistic=2.8505540361974746, pvalue=0.007533072831137938)}
 
 #### ('burger', 2) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 1.1871061872924935, 'test_result': Ttest_indResult(statistic=4.1667258070177891, pvalue=0.00024295893165475523), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 1.1871061872924935, 'n1': 22, 'test_result': Ttest_indResult(statistic=4.1667258070177891, pvalue=0.00024295893165475523)}
 
 #### ('burger', 2) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 1.7884292636279993, 'test_result': Ttest_indResult(statistic=6.2773612390822437, pvalue=9.9419198495425703e-07), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 1.7884292636279993, 'n1': 22, 'test_result': Ttest_indResult(statistic=6.2773612390822437, pvalue=9.9419198495425703e-07)}
 
 #### ('burger', 3) vs ('burger', 4)
 
-{'n2': 22, 'n1': 22, 'effect_size': -0.7374996248322695, 'test_result': Ttest_relResult(statistic=-2.4460095385965119, pvalue=0.023338332791632995), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': -0.7374996248322695, 'n1': 22, 'test_result': Ttest_relResult(statistic=-2.4460095385965119, pvalue=0.023338332791632995)}
 
 #### ('burger', 3) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.23656134754591943, 'test_result': Ttest_relResult(statistic=0.7845852297106759, pvalue=0.4414581754358432), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.23656134754591943, 'n1': 22, 'test_result': Ttest_relResult(statistic=0.7845852297106759, pvalue=0.4414581754358432)}
 
 #### ('burger', 3) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': -2.5346208780888531, 'test_result': Ttest_indResult(statistic=-8.8964831763080934, pvalue=1.6380584716166247e-11), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': -2.5346208780888531, 'n1': 22, 'test_result': Ttest_indResult(statistic=-8.8964831763080934, pvalue=1.6380584716166247e-11)}
 
 #### ('burger', 3) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.36038961038961037, 'test_result': MannwhitneyuResult(statistic=197.0, pvalue=0.015401027053631673), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.36038961038961037, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=197.0, pvalue=0.015401027053631673)}
 
 #### ('burger', 3) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.70376045931483799, 'test_result': Ttest_indResult(statistic=2.4701891870969703, pvalue=0.018195085242505141), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.70376045931483799, 'n1': 22, 'test_result': Ttest_indResult(statistic=2.4701891870969703, pvalue=0.018195085242505141)}
 
 #### ('burger', 3) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 1.1462100107866364, 'test_result': Ttest_indResult(statistic=4.0231808100500297, pvalue=0.00030313523132897963), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 1.1462100107866364, 'n1': 22, 'test_result': Ttest_indResult(statistic=4.0231808100500297, pvalue=0.00030313523132897963)}
 
 #### ('burger', 3) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 1.8689406873961947, 'test_result': Ttest_indResult(statistic=6.5599551896199042, pvalue=2.8434885910251271e-07), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 1.8689406873961947, 'n1': 22, 'test_result': Ttest_indResult(statistic=6.5599551896199042, pvalue=2.8434885910251271e-07)}
 
 #### ('burger', 4) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.84300225316077237, 'test_result': Ttest_relResult(statistic=2.7959221711584763, pvalue=0.010828183767257584), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.84300225316077237, 'n1': 22, 'test_result': Ttest_relResult(statistic=2.7959221711584763, pvalue=0.010828183767257584)}
 
 #### ('burger', 4) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': -2.3036145286208791, 'test_result': Ttest_indResult(statistic=-8.0856541803709217, pvalue=3.5438757244842358e-10), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': -2.3036145286208791, 'n1': 22, 'test_result': Ttest_indResult(statistic=-8.0856541803709217, pvalue=3.5438757244842358e-10)}
 
 #### ('burger', 4) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.14935064935064934, 'test_result': MannwhitneyuResult(statistic=262.0, pvalue=0.18693288210180464), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.14935064935064934, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=262.0, pvalue=0.18693288210180464)}
 
 #### ('burger', 4) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 1.2621200986811529, 'test_result': Ttest_indResult(statistic=4.4300235674155788, pvalue=6.9900388209405247e-05), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 1.2621200986811529, 'n1': 22, 'test_result': Ttest_indResult(statistic=4.4300235674155788, pvalue=6.9900388209405247e-05)}
 
 #### ('burger', 4) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 1.7720819828888696, 'test_result': Ttest_indResult(statistic=6.2199825165556186, pvalue=3.19607703847048e-07), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 1.7720819828888696, 'n1': 22, 'test_result': Ttest_indResult(statistic=6.2199825165556186, pvalue=3.19607703847048e-07)}
 
 #### ('burger', 4) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 2.6020850201949859, 'test_result': Ttest_indResult(statistic=9.1332813540710038, pvalue=1.7051757569924614e-10), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 2.6020850201949859, 'n1': 22, 'test_result': Ttest_indResult(statistic=9.1332813540710038, pvalue=1.7051757569924614e-10)}
 
 #### ('burger', 5) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': -2.9198423468617594, 'test_result': Ttest_indResult(statistic=-10.248605044204549, pvalue=2.0453619521585734e-12), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': -2.9198423468617594, 'n1': 22, 'test_result': Ttest_indResult(statistic=-10.248605044204549, pvalue=2.0453619521585734e-12)}
 
 #### ('burger', 5) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.51623376623376616, 'test_result': MannwhitneyuResult(statistic=149.0, pvalue=0.0009750243017655867), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.51623376623376616, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=149.0, pvalue=0.0009750243017655867)}
 
 #### ('burger', 5) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.67859393927802314, 'test_result': Ttest_indResult(statistic=2.3818550602659139, pvalue=0.0213390257262559), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.67859393927802314, 'n1': 22, 'test_result': Ttest_indResult(statistic=2.3818550602659139, pvalue=0.0213390257262559)}
 
 #### ('burger', 5) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 1.2662092998006802, 'test_result': Ttest_indResult(statistic=4.4443766050942735, pvalue=5.8417405173783372e-05), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 1.2662092998006802, 'n1': 22, 'test_result': Ttest_indResult(statistic=4.4443766050942735, pvalue=5.8417405173783372e-05)}
 
 #### ('burger', 5) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 2.2701377982054174, 'test_result': Ttest_indResult(statistic=7.9681513334901197, pvalue=9.6399894615656428e-10), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 2.2701377982054174, 'n1': 22, 'test_result': Ttest_indResult(statistic=7.9681513334901197, pvalue=9.6399894615656428e-10)}
 
 #### ('swipe', 1) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.0019126554032515141, 'test_result': WilcoxonResult(statistic=3.0, pvalue=5.2564133258508337e-06), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.0019126554032515141, 'n1': 28, 'test_result': WilcoxonResult(statistic=3.0, pvalue=5.2564133258508337e-06)}
 
 #### ('swipe', 1) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 28, 'effect_size': 3.4860559225484686, 'test_result': Ttest_relResult(statistic=13.043626893310524, pvalue=3.5969964456561752e-13), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 3.4860559225484686, 'n1': 28, 'test_result': Ttest_relResult(statistic=13.043626893310524, pvalue=3.5969964456561752e-13)}
 
 #### ('swipe', 1) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 28, 'effect_size': 3.8799222428390125, 'test_result': Ttest_relResult(statistic=14.517339720027108, pvalue=2.8328302970398919e-14), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 3.8799222428390125, 'n1': 28, 'test_result': Ttest_relResult(statistic=14.517339720027108, pvalue=2.8328302970398919e-14)}
 
 #### ('swipe', 1) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 4.5968919124502001, 'test_result': Ttest_relResult(statistic=17.199994580420682, pvalue=4.4867434987762781e-16), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 4.5968919124502001, 'n1': 28, 'test_result': Ttest_relResult(statistic=17.199994580420682, pvalue=4.4867434987762781e-16)}
 
 #### ('swipe', 2) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.01912655403251514, 'test_result': WilcoxonResult(statistic=30.0, pvalue=8.1666493089205386e-05), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.01912655403251514, 'n1': 28, 'test_result': WilcoxonResult(statistic=30.0, pvalue=8.1666493089205386e-05)}
 
 #### ('swipe', 2) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.010200828817341408, 'test_result': WilcoxonResult(statistic=16.0, pvalue=2.0602777134809463e-05), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.010200828817341408, 'n1': 28, 'test_result': WilcoxonResult(statistic=16.0, pvalue=2.0602777134809463e-05)}
 
 #### ('swipe', 2) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.0031877590054191903, 'test_result': WilcoxonResult(statistic=5.0, pvalue=6.5213205645443688e-06), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.0031877590054191903, 'n1': 28, 'test_result': WilcoxonResult(statistic=5.0, pvalue=6.5213205645443688e-06)}
 
 #### ('swipe', 3) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.5606349854006033, 'test_result': Ttest_relResult(statistic=2.0977040344080682, pvalue=0.045427484584555158), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.5606349854006033, 'n1': 28, 'test_result': Ttest_relResult(statistic=2.0977040344080682, pvalue=0.045427484584555158)}
 
 #### ('swipe', 3) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 1.3561910948601303, 'test_result': Ttest_relResult(statistic=5.0744024279604458, pvalue=2.493775482784069e-05), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 1.3561910948601303, 'n1': 28, 'test_result': Ttest_relResult(statistic=5.0744024279604458, pvalue=2.493775482784069e-05)}
 
 #### ('swipe', 4) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 1.104446011408412, 'test_result': Ttest_relResult(statistic=4.1324585768793014, pvalue=0.00031147549191696031), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 1.104446011408412, 'n1': 28, 'test_result': Ttest_relResult(statistic=4.1324585768793014, pvalue=0.00031147549191696031)}
 
 ### Global Burger vs Swipe per tid Tests (efficiency)
 
 #### burger vs swipe 1
 
-{'n2': 28, 'n1': 110, 'effect_size': -1.9870466939513425, 'test_result': Ttest_indResult(statistic=-9.3873689639224196, pvalue=9.7956596089962241e-11), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': -1.9870466939513425, 'n1': 110, 'test_result': Ttest_indResult(statistic=-9.3873689639224196, pvalue=9.7956596089962241e-11)}
 
 #### burger vs swipe 2
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.18571428571428572, 'test_result': MannwhitneyuResult(statistic=1254.0, pvalue=0.065327534078559346), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.18571428571428572, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=1254.0, pvalue=0.065327534078559346)}
 
 #### burger vs swipe 3
 
-{'n2': 28, 'n1': 110, 'effect_size': 1.1700510299170295, 'test_result': Ttest_indResult(statistic=5.5276510400502676, pvalue=9.0622300016679275e-07), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 1.1700510299170295, 'n1': 110, 'test_result': Ttest_indResult(statistic=5.5276510400502676, pvalue=9.0622300016679275e-07)}
 
 #### burger vs swipe 4
 
-{'n2': 28, 'n1': 110, 'effect_size': 1.770000563266015, 'test_result': Ttest_indResult(statistic=8.3619818317845045, pvalue=7.0554228434671516e-12), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 1.770000563266015, 'n1': 110, 'test_result': Ttest_indResult(statistic=8.3619818317845045, pvalue=7.0554228434671516e-12)}
 
 #### burger vs swipe 5
 
-{'n2': 28, 'n1': 110, 'effect_size': 2.8251881603681559, 'test_result': Ttest_indResult(statistic=13.346985621733221, pvalue=3.9194832679580957e-22), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 2.8251881603681559, 'n1': 110, 'test_result': Ttest_indResult(statistic=13.346985621733221, pvalue=3.9194832679580957e-22)}
 
 ### Global Burger vs Global Swipe Test (efficiency)
 
 #### burger vs swipe
 
-{'n2': 140, 'n1': 110, 'effect_size': 0.2218181818181818, 'test_result': MannwhitneyuResult(statistic=5992.0, pvalue=0.0013125763723938479), 'N': 250}
+{'n2': 140, 'N': 250, 'effect_size': 0.2218181818181818, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=5992.0, pvalue=0.0013125763723938479)}
 
 ## Task Questionnaires
 
@@ -681,211 +681,211 @@ Using normality test: shapiro
 
 ##### ('burger', 1) vs ('burger', 2)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.15729920705028502), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0, 'n1': 22, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.15729920705028502)}
 
 ##### ('burger', 1) vs ('burger', 3)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.17971249487899976), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0, 'n1': 22, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.17971249487899976)}
 
 ##### ('burger', 1) vs ('burger', 4)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.15729920705028502), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0, 'n1': 22, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.15729920705028502)}
 
 ##### ('burger', 1) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.31731050786291415), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0, 'n1': 22, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.31731050786291415)}
 
 ##### ('burger', 1) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.1071428571428571, 'test_result': MannwhitneyuResult(statistic=275.0, pvalue=0.061389171314485569), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.1071428571428571, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=275.0, pvalue=0.061389171314485569)}
 
 ##### ('burger', 1) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.071428571428571397, 'test_result': MannwhitneyuResult(statistic=286.0, pvalue=0.10790037602663682), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.071428571428571397, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=286.0, pvalue=0.10790037602663682)}
 
 ##### ('burger', 1) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.1428571428571429, 'test_result': MannwhitneyuResult(statistic=264.0, pvalue=0.035323810007342034), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.1428571428571429, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=264.0, pvalue=0.035323810007342034)}
 
 ##### ('burger', 1) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.1428571428571429, 'test_result': MannwhitneyuResult(statistic=264.0, pvalue=0.035323810007342034), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.1428571428571429, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=264.0, pvalue=0.035323810007342034)}
 
 ##### ('burger', 1) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.1785714285714286, 'test_result': MannwhitneyuResult(statistic=253.0, pvalue=0.020341356769343476), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.1785714285714286, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=253.0, pvalue=0.020341356769343476)}
 
 ##### ('burger', 2) vs ('burger', 3)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0030975735673722249, 'test_result': WilcoxonResult(statistic=3.0, pvalue=0.46145098783336069), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0030975735673722249, 'n1': 22, 'test_result': WilcoxonResult(statistic=3.0, pvalue=0.46145098783336069)}
 
 ##### ('burger', 2) vs ('burger', 4)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0051626226122870418, 'test_result': WilcoxonResult(statistic=5.0, pvalue=1.0), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0051626226122870418, 'n1': 22, 'test_result': WilcoxonResult(statistic=5.0, pvalue=1.0)}
 
 ##### ('burger', 2) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0020650490449148169, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.5637028616507731), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0020650490449148169, 'n1': 22, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.5637028616507731)}
 
 ##### ('burger', 2) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.019480519480519431, 'test_result': MannwhitneyuResult(statistic=302.0, pvalue=0.41814383343092509), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.019480519480519431, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=302.0, pvalue=0.41814383343092509)}
 
 ##### ('burger', 2) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.019480519480519431, 'test_result': MannwhitneyuResult(statistic=302.0, pvalue=0.40954587077471732), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.019480519480519431, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=302.0, pvalue=0.40954587077471732)}
 
 ##### ('burger', 2) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.055194805194805241, 'test_result': MannwhitneyuResult(statistic=291.0, pvalue=0.28360268156813595), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.055194805194805241, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=291.0, pvalue=0.28360268156813595)}
 
 ##### ('burger', 2) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.055194805194805241, 'test_result': MannwhitneyuResult(statistic=291.0, pvalue=0.28360268156813595), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.055194805194805241, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=291.0, pvalue=0.28360268156813595)}
 
 ##### ('burger', 2) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.094155844155844104, 'test_result': MannwhitneyuResult(statistic=279.0, pvalue=0.1776214834950835), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.094155844155844104, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=279.0, pvalue=0.1776214834950835)}
 
 ##### ('burger', 3) vs ('burger', 4)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0015487867836861124, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.41421617824252521), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0015487867836861124, 'n1': 22, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.41421617824252521)}
 
 ##### ('burger', 3) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.17971249487899976), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0, 'n1': 22, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.17971249487899976)}
 
 ##### ('burger', 3) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.008116883116883078, 'test_result': MannwhitneyuResult(statistic=305.5, pvalue=0.47007151426311133), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.008116883116883078, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=305.5, pvalue=0.47007151426311133)}
 
 ##### ('burger', 3) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.025974025974025983, 'test_result': MannwhitneyuResult(statistic=300.0, pvalue=0.37768095297605236), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.025974025974025983, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=300.0, pvalue=0.37768095297605236)}
 
 ##### ('burger', 3) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.040584415584415612, 'test_result': MannwhitneyuResult(statistic=295.5, pvalue=0.3388315325050939), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.040584415584415612, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=295.5, pvalue=0.3388315325050939)}
 
 ##### ('burger', 3) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.040584415584415612, 'test_result': MannwhitneyuResult(statistic=295.5, pvalue=0.3388315325050939), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.040584415584415612, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=295.5, pvalue=0.3388315325050939)}
 
 ##### ('burger', 3) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.074675324675324672, 'test_result': MannwhitneyuResult(statistic=285.0, pvalue=0.23293475501797717), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.074675324675324672, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=285.0, pvalue=0.23293475501797717)}
 
 ##### ('burger', 4) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.31731050786291415), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0, 'n1': 22, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.31731050786291415)}
 
 ##### ('burger', 4) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.019480519480519431, 'test_result': MannwhitneyuResult(statistic=302.0, pvalue=0.41814383343092509), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.019480519480519431, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=302.0, pvalue=0.41814383343092509)}
 
 ##### ('burger', 4) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.019480519480519431, 'test_result': MannwhitneyuResult(statistic=302.0, pvalue=0.40954587077471732), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.019480519480519431, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=302.0, pvalue=0.40954587077471732)}
 
 ##### ('burger', 4) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.055194805194805241, 'test_result': MannwhitneyuResult(statistic=291.0, pvalue=0.28360268156813595), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.055194805194805241, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=291.0, pvalue=0.28360268156813595)}
 
 ##### ('burger', 4) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.055194805194805241, 'test_result': MannwhitneyuResult(statistic=291.0, pvalue=0.28360268156813595), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.055194805194805241, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=291.0, pvalue=0.28360268156813595)}
 
 ##### ('burger', 4) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.094155844155844104, 'test_result': MannwhitneyuResult(statistic=279.0, pvalue=0.1776214834950835), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.094155844155844104, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=279.0, pvalue=0.1776214834950835)}
 
 ##### ('burger', 5) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.063311688311688319, 'test_result': MannwhitneyuResult(statistic=288.5, pvalue=0.21488485789583234), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.063311688311688319, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=288.5, pvalue=0.21488485789583234)}
 
 ##### ('burger', 5) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.025974025974025983, 'test_result': MannwhitneyuResult(statistic=300.0, pvalue=0.36081607462259746), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.025974025974025983, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=300.0, pvalue=0.36081607462259746)}
 
 ##### ('burger', 5) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.099025974025974017, 'test_result': MannwhitneyuResult(statistic=277.5, pvalue=0.12983938884427548), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.099025974025974017, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=277.5, pvalue=0.12983938884427548)}
 
 ##### ('burger', 5) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.099025974025974017, 'test_result': MannwhitneyuResult(statistic=277.5, pvalue=0.12983938884427548), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.099025974025974017, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=277.5, pvalue=0.12983938884427548)}
 
 ##### ('burger', 5) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.13636363636363635, 'test_result': MannwhitneyuResult(statistic=266.0, pvalue=0.07519977300947886), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.13636363636363635, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=266.0, pvalue=0.07519977300947886)}
 
 ##### ('swipe', 1) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.00095632770162575704, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.41421617824252521), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.00095632770162575704, 'n1': 28, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.41421617824252521)}
 
 ##### ('swipe', 1) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.0012751036021676761, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.5637028616507731), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.0012751036021676761, 'n1': 28, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.5637028616507731)}
 
 ##### ('swipe', 1) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.0012751036021676761, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.5637028616507731), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.0012751036021676761, 'n1': 28, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.5637028616507731)}
 
 ##### ('swipe', 1) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.0, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.083264516663550406), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.0, 'n1': 28, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.083264516663550406)}
 
 ##### ('swipe', 2) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.0012751036021676761, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.25683925795785656), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.0012751036021676761, 'n1': 28, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.25683925795785656)}
 
 ##### ('swipe', 2) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.0012751036021676761, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.25683925795785656), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.0012751036021676761, 'n1': 28, 'test_result': WilcoxonResult(statistic=2.0, pvalue=0.25683925795785656)}
 
 ##### ('swipe', 2) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.0, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.058781721355358862), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.0, 'n1': 28, 'test_result': WilcoxonResult(statistic=0.0, pvalue=0.058781721355358862)}
 
 ##### ('swipe', 3) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 28, 'effect_size': '=== All pairs were equal ===', 'test_result': '=== All pairs were equal ===', 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': '=== All pairs were equal ===', 'n1': 28, 'test_result': '=== All pairs were equal ==='}
 
 ##### ('swipe', 3) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.00095632770162575704, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.41421617824252521), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.00095632770162575704, 'n1': 28, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.41421617824252521)}
 
 ##### ('swipe', 4) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.00095632770162575704, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.41421617824252521), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.00095632770162575704, 'n1': 28, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.41421617824252521)}
 
 #### Global Burger vs Swipe per tid Tests (result)
 
 ##### burger vs swipe 1
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.043506493506493493, 'test_result': MannwhitneyuResult(statistic=1473.0, pvalue=0.21665236926243431), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.043506493506493493, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=1473.0, pvalue=0.21665236926243431)}
 
 ##### burger vs swipe 2
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.0064935064935064402, 'test_result': MannwhitneyuResult(statistic=1530.0, pvalue=0.45320928415997419), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.0064935064935064402, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=1530.0, pvalue=0.45320928415997419)}
 
 ##### burger vs swipe 3
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.078571428571428625, 'test_result': MannwhitneyuResult(statistic=1419.0, pvalue=0.087083010808927386), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.078571428571428625, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=1419.0, pvalue=0.087083010808927386)}
 
 ##### burger vs swipe 4
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.078571428571428625, 'test_result': MannwhitneyuResult(statistic=1419.0, pvalue=0.087083010808927386), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.078571428571428625, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=1419.0, pvalue=0.087083010808927386)}
 
 ##### burger vs swipe 5
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.11558441558441557, 'test_result': MannwhitneyuResult(statistic=1362.0, pvalue=0.027199345369874211), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.11558441558441557, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=1362.0, pvalue=0.027199345369874211)}
 
 #### Global Burger vs Global Swipe Test (result)
 
 ##### burger vs swipe
 
-{'n2': 140, 'n1': 110, 'effect_size': 0.064545454545454573, 'test_result': MannwhitneyuResult(statistic=7203.0, pvalue=0.046318608676750285), 'N': 250}
+{'n2': 140, 'N': 250, 'effect_size': 0.064545454545454573, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=7203.0, pvalue=0.046318608676750285)}
 
 ### Task Question 1
 
@@ -1079,215 +1079,227 @@ Using normality test: shapiro
 
 ##### ('burger', 1) vs ('burger', 2)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0077439339184305631, 'test_result': WilcoxonResult(statistic=7.5, pvalue=1.0), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0077439339184305631, 'n1': 22, 'test_result': WilcoxonResult(statistic=7.5, pvalue=1.0)}
 
 ##### ('burger', 1) vs ('burger', 3)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.014455343314403717, 'test_result': WilcoxonResult(statistic=14.0, pvalue=0.56869370493349436), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.014455343314403717, 'n1': 22, 'test_result': WilcoxonResult(statistic=14.0, pvalue=0.56869370493349436)}
 
 ##### ('burger', 1) vs ('burger', 4)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0061951471347444498, 'test_result': WilcoxonResult(statistic=6.0, pvalue=0.68027954733445029), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0061951471347444498, 'n1': 22, 'test_result': WilcoxonResult(statistic=6.0, pvalue=0.68027954733445029)}
 
 ##### ('burger', 1) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0051626226122870418, 'test_result': WilcoxonResult(statistic=5.0, pvalue=1.0), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0051626226122870418, 'n1': 22, 'test_result': WilcoxonResult(statistic=5.0, pvalue=1.0)}
 
 ##### ('burger', 1) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.1964285714285714, 'test_result': MannwhitneyuResult(statistic=247.5, pvalue=0.082098002975044604), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.1964285714285714, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=247.5, pvalue=0.082098002975044604)}
 
 ##### ('burger', 1) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.21590909090909094, 'test_result': MannwhitneyuResult(statistic=241.5, pvalue=0.066396878662638464), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.21590909090909094, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=241.5, pvalue=0.066396878662638464)}
 
 ##### ('burger', 1) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.30681818181818177, 'test_result': MannwhitneyuResult(statistic=213.5, pvalue=0.020092875062028004), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.30681818181818177, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=213.5, pvalue=0.020092875062028004)}
 
 ##### ('burger', 1) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.35551948051948057, 'test_result': MannwhitneyuResult(statistic=198.5, pvalue=0.010019521264436585), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.35551948051948057, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=198.5, pvalue=0.010019521264436585)}
 
 ##### ('burger', 1) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.37662337662337664, 'test_result': MannwhitneyuResult(statistic=192.0, pvalue=0.0068101408106697112), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.37662337662337664, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=192.0, pvalue=0.0068101408106697112)}
 
 ##### ('burger', 2) vs ('burger', 3)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0067114093959731542, 'test_result': WilcoxonResult(statistic=6.5, pvalue=0.39510806859049219), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0067114093959731542, 'n1': 22, 'test_result': WilcoxonResult(statistic=6.5, pvalue=0.39510806859049219)}
 
 ##### ('burger', 2) vs ('burger', 4)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.010841507485802787, 'test_result': WilcoxonResult(statistic=10.5, pvalue=1.0), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.010841507485802787, 'n1': 22, 'test_result': WilcoxonResult(statistic=10.5, pvalue=1.0)}
 
 ##### ('burger', 2) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0092927207021166747, 'test_result': WilcoxonResult(statistic=9.0, pvalue=0.73888268036352733), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0092927207021166747, 'n1': 22, 'test_result': WilcoxonResult(statistic=9.0, pvalue=0.73888268036352733)}
 
 ##### ('burger', 2) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.24512987012987009, 'test_result': MannwhitneyuResult(statistic=232.5, pvalue=0.038182542965196922), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.24512987012987009, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=232.5, pvalue=0.038182542965196922)}
 
 ##### ('burger', 2) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.2678571428571429, 'test_result': MannwhitneyuResult(statistic=225.5, pvalue=0.028699028147674787), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.2678571428571429, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=225.5, pvalue=0.028699028147674787)}
 
 ##### ('burger', 2) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.36850649350649356, 'test_result': MannwhitneyuResult(statistic=194.5, pvalue=0.0062373933525989578), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.36850649350649356, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=194.5, pvalue=0.0062373933525989578)}
 
 ##### ('burger', 2) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.41720779220779225, 'test_result': MannwhitneyuResult(statistic=179.5, pvalue=0.0028888514521789059), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.41720779220779225, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=179.5, pvalue=0.0028888514521789059)}
 
 ##### ('burger', 2) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.43831168831168832, 'test_result': MannwhitneyuResult(statistic=173.0, pvalue=0.001845925801493757), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.43831168831168832, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=173.0, pvalue=0.001845925801493757)}
 
 ##### ('burger', 3) vs ('burger', 4)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0092927207021166747, 'test_result': WilcoxonResult(statistic=9.0, pvalue=0.3885437838475907), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0092927207021166747, 'n1': 22, 'test_result': WilcoxonResult(statistic=9.0, pvalue=0.3885437838475907)}
 
 ##### ('burger', 3) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.013422818791946308, 'test_result': WilcoxonResult(statistic=13.0, pvalue=0.86456930168674195), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.013422818791946308, 'n1': 22, 'test_result': WilcoxonResult(statistic=13.0, pvalue=0.86456930168674195)}
 
 ##### ('burger', 3) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.15422077922077926, 'test_result': MannwhitneyuResult(statistic=260.5, pvalue=0.14603135541294709), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.15422077922077926, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=260.5, pvalue=0.14603135541294709)}
 
 ##### ('burger', 3) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.16883116883116878, 'test_result': MannwhitneyuResult(statistic=256.0, pvalue=0.12750985422970523), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.16883116883116878, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=256.0, pvalue=0.12750985422970523)}
 
 ##### ('burger', 3) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.25324675324675328, 'test_result': MannwhitneyuResult(statistic=230.0, pvalue=0.049115891184390158), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.25324675324675328, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=230.0, pvalue=0.049115891184390158)}
 
 ##### ('burger', 3) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.30194805194805197, 'test_result': MannwhitneyuResult(statistic=215.0, pvalue=0.026326679220802538), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.30194805194805197, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=215.0, pvalue=0.026326679220802538)}
 
 ##### ('burger', 3) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.3392857142857143, 'test_result': MannwhitneyuResult(statistic=203.5, pvalue=0.014613622667340618), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.3392857142857143, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=203.5, pvalue=0.014613622667340618)}
 
 ##### ('burger', 4) vs ('burger', 5)
 
-{'n2': 22, 'n1': 22, 'effect_size': 0.0015487867836861124, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.19364643126922065), 'N': 44}
+{'n2': 22, 'N': 44, 'effect_size': 0.0015487867836861124, 'n1': 22, 'test_result': WilcoxonResult(statistic=1.5, pvalue=0.19364643126922065)}
 
 ##### ('burger', 4) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.22564935064935066, 'test_result': MannwhitneyuResult(statistic=238.5, pvalue=0.054909704407618581), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.22564935064935066, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=238.5, pvalue=0.054909704407618581)}
 
 ##### ('burger', 4) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.24350649350649356, 'test_result': MannwhitneyuResult(statistic=233.0, pvalue=0.044870412680933683), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.24350649350649356, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=233.0, pvalue=0.044870412680933683)}
 
 ##### ('burger', 4) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.3214285714285714, 'test_result': MannwhitneyuResult(statistic=209.0, pvalue=0.015775210433546256), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.3214285714285714, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=209.0, pvalue=0.015775210433546256)}
 
 ##### ('burger', 4) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.375, 'test_result': MannwhitneyuResult(statistic=192.5, pvalue=0.0070352388832014452), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.375, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=192.5, pvalue=0.0070352388832014452)}
 
 ##### ('burger', 4) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.40422077922077926, 'test_result': MannwhitneyuResult(statistic=183.5, pvalue=0.0040067153811422793), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.40422077922077926, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=183.5, pvalue=0.0040067153811422793)}
 
 ##### ('burger', 5) vs ('swipe', 1)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.20129870129870131, 'test_result': MannwhitneyuResult(statistic=246.0, pvalue=0.077014874525015403), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.20129870129870131, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=246.0, pvalue=0.077014874525015403)}
 
 ##### ('burger', 5) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.2191558441558441, 'test_result': MannwhitneyuResult(statistic=240.5, pvalue=0.063535812872022673), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.2191558441558441, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=240.5, pvalue=0.063535812872022673)}
 
 ##### ('burger', 5) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.31331168831168832, 'test_result': MannwhitneyuResult(statistic=211.5, pvalue=0.01809715117525822), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.31331168831168832, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=211.5, pvalue=0.01809715117525822)}
 
 ##### ('burger', 5) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.35551948051948057, 'test_result': MannwhitneyuResult(statistic=198.5, pvalue=0.010033737896491264), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.35551948051948057, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=198.5, pvalue=0.010033737896491264)}
 
 ##### ('burger', 5) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.38149350649350644, 'test_result': MannwhitneyuResult(statistic=190.5, pvalue=0.0062419441538161761), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.38149350649350644, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=190.5, pvalue=0.0062419441538161761)}
 
 ##### ('swipe', 1) vs ('swipe', 2)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.032196365954733824, 'test_result': WilcoxonResult(statistic=50.5, pvalue=0.89924291781309873), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.032196365954733824, 'n1': 28, 'test_result': WilcoxonResult(statistic=50.5, pvalue=0.89924291781309873)}
 
 ##### ('swipe', 1) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.020720433535224736, 'test_result': WilcoxonResult(statistic=32.5, pvalue=0.34939652545601385), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.020720433535224736, 'n1': 28, 'test_result': WilcoxonResult(statistic=32.5, pvalue=0.34939652545601385)}
 
 ##### ('swipe', 1) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.025820847943895442, 'test_result': WilcoxonResult(statistic=40.5, pvalue=0.44742990778151448), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.025820847943895442, 'n1': 28, 'test_result': WilcoxonResult(statistic=40.5, pvalue=0.44742990778151448)}
 
 ##### ('swipe', 1) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.021676761236850493, 'test_result': WilcoxonResult(statistic=34.0, pvalue=0.13211241836284676), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.021676761236850493, 'n1': 28, 'test_result': WilcoxonResult(statistic=34.0, pvalue=0.13211241836284676)}
 
 ##### ('swipe', 2) vs ('swipe', 3)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.01912655403251514, 'test_result': WilcoxonResult(statistic=30.0, pvalue=0.4727619557115964), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.01912655403251514, 'n1': 28, 'test_result': WilcoxonResult(statistic=30.0, pvalue=0.4727619557115964)}
 
 ##### ('swipe', 2) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.042715970672617148, 'test_result': WilcoxonResult(statistic=67.0, pvalue=0.6485210682667949), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.042715970672617148, 'n1': 28, 'test_result': WilcoxonResult(statistic=67.0, pvalue=0.6485210682667949)}
 
 ##### ('swipe', 2) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.025183296142811604, 'test_result': WilcoxonResult(statistic=39.5, pvalue=0.1354274987516664), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.025183296142811604, 'n1': 28, 'test_result': WilcoxonResult(statistic=39.5, pvalue=0.1354274987516664)}
 
 ##### ('swipe', 3) vs ('swipe', 4)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.038253108065030281, 'test_result': WilcoxonResult(statistic=60.0, pvalue=0.66730491249962687), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.038253108065030281, 'n1': 28, 'test_result': WilcoxonResult(statistic=60.0, pvalue=0.66730491249962687)}
 
 ##### ('swipe', 3) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.016576346828179791, 'test_result': WilcoxonResult(statistic=26.0, pvalue=0.16753962672004419), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.016576346828179791, 'n1': 28, 'test_result': WilcoxonResult(statistic=26.0, pvalue=0.16753962672004419)}
 
 ##### ('swipe', 4) vs ('swipe', 5)
 
-{'n2': 28, 'n1': 28, 'effect_size': 0.016576346828179791, 'test_result': WilcoxonResult(statistic=26.0, pvalue=0.30026522383277554), 'N': 56}
+{'n2': 28, 'N': 56, 'effect_size': 0.016576346828179791, 'n1': 28, 'test_result': WilcoxonResult(statistic=26.0, pvalue=0.30026522383277554)}
 
 #### Global Burger vs Swipe per tid Tests (result)
 
 ##### burger vs swipe 1
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.20454545454545459, 'test_result': MannwhitneyuResult(statistic=1225.0, pvalue=0.017143625211004959), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.20454545454545459, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=1225.0, pvalue=0.017143625211004959)}
 
 ##### burger vs swipe 2
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.22305194805194806, 'test_result': MannwhitneyuResult(statistic=1196.5, pvalue=0.011075983661422355), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.22305194805194806, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=1196.5, pvalue=0.011075983661422355)}
 
 ##### burger vs swipe 3
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.31266233766233764, 'test_result': MannwhitneyuResult(statistic=1058.5, pvalue=0.00087828638876744818), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.31266233766233764, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=1058.5, pvalue=0.00087828638876744818)}
 
 ##### burger vs swipe 4
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.36103896103896105, 'test_result': MannwhitneyuResult(statistic=984.0, pvalue=0.00018652482417813029), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.36103896103896105, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=984.0, pvalue=0.00018652482417813029)}
 
 ##### burger vs swipe 5
 
-{'n2': 28, 'n1': 110, 'effect_size': 0.38798701298701299, 'test_result': MannwhitneyuResult(statistic=942.5, pvalue=6.5526352124271008e-05), 'N': 138}
+{'n2': 28, 'N': 138, 'effect_size': 0.38798701298701299, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=942.5, pvalue=6.5526352124271008e-05)}
 
 #### Global Burger vs Global Swipe Test (result)
 
 ##### burger vs swipe
 
-{'n2': 140, 'n1': 110, 'effect_size': 0.29785714285714282, 'test_result': MannwhitneyuResult(statistic=5406.5, pvalue=2.9062055593999374e-06), 'N': 250}
+{'n2': 140, 'N': 250, 'effect_size': 0.29785714285714282, 'n1': 110, 'test_result': MannwhitneyuResult(statistic=5406.5, pvalue=2.9062055593999374e-06)}
 
 ## Final Questionnaires
 
 ### Final Question 0
+
+#### Just counts grouped by Results
+
+| Navigation burger answered 1 stars:                                 16
+| Navigation burger answered 2 stars:                                 4
+| Navigation burger answered 4 stars:                                 1
+| Navigation burger answered 5 stars:                                 1
+| Navigation swipe answered 1 stars:                                 21
+| Navigation swipe answered 2 stars:                                 4
+| Navigation swipe answered 3 stars:                                 1
+| Navigation swipe answered 4 stars:                                 1
+| Navigation swipe answered 7 stars:                                 1
 
 #### Descriptions (result)
 
@@ -1325,9 +1337,21 @@ Using normality test: shapiro
 
 ##### burger vs swipe
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.017857142857142905, 'test_result': MannwhitneyuResult(statistic=302.5, pvalue=0.44941800310214225), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.017857142857142905, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=302.5, pvalue=0.44941800310214225)}
 
 ### Final Question 1
+
+#### Just counts grouped by Results
+
+| Navigation burger answered 1 stars:                                 13
+| Navigation burger answered 2 stars:                                 3
+| Navigation burger answered 4 stars:                                 1
+| Navigation burger answered 5 stars:                                 4
+| Navigation burger answered 6 stars:                                 1
+| Navigation swipe answered 1 stars:                                 17
+| Navigation swipe answered 2 stars:                                 8
+| Navigation swipe answered 4 stars:                                 2
+| Navigation swipe answered 6 stars:                                 1
 
 #### Descriptions (result)
 
@@ -1365,9 +1389,19 @@ Using normality test: shapiro
 
 ##### burger vs swipe
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.087662337662337664, 'test_result': MannwhitneyuResult(statistic=281.0, pvalue=0.27788843237866634), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.087662337662337664, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=281.0, pvalue=0.27788843237866634)}
 
 ### Final Question 2
+
+#### Just counts grouped by Results
+
+| Navigation burger answered 1 stars:                                 17
+| Navigation burger answered 2 stars:                                 5
+| Navigation swipe answered 1 stars:                                 18
+| Navigation swipe answered 2 stars:                                 5
+| Navigation swipe answered 3 stars:                                 2
+| Navigation swipe answered 4 stars:                                 2
+| Navigation swipe answered 7 stars:                                 1
 
 #### Descriptions (result)
 
@@ -1405,9 +1439,25 @@ Using normality test: shapiro
 
 ##### burger vs swipe
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.17045454545454541, 'test_result': MannwhitneyuResult(statistic=255.5, pvalue=0.10358134878107761), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.17045454545454541, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=255.5, pvalue=0.10358134878107761)}
 
 ### Final Question 3
+
+#### Just counts grouped by Results
+
+| Navigation burger answered 2 stars:                                 1
+| Navigation burger answered 3 stars:                                 5
+| Navigation burger answered 4 stars:                                 1
+| Navigation burger answered 5 stars:                                 4
+| Navigation burger answered 6 stars:                                 5
+| Navigation burger answered 7 stars:                                 6
+| Navigation swipe answered 1 stars:                                 1
+| Navigation swipe answered 2 stars:                                 1
+| Navigation swipe answered 3 stars:                                 3
+| Navigation swipe answered 4 stars:                                 11
+| Navigation swipe answered 5 stars:                                 5
+| Navigation swipe answered 6 stars:                                 4
+| Navigation swipe answered 7 stars:                                 3
 
 #### Descriptions (result)
 
@@ -1445,4 +1495,4 @@ Using normality test: shapiro
 
 ##### burger vs swipe
 
-{'n2': 28, 'n1': 22, 'effect_size': 0.22564935064935066, 'test_result': MannwhitneyuResult(statistic=238.5, pvalue=0.084899251911718931), 'N': 50}
+{'n2': 28, 'N': 50, 'effect_size': 0.22564935064935066, 'n1': 22, 'test_result': MannwhitneyuResult(statistic=238.5, pvalue=0.084899251911718931)}
