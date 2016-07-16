@@ -117,7 +117,7 @@ def efficiency(row):
 
     :param row:
     """
-    return row['effectiveness'] / row['time_ms']
+    return 1000 * row['effectiveness'] / row['time_ms']
 
 
 def is_significant(pvalue, alpha=0.05):
@@ -468,7 +468,7 @@ def main():
 
         df_plot = pd.DataFrame(values)
 
-        print(df_plot, file=sys.stderr)
+        # print(df_plot, file=sys.stderr)
         df_plot.plot.box()
         plt.show()
 
