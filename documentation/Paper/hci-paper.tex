@@ -344,8 +344,8 @@ The optimal number $n_{opt_i}$ of
 page changes required equals $1$ for the burger menu navigation and $d_1$ for the swipe gesture navigation. As a measure of 
 effectiveness, we measure in how many of the jumps unnecessary page changes were made, that is, the effectiveness for a task
 equals $\frac{|\{i \in \{1,\ldots,5\} | n_{interactions_i} = n_{opt_i} \}|}{5}$.
-\paragraph{Efficiency} For the efficiency, we calculate the effectiveness of a task required divided by the time 
-required to complete the task in milliseconds. We start measuring the time at the point
+\paragraph{Efficiency} For the efficiency, we calculate the effectiveness of a task divided by the time 
+required to complete the task in seconds. We start measuring the time at the point
 when the first instruction is displayed and stop when the last door is opened.
 \paragraph{Satisfaction}
 In order to assess the user satisfaction depending on the distance, after each task, the user is asked to estimate their
@@ -391,8 +391,6 @@ examine two independent variables: navigation method and distance.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Testing procedure}
-For all our computational analyses, we used the scipy.stats package for Python.
-
 Our main focus in this research is on comparing the two navigation methods when the distance is equal.
 The results for all independent variables as introduced in Chapter \ref{chap:measurements} are shown in Table \ref{fig:burger-vs-swipe}. Recall that the
 satisfaction is quantified through task question (2). For additional results please see the Appendix. 
@@ -401,6 +399,9 @@ normality} to test for normality and apply Welch's t-test (marked with *) if we 
 In the case of a t-test, we report the following data in this order: t value, significance level p and effect size \todo{Again, which measure if there are multiple
 options}. The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same?}.
 In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with ~), in which case z value, significance level p, and effect size are provided.
+
+For all our computational analyses, we used the scipy.stats package for Python.
+\todo{When you have for example p = 0.199\ldots999, how do you report it? p < 0.2? p $\approx$ 0.2?}
 \begin{table}[!h]
 \centering
 \caption{Comparing burger and swipe for same d}
@@ -409,11 +410,11 @@ In the case where the test for normality fails, we apply a Mann-Whitney-U test (
 \begin{tabular}{@{}c|c|c|c@{}}
 \toprule
 d & effectiveness & efficiency & satisfaction   \\
-\midrule 2 & ~ z, p, d & * t, p, d &         \\
-\midrule 5 & * t, p, d & ~ z, p, d &         \\
-\midrule 8 & & &         \\
-\midrule 11 & & &         \\
-\midrule 14 & & &         \\
+\midrule 2 & $z = 289, p=0.22, d = 0.06$ & $t = -6.70, p < .001, d = -1.91$ & $z = 247.5, p = .08, d = 0.20$  \\
+\midrule 5 & $z = 265, p=0.14, d =0.14$    & $z = 263, p = .192, d = 0.15$    & $z = 225.5, p < .03, d = 0.37$  \\
+\midrule 8 & $z = 226, p<0.03, d=0.27$  & $t = 2.47, p < .02, d =  0.70$   & $z = 230, p < .05, d = 0.30 $   \\
+\midrule 11 & $z=248, p <0.05, d=0.20$     & $t = 6.22, p < .001, d = 1.77$   & $z = 192.5, p < .01, d = 0.38$  \\
+\midrule 14 & $z=211.5, p< 0.01, d = 0.31$ & $t = 7.97, p < .001, d = 2.27$   & $z = 190.5, p < .01, d = 0.38$  \\
 \end{tabular}}
 \end{table}
 \subsection{Power Analysis}
@@ -426,11 +427,15 @@ very often we find large effect sizes (\todo{how often?}). However, because we d
 choose between Student's and Welch's t-test per case\todo{ref}, we decided to constantly use Welch's t-test.
 \subsection{Results for dependent variables}
 \subsubsection{Effectiveness}
-Overall, \todo{how much?} \% of the tasks were solved optimally with burger menu and \todo{how much?} \% were solved optimally with swipe gestures. For burger menu navigation, 
+Overall, the average effectiveness of the burger menu and swipe gestures are .98 (SD: 0.063) and .93 (SD: 0.106), respectively. For burger menu navigation, 
 Table \ref{fig:descriptive-effectiveness} shows that the error rates were slightly lower for task 1 and task 5 than for the others. However, the differences
-are not significant (see Appendix). For the swipe navigation, the error rate of task 1 is significantly lower than the error rates of all the other
-tasks (Table \todo{make table where swipe stuff is compared}). These are the only significances when comparing swipe among different distances. When
-comparing both navigation methods applied to the same distances, significantly less errors are produced with burger menu on task 3, 4, and 5, but not on tasks 1 and 2.
+are not significant (see Appendix) \todo{can we refer to appendix in this way? Seems a little bit like cheating. Maybe in the end there will be enough space to put the 
+table here.}. For the swipe navigation, the error rate of task 1 is lower than the error rates of all the other
+tasks, which is significant (see Appendix \todo{again, is it ok like this?}).
+The other distances do not differ significantly from each other. When
+comparing both navigation methods to each other, burger menu navigation yields a higher effectiveness than swipe in any case.
+The differences are significant for tasks 3, 4, and 5,
+but not for tasks 1 and 2.
 \begin{table}[!h]
 \centering
 \caption{Mean (standard deviation) of effectiveness}
@@ -439,15 +444,15 @@ comparing both navigation methods applied to the same distances, significantly l
 \begin{tabular}{|c|c|c|c|c|c|}
 \toprule
 navigation & 2 & 5 & 8 & 11 & 14  \\
-\midrule burger & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ \\
-\midrule swipe & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$  \\
+\midrule burger & $.99 (0.043)$ & $.96 (0.078)$ & $ .96 (0.079)$ & $.98 (0.059)$ & $0.99 (0.043)$ \\
+\midrule swipe & $.98 (0.063)$ & $.94 (0.095)$ & $.89 (0.139)$ & $.94 (0.092)$ & $.92 (0.113)$  \\
 \end{tabular}}
 \end{table}
 \subsubsection{Efficiency}
-Averaged over all tasks, the efficiency of burger (\todo{value, SD}) is slightly higher than the efficiency of swipe navigation (\todo{value, SD}). When looking at the
-development of the means depending on the tasks is shown in Table \ref{fig:descriptive-efficiency}. \todo{Any tendency? Significances?}. When comparing the navigation methods with each other,
-we can observe that \todo{what} is significantly better than \todo{what} in tasks \todo{which ones}, whereas the relation is flipped in tasks \todo{which ones}. For tasks \todo{which ones},
-no significances can be found.
+Averaged over all tasks, burger menu navigation (0.223 (SD: 0.05)) is slightly more efficient than swipe navigation (0.216 (SD: 0.1)). Looking at the
+development of the means depending on the tasks shown in Table \ref{fig:descriptive-efficiency}, it can be seen that swipe is very efficient compared to burger for small distances (task 1 and 2), 
+but also that the efficiency decreases rapidly. The burger's efficiency also decreases (almost) constantly as the distance increases, but at a smaller rate, so that it is more efficient than swipe
+in tasks 3, 4, and 5. Except for task 2, these reported differences between the navigation methods are significant (see Table \ref{fig:burger-vs-swipe}).
 \begin{table}[!h]
 \centering
 \caption{Mean (standard deviation) of efficiency}
@@ -456,14 +461,17 @@ no significances can be found.
 \begin{tabular}{|c|c|c|c|c|c|}
 \toprule
 navigation & 2 & 5 & 8 & 11 & 14  \\
-\midrule burger & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ \\
-\midrule swipe & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$  \\
+\midrule burger & $0.26 (0.036)$ & $0.22 (0.062)$ & $0.21 (0.05)$ & $0.22 (0.045)$ & $0.2 (0.034)$ \\
+\midrule swipe & $0.37 (0.083)$ & $0.024 (0.052)$ & $0.18 (0.037)$ & $ 0.16 (0.032)$ & $0.13 (0.027)$  \\
 \end{tabular}}
 \end{table}
 \subsubsection{Satisfaction}
-The average rating of task question 2, our main measurement for the user's satisfaction with the navigation method, is \todo{avg rating} for the burger menu group and \todo{avg rating}
-for the swipe gesture group. This \todo{matches or doesn't match} the results from final question (4), where the burger menu and swipe gestures yield a rating of \todo{value} and \todo{value} 
-on average, respectively. See Table \ref{fig:descriptive-satisfaction} for the statistics of individual tasks. It can be seen that \todo{what can be seen}.
+The average rating of task question 2, our main measurement for the user's satisfaction with the navigation method, is 1.89 (SD: 1.809) for the burger menu group and 2.86 (SD: 2.13)
+for the swipe gesture group, which indicates that the participants perceived the burger menu to be more convenient. This matches the results from final question (4) 
+where the burger menu and swipe gestures yield an average rating of 5.14  (SD: 1.67) and 4.5 (SD: 1.453), respectively.
+See Table \ref{fig:descriptive-satisfaction} for the statistics of individual tasks. While the satisfaction with swipe navigation has the tendency to increase as the distance increases,
+the satisfaction with the burger menu navigation does not show such a tendency. In any case, the burger menu generates higher satisfaction than swipe navigation. The differences are 
+significant for all tasks except task 1, which is shown in Table \ref{fig:burger-vs-swipe}.
 \begin{table}[!h]
 \centering
 \caption{Mean (standard deviation) of satisfaction}
@@ -472,8 +480,8 @@ on average, respectively. See Table \ref{fig:descriptive-satisfaction} for the s
 \begin{tabular}{|c|c|c|c|c|c|}
 \toprule
 navigation & 2 & 5 & 8 & 11 & 14  \\
-\midrule burger & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ \\
-\midrule swipe & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$ & $\mu (\sigma)$  \\
+\midrule burger & $1.96 (2.01)$ & $1.77 (1.88)$ & $2 (1.75)$ & $1.77 (1.54)$ & $1.96 (1.99)$ \\
+\midrule swipe & $2.75 (2.37)$ & $2.68 (2.21)$ & $2.82 (2.16)$ & $2.86 (1.88)$ & $3.21 (2.11)$\\
 \end{tabular}}
 \end{table}
 
@@ -482,16 +490,23 @@ We look into
 the results of the questionnaires that are designed to check the validity of our study's design. Task question (1) was rated with
 6.91 on average (SD: 0.4) on average in the burger group and 6.84 (SD: 0.46) on average in the swipe group. The lowest rankings were
 4 and 5, respectively.
-Final question (1) indicates that \todo{Put evaluation of task question (1) and final questions 1 - 3 here}.
+Final question (1) was rated with 1.5 (SD: 1.058) for burger and 1.53 (SD: 1.29) for swipe on average. In total, three participants rated
+it with four or more, one out of which rated it with 7. The overall mean of final question (2) was xx..xxx(SD x..xx), 9 of the participants rated it
+with 4 or higher. In final question (3) there is a noticable difference between the rating for the burger menu group (1.22 (SD: 0.429)) and the swipe group
+(1.75 (SD: 1.378)). Testing with a Mann Whitney U test, the difference does not show significance, z = 255.5, \emph{p}=0.10, d = 0.171. The highest rating was 7
+and in total three participants rated with 4 or higher.
 \section{Discussion}
 \subsection{Study design}
-High confidences for each task, which suggests that no participant felt overstrained by the tasks. 
+High confidences for each task, which suggests that no participant felt overstrained by the tasks. 9 participants felt the study was too long, so they may have
+been tired or bored at one point, which may or may not distort the results. However, making the study even shorter (it was about 5-8 minutes) was not possible, because
+less tasks would have made it more difficult to find the intersect point. Question (3) may be a little unclear, as one participant mentioned that to him the difference
+in meaning between question (3) and (4) was not clear. However, the difference is not significant, so we assume that the question was understood correctly by most participants.
 \subsection{Effectiveness}
 Maybe effectiveness doesn't have a large meaning the way we defined it? Making an error may be less of an issue because it takes away less time.
 
 Explain relatively large success rates for task 1 and 5 (burger).
 Results may indicate that swipe is preferable for small distances, because error rate is rather low and making an error may potentially be not as bad
-with swipe. Recall no significant differences between burger and swipe. 
+with swipe. Recall no significant differences between burger and swipe.
 \subsection{Efficiency}
 \subsection{Satisfaction}
 Task question 1 should maybe have been more specific? Final questions (3) and (4) too similar, hard to distinguish (that was a participant's comment)?
