@@ -24,8 +24,19 @@ def print_md_table(df, append=False):
     """
     if not append:
         print()
+        try:
+            # DF
+            cols = [" "] + df.columns
+        except AttributeError:
+            # Series
+            cols = [" ", df.name]
+
+        print("|", "|".join(cols), '|')
+        dashes = ['-' * len(col) for col in cols]
+        print("|", "|".join(dashes), '|')
+
     for key in df.keys():
-        print("|", " | ".join([key, str(df[key])]), '|')
+        print("|", "|".join([key, str(df[key])]), '|')
 
 
 def print_md_header(level, *args):
@@ -138,6 +149,13 @@ def pearson_or_shapiro(data):
     return stats.normaltest(data) if len(data) >= 20 else stats.shapiro(data)
 
 
+def welch_satterthwaite(nobs1, std1, nobs2, std2):
+    nominator = (std1**2/nobs1 + std2**2/nobs2)**2
+    denominator = std1**4 / (nobs1 ** 2 * (nobs1 - 1))
+    denominator += std2**4 / (nobs2 ** 2 * (nobs2 - 1))
+    return nominator / denominator
+
+
 def t_or_u(x, y, norm_test=stats.shapiro, verbose=0, dependent=False):
     """ If both samples are normal distributed (tested via dagostino or
     shapiro), consult t-test, else consult u-test.
@@ -157,16 +175,24 @@ def t_or_u(x, y, norm_test=stats.shapiro, verbose=0, dependent=False):
     else:
         t_ok = True
 
-    n1, n2 = len(x), len(y)
-    N = n1 + n2
+    nobs1, nobs2 = len(x), len(y)
+    nobs1, mean1, std1 = len(x), x.mean(), x.std()
+    nobs2, mean2, std2 = len(y), y.mean(), y.std()
+    nobs = nobs1 + nobs2
 
-    result = {"N": N, "n1": n1, "n2": n2}
+    result = {"N": nobs, "n1": nobs1, "n2": nobs2}
     if t_ok:
         # levene = stats.levene(x, y, center='mean')
         # eqvar = not is_significant(levene[1])
-        testresult = stats.ttest_rel(x, y) if dependent else\
-            stats.ttest_ind(x, y, equal_var=False)
-        effect_size = testresult[0] * (1/len(x)+1/len(y))**0.5
+        if dependent:
+            assert nobs1 == nobs2
+            result['df'] = nobs1 - 1
+            testresult = stats.ttest_rel(x, y)
+        else:
+            result['df'] = welch_satterthwaite(nobs1, std1, nobs2, std2)
+            testresult = stats.ttest_ind(x, y, equal_var=False)
+
+        effect_size = testresult[0] * (1/nobs1+1/nobs2)**0.5
         # result['levene'] = levene
         # result['equal_var'] = eqvar
     else:
@@ -175,14 +201,14 @@ def t_or_u(x, y, norm_test=stats.shapiro, verbose=0, dependent=False):
             # dependent samples
             try:
                 testresult = stats.wilcoxon(x, y)
-                effect_size = 2 * testresult[0] / (N*N+1)
+                effect_size = 2 * testresult[0] / (nobs*nobs+1)
             except ValueError:
                 testresult = "=== All pairs were equal ==="
                 effect_size = "=== All pairs were equal ==="
         else:
             # independent samples
             testresult = stats.mannwhitneyu(x, y)
-            effect_size = 1 - 2 * testresult[0] / (n1 * n2)
+            effect_size = 1 - 2 * testresult[0] / (nobs1 * nobs2)
 
     result['test_result'] = testresult
     result['effect_size'] = effect_size
@@ -399,12 +425,15 @@ def main():
 
     df["effectiveness"] = df.apply(effectiveness, axis=1)
 
-    print_md_paragraph("Aggregating Task Groups", lineblock=True)
+    print_md_paragraph("Split by Navigation, Pid, Tid, apply `mean` combine!",
+                       lineblock=True)
     df_by_tid = df.groupby(["navigation", "pid", "tid"]).mean().reset_index()
+    print_md_paragraph("Drop jid and pid columns")
     df_by_tid = df_by_tid.drop("jid", axis=1)
     df_by_tid = df_by_tid.drop("pid", axis=1)
 
-    print_md_paragraph("Computing efficiency over task mean_success/time_ms",
+    print_md_paragraph("Computing efficiency task $1000 *\
+                       mean_success/mean_time_ms$",
                        lineblock=True)
 
     df_by_tid['efficiency'] = df_by_tid.apply(efficiency, axis=1)
