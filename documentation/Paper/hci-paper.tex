@@ -393,12 +393,14 @@ examine two independent variables: navigation method and distance.
 \subsection{Testing procedure}
 Our main focus in this research is on comparing the two navigation methods when the distance is equal.
 The results for all independent variables as introduced in Chapter \ref{chap:measurements} are shown in Table \ref{fig:burger-vs-swipe}. Recall that the
-satisfaction is quantified through task question (2). For additional results please see the Appendix. 
-In order to test for significant differences in any of the independent variables, we first apply \todo{test for
-normality} to test for normality and apply Welch's t-test (marked with *) if we \todo{can or cannot reject something, depending on what test is used.} for both groups.
-In the case of a t-test, we report the following data in this order: t value, significance level p and effect size \todo{Again, which measure if there are multiple
-options}. The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same?}.
-In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with ~), in which case z value, significance level p, and effect size are provided.
+satisfaction is quantified through task question (2). For additional results please see the Appendix.
+In order to test for significant differences in any of the independent variables, we first apply a Shapiro–Wilk test to 
+test for normality and apply Welch's t-test (marked with *) if the Shapiro-Wilk-test does not reject for either of the groups.
+In the case of a t-test, we report the following data in this order: $t$ value, significance level $p$, Cohen's $d$ as a measure of effect size, and the degrees of
+freedom $df$. 
+The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same?}.
+In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with ~), in which case z value, significance level p, and 
+the rank-biserial correlation, denoted as r, are provided.
 
 For all our computational analyses, we used the scipy.stats package for Python.
 \todo{When you have for example p = 0.199\ldots999, how do you report it? p < 0.2? p $\approx$ 0.2?}
@@ -410,11 +412,11 @@ For all our computational analyses, we used the scipy.stats package for Python.
 \begin{tabular}{@{}c|c|c|c@{}}
 \toprule
 d & effectiveness & efficiency & satisfaction   \\
-\midrule 2 & $z = 289, p=0.22, d = 0.06$ & $t = -6.70, p < .001, d = -1.91$ & $z = 247.5, p = .08, d = 0.20$  \\
-\midrule 5 & $z = 265, p=0.14, d =0.14$    & $z = 263, p = .192, d = 0.15$    & $z = 225.5, p < .03, d = 0.37$  \\
-\midrule 8 & $z = 226, p<0.03, d=0.27$  & $t = 2.47, p < .02, d =  0.70$   & $z = 230, p < .05, d = 0.30 $   \\
-\midrule 11 & $z=248, p <0.05, d=0.20$     & $t = 6.22, p < .001, d = 1.77$   & $z = 192.5, p < .01, d = 0.38$  \\
-\midrule 14 & $z=211.5, p< 0.01, d = 0.31$ & $t = 7.97, p < .001, d = 2.27$   & $z = 190.5, p < .01, d = 0.38$  \\
+\midrule 2 & $z = 289, p=0.22, r = .06$ & $t = -6.70, p < .001, d = -1.91, df = ?$ & $z = 247.5, p = .08, r = .20$  \\
+\midrule 5 & $z = 265, p=0.14, r = .14$    & $z = 263, p = .192, r = .15$    & $z = 225.5, p < .03, r = .37$  \\
+\midrule 8 & $z = 226, p<0.03, r = .27$  & $t = 2.47, p < .02, d =  0.70, df = ?$   & $z = 230, p < .05, r = .30 $   \\
+\midrule 11 & $z=248, p <0.05, r = .20$     & $t = 6.22, p < .001, d = 1.77, df = ?$   & $z = 192.5, p < .01, r = .38$  \\
+\midrule 14 & $z=211.5, p< 0.01, r= .31$ & $t = 7.97, p < .001, d = 2.27, df = ?$   & $z = 190.5, p < .01, r = .38$  \\
 \end{tabular}}
 \end{table}
 \subsection{Power Analysis}
@@ -452,7 +454,8 @@ navigation & 2 & 5 & 8 & 11 & 14  \\
 Averaged over all tasks, burger menu navigation (0.223 (SD: 0.05)) is slightly more efficient than swipe navigation (0.216 (SD: 0.1)). Looking at the
 development of the means depending on the tasks shown in Table \ref{fig:descriptive-efficiency}, it can be seen that swipe is very efficient compared to burger for small distances (task 1 and 2), 
 but also that the efficiency decreases rapidly. The burger's efficiency also decreases (almost) constantly as the distance increases, but at a smaller rate, so that it is more efficient than swipe
-in tasks 3, 4, and 5. Except for task 2, these reported differences between the navigation methods are significant (see Table \ref{fig:burger-vs-swipe}).
+in tasks 3, 4, and 5. Except for task 2, these reported differences between the navigation methods are significant (see Table \ref{fig:burger-vs-swipe}). The effect sizes are mostly large and
+increase drastically from task 3 to 5.
 \begin{table}[!h]
 \centering
 \caption{Mean (standard deviation) of efficiency}
@@ -471,7 +474,7 @@ for the swipe gesture group, which indicates that the participants perceived the
 where the burger menu and swipe gestures yield an average rating of 5.14  (SD: 1.67) and 4.5 (SD: 1.453), respectively.
 See Table \ref{fig:descriptive-satisfaction} for the statistics of individual tasks. While the satisfaction with swipe navigation has the tendency to increase as the distance increases,
 the satisfaction with the burger menu navigation does not show such a tendency. In any case, the burger menu generates higher satisfaction than swipe navigation. The differences are 
-significant for all tasks except task 1, which is shown in Table \ref{fig:burger-vs-swipe}.
+significant for all tasks except task 1, which is shown in Table \ref{fig:burger-vs-swipe}. The effect size is below .4 in any case.
 \begin{table}[!h]
 \centering
 \caption{Mean (standard deviation) of satisfaction}
@@ -496,15 +499,7 @@ with 4 or higher. In final question (3) there is a noticable difference between 
 (1.75 (SD: 1.378)). Testing with a Mann Whitney U test, the difference does not show significance, z = 255.5, \emph{p}=0.10, d = 0.171. The highest rating was 7
 and in total three participants rated with 4 or higher.
 \section{Discussion}
-\paragraph{Study Design Validation}
-The results for task question (1) clearly suggest, that the participants did not feel overstrained by the complexity of the tasks. The results of the person who indicated large
-distraction from the environment did not stand out in particular. However, 18\% felt the study was relatively long (rated 4 or more at final question (2)). Hence, there is a chance
-that these participants became tired or bored at some point during the experiment. The whole process required up to ten minutes. The study could only have been shortened by
-reducing the number of tasks, but without a sufficient range of distances, finding the key results for navigation in a page view would be very difficult. 
-During answering the final questionnaire, a participant remarked his confusion about the difference in meaning between question (3) and (4). The relatively large difference
-between the swipe and the burger group may also be understood as indication that participants grasped both questions in a similar way.  
-However, as the difference is not significant, we will assume that the question was understood correctly by most participants and did not lead to too much confusion.
-Overall, we think that we were able to eliminate some of the major potential threats to the study's validity. 
+\subsection{Main findings}
 \paragraph{Effectiveness}
 The way we defined effectiveness, burger menu navigation is never worse than swipe navigation, for large distances it is even significantly better. However,
 traditionally, effectiveness measures if users complete a task correctly. In our tasks, there is no right or wrong. Here, effectiveness rather measures 
@@ -512,6 +507,8 @@ how precisely a participant navigates through the set of pages. In an exam scena
 how fast he can move through between pages. Clearly, making a navigation error affects the experience for the user differently depending on the navigation method.
 While a misclick in the burger menu always requires the user to perform twice as many interactions as in the optimal case to reach the goal, an accidental
 swiping mistake only requires one additional swipe to correct it. This may affect both the speed and the user satisfaction differently for each navigation method.
+These considerations make the results difficult to interprete. On top of that, the effect sizes are rather small which allows only vague practical implications
+from the results.
 \paragraph{Efficiency}
 The test results indicate clear superiority of swipe gestures in terms of efficiency when the distance is small. On the other hand, there is good evidence that
 this relation indeed flips as the distance increases, favoring burger menu navigation for distances larger than 8. This supports the hypothesized behavior. However,
@@ -519,10 +516,36 @@ it remains unclear whether the efficiency is independent of the distance. During
 the app, the menu displayed a range of 30 items. Hence, in task 5 where the average distance is 14, a participant is required to scroll within the menu by one item.
 This raises the question how the dependent variables behave when the distances are even larger than the ones investigated in this study.
 \paragraph{Satisfaction}
-Task question 1 should maybe have been more specific? Final questions (3) and (4) too similar, hard to distinguish (that was a participant's comment)?
-\paragraph{Summary}
-While the speed aspect is taken into account for the efficiency in this study, systematically investigating how making those types of errors is perceived by the users
-may be an interesting object of investigation in future work. intersect point?
+As expected, the participants perceived navigation with burger menu significantly less intricate when the distance grows. 
+On the other hand, the effect size is rather low and a significant superiority of swipe navigation could not be shown for very small distances. Quite the contrary,
+on average the burger menu navigation was perceived less intricate even for these very small distances. This stands in contrast to oral and written statements made by some
+participants in the burger group. They were missing swipe gestures in order to simplify navigation further. One reason for this contradiction could be that the
+evaluation method used in this study is not appropriate to capture the user satisfaction. On the other hand, since for small distances the differences were not significant, there
+is a reasonable chance that in a repeat of the experiment this contradiction may not appear again.
+\subsection{Study Design Validation}
+The results for task question (1) suggest, that the participants did not feel overstrained by the complexity of the tasks. The results of the person who indicated large
+distraction from the environment did not stand out in particular. However, 18\% felt the study was relatively long (rated 4 or more at final question (2)). Hence, there is a chance
+that these participants became tired or bored at some point during the experiment. The whole process required up to ten minutes. The study could only have been shortened by
+reducing the number of tasks, but without a sufficient range of distances, finding the key results for navigation in a page view would be very difficult. 
+During answering the final questionnaire, a participant remarked his confusion about the difference in meaning between question (3) and (4). The relatively large difference
+between the swipe and the burger group may also be understood as indication that participants grasped both questions in a similar way.  
+However, as the difference is not significant, we will assume that the question was understood correctly by most participants and did not lead to too much confusion.
+Overall, we think that we were able to eliminate some of the major potential threats to the study's validity. 
+\subsection{Summary}
+Overall, in terms of efficiency, the presumed intercept point before which swipe navigation and after which burger menu navigation is better was indeed found at 
+distance 5. The results for satisfaction and effectiveness support this hypothesis in so far that the differences before that point are not significant. It should further
+be taken into account that these two measurements are more difficult to assess than effeciency which mainly depends on the time required to complete the task. Future work
+should take a closer look at approaches to capture satisfaction. In order to understand the value of effectiveness better, a systematical investigation of how users perceive
+a navigation error depending on the navigation method would also be interesting.
+
+It should further be kept in mind that this study was designed for a very specific context that was discussed in the introduction. The navigation behavior that was required
+when conducting the tasks will not apply to the common case. However, as discussed, we believe that adequate application scenarios will become more frequent in the future. 
+Therefore, as a practical implication of this work, we would like to give UI designers who plan to use a page view in scenarios similar to the discussed ones
+to consider the following recommendation cautiously:
+\begin{itemize}
+  \item if the design of the application allows it, including both burger menu and swipe navigation methods is beneficiary
+  \item if there are more than 5 pages, allowing for burger menu navigation or a similar navigation method is strongly recommended
+\end{itemize}
 \section{Related Work}
 \section{Conclusions}
 Conclusions
