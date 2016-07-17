@@ -207,18 +207,20 @@
 
 
 \section{Introduction}
-Due to the availability of mobile internet connection and the establishment of
-smartphones for the masses, e-learning applications have become more and more relevant in recent years.  In theory, the promise is that students can study anywhere at any time. However, as for any kind of application, a practical barrier is the usability of such educational application.
+Smartphones have become very established for the masses in recent years and the popularity of tablets is
+still rising. As users become more and more familiar with such devices, it seems natural that businesses and institutions
+from an educational context would like to use these for the testing of there examinees through a testing application (app).
+However, as for any kind of application, a practical barrier is the usability.
 \begin{figure}[h]
 	\includegraphics[width=\columnwidth]{drivinglicense.png}
 	\caption{Mobile application `Fahren Lernen Max'}\label{fig:fahren_lernen}
 \end{figure}
 For several years, the swipe gesture has been a very well-established way to
-navigate among adjacent pages on websites as well as in native applications on a mobile device (Apps). The users appreciate its ease and comfort of use. However,
+navigate among adjacent pages in a page view on websites as well as in native applications on a mobile device. The users appreciate its ease and comfort of use. However,
 it can only be applied in scenarios where the content is provided in a
 sequential way, e.g.\ in a picture gallery, in an e-book reader, or when
 filling in a form. In this paper, we examine the swipe gesture's suitability
-for navigating through a set of questions in an e-learning apps.
+for navigating through a set of questions in the scenario of an exam.
 \begin{figure*}[!h]
 	\centering
 	\includegraphics[width=\linewidth]{pics/screenshots/sequence}
@@ -226,24 +228,32 @@ for navigating through a set of questions in an e-learning apps.
 \end{figure*}
 Although typically the user progresses through the questions sequentially, it is a
 common case that they want to revise their answers later due to a change of
-mind or a misunderstanding of the question, for example. A case that applies very
+mind or a misunderstanding of the question, for example. To this end, they often need to browse several pages back or forth. A case that applies very
 well to this scenario is the theory test that has to be passed in order to obtain
-a driving license in Germany. It consists of a relatively large number of questions and it's common practice to prepare for this examination by taking several exemplary tests. For example, consider Figure~\ref{fig:fahren_lernen} which displays a screenshot of the
-mobile application `Fahren Lernen Max'. It displays the typical environment that
-is also used for the actual exam. Questions are ordered sequentially, but the examinees
+a driving license in Germany. It consists of a relatively large number of questions and it's common 
+practice to prepare for this examination by taking several exemplary tests. For example, consider Figure~\ref{fig:fahren_lernen} which displays a screenshot of the
+mobile application `Fahren Lernen Max'. It shows the typical environment that
+is also used for the actual exam. The questions are ordered sequentially, but the examinees
 may answer them in any order. During examinations, it is common that some questions are
 skipped and returned to at some later point.
+In the example of this application, navigation between questions can be done in any direction via menu at the bottom of the screen or only forward via the `Weiter'-button.
 
-In the example of this application, navigation between questions can be done via menu at the bottom of the screen in any direction or via button `Weiter' only forward. 
-Our goal is to find a generalizable statement about what navigation methods makes sense in these scenarios. 
-We conjecture that navigating backward using swipe gestures is unsatisfactory and time-costly as the distance in pages increases. 
-In order to research this question, we conduct a study in which we compare the use of swipe gestures to the use of the also well-established hamburger menu. 
-\todo{kind of need to emphasize that this is some kind of context free study, hence our study design} 
-This kind of navigation is mostly represent by three horizontally lines on the left or right upper corner of the screen. 
-By touching the hamburger button a menu appears at the side of the screen.
+We conjecture that using only swipe gestures would be unsatisfactory in this application, since it may be not uncommon to skip one of the first questions and
+return to it only after the next 20 questions have been solved. Hence, swiping back all the way would be time-costly which can put some extra pressure on the examinee.
+From the perspective of the application designer, a better design choice in this case would be the use of the also well-established hamburger menu. 
+This kind of navigation is mostly represented by three horizontally lines (the hamburger) on the left or right upper corner of the screen.
+By touching the hamburger button, a menu appears at the side of the screen. This solution, however, might be inconvenient when the examinee only needs to browse two pages back, for example,
+and here swipe gestures may come in handier.
+In order to research this question, we conduct a study in which we compare the use of swipe gestures to the use of the hamburger menu.
+Our goal is to find a generalizable statement about what navigation methods make sense in which scenario. More particularily, we analyze how the methods perform when the
+distance in pages is altered.
+However, it is hard to artificially construct an environment similar to exams and ensure at the same time that the examinees navigate through the app
+in such a way that the data are comparable. Therefore, our evaluation approach is detached from this specific context. Instead, we design a game that requires the participant to
+navigate through a page view in a predefined way. 
 We analyze the common three dependent variables efficiency, satisfaction, and effectiveness, while varying the distance $d$.
-It seems reasonable to conjecture
-that for very small distances swipe gestures are superior to the hamburger
+We use a definition of effectiveness that measures whether participants made unnecessary interactions. For the efficiency, we additionally consider the required time, and the satisfaction
+is assessed through a questionnaire.
+It seems reasonable to conjecture that for very small distances swipe gestures are superior to the hamburger
 menu. Because the number of swipes increases proportionally with the distance, the time required can be expected to increase 
 proportionally as well. However, when the distance increases, the hamburger menu
 may have an advantage because one can directly select the desired page. Corresponding to this conjecture we examine the distances $d = 2, 5, 8, 11, 14$ and
@@ -255,14 +265,17 @@ expect the relation between distance and the independent variables as indicated 
 	}
 \end{figure}
 The figure presumes an intercept point between the lines to exist. Corresponding to our conjecture that the swipe gestures are superior for very small distances and the hamburger menu's superiority
-becomes apparent for large distances, we $d = 5, 10, 15, 20, 25$ as concrete
-values for $d$. Our experiment results partly confirm this hypothesis. In detail, our main results are the following:
+becomes apparent for large distances, we choose $d = 2, 5, 8, 11, 14$ as values for $d$. Formally, for each $d$, we formulate the $H_0$ hypotheses that there is no difference between swipe gesture navigation
+and hamburger menu navigation when the browsing distance is $d$. 
+Our main results are the following:
 \begin{itemize}
-  \item \todo{main results!}
+  \item Burger menu navigation is better with respect to all applied metrics when the distance is large (8 and higher)
+  \item Swipe navigation is significantly much more efficient than burger menu for small distances (2)
+  \item When the distance is small, neither of the methods performs significantly better than the respective other in terms of satisfaction and effectiveness  
 \end{itemize}
 The results of our research give important insight into the usability of
 different navigation methods, potentially leading to guidelines for the design
-of future e-learning apps.
+of future apps developed for the purpose of exams.
 \section{Apparatus}
 In order to simulate the scenarios of jumping from one question to another, we develop a series of treasure hunt like tasks. Here, the goal is to find the treasure which is hidden behind a door. A door is represented by a page. The application was developed for Android devices. We have used two Samsung Galaxy Note 10.1 with Android 4.4.2 for our data collection.
 
@@ -537,8 +550,9 @@ However, as the difference is not significant, we will assume that the question 
 Overall, we think that we were able to eliminate some of the major potential threats to the study's validity. 
 \subsection{Summary}
 Overall, in terms of efficiency, the presumed intercept point before which swipe navigation and after which burger menu navigation is better was indeed found at 
-distance 5. The results for satisfaction and effectiveness support this hypothesis in so far that the differences before that point are not significant. It should further
-be taken into account that these two measurements are more difficult to assess than effeciency which mainly depends on the time required to complete the task. Future work
+distance 5. For distances 8 or higher, burger menu navigation outperforms swipe in all applied measures. 
+Before that point (distance 2) the superiority of swipe is backed by the results of satisfaction and effectiveness in so far that burger navigation is not significantly 
+better. It should further be taken into account that these two measurements are more difficult to assess than effeciency which mainly depends on the time required to complete the task. Future work
 should take a closer look at approaches to capture satisfaction. In order to understand the value of effectiveness better, a systematical investigation of how users perceive
 a navigation error depending on the navigation method would also be interesting.
 
@@ -560,11 +574,11 @@ et al. We can confirm that our participants were as well fast in learning and us
 We have conducted a study that compares the effectiveness, efficiency, and user satisfaction of a hamburger menu navigation to a navigation with swipe
 gestures in a page view in applications on mobile devices. The main goal was to investigate how these navigation methods behave when the distance in pages
 that has to be covered is altered. To this end, we developed an application that requires the user to navigate through the page view in predefined
-paths. Here, the paths' lengths differ to accomplish different distances. We introduce a definition of effectiveness that measures whether participants made unnecessary interactions. We measure the efficiency by tracking the time
+paths. Here, the paths' lengths differ to accommodate for different distances. We introduce a definition of effectiveness that measures whether participants made unnecessary interactions. We measure the efficiency by tracking the time
 required to complete a task and assess the user satisfaction with a questionnaire.
 
-The findings indicate that the burger menu is better when the distance is large and that swipe gestures are much more efficient
-when the distance is small. However, the user satisfaction and effectiveness do not significantly favor either of the navigation methods in this case.
+The findings indicate that the burger menu is better when the distance is large (8 and higher) and that swipe gestures are much more efficient
+when the distance is small (2). However, the user satisfaction and effectiveness do not significantly favor either of the navigation methods in this case.
 Investigating the reasons for this will be work of the future.
 %\end{document}  % This is where a 'short' article might terminate
 
