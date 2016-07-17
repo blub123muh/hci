@@ -74,7 +74,7 @@
 %\CopyrightYear{2007} % Allows default copyright year (20XX) to be over-ridden - IF NEED BE.
 %\crdata{0-12345-67-8/90/01}  % Allows default copyright data (0-89791-88-6/97/05) to be over-ridden - IF NEED BE.
 % --- End of Author Metadata ---
-\title{Analysis of the efficiency and user satisfaction of a menu and swipe gestures in the context of a survey app}
+\title{Comparing Hamburger Menu With Swipe Gestures for Usage in a Page View}
 %
 % You need the command \numberofauthors to handle the 'placement
 % and alignment' of the authors beneath the title.
@@ -129,7 +129,7 @@
   % 4th. author
   \alignauthor
   Florian Mai\\
-  \email{mail@uni-kiel.de}
+  \email{stu96542@mail.uni-kiel.de}
 }
 % There's nothing stopping you putting the seventh, eighth, etc.
 % author on the opening page (as the 'third row') but we ask,
@@ -207,8 +207,7 @@ Due to the availability of mobile internet connection and the establishment of
 smartphones for the masses, e-learning applications have become more and more relevant in recent years.  In theory, the promise is that students can study anywhere at any time. However, as for any kind of application, a practical barrier is the usability of such educational application.
 \begin{figure}[h]
 	\includegraphics[width=\columnwidth]{drivinglicense.png}
-	\caption{Mobile application 'Fahren Lernen Max'}
-	\label{fig:fahren_lernen}
+	\caption{Mobile application `Fahren Lernen Max'}\label{fig:fahren_lernen}
 \end{figure}
 For several years, the swipe gesture has been a very well-established way to
 navigate among adjacent pages on websites as well as in native applications on a mobile device (Apps). The users appreciate its ease and comfort of use. However,
@@ -219,20 +218,19 @@ for navigating through a set of questions in an e-learning apps.
 \begin{figure*}[!h]
 	\centering
 	\includegraphics[width=\linewidth]{pics/screenshots/sequence}
-	\caption{Hamburger navigation sequence}
-	\label{fig:sequence}
+	\caption{Hamburger navigation sequence}\label{fig:sequence}
 \end{figure*}
 Although typically the user progresses through the questions sequentially, it is a
 common case that they want to revise their answers later due to a change of
 mind or a misunderstanding of the question, for example. A case that applies very
 well to this scenario is the theory test that has to be passed in order to obtain
-a driving license in Germany. It consists of a relatively large number of questions and it's common practice to prepare for this examination by taking several exemplary tests. For example, consider Figure \ref{fig:fahren_lernen} which displays a screenshot of the
-mobile application 'Fahren Lernen Max'. It displays the typical environment that
+a driving license in Germany. It consists of a relatively large number of questions and it's common practice to prepare for this examination by taking several exemplary tests. For example, consider Figure~\ref{fig:fahren_lernen} which displays a screenshot of the
+mobile application `Fahren Lernen Max'. It displays the typical environment that
 is also used for the actual exam. Questions are ordered sequentially, but the examinees
 may answer them in any order. During examinations, it is common that some questions are
 skipped and returned to at some later point.
 
-In the example of this application, navigation between questions can be done via menu at the bottom of the screen in any direction or via button 'Weiter' only forward. 
+In the example of this application, navigation between questions can be done via menu at the bottom of the screen in any direction or via button `Weiter' only forward. 
 Our goal is to find a generalizable statement about what navigation methods makes sense in these scenarios. 
 We conjecture that navigating backward using swipe gestures is unsatisfactory and time-costly as the distance in pages increases. 
 In order to research this question, we conduct a study in which we compare the use of swipe gestures to the use of the also well-established hamburger menu. 
@@ -264,24 +262,21 @@ of future e-learning apps.
 \section{Apparatus}
 In order to simulate the scenarios of jumping from one question to another, we develop a series of treasure hunt like tasks. Here, the goal is to find the treasure which is hidden behind a door. A door is represented by a page. The application was developed for Android devices. We have used two Samsung Galaxy Note 10.1 with Android 4.4.2 for our data collection.
 
-First of all an initial page containing the identification number of the participant is shown so the task can be linked to the demographic questionnaire at the very end. Starting at the first page, an instruction displayed on the bottom of the screen guides the participant to the next one by exactly telling them the number of the next door. Now the participant has the possibility to navigate to the next door by swiping left or right, or using the hamburger menu (Figure \ref{fig:sequence}) on the upper left corner. The navigation method depends on the group in which they are located. When the participant has open the respective door, the next instruction is displayed. The distance $d$ to cover from one door to another is always about the same ($d \pm 1$\textit{, see Section \ref{sec:task}}) within the same task. However, the distances differ for different tasks. Consider the example in Figure \ref{fig:jump} which has distance of two. The arrows indicate the door to open in the next step and the arrow captions show the jump distance. Hence, the sequence of doors to open in order to reach the treasure is 2, 4, 1, 3, 5, 6.
+First of all an initial page containing the identification number of the participant is shown so the task can be linked to the demographic questionnaire at the very end. Starting at the first page, an instruction displayed on the bottom of the screen guides the participant to the next one by exactly telling them the number of the next door. Now the participant has the possibility to navigate to the next door by swiping left or right, or using the hamburger menu (Figure~\ref{fig:sequence}) on the upper left corner. The navigation method depends on the group in which they are located. When the participant has open the respective door, the next instruction is displayed. The distance $d$ to cover from one door to another is always about the same ($d \pm 1$\textit{, see Section~\ref{sec:task}}) within the same task. However, the distances differ for different tasks. Consider the example in Figure~\ref{fig:jump} which has distance of two. The arrows indicate the door to open in the next step and the arrow captions show the jump distance. Hence, the sequence of doors to open in order to reach the treasure is 2, 4, 1, 3, 5, 6.
 \begin{figure}
 	\centering
-	\includegraphics[width=0.45\textwidth]{pics/jump}
-	\label{fig:jump}
+	\includegraphics[width=0.45\textwidth]{pics/jump}\label{fig:jump}
 	\caption{Example of a distance-two-jump}
 \end{figure}
 \begin{figure}
 	\centering
-	\includegraphics[width=0.475\textwidth]{pics/screenshots/global3-cut}
-	\label{fig:between_questionnaire}
+	\includegraphics[width=0.475\textwidth]{pics/screenshots/global3-cut}\label{fig:between_questionnaire}
 	\caption{Between questionnaire}
 \end{figure}
-The tasks cannot be failed to be completed because there is no way to open the doors in the wrong order. The participant has to complete a training set and five task sets. Every set consists of five jumping instructions. After each set the participant has to answer two questions (see Section \ref{sec:measurements}) and at the very end there will be a questionnaire of four questions.
+The tasks cannot be failed to be completed because there is no way to open the doors in the wrong order. The participant has to complete a training set and five task sets. Every set consists of five jumping instructions. After each set the participant has to answer two questions (see Section~\ref{sec:measurements}) and at the very end there will be a questionnaire of four questions.
 \begin{figure}
 	\centering
-	\includegraphics[width=0.475\textwidth]{pics/screenshots/global5-cut}
-	\label{fig:final_questionnaire}
+	\includegraphics[width=0.475\textwidth]{pics/screenshots/global5-cut}\label{fig:final_questionnaire}
 	\caption{Final questionnaire}
 \end{figure}
 \section{Evaluation Design}
@@ -309,7 +304,12 @@ and whether they own a smartphone with an Android operating system, a different 
 
 \subsection{Participants}
 Since our target scenario is an application used during examinations,
-a typical user of such an application is a university student. Hence, the participants were acquisited in a field study conducted in an academic context, namely the dining hall of Christian-Albrechts-University in Kiel. The participants are representative for all students as the statistics show: In total, there are $N = 50$ participants. All of them are students and the most common courses are: economic computer science (12 \%), agricultural sciences (10 \%), mathematics (8 \%), psychology (8 \%) and economics (6 \%). For the entire distribution consider table \ref{tab:course}. The participants split up into 42 \% male and 58 \% female. The average age is 24.1 (SD: 2.9), 
+a typical user of such an application is a university student.
+Hence, the participants were acquisited in a field study conducted in an academic context, namely the dining hall of Christian-Albrechts-University in Kiel.
+The participants are representative for all students as the statistics show: In total, there are $N = 50$ participants.
+All of them are students and the most common courses are: economic computer science (12 \%), agricultural sciences (10 \%), mathematics (8 \%), psychology (8 \%) and economics (6 \%).
+For the entire distribution consider table~\ref{tab:course}.
+The participants split up into 42 \% male and 58 \% female. The average age is 24.1 (SD:\@2.9),
 with values between 20 and 35. 
 All but one of the participants own a
 smartphone, 75.51 \% of which run Android. This indicates that we may assume good knowledge
@@ -351,18 +351,18 @@ when the first instruction is displayed and stop when the last door is opened.
 In order to assess the user satisfaction depending on the distance, after each task, the user is asked to estimate their
 agreement on two statements concerning the task. The statements are the following.
 \begin{enumerate}
-  \item 'I was able to solve the task well.' (in German: 'Ich konnte die Aufgabe gut loesen.')
-  \item 'Achieving the goal was too intricate.' (in German: 'Die Erreichung des Ziels war mir zu umstaendlich.')
+  \item `I was able to solve the task well.' (in German: `Ich konnte die Aufgabe gut loesen.')
+  \item `Achieving the goal was too intricate.' (in German: `Die Erreichung des Ziels war mir zu umstaendlich.')
 \end{enumerate}
 The rating scale follows the common 7-likert-scale from strongly disagree (1) to strongly agree (7). Sauro et al. pointed out that the reliability of a questionaire increases with increasing range of scale. They also pointed out that the effect would be very small after having 11 possibilities to choose. Since our mobile device has a small screen the 7 seemed to be a good compromise between space and choice possibilities.\\
 The first statement will be used to quantify whether the participants have understood the task and how to solve it. The second statement will
 be used to quantify the participant's satisfaction with the navigation method.
 After all tasks were completed, the participant also rates these statements that aim to assess the overall experience throughout the experiment.
 \begin{enumerate}
-  \item 'The environment during working on the tasks was disturbing.' (German: 'Die Umgebung hat mich beim Bearbeiten der Aufgaben gestoert.')
-  \item 'The duration of the experiment was too high.' (German: 'Die Dauer des Experiments war mir zu hoch.')
-  \item 'Handling the device was intricate.' (German: 'Die Bedienung des Geraets war mir zu umstaendlich.')
-  \item 'The type of navigation was appealing to me.' (German: 'Die Art der Navigation hat mir zugesagt.')
+  \item `The environment during working on the tasks was disturbing.' (German: `Die Umgebung hat mich beim Bearbeiten der Aufgaben gestoert.')
+  \item `The duration of the experiment was too high.' (German: `Die Dauer des Experiments war mir zu hoch.')
+  \item `Handling the device was intricate.' (German: `Die Bedienung des Geraets war mir zu umstaendlich.')
+  \item `The type of navigation was appealing to me.' (German: `Die Art der Navigation hat mir zugesagt.')
 \end{enumerate}
 Question (1) and (2) serve the purposes to check whether the quality the experiment's results is impaired due to the lack of a laboratory environment or
 due to participants' fatigue, respectively. \todo{What is question (3) good for?} Question (4) directly assesses the overall satisfaction with the navigation method.
@@ -373,7 +373,7 @@ and test statistics for each distance, navigation method, and dependent variable
 
 \subsection{Hypotheses}
 Let $d$ be the distance in pages to be covered when navigating in a sequence of pages. We formulate the following $H_0$ hypotheses, using the notions
-of effectiveness, user satisfaction and efficiency presented in Section \ref{chap:measurements}:
+of effectiveness, user satisfaction and efficiency presented in Section~\ref{chap:measurements}:
 \begin{enumerate}
 	\item Null hypothesis $H_0^{(efficiency)}$ for efficiency:
 	There is no difference between swipe gestures and hamburger menu in the
@@ -392,14 +392,14 @@ examine two independent variables: navigation method and distance.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Testing procedure}
 Our main focus in this research is on comparing the two navigation methods when the distance is equal.
-The results for all independent variables as introduced in Chapter \ref{chap:measurements} are shown in Table \ref{fig:burger-vs-swipe}. Recall that the
+The results for all independent variables as introduced in Chapter~\ref{chap:measurements} are shown in Table~\ref{fig:burger-vs-swipe}. Recall that the
 satisfaction is quantified through task question (2). For additional results please see the Appendix.
 In order to test for significant differences in any of the independent variables, we first apply a Shapiro–Wilk test to 
 test for normality and apply Welch's t-test (marked with *) if the Shapiro-Wilk-test does not reject for either of the groups.
 In the case of a t-test, we report the following data in this order: $t$ value, significance level $p$, Cohen's $d$ as a measure of effect size, and the degrees of
 freedom $df$. 
 The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same?}.
-In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with ~), in which case z value, significance level p, and 
+In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with $\sim$), in which case z value, significance level p, and
 the rank-biserial correlation, denoted as r, are provided.
 
 For all our computational analyses, we used the scipy.stats package for Python.
@@ -429,8 +429,8 @@ very often we find large effect sizes (\todo{how often?}). However, because we d
 choose between Student's and Welch's t-test per case\todo{ref}, we decided to constantly use Welch's t-test.
 \subsection{Results for dependent variables}
 \subsubsection{Effectiveness}
-Overall, the average effectiveness of the burger menu and swipe gestures are .98 (SD: 0.063) and .93 (SD: 0.106), respectively. For burger menu navigation, 
-Table \ref{fig:descriptive-effectiveness} shows that the error rates were slightly lower for task 1 and task 5 than for the others. However, the differences
+Overall, the average effectiveness of the burger menu and swipe gestures are .98 (SD:\@0.063) and .93 (SD:\@0.106), respectively. For burger menu navigation, 
+Table~\ref{fig:descriptive-effectiveness} shows that the error rates were slightly lower for task 1 and task 5 than for the others. However, the differences
 are not significant (see Appendix) \todo{can we refer to appendix in this way? Seems a little bit like cheating. Maybe in the end there will be enough space to put the 
 table here.}. For the swipe navigation, the error rate of task 1 is lower than the error rates of all the other
 tasks, which is significant (see Appendix \todo{again, is it ok like this?}).
@@ -451,10 +451,10 @@ navigation & 2 & 5 & 8 & 11 & 14  \\
 \end{tabular}}
 \end{table}
 \subsubsection{Efficiency}
-Averaged over all tasks, burger menu navigation (0.223 (SD: 0.05)) is slightly more efficient than swipe navigation (0.216 (SD: 0.1)). Looking at the
-development of the means depending on the tasks shown in Table \ref{fig:descriptive-efficiency}, it can be seen that swipe is very efficient compared to burger for small distances (task 1 and 2), 
+Averaged over all tasks, burger menu navigation (0.223 (SD:\@0.05)) is slightly more efficient than swipe navigation (0.216 (SD:\@0.1)). Looking at the
+development of the means depending on the tasks shown in Table~\ref{fig:descriptive-efficiency}, it can be seen that swipe is very efficient compared to burger for small distances (task 1 and 2), 
 but also that the efficiency decreases rapidly. The burger's efficiency also decreases (almost) constantly as the distance increases, but at a smaller rate, so that it is more efficient than swipe
-in tasks 3, 4, and 5. Except for task 2, these reported differences between the navigation methods are significant (see Table \ref{fig:burger-vs-swipe}). The effect sizes are mostly large and
+in tasks 3, 4, and 5. Except for task 2, these reported differences between the navigation methods are significant (see Table~\ref{fig:burger-vs-swipe}). The effect sizes are mostly large and
 increase drastically from task 3 to 5.
 \begin{table}[!h]
 \centering
@@ -469,12 +469,12 @@ navigation & 2 & 5 & 8 & 11 & 14  \\
 \end{tabular}}
 \end{table}
 \subsubsection{Satisfaction}
-The average rating of task question 2, our main measurement for the user's satisfaction with the navigation method, is 1.89 (SD: 1.809) for the burger menu group and 2.86 (SD: 2.13)
+The average rating of task question 2, our main measurement for the user's satisfaction with the navigation method, is 1.89 (SD:\@1.809) for the burger menu group and 2.86 (SD:\@2.13)
 for the swipe gesture group, which indicates that the participants perceived the burger menu to be more convenient. This matches the results from final question (4) 
-where the burger menu and swipe gestures yield an average rating of 5.14  (SD: 1.67) and 4.5 (SD: 1.453), respectively.
-See Table \ref{fig:descriptive-satisfaction} for the statistics of individual tasks. While the satisfaction with swipe navigation has the tendency to increase as the distance increases,
+where the burger menu and swipe gestures yield an average rating of 5.14  (SD:\@1.67) and 4.5 (SD:\@1.453), respectively.
+See Table~\ref{fig:descriptive-satisfaction} for the statistics of individual tasks. While the satisfaction with swipe navigation has the tendency to increase as the distance increases,
 the satisfaction with the burger menu navigation does not show such a tendency. In any case, the burger menu generates higher satisfaction than swipe navigation. The differences are 
-significant for all tasks except task 1, which is shown in Table \ref{fig:burger-vs-swipe}. The effect size is below .4 in any case.
+significant for all tasks except task 1, which is shown in Table~\ref{fig:burger-vs-swipe}. The effect size is below .4 in any case.
 \begin{table}[!h]
 \centering
 \caption{Mean (standard deviation) of satisfaction}
@@ -491,12 +491,12 @@ navigation & 2 & 5 & 8 & 11 & 14  \\
 \subsection{Other results}
 We look into
 the results of the questionnaires that are designed to check the validity of our study's design. Task question (1) was rated with
-6.91 on average (SD: 0.4) on average in the burger group and 6.84 (SD: 0.46) on average in the swipe group. The lowest rankings were
+6.91 on average (SD:\@0.4) on average in the burger group and 6.84 (SD:\@0.46) on average in the swipe group. The lowest rankings were
 4 and 5, respectively.
-Final question (1) was rated with on average 1.52 (SD: 1.182) for swipe. In total, three participants rated
-it with four or more, one out of which rated it with 7. The overall mean of final question (2) was 1.92 (SD: 1.496), 9 of the participants rated it
-with 4 or higher. In final question (3) there is a noticable difference between the rating for the burger menu group (1.22 (SD: 0.429)) and the swipe group
-(1.75 (SD: 1.378)). Testing with a Mann Whitney U test, the difference does not show significance, z = 255.5, \emph{p}=0.10, d = 0.171. The highest rating was 7
+Final question (1) was rated with on average 1.52 (SD:\@1.182) for swipe. In total, three participants rated
+it with four or more, one out of which rated it with 7. The overall mean of final question (2) was 1.92 (SD:\@1.496), 9 of the participants rated it
+with 4 or higher. In final question (3) there is a noticable difference between the rating for the burger menu group (1.22 (SD:\@0.429)) and the swipe group
+(1.75 (SD:\@1.378)). Testing with a Mann Whitney U test, the difference does not show significance, z = 255.5, \emph{p}=0.10, d = 0.171. The highest rating was 7
 and in total three participants rated with 4 or higher.
 \section{Discussion}
 \subsection{Main findings}
@@ -553,7 +553,15 @@ for this development could be that touch gestures are far easier to comprehend. 
 et al. 2013).\\ To further increase the user experience it is necessary to compare the different gestures as well as the menu elements, like we compare the swipe gesture with the hamburger menu given a specific task. We were able to detect differences between the two navigational methods regarding the time needed to fullfill a task and the user satisfaction given a specific task.\\ Diefenbach et al. compared the usability of manipulative touch gestures to that of an established interaction style based on buttons and menus and indicated a negative influence of gestures when an application is used the first time. They also stated that new gestures are learned in a shorter time span than expected, which might explain the movement time reduction pointed out by Findlater
 et al. We can confirm that our participants were as well fast in learning and using the gestures, but since our navigational methods are very simple one has to be careful with a generalization.
 \section{Conclusions}
-Conclusions
+We have conducted a study that compares the effectiveness, efficiency, and user satisfaction of a hamburger menu navigation to a navigation with swipe
+gestures in a page view in applications on mobile devices. The main goal was to investigate how these navigation methods behave when the distance in pages
+that has to be covered is altered. To this end, we developed an application that requires the user to navigate through the page view in predefined
+paths. Here, the paths' lengths differ to accomplish different distances. We introduce a definition of effectiveness that measures whether participants made unnecessary interactions. We measure the efficiency by tracking the time
+required to complete a task and assess the user satisfaction with a questionnaire.
+
+The findings indicate that the burger menu is better when the distance is large and that swipe gestures are much more efficient
+when the distance is small. The user satisfaction and effectiveness do not significantly favor either of the navigation methods.
+Investigating the reasons for this will be work of the future.
 %\end{document}  % This is where a 'short' article might terminate
 
 %ACKNOWLEDGMENTS are optional
@@ -614,8 +622,7 @@ tables and stuff
 
 \begin{table}[!h]
 	\centering
-	\caption{Course distribution}
-	\label{tab:course}
+	\caption{Course distribution}\label{tab:course}
 	\begin{tabular}{@{}p{14cm}|c}
 		\toprule
 		\textbf{Course} & \textbf{Count} \\
