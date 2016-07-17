@@ -497,13 +497,27 @@ def main():
     if args.plot:
         df_plot = df_by_tid.groupby(['navigation',
                                      'tid'])['efficiency']
-        values = {str(desc): value for desc, value in df_plot}
 
-        df_plot = pd.DataFrame(values)
+        task2distance = {1: 2, 2: 5, 3: 8, 4: 11, 5: 14}
+
+        burger_values = {task2distance[desc[1]]:
+                         value for desc, value in df_plot
+                         if desc[0] == 'burger'}
+
+        swipe_values = {task2distance[desc[1]]:
+                        value for desc, value in df_plot
+                        if desc[0] == 'swipe'}
+
+        df_burger = pd.DataFrame(burger_values)
+        df_swipe = pd.DataFrame(swipe_values)
 
         # print(df_plot, file=sys.stderr)
-        df_plot.plot.box()
+        df_burger.plot.box()
+        plt.figure(1)
+        df_swipe.plot.box()
         plt.show()
+
+        # v2
 
     exit(0)
 
