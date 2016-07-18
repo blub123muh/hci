@@ -1,0 +1,18 @@
+There are 4 main files that you will have to deal with: MainActivity, TreasureHuntFragmentActivity, TreasureHuntRoomFragment, QuestionnaireActivity. Their primary purpose and internal functionality is
+described in this file.
+
+MainActivity:
+* you can change the group assignment procedure by modifying the determineNavigationMethod() function
+
+TreasureHuntRoomFragment:
+* Each instance of this class represents an individual door in the treasure hunt. It defines an interface 'OnFragmentInteractionListener' which is called whenever a certain interaction is happening with that door (created or opened)
+
+TreasureHuntFragmentActivity:
+* This activity contains the PageViewer which has a default swipe functionality and handles any interactions regarding navigation between the doors. Hence, this class creates the doors(class TreasureHuntRoomFragmentAdapter), reacts to interactions with the doors by implementing the OnFragmentInteractionListener interface defined in TreasureHuntFragment, and finally is in charge of keeping track of the data produced during the experiment
+* when this Activity is created (method onCreate()), both hamburger menu and swipes are generally created, but either the burger is locked in to closed state or the swiping feature is disabled
+* the tasks and questionnaires are read from the res/raw/ folder. it assumes comma seperated values without any unnecessary spaces in between. each line makes a task, consisting of its individual jumps
+* the order of tasks is randomized in the getNextTask() method
+* time: the time is saved for each jump individually measured in milliseconds. the timer is started right after the instruction is displayed and ends when a door is opened, as can be seen in the open() method.
+* an interaction is added whenever the onPageSelected is called
+* when a task is finished, the QuestionnaireActivity is created and opened and returns the results from the questions, which are then temporarily saved in the TreasureHuntFragmentActivity 
+* all the collected data of the participant is stored at once after the last task has been completed and the final questionnaire has been answered
