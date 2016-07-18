@@ -276,6 +276,7 @@ public class TreasureHuntFragmentActivity extends AppCompatActivity implements T
         return ret;
     }
 
+    // draws randomly at uniform without replacing from the tasks
     private int getNextTask() {
         int nextTask = -1;
 
