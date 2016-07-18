@@ -383,9 +383,11 @@ After all tasks were completed, the participant also rates these statements that
   \item `Handling the device was intricate.' (German: `Die Bedienung des Geräts war mir zu umständlich.')
   \item `The type of navigation was appealing to me.' (German: `Die Art der Navigation hat mir zugesagt.')
 \end{enumerate}
-Question (1) and (2) serve the purposes to check whether the quality the experiment's results is impaired due to the lack of a laboratory environment or
-due to participants' fatigue, respectively. \todo{What is question (3) good for?} Question (4) directly assesses the overall satisfaction with the navigation method.
-\todo{Why is final question (4) different to task question (2)?}
+Question (1) and (2) serve the purposes to check whether the quality the
+experiment's results is impaired due to the lack of a laboratory environment or
+due to participants' fatigue, respectively. 
+Question (3), as well as Question (4), directly assesses the overall satisfaction with the navigation method.
+Since obtaining meaningful results on user satisfaction might be difficult without revealing too much about the experiment design to the participants, we formulate the question for satisfaction both in a negative and in a positive fashion.
 \section{Evaluation Results}
 In this section, we formalize our hypotheses, explain our procedure and notations for testing the hypotheses, conduct a retrospective power analysis and finally, present both descriptive statistics
 and test statistics for each distance, navigation method, and dependent variable. In the end, we present further statistics related to our experiment.
@@ -417,12 +419,13 @@ In order to test for significant differences in any of the independent variables
 test for normality and apply Welch's t-test (marked with *) if the Shapiro-Wilk-test does not reject for either of the groups.
 In the case of a t-test, we report the following data in this order: $t$ value, significance level $p$, Cohen's $d$ as a measure of effect size, and the degrees of
 freedom $df$. 
-The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same?}.
+% The degrees of freedom is \ldots in all cases where a t-test is applied. \todo{verify: is it always the same? No, $\rightarrow$ table.
 In the case where the test for normality fails, we apply a Mann-Whitney-U test (marked with $\sim$), in which case z value, significance level p, and
 the rank-biserial correlation, denoted as r, are provided.
 
 For all our computational analyses, we used the \textsc{scipy.stats} package for Python.
-\todo{When you have for example p = 0.199\ldots999, how do you report it? p < 0.2? p $\approx$ 0.2?}
+% \todo{When you have for example p = 0.199\ldots999, how do you report it? p < 0.2? p $\approx$ 0.2?}
+% < .2 should suffice
 \begin{table}[!h]
 \centering
 \caption{Comparing burger and swipe for same d}
@@ -443,16 +446,19 @@ As already suggested in the introduction, preliminary to conducting the study, w
 we expected to find significances with an effect size of $d \geq .8$.
 Furthermore, we assumed normally distributed data with about equal variances, so using Student's t-tests would be adequate. Hence, in order to achieve statistical power of .8 in a 
 two-sided two sample Student's t-test, the number 
-of participants should be 25 per group. For this reason we aimed for 50 participants in total. In \todo{number x out of number y cases}, we found the data to be normally distributed and
-very often we find large effect sizes (\todo{how often?}). However, because we didn't find the variances to always be equal and because it is discouraged in the literature to
-choose between Student's and Welch's t-test per case\todo{ref}, we decided to constantly use Welch's t-test.
+of participants should be 25 per group. For this reason we aimed for 50 participants in total.
+In 9 out of 10 cases, we found the efficiency values per task to be normally distributed
+and in 4 out of 5 cases of the tasks' direct comparison, we can report large effect sizes ($> 0.5$).
+However, because we didn't find the variances to always be equal and because it is discouraged
+in the literature to choose between Student's and Welch's t-test per case~\cite{levenes:sucks}, we decided to constantly use Welch's t-test.
 \subsection{Results for dependent variables}
 \subsubsection{Effectiveness}
 Overall, the average effectiveness of the burger menu and swipe gestures are .98 (SD:\@0.063) and .93 (SD:\@0.106), respectively. For burger menu navigation, 
 Table~\ref{fig:descriptive-effectiveness} shows that the error rates were slightly lower for task 1 and task 5 than for the others. However, the differences
-are not significant (see Appendix) \todo{can we refer to appendix in this way? Seems a little bit like cheating. Maybe in the end there will be enough space to put the 
-table here.}. For the swipe navigation, the error rate of task 1 is lower than the error rates of all the other
-tasks, which is significant (see Appendix \todo{again, is it ok like this?}).
+are not significant (see Appendix)
+\todo{can we refer to appendix in this way? Seems a little bit like cheating. Maybe in the end there will be enough space to put the table here.}. For the swipe navigation, the error rate of task 1 is lower than the error rates of all the other
+tasks, which is significant (see Appendix).
+\todo{again, is it ok like this?}
 The other distances do not differ significantly from each other. When
 comparing both navigation methods to each other, burger menu navigation yields a higher effectiveness than swipe in any case.
 The differences are significant for tasks 3, 4, and 5,
@@ -494,7 +500,6 @@ On the other hand, the box plot of efficiency by task for swipe navigation
 a descending trend, negative skews for tasks 2 and 3, positive skews for tasks 4 and 5, and no skew for task 1,
 four outliers at tasks 1, 2, and 5 below the central value,
 and a single outlier at task 5 above the central value.
-\todo{reread}
 
 Averaged over all tasks, burger menu navigation (0.223 (SD:\@0.05)) is slightly more efficient than swipe navigation (0.216 (SD:\@0.1)). Looking at the
 development of the means depending on the tasks shown in Table~\ref{fig:descriptive-efficiency}, it can be seen that swipe is very efficient compared to burger for small distances (task 1 and 2), 
