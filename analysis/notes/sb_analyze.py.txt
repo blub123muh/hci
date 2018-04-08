@@ -1,0 +1,3 @@
+sb_analyze.py
+* find out why plotting does not work quite yet
+* wilcoxon does not work for questionnaires effectiveness for many ties

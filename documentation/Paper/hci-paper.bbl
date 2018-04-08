@@ -1,0 +1,26 @@
+\begin{thebibliography}{1}
+
+\bibitem{findlater2013age}
+L.~Findlater, J.~E. Froehlich, K.~Fattal, J.~O. Wobbrock, and T.~Dastyar.
+\newblock Age-related differences in performance with touchscreens compared to
+  traditional mouse input.
+\newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
+  Computing Systems}, pages 343--346. ACM, 2013.
+
+\bibitem{heuwing2015usability}
+B.~Heuwing, I.~K{\"o}ller, V.~Schanz, and T.~Mandl.
+\newblock Usability of gesture-based mobile applications for first-time use.
+\newblock {\em Mensch und Computer 2015--Proceedings}, 2015.
+
+\bibitem{levenes:sucks}
+D.~Lakens.
+\newblock Always use welch's t-test instead of student's t-test.
+\newblock January 2015.
+
+\bibitem{sauro2009comparison}
+J.~Sauro and J.~S. Dumas.
+\newblock Comparison of three one-question, post-task usability questionnaires.
+\newblock In {\em Proceedings of the SIGCHI Conference on Human Factors in
+  Computing Systems}, pages 1599--1608. ACM, 2009.
+
+\end{thebibliography}

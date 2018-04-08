@@ -1,0 +1,48 @@
+This is BibTeX, Version 0.99d (TeX Live 2016/dev)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: hci-paper.aux
+The style file: abbrv.bst
+Database file #1: hci.bib
+Warning--empty journal in levenes:sucks
+You've used 4 entries,
+            2118 wiz_defined-function locations,
+            519 strings with 4435 characters,
+and the built_in function-call counts, 1588 in all, are:
+= -- 161
+> -- 71
+< -- 2
++ -- 28
+- -- 24
+* -- 98
+:= -- 253
+add.period$ -- 14
+call.type$ -- 4
+change.case$ -- 24
+chr.to.int$ -- 0
+cite$ -- 5
+duplicate$ -- 68
+empty$ -- 120
+format.name$ -- 24
+if$ -- 346
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 4
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 32
+preamble$ -- 1
+purify$ -- 20
+quote$ -- 0
+skip$ -- 54
+stack$ -- 0
+substring$ -- 92
+swap$ -- 25
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 1
+while$ -- 14
+width$ -- 5
+write$ -- 45
+(There was 1 warning)

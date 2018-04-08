@@ -1,0 +1,38 @@
+Loading files experiment_results/experiment_results.csv experiment_results/experiment_results2.csv tablet 10919880/experiment_results.csv tablet 10919903/experiment_results.csv
+(1500, 7)
+Dataset Validation: {'pid': True}
+22 BURGERS vs 28 SWIPERS
+[BURGER over all Tasks]=========================================================
+Repeated Measures:
+KruskalResult(statistic=64.780058038415632, pvalue=2.8628983270922086e-13)
+FriedmanchisquareResult(statistic=126.34181818181833, pvalue=2.3580931508512059e-26)
+Normality: NormaltestResult(statistic=695.92062379202275, pvalue=7.6340785142658078e-152) True
+[Swipe Task 1]==================================================================
+mean distance=2]
+H0: 2770.21[S] == 4638.12[B]
+Ttest_indResult(statistic=-9.7677785244985476, pvalue=3.048661963250753e-19)
+Reject? True
+[Swipe Task 2]==================================================================
+mean distance=5]
+H0: 4204.86[S] == 4638.12[B]
+Ttest_indResult(statistic=-1.6374276606675802, pvalue=0.10324597758459234)
+Reject? False
+[Swipe Task 3]==================================================================
+mean distance=8]
+H0: 5175.68[S] == 4638.12[B]
+Ttest_indResult(statistic=3.4616051586436036, pvalue=0.00060564874812197894)
+Reject? True
+[Swipe Task 4]==================================================================
+mean distance=11]
+H0: 6123.01[S] == 4638.12[B]
+Ttest_indResult(statistic=7.981729679231651, pvalue=5.0201723649504874e-14)
+Reject? True
+[Swipe Task 5]==================================================================
+mean distance=14]
+H0: 7252.65[S] == 4638.12[B]
+Ttest_indResult(statistic=11.658440737398982, pvalue=1.7212956322485464e-24)
+Reject? True
+Effectiveness===================================================================
+H0: 0.9343[S] == 0.9782[B]
+Ttest_indResult(statistic=-3.8996269795774503, pvalue=0.00010184696908914221)
+Reject? True

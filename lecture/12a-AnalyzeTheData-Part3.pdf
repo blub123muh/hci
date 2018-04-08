@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="description" content="OpenOLAT - infinite learning" />
+<meta name="keywords" content="OpenOLAT, OLAT, eLearning, learning platform, LMS, Learning Management System, LCMS, Learning Content Management System, Open Source, elearning, JAVA, IMS, QTI, SCORM, Content package, collaboration, usability, performance, scalability." /> 
+<meta name="dcterms.creator" content="OpenOLAT - http://www.openolat.org" />
+<meta name="dcterms.subject" content="OpenOLAT - infinite learning - Your Open Source Learning Management System" />
+<meta name="dcterms.contributor" content="see http://www.openolat.org" />
+<meta name="dcterms.date" content="2010-03-16" />
+<meta name="dcterms.type" content="Interactive Resource" />
+<meta name="dcterms.identifier" content="http://www.openolat.org" />
+<meta name="dcterms.rights" content="http://www.openolat.org" />
+<meta name="viewport" content="minimal-ui, width=device-width, initial-scale=1">
+<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+<script type="text/javascript">
+/* <![CDATA[ */ 
+var o_info = new Object();
+o_info.initialPageLoadFinished = false;
+o_info.o_winid = '1007117265';
+o_info.uriprefix="/dmz/";
+o_info.bc="";
+o_info.businessPath="";
+o_info.serverUri="https://lms.uni-kiel.de"
+o_info.dirty_form = "Attention! You have not saved this form yet. By clicking OK your modifications will be lost.";
+o_info.locale = "en";
+o_info.lastClickTime = new Date().getTime();
+o_info.drop = true;
+o_info.o_baseURI = "/raw/5942:6a62bfafce4e/";
+o_info.i18n_noresponse_title = "Communication error";
+o_info.i18n_noresponse = "The requested action could not be executed since the server does not respond or is overloaded. Please try to execute the action again or reload the page. ";
+o_info.i18n_topnav_more = "More";
+o_info.oo_noresponse_title = "Session timeout";
+o_info.oo_noresponse = "Your session has been timed out or the server has been restarted. To login again please use this <b><a href=\'reload.html\'>link<\/a><\/b> or reload the page.<br><br>Be aware that all unsaved changes in your browser window will be lost during the login process. Close this dialog to manually copy unsaved content such as forum postings to the browser clip board and to manually reload the page. ";
+o_info.zseed = 0;
+function o_start(){
+	o_init();
+		
+				o_info.initialPageLoadFinished = true;
+}
+/* ]]> */
+</script>
+<script type="text/javascript" src='/raw/5942:6a62bfafce4e/js/jsMath/easy/load.js'></script>
+<!--[if lt IE 9]>
+	<script type="text/javascript" src='/raw/5942:6a62bfafce4e/js/jquery/jquery-1.9.1.min.js'></script>
+	<script type="text/javascript" src='/raw/5942:6a62bfafce4e/js/html5shiv/html5shiv.min.js'></script>
+	<script type="text/javascript" src='/raw/5942:6a62bfafce4e/js/respond/respond.min.js'></script>
+<![endif]-->
+<!--[if gte IE 9]><!-->
+<script type="text/javascript" src='/raw/5942:6a62bfafce4e/js/jquery/jquery-2.1.3.min.js'></script>
+<!--<![endif]-->
+	<script type="text/javascript" src='/raw/5942:6a62bfafce4e/js/js.plugins.min.js'></script>
+	<script type="text/javascript" src='/raw/5942:6a62bfafce4e/movie/player.min.js'></script>
+
+	<link type="text/css" href='/raw/5942:6a62bfafce4e/js/js.plugins.min.css' rel="stylesheet" />
+
+<script type="text/javascript">
+/* <![CDATA[ */ 
+	jQuery.noConflict();
+		jQuery(document).ooTranslator().initialize("/g/openolat10411-devorg.olat.core.commons.chiefcontrollers.JSTranslatorMapper");
+	o_info.oo_translator = jQuery(document).ooTranslator();
+		jQuery(window).on("popstate", function(e) {
+		if(e.originalEvent.state && e.originalEvent.state.businessPath) {
+			window.location.href = e.originalEvent.state.businessPath;
+		}
+	});
+/* ]]> */
+</script>
+
+<script type="text/javascript" src="/raw/5942:6a62bfafce4e/themes/cau/theme.js"></script>
+
+<link rel="icon" href="/raw/5942:6a62bfafce4e/themes/cau/favicon.ico" type="image/x-icon" /> 
+<link rel="shortcut icon" href="/raw/5942:6a62bfafce4e/themes/cau/favicon.ico" type="image/x-icon" /> 
+<link id="o_theme_css" href="/raw/5942:6a62bfafce4e/themes/cau/theme.css" rel="stylesheet" type="text/css" />
+<!--[if IE 9]>
+<link id="o_theme_css_ie" href="/raw/5942:6a62bfafce4e/themes/cau/theme_ie_completions.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+<!--[if IE 7]>
+<script type="text/javascript">
+	jQuery(document).ready(function() { jQuery('body').addClass('o_browser_ie7'); });
+</script>
+<![endif]-->
+<!--[if IE 8]>
+<script type="text/javascript">
+	jQuery(document).ready(function() { jQuery('body').addClass('o_browser_ie8'); });
+</script>
+<![endif]-->
+<!--[if IE 9]>
+<script type="text/javascript">
+	jQuery(document).ready(function() { jQuery('body').addClass('o_browser_ie9'); });
+</script>
+<![endif]-->
+<!--[if IE 8]>
+<script type="text/javascript">
+jQuery(document).ready(function() {
+  var style;
+  style = jQuery('<style type="text/css">:before,:after{content:none !important}</style>');
+  jQuery('head').append(style);
+  return setTimeout((function() {
+    return style.remove();
+  }), 0);
+});
+</script>
+<![endif]-->
+<!-- empty -->
+<style id="o_fontSize_css" type="text/css"></style>
+<style type="text/css">
+			.o_custom_navbar-brand { background-image: none; }
+	</style>
+
+
+<script type='text/javascript'>o_info.JSTracingUri='/m/fe234f90031f29ec08c3e10d54066918/';o_info.JSTracingLogDebugEnabled=false;</script>
+
+<title>OpenOLAT - infinite learning</title>
+</head>
+
+<body onload="o_start();" id="o_body" class="o_dmz  o_lang_en">
+<div id="o_bg"></div>
+<!-- START guiDebug -->
+
+<!-- END guiDebug -->
+<!-- START inlineTranslation -->
+
+<!-- END inlineTranslation -->
+<!-- START jsServer -->
+<!-- empty -->
+<!-- END jsServer -->
+
+<!-- START olatContentPanel -->
+
+<a href="#o_main_container" class="sr-only">Skip to main content</a>
+	<div id="o_beta_logo"></div>
+
+<div id="o_messages" class="hidden-print"><!-- empty --></div>
+	
+<div id="o_header_wrapper"> 
+	<div id="o_header_container" class="o_container_offcanvas container-fluid"> 
+		<div id="o_logo"></div>
+		<div id="o_right_logo"></div>
+		
+					</div>
+</div>
+
+<div id="o_offcanvas_right" class="o_navbar o_navbar-offcanvas " role="navigation">
+	<a href="#" class="o_offcanvas_close" title="Close"><i class='o_icon o_icon_close o_icon-lg'></i></a>
+	<div id="o_offcanvas_right_container" class="o_navbar-collapse">
+					<ul id="o_c1007117288" class="nav o_navbar-nav o_navbar-right o_sel_menu_tools">
+											<li role="presentation" class="divider"></li>
+		<li>
+								<a href="/dmz/1%3A1%3A1007117288%3A2%3A0%3Acid%3Alogout/" class="o_logout" title="Log off from OLAT" onclick="if (window.olatonunload) {olatonunload();}">
+			<i class="o_icon o_icon_logout o_icon-fw"></i> Log out
+		</a>
+	</li>
+</ul>
+			</div>
+</div>
+<a id='o_top'></a>
+<div id="o_navbar_wrapper" class="o_navbar" role="navigation">
+	<div id="o_navbar_container" class="o_container_offcanvas container-fluid">
+				<a class="o_navbar-brand " href="" title="OpenOLAT" ></a>
+		
+		<div class="o_collapse o_navbar-collapse">
+						<ul id="o_c1007117268" class="o_navbar_sites nav o_navbar-nav">
+	</ul>
+<script type="text/javascript">
+/* <![CDATA[ */ 
+    jQuery(document).trigger("oo.nav.sites.modified");
+/* ]]> */
+</script>
+
+			<ul id="o_c1007117269"  class="o_navbar_tabs nav o_navbar-nav">
+</ul>
+
+<script type="text/javascript">
+/* <![CDATA[ */ 
+    jQuery(document).trigger("oo.nav.tabs.modified");
+/* ]]> */
+</script>
+
+										<div class="o_navbar_tools">
+	<ul class="nav o_navbar-nav o_navbar-right">
+				<li id="o_navbar_my_menu" class="dropdown o_navbar_dmz_help_menu">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Search">
+				<i class="o_icon o_icon_help o_icon-lg"></i> Help
+			</a>
+			<ul class="dropdown-menu dropdown-menu-right">          
+							<li id="o_navbar_help">
+					<a class="" href="https://confluence.openolat.org/display/OO104EN/Login%20Page" target="oohelp" title="Start OLAT Help"><i class="o_icon o_icon-wf o_icon_help"> </i> <span>Help</span></a>
+				</li>
+				<li>
+					<a class="" href="https://confluence.openolat.org/display/OO104EN/Login%20Page#LoginPage-login_browsercheck" target="oohelp" title="Check if your browser is properly configured"><i class="o_icon o_icon-wf o_icon_browsercheck"> </i> <span>Browser check</span></a>
+				</li>
+							<li id="o_navbar_about">
+					<a class="" id="o_c1007117277"  href="/dmz/1%3A1%3A1007117277%3A2%3A0%3Acid%3Amenu.about/" onclick="" ><i class='o_icon o_icon_openolat o_icon-fw'></i> <span>About OpenOLAT</span></a>
+				</li>
+			</ul>
+		</li>
+		<li id="o_navbar_langchooser"><form  method="post" id="ofo_o_top_nav_dmz_lang_chooser" name="ofo_o_top_nav_dmz_lang_chooser" action="/dmz/1%3A1%3Ao_top_nav_dmz_lang_chooser%3A1%3A0%3Aofo_%3Afid/"  onsubmit="if(o_info.linkbusy) return false; else o_beforeserver(); return true;" ><input type="hidden" id="ofo_o_top_nav_dmz_lang_chooser_dispatchuri" name="dispatchuri" value="undefined" /><input type="hidden" id="ofo_o_top_nav_dmz_lang_chooser_eventval" name="dispatchevent" value="undefined" /><select id="o_fioo_top_nav_dmz_lang_chooser_select_SELBOX" name="select.language_SELBOX" onchange="o_ffEvent('ofo_o_top_nav_dmz_lang_chooser','ofo_o_top_nav_dmz_lang_chooser_dispatchuri','o_fioo_top_nav_dmz_lang_chooser_select_SELBOX','ofo_o_top_nav_dmz_lang_chooser_eventval','4')" class='form-control'><option value="de" >Deutsch</option><option value="en" selected="selected" >English</option></select><script type="text/javascript">
+ /* <![CDATA[ */ 
+(function() { jQuery('#o_fioo_top_nav_dmz_lang_chooser_select_SELBOX').on('change keypress',{formId:"ofo_o_top_nav_dmz_lang_chooser_dispatchuri"},setFlexiFormDirtyByListener);})();
+ /* ]]> */ 
+</script>
+</form> <script type="text/javascript">
+ /* <![CDATA[ */ 
+ (function() {jQuery('#ofo_o_top_nav_dmz_lang_chooser').keypress(function(event) {
+ if (13 == event.keyCode) {
+  event.preventDefault();
+  if (this.onsubmit()) { this.submit(); }
+ }
+});
+})();
+ /* ]]> */ 
+</script></li>
+	</ul>	
+</div>	
+					</div>
+	</div>
+</div>
+<!-- empty -->
+
+<div id="o_main_wrapper">
+	<div id="o_main_container" class="o_container_offcanvas container-fluid">
+		<div id='o_main' class='row o_loginscreen'>
+<div id='o_main_center' class='split-pane'>
+<div id='o_main_center_content' class='clearfix'>
+<a id='o_content'></a>
+<div id='o_main_center_content_inner'>
+<div class="o_login clearfix">
+	<div class="o_login_intro">
+		<h1>OpenOLAT - infinite learning</h1>
+			</div>
+
+		<div class="o_login_messages">
+					<div class="o_infomessage_wrapper o_block_large o_scrollblock">
+				<p><span style="font-size: 12pt;"><strong>Achtung: <br />Neuer Studierendenausweis ab Wintersemester 2016! Weitere Informationen unter:<br /><a href="http://www.uni-kiel.de/cau-card" target="_blank">www.uni-kiel.de/cau-card</a></strong></span></p>
+<p><span style="font-size: 12pt;">Eine erste <strong>Hilfe </strong>f&uuml;r die Bedienung der Plattform finden Sie <strong><a href="http://elearning.uni-kiel.de/de/lms/support-anleitungen-zum-update" target="_blank">hier</a>!<br /></strong></span></p>
+			</div>
+				
+							</div>
+	
+	<div class="o_login_box_wrapper">
+		<div class="o_login_box">
+						<div class="o_login_providers">
+				<div class="btn-group btn-group-lg btn-group-justified">
+									<a  href="/dmz/1%3A1%3Aomain_loging%3A1%3A0%3Acid%3Alogin%3Alp%3ALDAP/" onclick="return o2cl();"  title="Do you have an account on the central LDAP server?" class="btn btn-default  btn-primary  ">
+						<i class="o_icon o_icon-2x o_icon_provider_ldap"></i><span>Login</span>
+					</a>
+													<a class="btn btn-default" id="o_c1007117326"  href="/dmz/1%3A1%3A1007117326%3A2%3A0%3Acid%3Amenu.guest/" onclick="return o2cl();"  title="Log in as guest"><i class='o_icon o_icon-2x o_icon_provider_guest'></i> <span>Guest access</span></a>
+								</div>
+			</div>
+						<div class="o_login_provider">
+				<div class="o_login_form o_login_ldap">		
+	<form  method="post" id="ofo_oldap_login" name="ofo_oldap_login" action="/dmz/1%3A1%3Aoldap_login%3A1%3A0%3Aofo_%3Afid/"  onsubmit="if(o_info.linkbusy) return false; else o_beforeserver(); return true;" ><input type="hidden" id="ofo_oldap_login_dispatchuri" name="dispatchuri" value="undefined" /><input type="hidden" id="ofo_oldap_login_eventval" name="dispatchevent" value="undefined" /><fieldset  id="o_c1007117304"  class="o_form form  " role="form">
+	<legend>		
+						OLAT login
+	</legend> 
+
+ <div class="o_desc">Please log in with your user name and password. Students: stuXXXXXX and associated password. Staff: Please contact info@elearning.uni-kiel.de to get user name and password.</div> 
+		<div class="form-group   clearfix">
+					<div  id="o_c1007117309"  class="form-group  ">
+			<div class="input-group">
+					<span class="input-group-addon"><i class='o_icon o_icon-fw o_icon_user'> </i></span>
+				
+				<input type="text" id="o_fiooldap_login_name" name="o_fiooldap_login_name" class='form-control' size="20" maxlength="128" value=""  placeholder="LDAP user name" /><script type="text/javascript">
+ /* <![CDATA[ */ 
+(function() { jQuery('#o_fiooldap_login_name').on('change keypress',{formId:"ofo_oldap_login_dispatchuri"},setFlexiFormDirtyByListener);})();
+ /* ]]> */ 
+</script>
+
+		
+				</div>
+			</div>
+								</div>
+			<div class="form-group   clearfix">
+					<div  id="o_c1007117317"  class="form-group  ">
+			<div class="input-group">
+					<span class="input-group-addon"><i class='o_icon o_icon-fw o_icon_password'> </i></span>
+				
+				<input type="password" id="o_fiooldap_login_pass" name="o_fiooldap_login_pass" class='form-control' size="20" maxlength="128" value=""  placeholder="LDAP password" /><script type="text/javascript">
+ /* <![CDATA[ */ 
+(function() { jQuery('#o_fiooldap_login_pass').on('change keypress',{formId:"ofo_oldap_login_dispatchuri"},setFlexiFormDirtyByListener);})();
+ /* ]]> */ 
+</script>
+
+		
+				</div>
+			</div>
+								</div>
+			<div class="form-group   clearfix">
+					<button type="button" id="o_fiooldap_login_button" name="o_fiooldap_login_button" value="Login"  onclick="o_ffEvent('ofo_oldap_login','ofo_oldap_login_dispatchuri','o_fiooldap_login_button','ofo_oldap_login_eventval','2')" class="btn btn-primary"><span>Login</span></button><script type="text/javascript">
+ /* <![CDATA[ */ 
+o_ffRegisterSubmit('ofo_oldap_login_dispatchuri','o_fiooldap_login_button');
+/* ]]> */ 
+</script>
+								</div>
+	</fieldset></form> <script type="text/javascript">
+ /* <![CDATA[ */ 
+ (function() {jQuery('#ofo_oldap_login').keypress(function(event) {
+ if (13 == event.keyCode) {
+  event.preventDefault();
+  if (this.onsubmit()) { this.submit(); }
+ }
+});
+})();
+ /* ]]> */ 
+</script>
+	</div>
+
+			</div>
+		</div>	
+	</div>	
+
+	
+</div>
+
+
+<script type="text/javascript">
+/* <![CDATA[ */ 
+if ((window.self != window.parent) && window.parent.OPOL) {
+	// Page is loaded in an iframe within OpenOLAT because a session timeout occurred or 
+	// system has been restartet in the meantime. 
+	// Show error on main window
+	var title = "Session timeout";
+	var message = "Your session has been timed out or the server has been restarted. To login again please use this <b><a href=\'reload.html\'>link<\/a><\/b> or reload the page.<br><br>Be aware that all unsaved changes in your browser window will be lost during the login process. Close this dialog to manually copy unsaved content such as forum postings to the browser clip board and to manually reload the page. ";
+	window.parent.o_afterserver();
+	window.parent.showMessageBox('error', title, message);
+}
+/* ]]> */
+</script>
+</div>
+</div>
+</div>
+</div>
+
+		<a id="o_toplink" href="#o_top" onclick="o_scrollToElement('#o_top');" title="Go to top of page">
+			<i class="o_icon o_icon_top"></i> 
+			Go to top
+		</a>	
+	</div>
+</div>
+
+<div id="o_footer_wrapper">
+	<div id="o_footer_container" class="o_container_offcanvas container-fluid">
+		<div id="o_footer_user" class="clearfix">
+		<span id="o_counter">(864 People are online)</span>
+			<script type="text/javascript">
+/* <![CDATA[ */
+    	function o_shareActiveSocialUrl() {
+		jQuery('#o_mail').attr('href','mailto:?subject=' + o_shareSocialTitle() + '&body=' + o_shareSocialUrl());
+	}
+		function o_shareSocialUrl() {
+		if(o_info.businessPath && o_info.businessPath.length > 0) return o_info.businessPath;
+		return 'https://lms.uni-kiel.de';
+	} 
+	function o_shareSocialTitle() {
+		return document.title;
+	}
+	function o_shareCallout() {
+		return '<p><input id="callout_share_link_in" type="text" name="cl_share_link" value="' + o_shareSocialUrl() + '" size="64" /></p>';
+	}
+/* ]]> */
+</script>
+
+
+<div id="o_share">
+
+	<a id="o_share_social" href="javascript:;" title="Share link to this page">
+		<i class="o_icon o_icon_share_social o_icon-lg"></i>
+	</a>
+	<div id="o_share_social_wrapper" class="hide"><div id="o_share_social_container">
+						<a id="o_mail" href="mailto:?body=https://lms.uni-kiel.de" title="Share link with mail">
+				<i class="o_icon o_icon_mailto o_icon-lg"></i>
+			</a>
+							</div></div>
+	<script type="text/javascript">
+	/* <![CDATA[ */
+		jQuery(function() {
+			o_shareLinkPopup('o_share_social', jQuery('#o_share_social_wrapper').html());
+		});
+	/* ]]> */
+	</script>
+			<a id="o_link" href="javascript:;" title="Copy link">
+			<i class="o_icon o_icon_link o_icon-lg"></i>
+		</a>
+		<a id="o_qrcode" href="javascript:;" title="Copy QR code">
+			<i class="o_icon o_icon_qrcode o_icon-lg"></i>
+		</a>
+		<script type="text/javascript">
+		/* <![CDATA[ */
+			jQuery(function() {
+				o_shareLinkPopup('o_link', o_shareCallout);
+				o_QRCodePopup('o_qrcode', o_shareSocialUrl);
+			});
+		/* ]]> */
+		</script>
+			</div>
+
+	</div>
+	<div id="o_footer_impressum">
+		<a class="" target="_blank" id="o_c1007117296"  href="/dmz/1%3A1%3A1007117296%3A2%3A0%3Acid%3Atopnav.impressum/" onclick="return o2cl();"  title="Imprint"><i class='o_icon o_icon_impress o_icon-lg'></i> <span>Imprint</span></a> <script type="text/javascript">
+/* <![CDATA[ */
+(function(){ var o_c1007117296 = jQuery('#o_c1007117296');if (o_c1007117296) o_c1007117296.click(function() {setTimeout(removeBusyAfterDownload,1200)});})();
+/* ]]> */
+</script>
+	</div>
+<div id="o_footer_powered" class="clearfix">
+	<a href="http://www.openolat.org" target="_blank" title="OpenOLAT - infinite learning">
+		<img src="/raw/5942:6a62bfafce4e/images/openolat/openolat_powerd_by_120x30.png" alt="powered by OpenOLAT" />
+	</a>
+</div>
+<div id="o_footer_version" class="clearfix">
+	<a class="" id="o_c1007117297"  href="/dmz/1%3A1%3A1007117297%3A2%3A0%3Acid%3Amenu.about/" onclick="return o2cl();"  title="Information on OpenOLAT Build (5942:6a62bfafce4e)"><span>OpenOLAT&nbsp;10.4.11</span></a>
+</div>	
+
+	</div>
+</div>
+
+<!-- empty -->
+
+<div id="o_ajax_busy"><i class="o_icon o_icon_busy o_icon-5x o_icon-spin"></i></div>
+
+<div id="o_width_1em" style="width:1em; position: absolute; left: -1000px;"></div>
+<div><script type="text/javascript">
+/* <![CDATA[ */ 
+// init size and listen to text resize events
+jQuery(function() {
+	o_initEmPxFactor(); 
+});
+/* ]]> */
+</script></div></body></html>
